@@ -25,6 +25,12 @@ namespace Gamut.WebApp.Controllers
             return PartialView("AddNew");
         }
 
+        public ActionResult General()
+        {
+            return PartialView("General");
+        }
+
+
         public ActionResult ShowAll()
         {
             return PartialView("ShowAll");

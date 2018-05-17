@@ -9,36 +9,6 @@ app.factory("ShareData", function () {
 //app.controller("EditController", EditController);
 //app.controller("DeleteController", DeleteController);
 
-//app.controller("AddController", AddController);
-//Showing Routing
-
-//app.controller('AddController', function ($scope, SPACRUDService) {
-////AddController = function ($scope, SPACRUDService) {
-//    $scope.StudentID = 0;
-//    $scope.test = "hellos";
-//    $scope.save = function () {
-//        var Student = {
-//            StudentID: $scope.StudentID,
-//            Name: $scope.Name,
-//            Email: $scope.Email,
-//            Class: $scope.Class,
-//            EnrollYear: $scope.EnrollYear,
-//            City: $scope.City,
-//            Country: $scope.Country
-//        };
-
-//        var promisePost = SPACRUDService.post(Student);
-
-//        promisePost.then(function (pl) {
-//            alert("Student Saved Successfully.");
-//        },
-//            function (errorPl) {
-//                $scope.error = 'failure loading Student', errorPl;
-//            });
-
-//    };
-
-//});
 app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
     //debugger;
     $routeProvider.when('/show',
@@ -65,7 +35,12 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         {
             templateUrl: 'Home/Index',
             controller: 'AddController'
-                    });
+        });
+    $routeProvider.when('/general',
+        {
+            templateUrl: 'ManageData/General',
+            controller: 'GeneralController'
+        });
     $routeProvider.otherwise(
                         {
                             redirectTo: '/'

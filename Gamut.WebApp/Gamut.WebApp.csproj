@@ -207,6 +207,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="GamutSPA\Script\Controllers\GeneralController.js" />
     <Content Include="Global.asax" />
     <Content Include="GamutSPA\Script\Controllers\AddController.js" />
     <Content Include="GamutSPA\Script\Controllers\DeleteController.js" />
@@ -328,6 +329,7 @@
     <Content Include="Views\ManageData\Edit.cshtml" />
     <Content Include="Views\ManageData\Delete.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\ManageData\General.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
