@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - Integrated Banking solution</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @*@Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")*@
+</head>
+<body>
+    @*<div class="navbar navbar-inverse navbar-fixed-top" style="color:blue; background-color:ThreeDLightShadow;">
+        <div class="container">
+            <h2>Single Page Application (SPA): Manage Students Information (CRUD) Using AngularJS, WEB API & MVC 5</h2>
+        </div>
+    </div>
+    <br />
+    <div></div>
+    <div></div>
+    <br /><br />*@
+    <div>
+        @RenderBody()
+      <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Gamut</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

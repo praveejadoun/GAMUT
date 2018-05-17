@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "DeleteStudent";
+}
+
+<table><tr><td height="10px"></td></tr></table>
+
+<table cellpadding="4" cellspacing="4" width="70%" align="center" style="background-color: skyblue; border:solid 2px red; padding-top:20px;">
+    <tr><td colspan="3" style="background-color:gray; font-size:18pt; font-weight:bold; height:30px; text-align:center;">Delete Student Information</td></tr>
+    <tr>
+
+        <td style="text-align:right;">Student ID</td>
+        <td>{{Student.studentID}}  </td>
+    </tr>
+    <tr>
+
+        <td style="text-align:right;">Name # </td>
+        <td> {{Student.name}}  </td>
+    </tr>
+    <tr>
+        <td style="text-align:right;">Email # </td>
+        <td>{{Student.email}}  </td>
+    </tr>
+    <tr>
+        <td style="text-align:right;">Class # </td>
+        <td>{{Student.class}}  </td>
+    </tr>
+    <tr>
+        <td style="text-align:right;">Enroll Year # </td>
+        <td>{{Student.enrollYear}}  </td>
+    </tr>
+    <tr>
+        <td style="text-align:right;">City # </td>
+        <td>{{Student.city}}  </td>
+    </tr>
+    <tr>
+        <td style="text-align:right;">Country # </td>
+        <td>{{Student.country}}  </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <input type="button" value="Delete" ng-click="delete()" />
+        </td>
+    </tr>
+
+</table>
