@@ -4,14 +4,14 @@
 }
 
 @*.navbar .navbar-nav {
-  display: inline-block;
-  float: none;
-  vertical-align: top;
-}
+      display: inline-block;
+      float: none;
+      vertical-align: top;
+    }
 
-.navbar .navbar-collapse {
-  text-align: center;
-}*@
+    .navbar .navbar-collapse {
+      text-align: center;
+    }*@
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 
 <link href="~/Content/Main.css" rel="stylesheet" />
@@ -40,11 +40,11 @@
                     </a>
                 </li>
                 @*<li>
-                <a href="add">
-                    <i class="glyphicon glyphicon-briefcase"></i>
-                    About
-                </a>
-            </li>*@
+                        <a href="add">
+                            <i class="glyphicon glyphicon-briefcase"></i>
+                            About
+                        </a>
+                    </li>*@
                 <li>
                     <a href="general">
                         <i class="glyphicon glyphicon-link"></i>
@@ -76,7 +76,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="documents">
                         <i class="glyphicon glyphicon-link"></i>
                         Reports / Documents
                     </a>
@@ -155,17 +155,17 @@
                             <span></span>
                         </button>
                     </div>
-                    <div class="container-fluid" >
-                           <ul class="nav navbar-nav navbar-collapse" >
-                               <li><h3> Inegrated Banking Solution</h3></li>
-                           </ul>
-                        </div>
+                    <div class="container-fluid">
+                        <ul class="nav navbar-nav navbar-collapse">
+                            <li><h3> Inegrated Banking Solution</h3></li>
+                        </ul>
+                    </div>
 
                     <div class="container-fluid">
                         <ul class="nav navbar-nav navbar-right">
 
                             @*<li><input type="text" class="form-control" placeholder="Search"></li>
-                            <li><button type="submit" class="btn btn-default">Search</button></li>*@
+                                <li><button type="submit" class="btn btn-default">Search</button></li>*@
                             <li><a href="logout" class="btn-default"> Logout</a></li>
                         </ul>
 
@@ -173,12 +173,13 @@
 
                 </div>
             </nav>
-            
+
             <div data-ng-view></div>
-                
+
         </div>
 
     </div>
+
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <!-- Bootstrap Js CDN -->
@@ -200,14 +201,16 @@
 @section scripts{
     <script type="text/javascript" src="@Url.Content("~/Scripts/angular.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/angular-route.min.js")"></script>
-
+    
     <script src="~/GamutSPA/Script/App.js"></script>
 
     <script type="text/javascript" src="@Url.Content("~/GamutSPA/Script/Controllers/ShowController.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/GamutSPA/Script/Controllers/AddController.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/GamutSPA/Script/Controllers/EditController.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/GamutSPA/Script/Controllers/DeleteController.js")"></script>
-<script type="text/javascript" src="@Url.Content("~/GamutSPA/Script/Controllers/GeneralController.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/GamutSPA/Script/Controllers/GeneralController.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/GamutSPA/Script/Controllers/DocumentsController.js")"></script>
+
     <script src="~/GamutSPA/Script/Services.js"></script>
 
 }

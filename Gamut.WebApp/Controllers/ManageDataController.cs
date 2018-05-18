@@ -30,6 +30,10 @@ namespace Gamut.WebApp.Controllers
             return PartialView("General");
         }
 
+        public ActionResult Documents()
+        {
+            return PartialView("Documents");
+        }
 
         public ActionResult ShowAll()
         {

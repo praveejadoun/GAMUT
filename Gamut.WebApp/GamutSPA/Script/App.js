@@ -41,6 +41,11 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             templateUrl: 'ManageData/General',
             controller: 'GeneralController'
         });
+    $routeProvider.when('/documents',
+        {
+            templateUrl: 'ManageData/Documents',
+            controller: 'DocumentsController'
+        });
     $routeProvider.when('/logout',
         {
             templateUrl: 'Home/Login',
