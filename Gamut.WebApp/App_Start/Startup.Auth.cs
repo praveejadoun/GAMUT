@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.Owin;
+using Owin;
+using System;
 
 
-
+[assembly: OwinStartupAttribute(typeof(Gamut.WebApp.Startup))]
 namespace Gamut.WebApp
 {
     public partial class Startup
@@ -25,9 +27,14 @@ namespace Gamut.WebApp
 
         public static string PublicClientId { get; private set; }
 
+        public void Configuration(IAppBuilder app)
+        {
+            ConfigureAuth(app);
+        }
+
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
-        //public void ConfigureAuth(IAppBuilder app)
-        //{
+        public void ConfigureAuth(IAppBuilder app)
+        {
         //    // Configure the db context, user manager and signin manager to use a single instance per request
         //    app.CreatePerOwinContext(ApplicationDbContext.Create);
         //    app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
@@ -79,6 +86,6 @@ namespace Gamut.WebApp
         //    //    ClientId = "",
         //    //    ClientSecret = ""
         //    //});
-        //}
+        }
     }
 }

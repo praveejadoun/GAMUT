@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Owin.Builder;
 //using Microsoft.Owin;
 using Owin;
 
@@ -10,7 +11,7 @@ namespace Gamut.WebApp
 {
     public partial class Startup
     {
-        public void Configuration(IAppBuilder app)
+        public void Configuration(AppBuilder app)
         {
             //ConfigureAuth(app);
         }

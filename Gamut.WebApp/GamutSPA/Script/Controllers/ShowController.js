@@ -1,12 +1,16 @@
-﻿app.controller('ShowStudentsController', function ($scope, $location, SPACRUDService, ShareData) {
+﻿app.controller('ShowController', function ($scope, $location, SPACRUDService, ShareData) {
   //  ShowController = function ($scope, $location, SPACRUDService, ShareData) {
     loadAllStudentsRecords();
 
     function loadAllStudentsRecords()
     {
-        var promiseGetStudent = SPACRUDService.getStudents();
         
-        promiseGetStudent.then(function (pl) { $scope.Students = pl.data },
+        var promiseGetStudent = SPACRUDService.getStudents();
+        debugger;
+        promiseGetStudent.then(function (pl) {
+            alert(pl.data);
+            $scope.Students = pl.data
+        },
               function (errorPl) {
                   $scope.error =  errorPl;
               });

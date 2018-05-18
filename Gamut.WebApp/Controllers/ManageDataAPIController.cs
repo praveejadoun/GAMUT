@@ -14,19 +14,20 @@ namespace Gamut.WebApp.Controllers
 {
     public class ManageDataAPIController : ApiController
     {
-        private SchoolManagementEntities db = new SchoolManagementEntities();
+        //private SchoolManagementEntities db = new SchoolManagementEntities();
 
         // GET: api/ManageDataAPI
+        private gamutdatabaseEntities db = new gamutdatabaseEntities();
         public IQueryable<Student> GetStudent()
         {
-            return db.Student;
+            return db.Students;
         }
 
         // GET: api/ManageDataAPI/5
         [ResponseType(typeof(Student))]
         public IHttpActionResult GetStudent(int id)
         {
-            Student student = db.Student.Find(id);
+            Student student = db.Students.Find(id);
             if (student == null)
             {
                 return NotFound();
@@ -79,7 +80,7 @@ namespace Gamut.WebApp.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Student.Add(student);
+            db.Students.Add(student);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = student.StudentID }, student);
@@ -89,13 +90,13 @@ namespace Gamut.WebApp.Controllers
         [ResponseType(typeof(Student))]
         public IHttpActionResult DeleteStudent(int id)
         {
-            Student student = db.Student.Find(id);
+            Student student = db.Students.Find(id);
             if (student == null)
             {
                 return NotFound();
             }
 
-            db.Student.Remove(student);
+            db.Students.Remove(student);
             db.SaveChanges();
 
             return Ok(student);
@@ -112,7 +113,7 @@ namespace Gamut.WebApp.Controllers
 
         private bool StudentExists(int id)
         {
-            return db.Student.Count(e => e.StudentID == id) > 0;
+            return db.Students.Count(e => e.StudentID == id) > 0;
         }
     }
 }

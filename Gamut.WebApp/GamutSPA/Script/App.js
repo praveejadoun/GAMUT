@@ -13,7 +13,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     //debugger;
     $routeProvider.when('/show',
                         {
-                            templateUrl: 'ManageData/Show',
+                            templateUrl: 'ManageData/ShowAll',
                             controller: 'ShowController'
                         });
     $routeProvider.when('/add',
