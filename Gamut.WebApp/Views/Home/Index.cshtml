@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-.navbar .navbar-nav {
+@*.navbar .navbar-nav {
   display: inline-block;
   float: none;
   vertical-align: top;
@@ -11,7 +11,7 @@
 
 .navbar .navbar-collapse {
   text-align: center;
-}
+}*@
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 
 <link href="~/Content/Main.css" rel="stylesheet" />
@@ -20,6 +20,12 @@
     <div class="wrapper">
         <!-- Sidebar Holder -->
         <nav id="sidebar">
+            <div class="navbar-header navbar-right">
+                <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn navbar-right">
+                    <i class="glyphicon glyphicon-align-right"></i>
+                    @*<span></span>*@
+                </button>
+            </div>
             <div class="sidebar-header">
                 <h3>GAMUT</h3>
                 <strong>GT</strong>
@@ -34,11 +40,11 @@
                     </a>
                 </li>
                 @*<li>
-                    <a href="add">
-                        <i class="glyphicon glyphicon-briefcase"></i>
-                        About
-                    </a>
-                </li>*@
+                <a href="add">
+                    <i class="glyphicon glyphicon-briefcase"></i>
+                    About
+                </a>
+            </li>*@
                 <li>
                     <a href="general">
                         <i class="glyphicon glyphicon-link"></i>
@@ -139,16 +145,16 @@
         </nav>
 
         <!-- Page Content Holder -->
-        <div id="content" style="width:100%">
-            <nav class="navbar navbar-fixed-top">
+        <div id="content" style="width:100%" class="navbar">
+            <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
 
-                    <div class="navbar-header">
+                    @*<div class="navbar-header">
                         <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
                             <i class="glyphicon glyphicon-align-left"></i>
                             <span>Toggle</span>
                         </button>
-                    </div>
+                    </div>*@
                     <div class="container-fluid" >
                            <ul class="nav navbar-nav navbar-collapse" >
                                <li><h3> Inegrated Banking Solution</h3></li>
@@ -160,16 +166,16 @@
 
                             @*<li><input type="text" class="form-control" placeholder="Search"></li>
                             <li><button type="submit" class="btn btn-default">Search</button></li>*@
-                            <li><a href="#"> Logout</a></li>
+                            <li><a href="logout" class="btn-default"> Logout</a></li>
                         </ul>
 
                     </div>
 
                 </div>
             </nav>
-            <div >
+            
             <div data-ng-view></div>
-                </div>
+                
         </div>
 
     </div>

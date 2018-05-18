@@ -41,6 +41,12 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             templateUrl: 'ManageData/General',
             controller: 'GeneralController'
         });
+    $routeProvider.when('/logout',
+        {
+            templateUrl: 'Home/Login',
+            //controller: 'GeneralController'
+            //redirectTo: 'Home/Login'
+        });
     $routeProvider.otherwise(
                         {
                             redirectTo: '/'
