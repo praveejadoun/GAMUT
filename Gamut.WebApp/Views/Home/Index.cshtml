@@ -149,12 +149,12 @@
             <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
 
-                    @*<div class="navbar-header">
-                        <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                    <div class="navbar-header">
+                        <button type="button" id="sidebarCollapseNav" class="btn btn-info navbar-btn">
                             <i class="glyphicon glyphicon-align-left"></i>
-                            <span>Toggle</span>
+                            <span></span>
                         </button>
-                    </div>*@
+                    </div>
                     <div class="container-fluid" >
                            <ul class="nav navbar-nav navbar-collapse" >
                                <li><h3> Inegrated Banking Solution</h3></li>
@@ -187,6 +187,9 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+            $('#sidebarCollapseNav').on('click', function () {
                 $('#sidebar').toggleClass('active');
             });
         });
