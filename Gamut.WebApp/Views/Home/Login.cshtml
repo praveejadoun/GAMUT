@@ -14,8 +14,18 @@
     <link href="~/Content/Login.css" rel="stylesheet" />
     <!-- Scrollbar Custom CSS -->
 
+    <script type="text/javascript" src="@Url.Content("~/Scripts/angular.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/angular-route.min.js")"></script>
+
+    <script src="~/GamutSPA/Script/App.js"></script>
+
+    <script type="text/javascript" src="@Url.Content("~/GamutSPA/Script/Controllers/AuthController.js")"></script>
+
+    <script src="~/GamutSPA/Script/Services.js"></script>
+
+
 </head>
-<body>
+<body data-ng-app="ApplicationModule">
     <div class="container">
 
         <div class="col-md-10 col-md-offset-1 main">
@@ -31,22 +41,22 @@
 
                 <form>
                     <!--Form with header-->
-                    <div class="form">
+                    <div class="form" ng-controller="AuthController">
 
                         <div class="col-sm-10">
-                            <label for="form2" class="">Your usersname</label>
-                            <input type="text" id="form2" class="form-control">
+                            <label for="form2" class="">usersname</label>
+                            <input type="text" id="form2" data-ng-model="loginId" class="form-control">
 
                         </div>
                         <div class="col-sm-10">
-                            <label for="form4">Your password</label>
-                            <input type="password" id="form4" class="form-control">
+                            <label for="form4">password</label>
+                            <input type="password" id="form4" data-ng-model="pwd" class="form-control">
 
                         </div>
                         <div class="col-sm-10">
 
-                            @*<input type="submit" id="submit" class="btn btn-deep-purple" value="Submit" />*@
-                            <a href="/Home/Login"> login </a>
+                            <input type="submit" id="submit" class="btn btn-deep-purple" data-ng-click="Login()" />
+                            @*<a href="/Home/Index"> login </a>*@
                         </div>
 
                     </div>

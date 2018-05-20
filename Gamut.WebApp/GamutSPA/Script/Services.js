@@ -1,4 +1,20 @@
-﻿ 
+﻿app.service('userService', function () {
+    var userList;// = [];
+    //alert('serice');
+    this.addUser = function (newObj) {
+      //  alert('serice adduser');
+        console.log("called addUser");
+        userList = newObj;//.push(newObj);
+        console.log("userList AFTER ADD::" + userList);
+    };
+
+    this.getUsers = function () {
+        //console.log("called getUsers" + userList + " >>");
+        return userList;
+    };
+});
+
+ 
 app.service("SPACRUDService", function ($http) {
     //SPACRUDService = function ($http) {
     //Read all Students

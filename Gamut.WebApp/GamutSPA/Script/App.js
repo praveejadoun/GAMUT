@@ -9,8 +9,15 @@ app.factory("ShareData", function () {
 //app.controller("EditController", EditController);
 //app.controller("DeleteController", DeleteController);
 
+//app.run(['$rootScope', function ($rootScope) {
+//    alert('app run');
+//    $rootScope.auth = 0;
+//}]);
+
+
+
 app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-    //debugger;
+    
     $routeProvider.when('/show',
                         {
                             templateUrl: 'ManageData/ShowAll',
@@ -41,20 +48,21 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             templateUrl: 'ManageData/General',
             controller: 'GeneralController'
         });
-    $routeProvider.when('/documents',
+    $routeProvider.when('//documents',
         {
             templateUrl: 'ManageData/Documents',
             controller: 'DocumentsController'
         });
     $routeProvider.when('/logout',
         {
-            templateUrl: 'Home/Login',
+            templateUrl: '/Home/Login',
             //controller: 'GeneralController'
+            //$location.path("Home/login")
             //redirectTo: 'Home/Login'
         });
     $routeProvider.otherwise(
                         {
-                            redirectTo: '/'
+            redirectTo: '/'
                         });
     
     $locationProvider.html5Mode(true).hashPrefix('!')

@@ -1,7 +1,12 @@
-﻿app.controller('GeneralController', function ($scope, SPACRUDService) {
+﻿app.controller('GeneralController', function ($scope, $location, $window, $rootScope, userService,SPACRUDService) {
     //AddController = function ($scope, SPACRUDService) {
     $scope.StudentID = 0;
     $scope.test = "General Controller";
+    $scope.loginId = "admin";
+    $scope.pwd = "";
+
+    alert(userService.getUsers()); 
+
     //$scope.save = function () {
     //    var Student = {
     //        StudentID: $scope.StudentID,

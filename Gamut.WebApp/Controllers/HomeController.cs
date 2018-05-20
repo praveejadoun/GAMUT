@@ -17,5 +17,19 @@ namespace Gamut.WebApp.Controllers
         {
             return View();
         }
+
+        public ActionResult General()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Login(FormCollection Credentials)
+        {
+            //check for login validations
+            //to do : Return something
+            return View("Index");
+        }
+
+
     }
 }

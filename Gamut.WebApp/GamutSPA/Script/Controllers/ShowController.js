@@ -6,9 +6,9 @@
     {
         
         var promiseGetStudent = SPACRUDService.getStudents();
-        debugger;
+        //debugger;
         promiseGetStudent.then(function (pl) {
-            alert(pl.data);
+          //  alert(pl.data);
             $scope.Students = pl.data
         },
               function (errorPl) {
