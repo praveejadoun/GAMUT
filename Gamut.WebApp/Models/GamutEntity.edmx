@@ -4,7 +4,66 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="gamutdatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="gamutdatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Cust_id" />
+          </Key>
+          <Property Name="Cust_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cust_Name" Type="varchar" MaxLength="250" />
+          <Property Name="Pan_No" Type="varchar" MaxLength="50" />
+          <Property Name="Exposure" Type="float" />
+          <Property Name="Exposure_AsOn" Type="date" />
+          <Property Name="Constitution" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="General">
+          <Key>
+            <PropertyRef Name="Cust_id" />
+          </Key>
+          <Property Name="Cust_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Activity" Type="varchar" MaxLength="250" />
+          <Property Name="Sector_SubSector" Type="varchar" MaxLength="250" />
+          <Property Name="Priority_Non_Priority" Type="varchar" MaxLength="250" />
+          <Property Name="Govt_sponsored" Type="varchar" MaxLength="250" />
+          <Property Name="Industry" Type="varchar" MaxLength="250" />
+          <Property Name="Incorporation" Type="varchar" MaxLength="250" />
+          <Property Name="Connection_Since" Type="varchar" MaxLength="250" />
+          <Property Name="Internal_Rating" Type="varchar" MaxLength="250" />
+          <Property Name="External_Rating" Type="varchar" MaxLength="250" />
+          <Property Name="Banking_Argmt" Type="varchar" MaxLength="250" />
+          <Property Name="If_Consortium" Type="varchar" MaxLength="250" />
+          <Property Name="Lead_Bank" Type="varchar" MaxLength="250" />
+          <Property Name="SMA" Type="varchar" MaxLength="250" />
+          <Property Name="DCCO" Type="varchar" MaxLength="250" />
+          <Property Name="Takeover" Type="varchar" MaxLength="250" />
+          <Property Name="Takeover_From" Type="varchar" MaxLength="250" />
+          <Property Name="Reason_for_Takeover" Type="varchar" MaxLength="250" />
+          <Property Name="Working_capital_L" Type="float" />
+          <Property Name="Term_Load_L" Type="float" />
+          <Property Name="Bank_Gurantee_L" Type="float" />
+          <Property Name="Letter_of_credit_L" Type="float" />
+          <Property Name="PCL_L" Type="float" />
+          <Property Name="Bill_Purchase_L" Type="float" />
+          <Property Name="Working_capital_B" Type="float" />
+          <Property Name="Term_Load_B" Type="float" />
+          <Property Name="Bank_Gurantee_B" Type="float" />
+          <Property Name="Letter_of_credit_B" Type="float" />
+          <Property Name="PCL_B" Type="float" />
+          <Property Name="Bill_Purchase_B" Type="float" />
+          <Property Name="Working_capital_E" Type="float" />
+          <Property Name="Term_Load_E" Type="float" />
+          <Property Name="Bank_Gurantee_E" Type="float" />
+          <Property Name="Letter_of_credit_E" Type="float" />
+          <Property Name="PCL_E" Type="float" />
+          <Property Name="Bill_Purchase_E" Type="float" />
+          <Property Name="Defaults" Type="varchar" MaxLength="250" />
+          <Property Name="Defaults_As_On" Type="date" />
+          <Property Name="Gurantor_1" Type="varchar" MaxLength="250" />
+          <Property Name="Gurantor_2" Type="varchar" MaxLength="250" />
+          <Property Name="Promoter_1" Type="varchar" MaxLength="250" />
+          <Property Name="Promoter_2" Type="varchar" MaxLength="250" />
+          <Property Name="Promoter_3" Type="varchar" MaxLength="250" />
+        </EntityType>
         <EntityType Name="Student">
           <Key>
             <PropertyRef Name="StudentID" />
@@ -18,10 +77,11 @@
           <Property Name="Country" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityContainer Name="gamutdatabaseModelStoreContainer">
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="General" EntityType="Self.General" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="gamutdatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -39,7 +99,68 @@
         </EntityType>
         <EntityContainer Name="gamutdatabaseEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="Customers" EntityType="gamutdatabaseModel.Customer" />
+          <EntitySet Name="Generals" EntityType="gamutdatabaseModel.General" />
         </EntityContainer>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Cust_id" />
+          </Key>
+          <Property Name="Cust_id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cust_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Pan_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Exposure" Type="Double" />
+          <Property Name="Exposure_AsOn" Type="DateTime" Precision="0" />
+          <Property Name="Constitution" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="General">
+          <Key>
+            <PropertyRef Name="Cust_id" />
+          </Key>
+          <Property Name="Cust_id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Activity" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Sector_SubSector" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Priority_Non_Priority" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Govt_sponsored" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Industry" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Incorporation" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Connection_Since" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Internal_Rating" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="External_Rating" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Banking_Argmt" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="If_Consortium" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Lead_Bank" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="SMA" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="DCCO" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Takeover" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Takeover_From" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Reason_for_Takeover" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Working_capital_L" Type="Double" />
+          <Property Name="Term_Load_L" Type="Double" />
+          <Property Name="Bank_Gurantee_L" Type="Double" />
+          <Property Name="Letter_of_credit_L" Type="Double" />
+          <Property Name="PCL_L" Type="Double" />
+          <Property Name="Bill_Purchase_L" Type="Double" />
+          <Property Name="Working_capital_B" Type="Double" />
+          <Property Name="Term_Load_B" Type="Double" />
+          <Property Name="Bank_Gurantee_B" Type="Double" />
+          <Property Name="Letter_of_credit_B" Type="Double" />
+          <Property Name="PCL_B" Type="Double" />
+          <Property Name="Bill_Purchase_B" Type="Double" />
+          <Property Name="Working_capital_E" Type="Double" />
+          <Property Name="Term_Load_E" Type="Double" />
+          <Property Name="Bank_Gurantee_E" Type="Double" />
+          <Property Name="Letter_of_credit_E" Type="Double" />
+          <Property Name="PCL_E" Type="Double" />
+          <Property Name="Bill_Purchase_E" Type="Double" />
+          <Property Name="Defaults" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Defaults_As_On" Type="DateTime" Precision="0" />
+          <Property Name="Gurantor_1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Gurantor_2" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Promoter_1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Promoter_2" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Promoter_3" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -56,6 +177,67 @@
                 <ScalarProperty Name="EnrollYear" ColumnName="EnrollYear" />
                 <ScalarProperty Name="City" ColumnName="City" />
                 <ScalarProperty Name="Country" ColumnName="Country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="gamutdatabaseModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="Constitution" ColumnName="Constitution" />
+                <ScalarProperty Name="Exposure_AsOn" ColumnName="Exposure_AsOn" />
+                <ScalarProperty Name="Exposure" ColumnName="Exposure" />
+                <ScalarProperty Name="Pan_No" ColumnName="Pan_No" />
+                <ScalarProperty Name="Cust_Name" ColumnName="Cust_Name" />
+                <ScalarProperty Name="Cust_id" ColumnName="Cust_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Generals">
+            <EntityTypeMapping TypeName="gamutdatabaseModel.General">
+              <MappingFragment StoreEntitySet="General">
+                <ScalarProperty Name="Promoter_3" ColumnName="Promoter_3" />
+                <ScalarProperty Name="Promoter_2" ColumnName="Promoter_2" />
+                <ScalarProperty Name="Promoter_1" ColumnName="Promoter_1" />
+                <ScalarProperty Name="Gurantor_2" ColumnName="Gurantor_2" />
+                <ScalarProperty Name="Gurantor_1" ColumnName="Gurantor_1" />
+                <ScalarProperty Name="Defaults_As_On" ColumnName="Defaults_As_On" />
+                <ScalarProperty Name="Defaults" ColumnName="Defaults" />
+                <ScalarProperty Name="Bill_Purchase_E" ColumnName="Bill_Purchase_E" />
+                <ScalarProperty Name="PCL_E" ColumnName="PCL_E" />
+                <ScalarProperty Name="Letter_of_credit_E" ColumnName="Letter_of_credit_E" />
+                <ScalarProperty Name="Bank_Gurantee_E" ColumnName="Bank_Gurantee_E" />
+                <ScalarProperty Name="Term_Load_E" ColumnName="Term_Load_E" />
+                <ScalarProperty Name="Working_capital_E" ColumnName="Working_capital_E" />
+                <ScalarProperty Name="Bill_Purchase_B" ColumnName="Bill_Purchase_B" />
+                <ScalarProperty Name="PCL_B" ColumnName="PCL_B" />
+                <ScalarProperty Name="Letter_of_credit_B" ColumnName="Letter_of_credit_B" />
+                <ScalarProperty Name="Bank_Gurantee_B" ColumnName="Bank_Gurantee_B" />
+                <ScalarProperty Name="Term_Load_B" ColumnName="Term_Load_B" />
+                <ScalarProperty Name="Working_capital_B" ColumnName="Working_capital_B" />
+                <ScalarProperty Name="Bill_Purchase_L" ColumnName="Bill_Purchase_L" />
+                <ScalarProperty Name="PCL_L" ColumnName="PCL_L" />
+                <ScalarProperty Name="Letter_of_credit_L" ColumnName="Letter_of_credit_L" />
+                <ScalarProperty Name="Bank_Gurantee_L" ColumnName="Bank_Gurantee_L" />
+                <ScalarProperty Name="Term_Load_L" ColumnName="Term_Load_L" />
+                <ScalarProperty Name="Working_capital_L" ColumnName="Working_capital_L" />
+                <ScalarProperty Name="Reason_for_Takeover" ColumnName="Reason_for_Takeover" />
+                <ScalarProperty Name="Takeover_From" ColumnName="Takeover_From" />
+                <ScalarProperty Name="Takeover" ColumnName="Takeover" />
+                <ScalarProperty Name="DCCO" ColumnName="DCCO" />
+                <ScalarProperty Name="SMA" ColumnName="SMA" />
+                <ScalarProperty Name="Lead_Bank" ColumnName="Lead_Bank" />
+                <ScalarProperty Name="If_Consortium" ColumnName="If_Consortium" />
+                <ScalarProperty Name="Banking_Argmt" ColumnName="Banking_Argmt" />
+                <ScalarProperty Name="External_Rating" ColumnName="External_Rating" />
+                <ScalarProperty Name="Internal_Rating" ColumnName="Internal_Rating" />
+                <ScalarProperty Name="Connection_Since" ColumnName="Connection_Since" />
+                <ScalarProperty Name="Incorporation" ColumnName="Incorporation" />
+                <ScalarProperty Name="Industry" ColumnName="Industry" />
+                <ScalarProperty Name="Govt_sponsored" ColumnName="Govt_sponsored" />
+                <ScalarProperty Name="Priority_Non_Priority" ColumnName="Priority_Non_Priority" />
+                <ScalarProperty Name="Sector_SubSector" ColumnName="Sector_SubSector" />
+                <ScalarProperty Name="Activity" ColumnName="Activity" />
+                <ScalarProperty Name="Cust_id" ColumnName="Cust_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

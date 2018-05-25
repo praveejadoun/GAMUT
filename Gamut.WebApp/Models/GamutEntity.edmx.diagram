@@ -6,6 +6,8 @@
     <edmx:Diagrams>
       <Diagram DiagramId="afc691f802ad4491a7d16a9e9ee357e6" Name="Diagram1">
         <EntityTypeShape EntityType="gamutdatabaseModel.Student" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gamutdatabaseModel.Customer" Width="1.5" PointX="2.625" PointY="0.875" />
+        <EntityTypeShape EntityType="gamutdatabaseModel.General" Width="1.5" PointX="4.625" PointY="0.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

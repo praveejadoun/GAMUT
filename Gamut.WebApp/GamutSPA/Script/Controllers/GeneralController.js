@@ -1,32 +1,42 @@
-﻿app.controller('GeneralController', function ($scope, $location, $window, $rootScope, userService,SPACRUDService) {
-    //AddController = function ($scope, SPACRUDService) {
+﻿app.controller('GeneralController', function ($scope, $location, $window, $rootScope, userService,GeneralService) {
     $scope.StudentID = 0;
     $scope.test = "General Controller";
     $scope.loginId = "admin";
     $scope.pwd = "";
 
-    alert(userService.getUsers()); 
+    getGeneral();
 
-    //$scope.save = function () {
-    //    var Student = {
-    //        StudentID: $scope.StudentID,
-    //        Name: $scope.Name,
-    //        Email: $scope.Email,
-    //        Class: $scope.Class,
-    //        EnrollYear: $scope.EnrollYear,
-    //        City: $scope.City,
-    //        Country: $scope.Country
-    //    };
+    function getGeneral() {
+        var promiseGetStudent = GeneralService.getGeneral(ShareData.value);
 
-    //    var promisePost = SPACRUDService.post(Student);
+        promiseGetStudent.then(function (pl) {
+            $scope.General = pl.data;
+        },
+            function (errorPl) {
+                $scope.error = 'failure loading General Data', errorPl;
+            });
+    } 
 
-    //    promisePost.then(function (pl) {
-    //        alert("Student Saved Successfully.");
-    //    },
-    //        function (errorPl) {
-    //            $scope.error = 'failure loading Student', errorPl;
-    //        });
+    $scope.save = function () {
+        //var General = {
+        //    StudentID: $scope.Student.studentID,
+        //    Name: $scope.Student.name,
+        //    Email: $scope.Student.email,
+        //    Class: $scope.Student.class,
+        //    EnrollYear: $scope.Student.enrollYear,
+        //    City: $scope.Student.city,
+        //    Country: $scope.Student.country
+        //};
 
-    //};
+        //var promisePutStudent = GenarelService.put($scope.General.CustId, General);
+        var promisePutStudent = GenarelService.put($scope.General.CustId, $scope.General);
+        promisePutStudent.then(function (pl) {
+            //$location.path("/showstudents");
+            alert('Saved Successfully');
+        },
+            function (errorPl) {
+                $scope.error = 'Failure loading General', errorPl;
+            });
+    };
 
 });
