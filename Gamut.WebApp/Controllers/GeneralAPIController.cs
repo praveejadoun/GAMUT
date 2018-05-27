@@ -32,14 +32,11 @@ namespace Gamut.WebApp.Controllers
                 return NotFound();
             }
 
-            string customerName = db.Customers.Find(Id).Cust_Name;
-            
+            Customer customer = db.Customers.Find(Id);
             List<LookUp> govtSponsored = db.LookUps.Where(id => id.LookUp_Table == "General" && id.LookUp_Name == "Govt_sponsored").ToList();
             List<LookUp> dCCO = db.LookUps.Where(id => id.LookUp_Table == "General" && id.LookUp_Name == "DCCO").ToList();
-
-            GeneralDecorator generalDecorator = new GeneralDecorator(general, customerName, govtSponsored.ToList(), dCCO);
-
-
+            GeneralDecorator generalDecorator = new GeneralDecorator(general, govtSponsored.ToList(), dCCO, customer);
+            
             return Ok(generalDecorator);
         }
 
@@ -128,18 +125,18 @@ namespace Gamut.WebApp.Controllers
 
     public class GeneralDecorator
     {
-        public GeneralDecorator(General _data,string _ClientName, List<LookUp> _lookupGovtSponsored, List<LookUp> _lookupDCCO)
+        public GeneralDecorator(General _data, List<LookUp> _lookupGovtSponsored, List<LookUp> _lookupDCCO,Customer _customer)
         {
             entData = _data;
-            clientName = _ClientName;
             lookupGovtSponsored = _lookupGovtSponsored;
             lookupDCCO = _lookupDCCO;
-
+            customer = _customer;
         }
         public General entData;
         public string clientName;
         public List<LookUp> lookupGovtSponsored;
         public List<LookUp> lookupDCCO;
+        public Customer customer;
 
     }
 }
