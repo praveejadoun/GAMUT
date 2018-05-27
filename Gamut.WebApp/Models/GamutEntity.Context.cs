@@ -28,5 +28,6 @@ namespace Gamut.WebApp.Models
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<General> Generals { get; set; }
+        public virtual DbSet<LookUp> LookUps { get; set; }
     }
 }

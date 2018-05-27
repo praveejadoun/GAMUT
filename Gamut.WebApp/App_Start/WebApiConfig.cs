@@ -28,6 +28,12 @@ namespace Gamut.WebApp
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            // config.Routes.MapHttpRoute(
+            //    name: "CustIDApi",
+            //    routeTemplate: "api/{controller}/{custId}",
+            //    defaults: new { id = RouteParameter.Optional }
+            //);
+
         }
     }
 }

@@ -18,13 +18,14 @@
 <link href="~/Content/Login.css" rel="stylesheet" />
 
 <body data-ng-app="ApplicationModule" data-ng-controller="AuthController">
-    <div class="wrapper" data-ng-show="showMenu">
+    <!--<div class="wrapper" data-ng-show="showMenu">-->
+    <div class="wrapper">
         <!-- Sidebar Holder -->
         <nav id="sidebar">
             <div class="navbar-header navbar-right">
                 <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn navbar-right">
                     <i class="glyphicon glyphicon-align-right"></i>
-                    @*<span></span>*@
+                   
                 </button>
             </div>
             <div class="sidebar-header">
@@ -181,48 +182,48 @@
 
     </div>
     <!-- Login Container-->
-    <div class="container">
-        <div ng-show="showLogin">
-            <div class="col-md-10 col-md-offset-1 main">
-                <div class="col-md-6 left-side">
-                    <h3>Gamut</h3>
-                    <p>Please Login</p>
-                    <br>
+    @*<div class="container">
+            <div ng-show="showLogin">
+                <div class="col-md-10 col-md-offset-1 main">
+                    <div class="col-md-6 left-side">
+                        <h3>Gamut</h3>
+                        <p>Please Login</p>
+                        <br>
 
-                </div><!--col-sm-6-->
+                    </div>
 
-                <div class="col-md-6 right-side">
-                    <h3>Login</h3>
+                    <div class="col-md-6 right-side">
+                        <h3>Login</h3>
 
-                    <form>
-                        <!--Form with header-->
-                        <div class="form">
+                        <form>
 
-                            <div class="col-sm-10">
-                                <label for="form2" class="">usersname</label>
-                                <input type="text" id="form2" data-ng-model="loginId" class="form-control">
+                            <div class="form">
+
+                                <div class="col-sm-10">
+                                    <label for="form2" class="">usersname</label>
+                                    <input type="text" id="form2" data-ng-model="loginId" class="form-control">
+
+                                </div>
+                                <div class="col-sm-10">
+                                    <label for="form4">password</label>
+                                    <input type="password" id="form4" data-ng-model="pwd" class="form-control">
+
+                                </div>
+                                <div class="col-sm-10">
+
+                                    <input type="submit" id="submit" value="Login" class="btn btn-deep-purple" data-ng-click="Login()"  />
+
+                                </div>
 
                             </div>
-                            <div class="col-sm-10">
-                                <label for="form4">password</label>
-                                <input type="password" id="form4" data-ng-model="pwd" class="form-control">
+                        </form>
 
-                            </div>
-                            <div class="col-sm-10">
-
-                                <input type="submit" id="submit" value="Login" class="btn btn-deep-purple" data-ng-click="Login()"  />
-                                @*<a href="/Home/Index"> login </a>*@
-                            </div>
-
-                        </div>
-                    </form>
-                    <!--/Form with header-->
-                </div><!--col-sm-6-->
+                    </div>
 
 
-            </div><!--col-sm-8-->
-        </div>
-    </div><!--container-->
+                </div>
+            </div>
+        </div>*@
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <!-- Bootstrap Js CDN -->

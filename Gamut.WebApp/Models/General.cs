@@ -57,5 +57,9 @@ namespace Gamut.WebApp.Models
         public string Promoter_1 { get; set; }
         public string Promoter_2 { get; set; }
         public string Promoter_3 { get; set; }
+        public Nullable<System.DateTime> Internal_Rating_AsOn { get; set; }
+        public Nullable<System.DateTime> External_Rating_AsOn { get; set; }
+        public Nullable<System.DateTime> DCCO_AsOn { get; set; }
+        public Nullable<System.DateTime> Takeover_AsOn { get; set; }
     }
 }

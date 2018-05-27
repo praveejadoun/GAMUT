@@ -161,6 +161,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\GeneralAPIController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LookUpController.cs" />
     <Compile Include="Controllers\ManageDataAPIController.cs" />
     <Compile Include="Controllers\ManageDataController.cs" />
     <Compile Include="Global.asax.cs">
@@ -185,6 +186,9 @@
       <DependentUpon>GamutEntity.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\General.cs">
+      <DependentUpon>GamutEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LookUp.cs">
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Student.cs">

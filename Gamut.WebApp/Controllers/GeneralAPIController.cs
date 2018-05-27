@@ -1,51 +1,58 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Gamut.WebApp.Models;
 
 namespace Gamut.WebApp.Controllers
 {
+
     public class GeneralAPIController : ApiController
     {
         //private SchoolManagementEntities db = new SchoolManagementEntities();
 
-        // GET: api/ManageDataAPI
+        // GET: api/GeneralAPI
+        
         private gamutdatabaseEntities db = new gamutdatabaseEntities();
         public IQueryable<General> GetGeneral()
         {
             return db.Generals;
         }
 
-        // GET: api/ManageDataAPI/5
-        [ResponseType(typeof(General))]
-        public IHttpActionResult GetGeneral(string CustId)
+        // GET: api/GeneralAPI/5
+        [ResponseType(typeof(GeneralDecorator))]
+        public IHttpActionResult GetGeneral(string Id)
         {
-            General General = db.Generals.Find(CustId);
-            if (General == null)
+            General general = db.Generals.Find(Id);
+            if (general == null)
             {
                 return NotFound();
             }
 
-            return Ok(General);
+            string customerName = db.Customers.Find(Id).Cust_Name;
+            
+            List<LookUp> govtSponsored = db.LookUps.Where(id => id.LookUp_Table == "General" && id.LookUp_Name == "Govt_sponsored").ToList();
+            List<LookUp> dCCO = db.LookUps.Where(id => id.LookUp_Table == "General" && id.LookUp_Name == "DCCO").ToList();
+
+            GeneralDecorator generalDecorator = new GeneralDecorator(general, customerName, govtSponsored.ToList(), dCCO);
+
+
+            return Ok(generalDecorator);
         }
 
-        // PUT: api/ManageDataAPI/5
+        // PUT: api/GeneralAPI/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutGeneral(string CustId, General general)
+        public IHttpActionResult PutGeneral(string Id, General general)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (CustId != general.Cust_id)
+            if (Id != general.Cust_id)
             {
                 return BadRequest();
             }
@@ -58,7 +65,7 @@ namespace Gamut.WebApp.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CustomerExists(CustId))
+                if (!CustomerExists(Id))
                 {
                     return NotFound();
                 }
@@ -71,7 +78,7 @@ namespace Gamut.WebApp.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/ManageDataAPI
+        // POST: api/GeneralAPI
         [ResponseType(typeof(General))]
         public IHttpActionResult PostGeneral(General general)
         {
@@ -86,11 +93,11 @@ namespace Gamut.WebApp.Controllers
             return CreatedAtRoute("DefaultApi", new { id = general.Cust_id }, general);
         }
 
-        // DELETE: api/ManageDataAPI/5
+        // DELETE: api/GeneralAPI/5
         [ResponseType(typeof(General))]
-        public IHttpActionResult DeleteGeneral(string CustId)
+        public IHttpActionResult DeleteGeneral(string Id)
         {
-            General general = db.Generals.Find(CustId);
+            General general = db.Generals.Find(Id);
             if (general == null)
             {
                 return NotFound();
@@ -115,5 +122,24 @@ namespace Gamut.WebApp.Controllers
         {
             return db.Generals.Count(e => e.Cust_id== id) > 0;
         }
+
+    }
+
+
+    public class GeneralDecorator
+    {
+        public GeneralDecorator(General _data,string _ClientName, List<LookUp> _lookupGovtSponsored, List<LookUp> _lookupDCCO)
+        {
+            entData = _data;
+            clientName = _ClientName;
+            lookupGovtSponsored = _lookupGovtSponsored;
+            lookupDCCO = _lookupDCCO;
+
+        }
+        public General entData;
+        public string clientName;
+        public List<LookUp> lookupGovtSponsored;
+        public List<LookUp> lookupDCCO;
+
     }
 }

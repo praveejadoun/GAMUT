@@ -1,15 +1,15 @@
 ﻿
 app.service("GeneralService", function ($http) {
-    
+    //debugger;
     //Read all Records
-    this.getStudents = function () {
+    this.getGenerals = function () {
 
         return $http.get("/api/GeneralAPI");
     };
 
     //Fundction to Read General by custId
-    this.getStudent = function (CustId) {
-        return $http.get("/api/GeneralAPI/" + CustId);
+    this.getGeneral = function (Id) {
+        return $http.get("/api/GeneralAPI/" + Id);
     };
 
     //Function to create new General
@@ -23,20 +23,20 @@ app.service("GeneralService", function ($http) {
     };
 
     //Edit General By CustId 
-    this.put = function (CustId, General) {
+    this.put = function (Id, General) {
         var request = $http({
             method: "put",
-            url: "/api/GeneralAPI/" + CustId,
+            url: "/api/GeneralAPI/" + Id,
             data: General
         });
         return request;
     };
 
     //Delete General By CustId
-    this.delete = function (CustId) {
+    this.delete = function (Id) {
         var request = $http({
             method: "delete",
-            url: "/api/GeneralAPI/" + CustId
+            url: "/api/GeneralAPI/" + Id
         });
         return request;
     };
@@ -84,6 +84,27 @@ app.service("SPACRUDService", function ($http) {
         });
         return request;
     };
+});
+
+app.service('userService', function () {
+
+    var userList;// = [];
+
+    //alert('serice');
+
+    this.addUser = function (newObj) {
+        //  alert('serice adduser');
+        console.log("called addUser");
+        userList = newObj;//.push(newObj);
+        console.log("userList AFTER ADD::" + userList);
+    };
+
+
+    this.getUsers = function () {
+        //console.log("called getUsers" + userList + " >>");
+        return userList;
+    };
+
 });
 
 
