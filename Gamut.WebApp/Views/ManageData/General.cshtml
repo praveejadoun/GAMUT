@@ -42,7 +42,7 @@
             <td>
                 <select data-ng-model="General.entData.govt_sponsored">
                     <option ng-selected="General.entData.govt_sponsored == x.lookUp_Value"  ng-repeat="x in General.lookupGovtSponsored" value="{{x.lookUp_Value}}">{{x.lookUp_Value}}</option>
-                    @*<option data-ng-options="v as v.lookUp_Value for v in General.lookupGovtSponsored"></option>*@
+                    
                 </select></td>
         <td>&nbsp;</td><td>Bank Guarantee</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
         <tr><td>Industry</td><td>&nbsp;</td><td>&nbsp;</td><td>Letter Of Credit</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
@@ -63,7 +63,14 @@
         <tr><td>If Consortium</td><td>Our share (%age & Rs.)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
         <tr><td>Lead Bank</td><td>Bank Name / NA</td><td>&nbsp;</td><td>Guarantor / Co-Obligant</td><td>Name</td><td>&nbsp;</td><td>Cust ID</td></tr>
         <tr><td>SMA</td><td>SMA1/2/0 (Reason)/Default</td><td>&nbsp;</td><td>Guarantor / Co-Obligant</td><td>Name</td><td>&nbsp;</td><td>Cust ID</td></tr>
-        <tr><td>DCCO</td><td>Yes/No/NA</td><td>DD.MMM.YYYY</td><td>Guarantor / Co-Obligant</td><td>Name</td><td>&nbsp;</td><td>Cust ID</td></tr>
+        <tr><td>DCCO</td>
+            <td>
+                <select data-ng-model="General.entData.dCCO">
+                    <option ng-selected="General.entData.dCCO == x.lookUp_Value" ng-repeat="x in General.lookupDCCO" value="{{x.lookUp_Value}}">{{x.lookUp_Value}}</option>
+
+                </select>
+            </td>
+        <td>DD.MMM.YYYY</td><td>Guarantor / Co-Obligant</td><td>Name</td><td>&nbsp;</td><td>Cust ID</td></tr>
         <tr><td>Takeover</td><td>Yes/NO</td><td>DD.MMM.YYYY</td><td>Promoter's/ Directors</td><td>Name</td><td>&nbsp;</td><td>Cust ID</td></tr>
         <tr><td>Take over from</td><td>Bank Name / NA</td><td>&nbsp;</td><td>Promoter's/ Directors</td><td>Name</td><td>&nbsp;</td><td>Cust ID</td></tr>
         <tr><td>Reason For Takeover</td><td>&nbsp;</td><td>&nbsp;</td><td>Promoter's/ Directors</td><td>Name</td><td>&nbsp;</td><td>Cust ID</td></tr>
