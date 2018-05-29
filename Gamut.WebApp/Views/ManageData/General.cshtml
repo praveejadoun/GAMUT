@@ -35,42 +35,70 @@
 <table class="table tab-content table-bordered" ">
     <thead><tr class="tableizer-firstrow"><th>Particular</th><th>Details</th><th>&nbsp;</th><th>Limit Details</th><th>Details</th><th>&nbsp;</th><th>&nbsp;</th></tr></thead>
     <tbody>
-        <tr><td>Activity</td><td>&nbsp;</td><td>&nbsp;</td><td>Nature</td><td>Limit</td><td>Balance</td><td>Exposure</td></tr>
-        <tr><td>Sector (Sub Sector)</td><td>Software (Dev and sale of gaming)</td><td>&nbsp;</td><td>Working Capital</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-        <tr><td>Priority/Non Priority</td><td>&nbsp;</td><td>&nbsp;</td><td>Term Loan</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-        <tr><td>Govt Sponsored</td>
+        <tr><td>Activity</td><td>{{General.entData.activity}}</td><td>&nbsp;</td><td>Nature</td><td>Limit</td><td>Balance</td><td>Exposure</td></tr>
+        <tr><td>Sector (Sub Sector)</td><td>{{General.entData.sector_SubSector}}</td><td>&nbsp;</td><td>Working Capital</td><td>{{General.entData.working_capital_L}}</td><td>{{General.entData.working_capital_B}}</td><td>{{General.entData.working_capital_E}}</td></tr>
+        <tr><td>Priority/Non Priority</td><td>{{General.entData.priority_Non_Priority}}</td><td>&nbsp;</td><td>Term Loan</td><td>{{General.entData.term_Load_L}}</td><td>{{General.entData.term_Load_B}}</td><td>{{General.entData.term_Load_E}}</td></tr>
+        <tr>
+            <td>Govt Sponsored</td>
             <td>
                 <select data-ng-model="General.entData.govt_sponsored">
-                    <option ng-selected="General.entData.govt_sponsored == x.lookUp_Value"  ng-repeat="x in General.lookupGovtSponsored" value="{{x.lookUp_Value}}">{{x.lookUp_Value}}</option>
-                    
-                </select></td>
-        <td>&nbsp;</td><td>Bank Guarantee</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-        <tr><td>Industry</td><td>&nbsp;</td><td>&nbsp;</td><td>Letter Of Credit</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-        <tr><td>Incorporation</td>
-        <td> <input type="date" id="exampleInput" name="input" ng-model="example.value"
-       placeholder="yyyy-MM-dd" min="2013-01-01" max="2013-12-31" required /></td>
-        <td>&nbsp;</td><td>PCL</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                    <option ng-selected="General.entData.govt_sponsored == x.lookUp_Value" ng-repeat="x in General.lookupGovtSponsored" value="{{x.lookUp_Value}}">{{x.lookUp_Value}}</option>
+                </select>
+            </td>
+            <td>&nbsp;</td>
+            <td>Bank Guarantee</td>
+            <td>{{General.entData.bank_Gurantee_L}}</td>
+            <td>{{General.entData.bank_Gurantee_B}}</td>
+            <td>{{General.entData.bank_Gurantee_E}}</td>
+        </tr>
+        <tr>
+            <td>Industry</td>
+            <td>{{General.entData.industry}}</td>
+            <td>&nbsp;</td>
+            <td>Letter Of Credit</td>
+            <td>{{General.entData.letter_of_credit_L}}</td>
+            <td>{{General.entData.letter_of_credit_B}}</td>
+            <td>{{General.entData.letter_of_credit_E}}</td>
+        </tr>
+        <tr>
+            <td>Incorporation</td>
+            <td>
+                <input type="date" id="exampleInput" name="input" ng-model="example.value"
+                       placeholder="yyyy-MM-dd" min="2013-01-01" max="2013-12-31" required />
+            </td>
+            <td>&nbsp;</td>
+            <td>PCL</td>
+            <td>{{General.entData.pcL_L}}</td>
+            <td>{{General.entData.pcL_B}}</td>
+            <td>{{General.entData.pcL_E}}</td>
+        </tr>
         <tr><td>Connection Since</td><td>DD.MMM.YYYY</td><td>&nbsp;</td><td>Bill Purchase</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-        <tr><td>Internal Rating</td><td>FB1,2,3,4,5</td>
+        <tr><td>Internal Rating</td><td>{{General.entData.internal_Rating}}</td>
                                     <td>
                                         <input type="date" id="exampleInput" name="input" ng-model="General.entData.internal_Rating_AsOn"
                                                placeholder="yyyy-MM-dd" min="2013-01-01" max="2013-12-31" required />
                                     </td>
         <td>Total</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-        <tr><td>External Rating</td><td>&nbsp;</td><td>As on DD.MMM.YYYY</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>External Rating</td><td>{{General.entData.external_Rating}}</td><td>As on {{General.entData.external_Rating_AsOn}}</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
         <tr><td>Inspection comments</td><td>&nbsp;</td><td>Nos</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
         <tr><td>Banking Argmt</td><td>Sole, Multiple, Consortium, Others</td><td>&nbsp;</td><td>Default</td><td>No. of Banks / FI (R-_; UR-_)</td><td>&nbsp;</td><td>As on DD.MMM.YYYY</td></tr>
         <tr><td>If Consortium</td><td>Our share (%age & Rs.)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
         <tr><td>Lead Bank</td><td>Bank Name / NA</td><td>&nbsp;</td><td>Guarantor / Co-Obligant</td><td>Name</td><td>&nbsp;</td><td>Cust ID</td></tr>
         <tr><td>SMA</td><td>SMA1/2/0 (Reason)/Default</td><td>&nbsp;</td><td>Guarantor / Co-Obligant</td><td>Name</td><td>&nbsp;</td><td>Cust ID</td></tr>
-        <tr><td>DCCO</td>
+        <tr>
+            <td>DCCO</td> 
             <td>
                 <select data-ng-model="General.entData.dCCO">
-                    <option ng-selected="General.entData.dCCO == x.lookUp_Value" ng-repeat="x in General.lookupDCCO" value="{{x.lookUp_Value}}">{{x.lookUp_Value}}</option>
+                    <option ng-selected="General.entData.dcco == x.lookUp_Value" ng-repeat="x in General.lookupDCCO" value="{{x.lookUp_Value}}">{{x.lookUp_Value}}</option>
 
                 </select>
             </td>
-        <td>DD.MMM.YYYY</td><td>Guarantor / Co-Obligant</td><td>Name</td><td>&nbsp;</td><td>Cust ID</td></tr>
+            <td>DD.MMM.YYYY</td>
+            <td>Guarantor / Co-Obligant</td>
+            <td>Name</td>
+            <td>&nbsp;</td>
+            <td>Cust ID</td>
+        </tr>
         <tr><td>Takeover</td><td>Yes/NO</td><td>DD.MMM.YYYY</td><td>Promoter's/ Directors</td><td>Name</td><td>&nbsp;</td><td>Cust ID</td></tr>
         <tr><td>Take over from</td><td>Bank Name / NA</td><td>&nbsp;</td><td>Promoter's/ Directors</td><td>Name</td><td>&nbsp;</td><td>Cust ID</td></tr>
         <tr><td>Reason For Takeover</td><td>&nbsp;</td><td>&nbsp;</td><td>Promoter's/ Directors</td><td>Name</td><td>&nbsp;</td><td>Cust ID</td></tr>
