@@ -32,6 +32,7 @@
           <Property Name="Internal_Rating_AsOn" Type="date" />
           <Property Name="External_Rating" Type="varchar" MaxLength="250" />
           <Property Name="External_Rating_AsOn" Type="date" />
+          <Property Name="Inspection_Comments" Type="varchar" MaxLength="250" />
           <Property Name="Banking_Argmt" Type="varchar" MaxLength="250" />
           <Property Name="If_Consortium" Type="varchar" MaxLength="250" />
           <Property Name="Lead_Bank" Type="varchar" MaxLength="250" />
@@ -179,6 +180,7 @@
           <Property Name="External_Rating_AsOn" Type="DateTime" Precision="0" />
           <Property Name="DCCO_AsOn" Type="DateTime" Precision="0" />
           <Property Name="Takeover_AsOn" Type="DateTime" Precision="0" />
+          <Property Name="Inspection_Comments" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="LookUp">
           <Key>
@@ -223,6 +225,7 @@
           <EntitySetMapping Name="Generals">
             <EntityTypeMapping TypeName="gamutdatabaseModel.General">
               <MappingFragment StoreEntitySet="General">
+                <ScalarProperty Name="Inspection_Comments" ColumnName="Inspection_Comments" />
                 <ScalarProperty Name="Takeover_AsOn" ColumnName="Takeover_AsOn" />
                 <ScalarProperty Name="DCCO_AsOn" ColumnName="DCCO_AsOn" />
                 <ScalarProperty Name="External_Rating_AsOn" ColumnName="External_Rating_AsOn" />

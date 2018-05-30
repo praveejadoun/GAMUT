@@ -61,5 +61,6 @@ namespace Gamut.WebApp.Models
         public Nullable<System.DateTime> External_Rating_AsOn { get; set; }
         public Nullable<System.DateTime> DCCO_AsOn { get; set; }
         public Nullable<System.DateTime> Takeover_AsOn { get; set; }
+        public string Inspection_Comments { get; set; }
     }
 }

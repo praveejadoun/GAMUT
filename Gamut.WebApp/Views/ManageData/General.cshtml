@@ -80,10 +80,16 @@
                                     </td>
         <td>Total</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
         <tr><td>External Rating</td><td>{{General.entData.external_Rating}}</td><td>As on {{General.entData.external_Rating_AsOn}}</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-        <tr><td>Inspection comments</td><td>&nbsp;</td><td>Nos</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-        <tr><td>Banking Argmt</td><td>Sole, Multiple, Consortium, Others</td><td>&nbsp;</td><td>Default</td><td>No. of Banks / FI (R-_; UR-_)</td><td>&nbsp;</td><td>As on DD.MMM.YYYY</td></tr>
-        <tr><td>If Consortium</td><td>Our share (%age & Rs.)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-        <tr><td>Lead Bank</td><td>Bank Name / NA</td><td>&nbsp;</td><td>Guarantor / Co-Obligant</td><td>Name</td><td>&nbsp;</td><td>Cust ID</td></tr>
+        <tr><td>Inspection comments</td><td>&nbsp;</td><td>{{General.entData.inspection_Comments}}</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>Banking Argmt</td>
+        <td>
+            <select data-ng-model="General.entData.banking_Argmt">
+        <option ng-selected="General.entData.banking_Argmt == x.lookUp_Value" ng-repeat="x in General.bankingArgmt" value="{{x.lookUp_Value}}">{{x.lookUp_Value}}</option>
+        </select>
+        </td>
+        <td>&nbsp;</td><td>Default</td><td>{{General.entData.defaults}}</td><td>&nbsp;</td><td>{{General.entData.defaults_As_On}}</td></tr>
+        <tr><td>If Consortium</td><td>{{General.entData.if_Consortium}}</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>Lead Bank</td><td>{{General.entData.lead_Bank}}</td><td>&nbsp;</td><td>Guarantor / Co-Obligant</td><td> {{General.entData.gurantor_1}}</td><td>&nbsp;</td><td>Cust ID</td></tr>
         <tr><td>SMA</td><td>SMA1/2/0 (Reason)/Default</td><td>&nbsp;</td><td>Guarantor / Co-Obligant</td><td>Name</td><td>&nbsp;</td><td>Cust ID</td></tr>
         <tr>
             <td>DCCO</td> 

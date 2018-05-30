@@ -35,7 +35,9 @@ namespace Gamut.WebApp.Controllers
             Customer customer = db.Customers.Find(Id);
             List<LookUp> govtSponsored = db.LookUps.Where(id => id.LookUp_Table == "General" && id.LookUp_Name == "Govt_sponsored").ToList();
             List<LookUp> dCCO = db.LookUps.Where(id => id.LookUp_Table == "General" && id.LookUp_Name == "DCCO").ToList();
-            GeneralDecorator generalDecorator = new GeneralDecorator(general, govtSponsored.ToList(), dCCO, customer);
+            List<LookUp> bankingArgmt = db.LookUps.Where(id => id.LookUp_Table == "General" && id.LookUp_Name == "Banking_Argmt").ToList();
+
+            GeneralDecorator generalDecorator = new GeneralDecorator(general, govtSponsored.ToList(), dCCO, customer, bankingArgmt);
             
             return Ok(generalDecorator);
         }
@@ -125,18 +127,19 @@ namespace Gamut.WebApp.Controllers
 
     public class GeneralDecorator
     {
-        public GeneralDecorator(General _data, List<LookUp> _lookupGovtSponsored, List<LookUp> _lookupDCCO,Customer _customer)
+        public GeneralDecorator(General _data, List<LookUp> _lookupGovtSponsored, List<LookUp> _lookupDCCO,Customer _customer,List<LookUp> _bankingArgmt)
         {
             entData = _data;
             lookupGovtSponsored = _lookupGovtSponsored;
             lookupDCCO = _lookupDCCO;
             customer = _customer;
+            bankingArgmt = _bankingArgmt;
         }
         public General entData;
         public string clientName;
         public List<LookUp> lookupGovtSponsored;
         public List<LookUp> lookupDCCO;
         public Customer customer;
-
+        public List<LookUp> bankingArgmt;
     }
 }
