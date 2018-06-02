@@ -141,7 +141,7 @@ namespace Gamut.WebApp.Controllers
 
             db.Generals.Remove(general);
             db.SaveChanges();
-
+            
             return Ok(general);
         }
 

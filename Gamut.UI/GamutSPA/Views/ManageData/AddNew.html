@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Add New Student";
+}
+<table><tr><td height="10px"></td></tr></table>
+
+<table cellpadding="4" cellspacing="4" width="70%" align="center" style="background-color: skyblue; 
+border:solid 2px red; padding-top:20px;">
+    <tr><td colspan="3" style="background-color:gray; font-size:18pt; 
+font-weight:bold; height:30px; text-align:center;">Add New Student</td></tr>
+    <tr>
+        <td style="text-align:right;">Student ID {{test}}</td>
+        <td><input type="text" ng-model="StudentID" />  </td>
+    </tr>
+    <tr>
+        <td style="text-align:right;">Name</td>
+        <td><input type="text" ng-model="Name" />  </td>
+    </tr>
+    <tr>
+        <td style="text-align:right;">Email</td>
+        <td><input type="text" ng-model="Email" />  </td>
+    </tr>
+    <tr>
+        <td style="text-align:right;">Class</td>
+        <td><input type="text" ng-model="Class" />  </td>
+    </tr>
+    <tr>
+        <td style="text-align:right;">Enroll Year</td>
+        <td><input type="text" ng-model="EnrollYear" />  </td>
+    </tr>
+    <tr>
+        <td style="text-align:right;">City</td>
+        <td><input type="text" ng-model="City" />  </td>
+    </tr>
+    <tr>
+        <td style="text-align:right;">Country</td>
+        <td><input type="text" ng-model="Country" />  </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <input type="button" value="Save" data-ng-click="save()" />
+        </td>
+    </tr>
+
+</table>

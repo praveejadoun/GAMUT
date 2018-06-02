@@ -1,0 +1,73 @@
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Gamut</title>
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Our Custom CSS -->
+    <link href="~/Content/Login.css" rel="stylesheet" />
+    <!-- Scrollbar Custom CSS -->
+
+    <script type="text/javascript" src="@Url.Content("~/Scripts/angular.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/angular-route.min.js")"></script>
+
+    <script src="~/GamutSPA/Script/App.js"></script>
+
+    <script type="text/javascript" src="@Url.Content("~/GamutSPA/Script/Controllers/AuthController.js")"></script>
+
+    <script src="~/GamutSPA/Script/Services.js"></script>
+
+
+</head>
+<body data-ng-app="ApplicationModule">
+    <div class="container">
+
+        <div class="col-md-10 col-md-offset-1 main">
+            <div class="col-md-6 left-side">
+                <h3>Gamut</h3>
+                <p>Please Login</p>
+                <br>
+
+            </div><!--col-sm-6-->
+
+            <div class="col-md-6 right-side">
+                <h3>Login</h3>
+
+                <form>
+                    <!--Form with header-->
+                    <div class="form" ng-controller="AuthController">
+
+                        <div class="col-sm-10">
+                            <label for="form2" class="">usersname</label>
+                            <input type="text" id="form2" data-ng-model="loginId" class="form-control">
+
+                        </div>
+                        <div class="col-sm-10">
+                            <label for="form4">password</label>
+                            <input type="password" id="form4" data-ng-model="pwd" class="form-control">
+
+                        </div>
+                        <div class="col-sm-10">
+
+                            <input type="submit" id="submit" class="btn btn-deep-purple" data-ng-click="Login()" />
+                            @*<a href="/Home/Index"> login </a>*@
+                        </div>
+
+                    </div>
+                </form>
+                <!--/Form with header-->
+            </div><!--col-sm-6-->
+
+
+        </div><!--col-sm-8-->
+
+    </div><!--container-->
+</body>
+
+</html>
+
