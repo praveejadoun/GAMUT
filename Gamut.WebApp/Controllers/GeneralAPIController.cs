@@ -114,6 +114,41 @@ namespace Gamut.WebApp.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        // PUT: api/GeneralAPI/5
+        [ResponseType(typeof(void))]
+        public IHttpActionResult OptionsGeneral(string Id, General general)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (Id != general.Cust_id)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(general).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!CustomerExists(Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
         // POST: api/GeneralAPI
         [ResponseType(typeof(General))]
         public IHttpActionResult PostGeneral(General general)
