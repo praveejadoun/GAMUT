@@ -23,23 +23,39 @@ namespace Gamut.WebApp.Controllers
         }
 
         // GET: api/Soc124API/5
-        [ResponseType(typeof(SOC124Decorator))]
-        public IHttpActionResult GetSOC124(int id)
-        {
-            SOC124 sOC124 = db.SOC124.Find(id);
-            if (sOC124 == null)
-            {
-                return NotFound();
-            }
+        //[ResponseType(typeof(SOC124Decorator))]
+        //public IHttpActionResult GetSOC124(int id)
+        //{
+        //    SOC124 sOC124 = db.SOC124.Find(id);
+        //    if (sOC124 == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            Customer customer = db.Customers.Find(sOC124.Cust_id);
-            List<LookUp> via = db.LookUps.Where(i => i.LookUp_Table == "SOC124" && i.LookUp_Name == "Via").ToList();
-            SOC124Decorator soc124Decorator = new SOC124Decorator(sOC124, via, customer);
+        //    Customer customer = db.Customers.Find(sOC124.Cust_id);
+        //    List<LookUp> via = db.LookUps.Where(i => i.LookUp_Table == "SOC124" && i.LookUp_Name == "Via").ToList();
+        //    SOC124Decorator soc124Decorator = new SOC124Decorator(sOC124, via, customer);
 
-            return Ok(soc124Decorator);
+        //    return Ok(soc124Decorator);
                         
-        }
+        //}
 
+        // GET: api/Soc124API/5
+        [ResponseType(typeof(SOC124Decorator))]
+        public IHttpActionResult GetSOC124(string id)
+        {
+            List<SOC124> lstSOC124 = db.SOC124.Where(i => i.Cust_id == id).ToList();
+            List<SOC124Decorator> lstSOC124Decorators = new List<SOC124Decorator>();
+            foreach (SOC124 soc124 in lstSOC124)
+            {
+                Customer customer = db.Customers.Find(soc124.Cust_id);
+                List<LookUp> via = db.LookUps.Where(i => i.LookUp_Table == "SOC124" && i.LookUp_Name == "Via").ToList();
+                SOC124Decorator soc124Decorator = new SOC124Decorator(soc124, via, customer);
+                lstSOC124Decorators.Add(soc124Decorator);
+            }
+            return Ok(lstSOC124Decorators);
+
+        }
         // PUT: api/Soc124API/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutSOC124(int id, SOC124 sOC124)
