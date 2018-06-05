@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Optimization;
 
-namespace Gamut.WebApp
+namespace Gamut.WebAPI
 {
     public class BundleConfig
     {

@@ -1,6 +1,6 @@
 using System.Collections.ObjectModel;
 
-namespace Gamut.WebApp.Areas.HelpPage.ModelDescriptions
+namespace Gamut.WebAPI.Areas.HelpPage.ModelDescriptions
 {
     public class ComplexTypeModelDescription : ModelDescription
     {

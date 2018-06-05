@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace Gamut.WebApp.Areas.HelpPage.ModelDescriptions
+namespace Gamut.WebAPI.Areas.HelpPage.ModelDescriptions
 {
     public interface IModelDocumentationProvider
     {

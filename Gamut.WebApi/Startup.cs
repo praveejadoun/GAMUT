@@ -7,7 +7,7 @@ using System.Linq;
 
 //[assembly: OwinStartup(typeof(Gamut.WebApp.Startup))]
 
-namespace Gamut.WebApp
+namespace Gamut.WebAPI
 {
     public partial class Startup
     {

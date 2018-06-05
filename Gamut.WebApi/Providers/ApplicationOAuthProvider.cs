@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace Gamut.WebApp.Providers
+namespace Gamut.WebAPI.Providers
 {
     //public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
     //{

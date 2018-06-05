@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Gamut.WebApp.Models
+namespace Gamut.WebAPI.Models
 {
     using System;
     using System.Data.Entity;

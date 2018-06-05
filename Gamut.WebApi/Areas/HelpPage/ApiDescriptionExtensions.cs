@@ -3,7 +3,7 @@ using System.Text;
 using System.Web;
 using System.Web.Http.Description;
 
-namespace Gamut.WebApp.Areas.HelpPage
+namespace Gamut.WebAPI.Areas.HelpPage
 {
     public static class ApiDescriptionExtensions
     {

@@ -11,10 +11,10 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
-using Gamut.WebApp.Areas.HelpPage.ModelDescriptions;
-using Gamut.WebApp.Areas.HelpPage.Models;
+using Gamut.WebAPI.Areas.HelpPage.ModelDescriptions;
+using Gamut.WebAPI.Areas.HelpPage.Models;
 
-namespace Gamut.WebApp.Areas.HelpPage
+namespace Gamut.WebAPI.Areas.HelpPage
 {
     public static class HelpPageConfigurationExtensions
     {

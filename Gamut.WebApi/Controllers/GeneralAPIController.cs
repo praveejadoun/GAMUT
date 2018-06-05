@@ -5,9 +5,9 @@ using System.Linq;
 using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
-using Gamut.WebApp.Models;
+using Gamut.WebAPI.Models;
 
-namespace Gamut.WebApp.Controllers
+namespace Gamut.WebAPI.Controllers
 {
 
     public class GeneralAPIController : ApiController

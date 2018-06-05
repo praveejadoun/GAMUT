@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Gamut.WebApp
+namespace Gamut.WebAPI
 {
     public class RouteConfig
     {

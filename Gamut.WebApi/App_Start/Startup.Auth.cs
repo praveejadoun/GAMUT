@@ -4,7 +4,7 @@ using System;
 
 
 //[assembly: OwinStartupAttribute(typeof(Gamut.WebApp.Startup))]
-namespace Gamut.WebApp
+namespace Gamut.WebAPI
 {
     public partial class Startup
     {

@@ -1,10 +1,10 @@
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using Gamut.WebApp.Areas.HelpPage.ModelDescriptions;
-using Gamut.WebApp.Areas.HelpPage.Models;
+using Gamut.WebAPI.Areas.HelpPage.ModelDescriptions;
+using Gamut.WebAPI.Areas.HelpPage.Models;
 
-namespace Gamut.WebApp.Areas.HelpPage.Controllers
+namespace Gamut.WebAPI.Areas.HelpPage.Controllers
 {
     /// <summary>
     /// The controller that will handle requests for the help page.

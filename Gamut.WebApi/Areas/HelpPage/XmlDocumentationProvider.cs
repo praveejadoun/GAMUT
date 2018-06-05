@@ -5,9 +5,9 @@ using System.Reflection;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
 using System.Xml.XPath;
-using Gamut.WebApp.Areas.HelpPage.ModelDescriptions;
+using Gamut.WebAPI.Areas.HelpPage.ModelDescriptions;
 
-namespace Gamut.WebApp.Areas.HelpPage
+namespace Gamut.WebAPI.Areas.HelpPage
 {
     /// <summary>
     /// A custom <see cref="IDocumentationProvider"/> that reads the API documentation from an XML documentation file.

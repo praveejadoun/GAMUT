@@ -6,7 +6,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using Newtonsoft.Json.Serialization;
 
-namespace Gamut.WebApp
+namespace Gamut.WebAPI
 {
     public static class WebApiConfig
     {
