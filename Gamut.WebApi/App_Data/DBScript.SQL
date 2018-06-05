@@ -1,6 +1,6 @@
 ﻿USE [gamutdatabase]
 GO
-/****** Object:  Table [dbo].[Customer]    Script Date: 31-05-2018 09:52:53 ******/
+/****** Object:  Table [dbo].[Customer]    Script Date: 05-06-2018 10:06:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -23,7 +23,72 @@ CREATE TABLE [dbo].[Customer](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[General]    Script Date: 31-05-2018 09:52:56 ******/
+/****** Object:  Table [dbo].[FinancialResultDetails]    Script Date: 05-06-2018 10:06:13 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[FinancialResultDetails](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[HeaderID] [int] NULL,
+	[Amount] [decimal](19, 4) NULL,
+	[ResQuarter] [varchar](100) NULL,
+	[UpdateDate] [datetime] NULL,
+	[IsActive] [bit] NULL,
+	[Cust_id] [varchar](50) NULL,
+ CONSTRAINT [PK_FinancialResultDetails] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[FinancialResultHeader]    Script Date: 05-06-2018 10:06:13 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[FinancialResultHeader](
+	[HeaderID] [int] IDENTITY(1,1) NOT NULL,
+	[HeaderName] [varchar](500) NULL,
+	[TypeId] [int] NULL,
+	[IsActive] [bit] NULL,
+ CONSTRAINT [PK_FinancialResultHeader] PRIMARY KEY CLUSTERED 
+(
+	[HeaderID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[FinancialResultType]    Script Date: 05-06-2018 10:06:13 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[FinancialResultType](
+	[TypeID] [int] IDENTITY(1,1) NOT NULL,
+	[TypeName] [varchar](100) NULL,
+	[IsActive] [bit] NULL,
+ CONSTRAINT [PK_FinancialResultType] PRIMARY KEY CLUSTERED 
+(
+	[TypeID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[General]    Script Date: 05-06-2018 10:06:13 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -88,7 +153,7 @@ CREATE TABLE [dbo].[General](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[LookUp]    Script Date: 31-05-2018 09:52:56 ******/
+/****** Object:  Table [dbo].[LookUp]    Script Date: 05-06-2018 10:06:13 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -109,7 +174,33 @@ CREATE TABLE [dbo].[LookUp](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Student]    Script Date: 31-05-2018 09:52:56 ******/
+/****** Object:  Table [dbo].[SOC124]    Script Date: 05-06-2018 10:06:13 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[SOC124](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Cust_id] [varchar](50) NULL,
+	[sourceSystemId] [varchar](50) NULL,
+	[approvalDate] [datetime] NULL,
+	[via] [varchar](50) NULL,
+	[approvalFor] [varchar](250) NULL,
+	[isCompiled] [varchar](50) NULL,
+	[followUpDate] [datetime] NULL,
+	[compiledDate] [datetime] NULL,
+ CONSTRAINT [PK_SOC124] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[Student]    Script Date: 05-06-2018 10:06:13 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -132,4 +223,14 @@ CREATE TABLE [dbo].[Student](
 
 GO
 SET ANSI_PADDING OFF
+GO
+ALTER TABLE [dbo].[FinancialResultDetails]  WITH CHECK ADD  CONSTRAINT [FK_FinancialResultDetails_FinancialResultHeader] FOREIGN KEY([HeaderID])
+REFERENCES [dbo].[FinancialResultHeader] ([HeaderID])
+GO
+ALTER TABLE [dbo].[FinancialResultDetails] CHECK CONSTRAINT [FK_FinancialResultDetails_FinancialResultHeader]
+GO
+ALTER TABLE [dbo].[FinancialResultHeader]  WITH CHECK ADD  CONSTRAINT [FK_FinancialResultHeader_FinancialResultType] FOREIGN KEY([TypeId])
+REFERENCES [dbo].[FinancialResultType] ([TypeID])
+GO
+ALTER TABLE [dbo].[FinancialResultHeader] CHECK CONSTRAINT [FK_FinancialResultHeader_FinancialResultType]
 GO

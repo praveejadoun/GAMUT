@@ -9,6 +9,7 @@
         <EntityTypeShape EntityType="gamutdatabaseModel.Customer" Width="1.5" PointX="2.625" PointY="0.875" />
         <EntityTypeShape EntityType="gamutdatabaseModel.General" Width="1.5" PointX="4.625" PointY="0.5" />
         <EntityTypeShape EntityType="gamutdatabaseModel.LookUp" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="gamutdatabaseModel.SOC124" Width="1.5" PointX="7.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

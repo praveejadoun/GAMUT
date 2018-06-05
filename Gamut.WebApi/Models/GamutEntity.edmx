@@ -78,6 +78,20 @@
           <Property Name="LookUp_Name" Type="varchar" MaxLength="150" />
           <Property Name="LookUp_Value" Type="varchar" MaxLength="250" />
         </EntityType>
+        <EntityType Name="SOC124">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cust_id" Type="varchar" MaxLength="50" />
+          <Property Name="sourceSystemId" Type="varchar" MaxLength="50" />
+          <Property Name="approvalDate" Type="datetime" />
+          <Property Name="via" Type="varchar" MaxLength="50" />
+          <Property Name="approvalFor" Type="varchar" MaxLength="250" />
+          <Property Name="isCompiled" Type="varchar" MaxLength="50" />
+          <Property Name="followUpDate" Type="datetime" />
+          <Property Name="compiledDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="Student">
           <Key>
             <PropertyRef Name="StudentID" />
@@ -94,6 +108,7 @@
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="General" EntityType="Self.General" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LookUp" EntityType="Self.LookUp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SOC124" EntityType="Self.SOC124" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -117,6 +132,7 @@
           <EntitySet Name="Customers" EntityType="gamutdatabaseModel.Customer" />
           <EntitySet Name="Generals" EntityType="gamutdatabaseModel.General" />
           <EntitySet Name="LookUps" EntityType="gamutdatabaseModel.LookUp" />
+          <EntitySet Name="SOC124" EntityType="gamutdatabaseModel.SOC124" />
         </EntityContainer>
         <EntityType Name="Customer">
           <Key>
@@ -190,6 +206,20 @@
           <Property Name="LookUp_Table" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="LookUp_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="LookUp_Value" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SOC124">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cust_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sourceSystemId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="approvalDate" Type="DateTime" Precision="3" />
+          <Property Name="via" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="approvalFor" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="isCompiled" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="followUpDate" Type="DateTime" Precision="3" />
+          <Property Name="compiledDate" Type="DateTime" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -282,6 +312,21 @@
                 <ScalarProperty Name="LookUp_Value" ColumnName="LookUp_Value" />
                 <ScalarProperty Name="LookUp_Name" ColumnName="LookUp_Name" />
                 <ScalarProperty Name="LookUp_Table" ColumnName="LookUp_Table" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SOC124">
+            <EntityTypeMapping TypeName="gamutdatabaseModel.SOC124">
+              <MappingFragment StoreEntitySet="SOC124">
+                <ScalarProperty Name="compiledDate" ColumnName="compiledDate" />
+                <ScalarProperty Name="followUpDate" ColumnName="followUpDate" />
+                <ScalarProperty Name="isCompiled" ColumnName="isCompiled" />
+                <ScalarProperty Name="approvalFor" ColumnName="approvalFor" />
+                <ScalarProperty Name="via" ColumnName="via" />
+                <ScalarProperty Name="approvalDate" ColumnName="approvalDate" />
+                <ScalarProperty Name="sourceSystemId" ColumnName="sourceSystemId" />
+                <ScalarProperty Name="Cust_id" ColumnName="Cust_id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -170,6 +170,7 @@
     <Compile Include="Controllers\LookUpAPIController.cs" />
     <Compile Include="Controllers\ManageDataAPIController.cs" />
     <Compile Include="Controllers\ManageDataController.cs" />
+    <Compile Include="Controllers\Soc124APIController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -195,6 +196,9 @@
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LookUp.cs">
+      <DependentUpon>GamutEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SOC124.cs">
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Student.cs">
