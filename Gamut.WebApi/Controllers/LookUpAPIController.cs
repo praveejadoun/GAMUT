@@ -12,7 +12,7 @@ using Gamut.WebApp.Models;
 
 namespace Gamut.WebApp.Controllers
 {
-    public class LookUpController : ApiController
+    public class LookUpAPIController : ApiController
     {
         private gamutdatabaseEntities db = new gamutdatabaseEntities();
 
