@@ -37,7 +37,7 @@ namespace Gamut.WebApp.Controllers
         //    SOC124Decorator soc124Decorator = new SOC124Decorator(sOC124, via, customer);
 
         //    return Ok(soc124Decorator);
-                        
+
         //}
 
         // GET: api/Soc124API/5
@@ -45,6 +45,28 @@ namespace Gamut.WebApp.Controllers
         public IHttpActionResult GetSOC124(string id)
         {
             List<SOC124> lstSOC124 = db.SOC124.Where(i => i.Cust_id == id).ToList();
+            List<SOC124Decorator> lstSOC124Decorators = new List<SOC124Decorator>();
+            foreach (SOC124 soc124 in lstSOC124)
+            {
+                Customer customer = db.Customers.Find(soc124.Cust_id);
+                List<LookUp> via = db.LookUps.Where(i => i.LookUp_Table == "SOC124" && i.LookUp_Name == "Via").ToList();
+                SOC124Decorator soc124Decorator = new SOC124Decorator(soc124, via, customer);
+                lstSOC124Decorators.Add(soc124Decorator);
+            }
+            return Ok(lstSOC124Decorators);
+
+        }
+
+        // GET: api/Soc124API/5
+        [ResponseType(typeof(SOC124Decorator))]
+        [Route("api/Soc124ByDate/{id}/{fromDate}/{toDate}")]
+        
+        public IHttpActionResult GetSOC124ByDate(string id,string fromDate,string toDate)
+        {
+            DateTime dtFrom = Convert.ToDateTime(fromDate);
+            DateTime dtTo = Convert.ToDateTime(toDate);
+            List<SOC124> lstSOC124 = db.SOC124.Where(i => i.Cust_id == id && (i.compiledDate >= dtFrom && i.compiledDate<= dtTo)).ToList();
+
             List<SOC124Decorator> lstSOC124Decorators = new List<SOC124Decorator>();
             foreach (SOC124 soc124 in lstSOC124)
             {
