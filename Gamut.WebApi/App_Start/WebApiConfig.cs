@@ -33,8 +33,8 @@ namespace Gamut.WebAPI
             //    routeTemplate: "api/{controller}/{custId}",
             //    defaults: new { id = RouteParameter.Optional }
             //);
-            EnableCorsAttribute cors = new EnableCorsAttribute("*", "*", "*");
-            config.EnableCors(cors);
+            //EnableCorsAttribute cors = new EnableCorsAttribute("*", "*", "*");
+            //config.EnableCors(cors);
 
             var json = config.Formatters.JsonFormatter;
             json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
