@@ -37,44 +37,18 @@ namespace Gamut.WebAPI.Controllers
             List<LookUp> dCCO = db.LookUps.Where(id => id.LookUp_Table == "General" && id.LookUp_Name == "DCCO").ToList();
             List<LookUp> bankingArgmt = db.LookUps.Where(id => id.LookUp_Table == "General" && id.LookUp_Name == "Banking_Argmt").ToList();
             List<LookUp> takeover = db.LookUps.Where(id => id.LookUp_Table == "General" && id.LookUp_Name == "Takeover").ToList();
-            Customer gur1  = db.Customers.Find(general.Gurantor_1);
-            Customer gur2 = db.Customers.Find(general.Gurantor_2);
-            Customer prom1 = db.Customers.Find(general.Promoter_1);
-            Customer prom2 = db.Customers.Find(general.Promoter_2);
-            Customer prom3 = db.Customers.Find(general.Promoter_3);
+            List<GeneralGurantor> gurantors = db.GeneralGurantors.Where(i => i.Cust_Id == customer.Cust_id).ToList();
+            List<GeneralExposure> exposures = db.GeneralExposures.Where(i => i.Cust_Id == customer.Cust_id).ToList();
+            List<GeneralGurantorDecorator> gurantorsDecorator = new List<GeneralGurantorDecorator>();
 
-            string gur1name = string.Empty;
-            string gur2name = string.Empty;
-            string prom1name= string.Empty;
-            string prom2name= string.Empty;
-            string prom3name= string.Empty;
-
-            if (gur1 != null)
+            foreach (GeneralGurantor gur in gurantors)
             {
-                gur1name = gur1.Cust_Name;
+                Customer cust = db.Customers.Find(gur.gurCust_Id);
+                GeneralGurantorDecorator gurantorDecorator = new GeneralGurantorDecorator(gur, cust.Cust_Name);
+                gurantorsDecorator.Add(gurantorDecorator);
             }
-
-            if (gur2 != null)
-            {
-                gur2name = gur2.Cust_Name;
-            }
-
-            if (prom1 != null)
-            {
-                prom1name = prom1.Cust_Name;
-            }
-
-            if (prom2 != null)
-            {
-                prom2name = prom2.Cust_Name;
-            }
-
-            if (prom3 != null)
-            {
-                prom3name = prom3.Cust_Name;
-            }
-
-            GeneralDecorator generalDecorator = new GeneralDecorator (general, govtSponsored, dCCO, customer, bankingArgmt,takeover,gur1name,gur2name,prom1name,prom2name,prom3name);
+            
+            GeneralDecorator generalDecorator = new GeneralDecorator (general, govtSponsored, dCCO, customer, bankingArgmt,takeover,gurantorsDecorator,exposures);
             
             return Ok(generalDecorator);
         }
@@ -195,11 +169,10 @@ namespace Gamut.WebAPI.Controllers
         }
 
     }
-
-
+    
     public class GeneralDecorator
     {
-        public GeneralDecorator(General _data, List<LookUp> _lookupGovtSponsored, List<LookUp> _lookupDCCO,Customer _customer,List<LookUp> _bankingArgmt,List<LookUp> _takeover, string _gur1name, string _gur2name, string _prom1name, string _prom2name, string _prom3name)
+        public GeneralDecorator(General _data, List<LookUp> _lookupGovtSponsored, List<LookUp> _lookupDCCO,Customer _customer,List<LookUp> _bankingArgmt,List<LookUp> _takeover,List<GeneralGurantorDecorator> _gurantors, List<GeneralExposure> _exposures) 
         {
             entData = _data;
             lookupGovtSponsored = _lookupGovtSponsored;
@@ -207,11 +180,8 @@ namespace Gamut.WebAPI.Controllers
             customer = _customer;
             bankingArgmt = _bankingArgmt;
             takeover = _takeover;
-            gur1name = _gur1name;
-            gur2name = _gur2name;
-            prom1name = _prom1name;
-            prom2name = _prom2name;
-            prom3name = _prom3name;
+            gurantors = _gurantors;
+            exposures = _exposures;
         }
         public General entData { get; set; }
         public string clientName { get; set; }
@@ -220,7 +190,9 @@ namespace Gamut.WebAPI.Controllers
         public Customer customer { get; set; }
         public List<LookUp> bankingArgmt { get; set; }
         public List<LookUp> takeover { get; set; }
-        public string gur1name, gur2name, prom1name, prom2name, prom3name;
-
+        public List<GeneralGurantorDecorator> gurantors { get; set; }
+        public List<GeneralExposure> exposures { get; set; }
     }
+
+   
 }

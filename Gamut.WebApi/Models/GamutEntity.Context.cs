@@ -30,5 +30,8 @@ namespace Gamut.WebAPI.Models
         public virtual DbSet<General> Generals { get; set; }
         public virtual DbSet<LookUp> LookUps { get; set; }
         public virtual DbSet<SOC124> SOC124 { get; set; }
+        public virtual DbSet<GeneralExposure> GeneralExposures { get; set; }
+        public virtual DbSet<GeneralGurantor> GeneralGurantors { get; set; }
+        public virtual DbSet<Rating> Ratings { get; set; }
     }
 }

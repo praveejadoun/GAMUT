@@ -5,7 +5,7 @@ using System.Linq;
 //using Microsoft.Owin;
 //using Owin;
 
-//[assembly: OwinStartup(typeof(Gamut.WebApp.Startup))]
+//[assembly: OwinStartup(typeof(Gamut.WebAPI.Startup))]
 
 namespace Gamut.WebAPI
 {

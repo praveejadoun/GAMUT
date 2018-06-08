@@ -3,7 +3,7 @@
 using System;
 
 
-//[assembly: OwinStartupAttribute(typeof(Gamut.WebApp.Startup))]
+//[assembly: OwinStartupAttribute(typeof(Gamut.WebAPI.Startup))]
 namespace Gamut.WebAPI
 {
     public partial class Startup

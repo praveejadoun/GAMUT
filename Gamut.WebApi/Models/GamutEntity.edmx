@@ -69,6 +69,26 @@
           <Property Name="Promoter_2" Type="varchar" MaxLength="250" />
           <Property Name="Promoter_3" Type="varchar" MaxLength="250" />
         </EntityType>
+        <EntityType Name="GeneralExposure">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cust_Id" Type="varchar" MaxLength="50" />
+          <Property Name="Nature" Type="varchar" MaxLength="50" />
+          <Property Name="Limit" Type="float" />
+          <Property Name="Balance" Type="float" />
+          <Property Name="Exposure" Type="float" />
+        </EntityType>
+        <EntityType Name="GeneralGurantor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cust_Id" Type="varchar" MaxLength="50" />
+          <Property Name="gurCust_Id" Type="varchar" MaxLength="50" />
+          <Property Name="gurType" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="LookUp">
           <Key>
             <PropertyRef Name="Id" />
@@ -77,6 +97,18 @@
           <Property Name="LookUp_Table" Type="varchar" MaxLength="150" />
           <Property Name="LookUp_Name" Type="varchar" MaxLength="150" />
           <Property Name="LookUp_Value" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cust_Id" Type="varchar" MaxLength="50" />
+          <Property Name="dateFrom" Type="datetime" />
+          <Property Name="dateTo" Type="datetime" />
+          <Property Name="rating" Type="varchar" MaxLength="50" />
+          <Property Name="byId" Type="varchar" MaxLength="50" />
+          <Property Name="source" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="SOC124">
           <Key>
@@ -107,7 +139,10 @@
         <EntityContainer Name="gamutdatabaseModelStoreContainer">
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="General" EntityType="Self.General" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GeneralExposure" EntityType="Self.GeneralExposure" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GeneralGurantor" EntityType="Self.GeneralGurantor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LookUp" EntityType="Self.LookUp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rating" EntityType="Self.Rating" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SOC124" EntityType="Self.SOC124" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -133,6 +168,9 @@
           <EntitySet Name="Generals" EntityType="gamutdatabaseModel.General" />
           <EntitySet Name="LookUps" EntityType="gamutdatabaseModel.LookUp" />
           <EntitySet Name="SOC124" EntityType="gamutdatabaseModel.SOC124" />
+          <EntitySet Name="GeneralExposures" EntityType="gamutdatabaseModel.GeneralExposure" />
+          <EntitySet Name="GeneralGurantors" EntityType="gamutdatabaseModel.GeneralGurantor" />
+          <EntitySet Name="Ratings" EntityType="gamutdatabaseModel.Rating" />
         </EntityContainer>
         <EntityType Name="Customer">
           <Key>
@@ -220,6 +258,38 @@
           <Property Name="isCompiled" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="followUpDate" Type="DateTime" Precision="3" />
           <Property Name="compiledDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="GeneralExposure">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cust_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nature" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Limit" Type="Double" />
+          <Property Name="Balance" Type="Double" />
+          <Property Name="Exposure" Type="Double" />
+        </EntityType>
+        <EntityType Name="GeneralGurantor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cust_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gurCust_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gurType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cust_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dateFrom" Type="DateTime" Precision="3" />
+          <Property Name="dateTo" Type="DateTime" Precision="3" />
+          <Property Name="rating1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="byId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="source" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -327,6 +397,41 @@
                 <ScalarProperty Name="approvalDate" ColumnName="approvalDate" />
                 <ScalarProperty Name="sourceSystemId" ColumnName="sourceSystemId" />
                 <ScalarProperty Name="Cust_id" ColumnName="Cust_id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GeneralExposures">
+            <EntityTypeMapping TypeName="gamutdatabaseModel.GeneralExposure">
+              <MappingFragment StoreEntitySet="GeneralExposure">
+                <ScalarProperty Name="Exposure" ColumnName="Exposure" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="Limit" ColumnName="Limit" />
+                <ScalarProperty Name="Nature" ColumnName="Nature" />
+                <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GeneralGurantors">
+            <EntityTypeMapping TypeName="gamutdatabaseModel.GeneralGurantor">
+              <MappingFragment StoreEntitySet="GeneralGurantor">
+                <ScalarProperty Name="gurType" ColumnName="gurType" />
+                <ScalarProperty Name="gurCust_Id" ColumnName="gurCust_Id" />
+                <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ratings">
+            <EntityTypeMapping TypeName="gamutdatabaseModel.Rating">
+              <MappingFragment StoreEntitySet="Rating">
+                <ScalarProperty Name="source" ColumnName="source" />
+                <ScalarProperty Name="byId" ColumnName="byId" />
+                <ScalarProperty Name="rating1" ColumnName="rating" />
+                <ScalarProperty Name="dateTo" ColumnName="dateTo" />
+                <ScalarProperty Name="dateFrom" ColumnName="dateFrom" />
+                <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

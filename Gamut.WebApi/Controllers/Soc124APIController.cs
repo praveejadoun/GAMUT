@@ -10,7 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Gamut.WebAPI.Models;
 
-namespace Gamut.WebApp.Controllers
+namespace Gamut.WebAPI.Controllers
 {
     public class Soc124APIController : ApiController
     {
