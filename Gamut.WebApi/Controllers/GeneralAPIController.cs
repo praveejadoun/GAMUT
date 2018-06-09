@@ -39,6 +39,19 @@ namespace Gamut.WebAPI.Controllers
             List<LookUp> takeover = db.LookUps.Where(id => id.LookUp_Table == "General" && id.LookUp_Name == "Takeover").ToList();
             List<GeneralGurantor> gurantors = db.GeneralGurantors.Where(i => i.Cust_Id == customer.Cust_id).ToList();
             List<GeneralExposure> exposures = db.GeneralExposures.Where(i => i.Cust_Id == customer.Cust_id).ToList();
+            double totalLimit=0;
+            double totalBalance=0;
+            double totalExposure=0;
+            
+            foreach (GeneralExposure gen in exposures)
+            {
+                if (gen.Limit != null)
+                    totalLimit = totalLimit +    gen.Limit.Value;
+                if (gen.Balance != null)
+                    totalBalance = totalBalance + gen.Balance.Value;
+                if (gen.Exposure != null)
+                    totalExposure = totalExposure + gen.Exposure.Value;
+            }
             List<GeneralGurantorDecorator> gurantorsDecorator = new List<GeneralGurantorDecorator>();
 
             foreach (GeneralGurantor gur in gurantors)
@@ -48,7 +61,7 @@ namespace Gamut.WebAPI.Controllers
                 gurantorsDecorator.Add(gurantorDecorator);
             }
             
-            GeneralDecorator generalDecorator = new GeneralDecorator (general, govtSponsored, dCCO, customer, bankingArgmt,takeover,gurantorsDecorator,exposures);
+            GeneralDecorator generalDecorator = new GeneralDecorator (general, govtSponsored, dCCO, customer, bankingArgmt,takeover,gurantorsDecorator,exposures,totalLimit,totalBalance,totalExposure);
             
             return Ok(generalDecorator);
         }
@@ -172,7 +185,7 @@ namespace Gamut.WebAPI.Controllers
     
     public class GeneralDecorator
     {
-        public GeneralDecorator(General _data, List<LookUp> _lookupGovtSponsored, List<LookUp> _lookupDCCO,Customer _customer,List<LookUp> _bankingArgmt,List<LookUp> _takeover,List<GeneralGurantorDecorator> _gurantors, List<GeneralExposure> _exposures) 
+        public GeneralDecorator(General _data, List<LookUp> _lookupGovtSponsored, List<LookUp> _lookupDCCO,Customer _customer,List<LookUp> _bankingArgmt,List<LookUp> _takeover,List<GeneralGurantorDecorator> _gurantors, List<GeneralExposure> _exposures,double _totalLimit,double _totalBalance,double _totalExposure) 
         {
             entData = _data;
             lookupGovtSponsored = _lookupGovtSponsored;
@@ -182,6 +195,9 @@ namespace Gamut.WebAPI.Controllers
             takeover = _takeover;
             gurantors = _gurantors;
             exposures = _exposures;
+            totalBalance = _totalBalance;
+            totalExposure = _totalExposure;
+            totalLimit = _totalLimit;
         }
         public General entData { get; set; }
         public string clientName { get; set; }
@@ -192,6 +208,9 @@ namespace Gamut.WebAPI.Controllers
         public List<LookUp> takeover { get; set; }
         public List<GeneralGurantorDecorator> gurantors { get; set; }
         public List<GeneralExposure> exposures { get; set; }
+        public double totalLimit;
+        public double totalBalance;
+        public double totalExposure;
     }
 
    
