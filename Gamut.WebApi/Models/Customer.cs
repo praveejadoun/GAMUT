@@ -20,5 +20,9 @@ namespace Gamut.WebAPI.Models
         public Nullable<double> Exposure { get; set; }
         public Nullable<System.DateTime> Exposure_AsOn { get; set; }
         public string Constitution { get; set; }
+        public string Industry { get; set; }
+        public string Sector { get; set; }
+        public string Activity { get; set; }
+        public string Branch { get; set; }
     }
 }

@@ -16,10 +16,12 @@ namespace Gamut.WebAPI.Models
     {
         public int Id { get; set; }
         public string Cust_Id { get; set; }
+        public string particular { get; set; }
         public Nullable<System.DateTime> dateFrom { get; set; }
         public Nullable<System.DateTime> dateTo { get; set; }
-        public string rating1 { get; set; }
+        public string ratingValue { get; set; }
         public string byId { get; set; }
         public string source { get; set; }
+        public Nullable<int> ratingYear { get; set; }
     }
 }

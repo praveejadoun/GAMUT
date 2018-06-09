@@ -15,6 +15,10 @@
           <Property Name="Exposure" Type="float" />
           <Property Name="Exposure_AsOn" Type="date" />
           <Property Name="Constitution" Type="varchar" MaxLength="250" />
+          <Property Name="Industry" Type="varchar" MaxLength="50" />
+          <Property Name="Sector" Type="varchar" MaxLength="50" />
+          <Property Name="Activity" Type="varchar" MaxLength="100" />
+          <Property Name="Branch" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="General">
           <Key>
@@ -104,9 +108,11 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Cust_Id" Type="varchar" MaxLength="50" />
+          <Property Name="particular" Type="varchar" MaxLength="150" />
           <Property Name="dateFrom" Type="datetime" />
           <Property Name="dateTo" Type="datetime" />
-          <Property Name="rating" Type="varchar" MaxLength="50" />
+          <Property Name="ratingYear" Type="int" />
+          <Property Name="ratingValue" Type="varchar" MaxLength="50" />
           <Property Name="byId" Type="varchar" MaxLength="50" />
           <Property Name="source" Type="varchar" MaxLength="50" />
         </EntityType>
@@ -182,6 +188,10 @@
           <Property Name="Exposure" Type="Double" />
           <Property Name="Exposure_AsOn" Type="DateTime" Precision="0" />
           <Property Name="Constitution" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Industry" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sector" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Activity" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Branch" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="General">
           <Key>
@@ -285,11 +295,13 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Cust_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="particular" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="dateFrom" Type="DateTime" Precision="3" />
           <Property Name="dateTo" Type="DateTime" Precision="3" />
-          <Property Name="rating1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ratingValue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="byId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="source" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ratingYear" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -313,6 +325,10 @@
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="gamutdatabaseModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+                <ScalarProperty Name="Activity" ColumnName="Activity" />
+                <ScalarProperty Name="Sector" ColumnName="Sector" />
+                <ScalarProperty Name="Industry" ColumnName="Industry" />
                 <ScalarProperty Name="Constitution" ColumnName="Constitution" />
                 <ScalarProperty Name="Exposure_AsOn" ColumnName="Exposure_AsOn" />
                 <ScalarProperty Name="Exposure" ColumnName="Exposure" />
@@ -426,11 +442,13 @@
           <EntitySetMapping Name="Ratings">
             <EntityTypeMapping TypeName="gamutdatabaseModel.Rating">
               <MappingFragment StoreEntitySet="Rating">
+                <ScalarProperty Name="ratingYear" ColumnName="ratingYear" />
                 <ScalarProperty Name="source" ColumnName="source" />
                 <ScalarProperty Name="byId" ColumnName="byId" />
-                <ScalarProperty Name="rating1" ColumnName="rating" />
+                <ScalarProperty Name="ratingValue" ColumnName="ratingValue" />
                 <ScalarProperty Name="dateTo" ColumnName="dateTo" />
                 <ScalarProperty Name="dateFrom" ColumnName="dateFrom" />
+                <ScalarProperty Name="particular" ColumnName="particular" />
                 <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
