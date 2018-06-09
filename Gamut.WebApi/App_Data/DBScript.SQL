@@ -1,6 +1,6 @@
 ﻿USE [gamutdatabase]
 GO
-/****** Object:  Table [dbo].[Customer]    Script Date: 09-06-2018 00:58:35 ******/
+/****** Object:  Table [dbo].[Customer]    Script Date: 09-06-2018 16:21:35 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -14,6 +14,10 @@ CREATE TABLE [dbo].[Customer](
 	[Exposure] [float] NULL,
 	[Exposure_AsOn] [date] NULL,
 	[Constitution] [varchar](250) NULL,
+	[Industry] [varchar](50) NULL,
+	[Sector] [varchar](50) NULL,
+	[Activity] [varchar](100) NULL,
+	[Branch] [varchar](100) NULL,
  CONSTRAINT [PK_Customer] PRIMARY KEY CLUSTERED 
 (
 	[Cust_id] ASC
@@ -23,7 +27,7 @@ CREATE TABLE [dbo].[Customer](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[FinancialResultDetails]    Script Date: 09-06-2018 00:58:36 ******/
+/****** Object:  Table [dbo].[FinancialResultDetails]    Script Date: 09-06-2018 16:21:36 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -47,7 +51,7 @@ CREATE TABLE [dbo].[FinancialResultDetails](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[FinancialResultHeader]    Script Date: 09-06-2018 00:58:36 ******/
+/****** Object:  Table [dbo].[FinancialResultHeader]    Script Date: 09-06-2018 16:21:36 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -68,7 +72,7 @@ CREATE TABLE [dbo].[FinancialResultHeader](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[FinancialResultType]    Script Date: 09-06-2018 00:58:36 ******/
+/****** Object:  Table [dbo].[FinancialResultType]    Script Date: 09-06-2018 16:21:36 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -88,7 +92,7 @@ CREATE TABLE [dbo].[FinancialResultType](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[General]    Script Date: 09-06-2018 00:58:36 ******/
+/****** Object:  Table [dbo].[General]    Script Date: 09-06-2018 16:21:36 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -153,7 +157,7 @@ CREATE TABLE [dbo].[General](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[GeneralExposure]    Script Date: 09-06-2018 00:58:36 ******/
+/****** Object:  Table [dbo].[GeneralExposure]    Script Date: 09-06-2018 16:21:36 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -176,7 +180,7 @@ CREATE TABLE [dbo].[GeneralExposure](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[GeneralGurantor]    Script Date: 09-06-2018 00:58:36 ******/
+/****** Object:  Table [dbo].[GeneralGurantor]    Script Date: 09-06-2018 16:21:36 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -197,7 +201,7 @@ CREATE TABLE [dbo].[GeneralGurantor](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[LookUp]    Script Date: 09-06-2018 00:58:36 ******/
+/****** Object:  Table [dbo].[LookUp]    Script Date: 09-06-2018 16:21:36 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -218,7 +222,7 @@ CREATE TABLE [dbo].[LookUp](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Rating]    Script Date: 09-06-2018 00:58:36 ******/
+/****** Object:  Table [dbo].[Rating]    Script Date: 09-06-2018 16:21:36 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -228,9 +232,11 @@ GO
 CREATE TABLE [dbo].[Rating](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Cust_Id] [varchar](50) NULL,
+	[particular] [varchar](150) NULL,
 	[dateFrom] [datetime] NULL,
 	[dateTo] [datetime] NULL,
-	[rating] [varchar](50) NULL,
+	[ratingYear] [int] NULL,
+	[ratingValue] [varchar](50) NULL,
 	[byId] [varchar](50) NULL,
 	[source] [varchar](50) NULL,
  CONSTRAINT [PK_Rating] PRIMARY KEY CLUSTERED 
@@ -242,7 +248,7 @@ CREATE TABLE [dbo].[Rating](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[SOC124]    Script Date: 09-06-2018 00:58:36 ******/
+/****** Object:  Table [dbo].[SOC124]    Script Date: 09-06-2018 16:21:36 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -268,7 +274,7 @@ CREATE TABLE [dbo].[SOC124](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Student]    Script Date: 09-06-2018 00:58:36 ******/
+/****** Object:  Table [dbo].[Student]    Script Date: 09-06-2018 16:21:36 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
