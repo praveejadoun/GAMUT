@@ -22,30 +22,34 @@ namespace Gamut.WebAPI.Controllers
             return db.Interests;
         }
 
-        // GET: api/Interest/5
-        [ResponseType(typeof(Interest))]
-        public IHttpActionResult GetInterest(int id)
-        {
-            Interest interest = db.Interests.Find(id);
-            if (interest == null)
-            {
-                return NotFound();
-            }
+        //// GET: api/Interest/5
+        //[ResponseType(typeof(Interest))]
+        //public IHttpActionResult GetInterest(int id)
+        //{
+        //    Interest interest = db.Interests.Find(id);
+        //    if (interest == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return Ok(interest);
-        }
+
+
+        //    return Ok(interest);
+        //}
 
         [ResponseType(typeof(Rating))]
         [Route("api/InterestCust/{id}")]
         public IHttpActionResult GetInterestBy(string id)
         {
-            Interest interest = db.Interests.Where(i => i.Cust_Id == id).FirstOrDefault();
+            
+            List<Interest> interest = db.Interests.Where(i => i.Cust_Id == id).ToList();
             if (interest == null)
             {
-                return NotFound();
+                return null;
             }
-
-            return Ok(interest);
+            Customer customer = db.Customers.Find(interest[0].Cust_Id);
+            InterestDecorator interestDecorator = new InterestDecorator(interest, customer);
+            return Ok(interestDecorator);
         }
         // PUT: api/Interest/5
         [ResponseType(typeof(void))]
@@ -126,5 +130,15 @@ namespace Gamut.WebAPI.Controllers
         {
             return db.Interests.Count(e => e.Id == id) > 0;
         }
+    }
+    public class InterestDecorator
+    {
+        public InterestDecorator(List<Interest> _data,  Customer _customer )
+        {
+            entData = _data;
+            
+        }
+        public List<Interest> entData { get; set; }
+        public Customer customer { get; set; }
     }
 }

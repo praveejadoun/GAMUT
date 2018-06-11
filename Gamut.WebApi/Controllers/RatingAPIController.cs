@@ -22,31 +22,44 @@ namespace Gamut.WebAPI.Controllers
             return db.Ratings;
         }
 
-        // GET: api/RatingAPI/5
-        [ResponseType(typeof(Rating))]
-        public IHttpActionResult GetRating(int id)
-        {
-            Rating rating = db.Ratings.Find(id);
-            if (rating == null)
-            {
-                return NotFound();
-            }
+        //// GET: api/RatingAPI/5
+        //[ResponseType(typeof(Rating))]
+        //public IHttpActionResult GetRating(int id)
+        //{
+        //    Rating rating = db.Ratings.Find(id);
+        //    if (rating == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    Customer customer = db.Customers.Find(rating.Cust_Id);
+        //    RatingDecorator ratingDecorator = new RatingDecorator(rating, customer);
+        //    return Ok(ratingDecorator);
 
-            return Ok(rating);
-        }
+        //    return Ok(rating);
+        //}
 
       
         [ResponseType(typeof(Rating))]
         [Route("api/RatingAPICust/{id}")]
         public IHttpActionResult GetRatingBy(string id)
         {
-            Rating rating = db.Ratings.Where(i => i.Cust_Id == id).FirstOrDefault();
+            //Rating rating = db.Ratings.Where(i => i.Cust_Id == id).FirstOrDefault();
+            //if (rating == null)
+            //{
+            //    return NotFound();
+            //}
+
+            ////return Ok(rating);
+            
+
+            List<Rating> rating = db.Ratings.Where(i => i.Cust_Id == id).ToList();
             if (rating == null)
             {
-                return NotFound();
+                return null;
             }
-
-            return Ok(rating);
+            Customer customer = db.Customers.Find(rating[0].Cust_Id);
+            RatingDecorator ratingDecorator = new RatingDecorator(rating, customer);
+            return  Ok(ratingDecorator);
         }
 
         // PUT: api/RatingAPI/5
@@ -128,5 +141,16 @@ namespace Gamut.WebAPI.Controllers
         {
             return db.Ratings.Count(e => e.Id == id) > 0;
         }
+    }
+
+    public class RatingDecorator
+    {
+        public RatingDecorator(List<Rating> _data, Customer _customer)
+        {
+            entData = _data;
+
+        }
+        public List<Rating> entData { get; set; }
+        public Customer customer { get; set; }
     }
 }
