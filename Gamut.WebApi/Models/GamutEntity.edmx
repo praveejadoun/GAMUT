@@ -93,6 +93,22 @@
           <Property Name="gurCust_Id" Type="varchar" MaxLength="50" />
           <Property Name="gurType" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Interest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cust_Id" Type="varchar" MaxLength="50" />
+          <Property Name="accountNo" Type="varchar" MaxLength="50" />
+          <Property Name="accountType" Type="varchar" MaxLength="50" />
+          <Property Name="roi" Type="varchar" MaxLength="100" />
+          <Property Name="asperID" Type="float" />
+          <Property Name="dated" Type="datetime" />
+          <Property Name="schemeType" Type="varchar" MaxLength="50" />
+          <Property Name="followUpDate" Type="datetime" />
+          <Property Name="compiledDate" Type="datetime" />
+          <Property Name="source" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="LookUp">
           <Key>
             <PropertyRef Name="Id" />
@@ -147,6 +163,7 @@
           <EntitySet Name="General" EntityType="Self.General" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GeneralExposure" EntityType="Self.GeneralExposure" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GeneralGurantor" EntityType="Self.GeneralGurantor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Interest" EntityType="Self.Interest" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LookUp" EntityType="Self.LookUp" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rating" EntityType="Self.Rating" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SOC124" EntityType="Self.SOC124" Schema="dbo" store:Type="Tables" />
@@ -177,6 +194,7 @@
           <EntitySet Name="GeneralExposures" EntityType="gamutdatabaseModel.GeneralExposure" />
           <EntitySet Name="GeneralGurantors" EntityType="gamutdatabaseModel.GeneralGurantor" />
           <EntitySet Name="Ratings" EntityType="gamutdatabaseModel.Rating" />
+          <EntitySet Name="Interests" EntityType="gamutdatabaseModel.Interest" />
         </EntityContainer>
         <EntityType Name="Customer">
           <Key>
@@ -302,6 +320,22 @@
           <Property Name="byId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="source" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ratingYear" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Interest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cust_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="accountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="accountType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="roi" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="asperID" Type="Double" />
+          <Property Name="dated" Type="DateTime" Precision="3" />
+          <Property Name="schemeType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="followUpDate" Type="DateTime" Precision="3" />
+          <Property Name="compiledDate" Type="DateTime" Precision="3" />
+          <Property Name="source" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -449,6 +483,23 @@
                 <ScalarProperty Name="dateTo" ColumnName="dateTo" />
                 <ScalarProperty Name="dateFrom" ColumnName="dateFrom" />
                 <ScalarProperty Name="particular" ColumnName="particular" />
+                <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Interests">
+            <EntityTypeMapping TypeName="gamutdatabaseModel.Interest">
+              <MappingFragment StoreEntitySet="Interest">
+                <ScalarProperty Name="source" ColumnName="source" />
+                <ScalarProperty Name="compiledDate" ColumnName="compiledDate" />
+                <ScalarProperty Name="followUpDate" ColumnName="followUpDate" />
+                <ScalarProperty Name="schemeType" ColumnName="schemeType" />
+                <ScalarProperty Name="dated" ColumnName="dated" />
+                <ScalarProperty Name="asperID" ColumnName="asperID" />
+                <ScalarProperty Name="roi" ColumnName="roi" />
+                <ScalarProperty Name="accountType" ColumnName="accountType" />
+                <ScalarProperty Name="accountNo" ColumnName="accountNo" />
                 <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

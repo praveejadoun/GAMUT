@@ -165,9 +165,11 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\GeneralAPIController.cs" />
     <Compile Include="Controllers\GeneralGurantorsAPIController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InterestController.cs" />
     <Compile Include="Controllers\LookUpAPIController.cs" />
     <Compile Include="Controllers\RatingAPIController.cs" />
     <Compile Include="Controllers\Soc124APIController.cs" />
@@ -199,6 +201,9 @@
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GeneralGurantor.cs">
+      <DependentUpon>GamutEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Interest.cs">
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LookUp.cs">
