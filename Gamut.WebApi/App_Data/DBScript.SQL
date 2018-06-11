@@ -1,6 +1,6 @@
 ﻿USE [gamutdatabase]
 GO
-/****** Object:  Table [dbo].[Customer]    Script Date: 09-06-2018 16:21:35 ******/
+/****** Object:  Table [dbo].[Customer]    Script Date: 11-06-2018 08:54:21 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -27,7 +27,7 @@ CREATE TABLE [dbo].[Customer](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[FinancialResultDetails]    Script Date: 09-06-2018 16:21:36 ******/
+/****** Object:  Table [dbo].[FinancialResultDetails]    Script Date: 11-06-2018 08:54:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -51,7 +51,7 @@ CREATE TABLE [dbo].[FinancialResultDetails](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[FinancialResultHeader]    Script Date: 09-06-2018 16:21:36 ******/
+/****** Object:  Table [dbo].[FinancialResultHeader]    Script Date: 11-06-2018 08:54:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -72,7 +72,7 @@ CREATE TABLE [dbo].[FinancialResultHeader](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[FinancialResultType]    Script Date: 09-06-2018 16:21:36 ******/
+/****** Object:  Table [dbo].[FinancialResultType]    Script Date: 11-06-2018 08:54:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -92,7 +92,7 @@ CREATE TABLE [dbo].[FinancialResultType](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[General]    Script Date: 09-06-2018 16:21:36 ******/
+/****** Object:  Table [dbo].[General]    Script Date: 11-06-2018 08:54:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -157,7 +157,7 @@ CREATE TABLE [dbo].[General](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[GeneralExposure]    Script Date: 09-06-2018 16:21:36 ******/
+/****** Object:  Table [dbo].[GeneralExposure]    Script Date: 11-06-2018 08:54:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -180,7 +180,7 @@ CREATE TABLE [dbo].[GeneralExposure](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[GeneralGurantor]    Script Date: 09-06-2018 16:21:36 ******/
+/****** Object:  Table [dbo].[GeneralGurantor]    Script Date: 11-06-2018 08:54:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -201,7 +201,35 @@ CREATE TABLE [dbo].[GeneralGurantor](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[LookUp]    Script Date: 09-06-2018 16:21:36 ******/
+/****** Object:  Table [dbo].[Interest]    Script Date: 11-06-2018 08:54:22 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING OFF
+GO
+CREATE TABLE [dbo].[Interest](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Cust_Id] [varchar](50) NULL,
+	[accountNo] [varchar](50) NULL,
+	[accountType] [varchar](50) NULL,
+	[roi] [varchar](100) NULL,
+	[asperID] [float] NULL,
+	[dated] [datetime] NULL,
+	[schemeType] [varchar](50) NULL,
+	[followUpDate] [datetime] NULL,
+	[compiledDate] [datetime] NULL,
+	[source] [varchar](50) NULL,
+ CONSTRAINT [PK_Interest] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[LookUp]    Script Date: 11-06-2018 08:54:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -222,7 +250,7 @@ CREATE TABLE [dbo].[LookUp](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Rating]    Script Date: 09-06-2018 16:21:36 ******/
+/****** Object:  Table [dbo].[Rating]    Script Date: 11-06-2018 08:54:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -248,7 +276,7 @@ CREATE TABLE [dbo].[Rating](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[SOC124]    Script Date: 09-06-2018 16:21:36 ******/
+/****** Object:  Table [dbo].[SOC124]    Script Date: 11-06-2018 08:54:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -274,7 +302,7 @@ CREATE TABLE [dbo].[SOC124](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Student]    Script Date: 09-06-2018 16:21:36 ******/
+/****** Object:  Table [dbo].[Student]    Script Date: 11-06-2018 08:54:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
