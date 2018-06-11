@@ -148,7 +148,7 @@ namespace Gamut.WebAPI.Controllers
         public RatingDecorator(List<Rating> _data, Customer _customer)
         {
             entData = _data;
-
+            customer = _customer;
         }
         public List<Rating> entData { get; set; }
         public Customer customer { get; set; }

@@ -136,7 +136,7 @@ namespace Gamut.WebAPI.Controllers
         public InterestDecorator(List<Interest> _data,  Customer _customer )
         {
             entData = _data;
-            
+            customer = _customer;   
         }
         public List<Interest> entData { get; set; }
         public Customer customer { get; set; }
