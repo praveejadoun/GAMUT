@@ -24,5 +24,7 @@ namespace Gamut.WebAPI.Models
         public string Sector { get; set; }
         public string Activity { get; set; }
         public string Branch { get; set; }
+        public string FinDataMappingId { get; set; }
+        public string NewsDataMappingId { get; set; }
     }
 }

@@ -12,12 +12,16 @@ namespace Gamut.WebAPI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class GeneralGurantor
+    public partial class Security
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public string Cust_Id { get; set; }
-        public string gurCust_Id { get; set; }
-        public string gurType { get; set; }
-        public Nullable<double> netWorth { get; set; }
+        public string accountNo { get; set; }
+        public string accountType { get; set; }
+        public Nullable<double> balanceAsOn { get; set; }
+        public string securityDetails { get; set; }
+        public Nullable<double> ApportionValue { get; set; }
+        public string correctFlag { get; set; }
+        public Nullable<System.DateTime> followUpDate { get; set; }
     }
 }

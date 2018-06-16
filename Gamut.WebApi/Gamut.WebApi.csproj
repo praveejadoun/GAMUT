@@ -212,6 +212,9 @@
     <Compile Include="Models\Rating.cs">
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Security.cs">
+      <DependentUpon>GamutEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SOC124.cs">
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>

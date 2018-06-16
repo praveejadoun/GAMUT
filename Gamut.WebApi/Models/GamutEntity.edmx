@@ -19,6 +19,8 @@
           <Property Name="Sector" Type="varchar" MaxLength="50" />
           <Property Name="Activity" Type="varchar" MaxLength="100" />
           <Property Name="Branch" Type="varchar" MaxLength="100" />
+          <Property Name="FinDataMappingId" Type="varchar" MaxLength="1000" />
+          <Property Name="NewsDataMappingId" Type="varchar" MaxLength="1000" />
         </EntityType>
         <EntityType Name="General">
           <Key>
@@ -92,6 +94,7 @@
           <Property Name="Cust_Id" Type="varchar" MaxLength="50" />
           <Property Name="gurCust_Id" Type="varchar" MaxLength="50" />
           <Property Name="gurType" Type="varchar" MaxLength="50" />
+          <Property Name="netWorth" Type="float" />
         </EntityType>
         <EntityType Name="Interest">
           <Key>
@@ -132,6 +135,20 @@
           <Property Name="byId" Type="varchar" MaxLength="50" />
           <Property Name="source" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Security">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cust_Id" Type="varchar" MaxLength="50" />
+          <Property Name="accountNo" Type="varchar" MaxLength="50" />
+          <Property Name="accountType" Type="varchar" MaxLength="50" />
+          <Property Name="balanceAsOn" Type="float" />
+          <Property Name="securityDetails" Type="varchar" MaxLength="250" />
+          <Property Name="ApportionValue" Type="float" />
+          <Property Name="correctFlag" Type="varchar" MaxLength="50" />
+          <Property Name="followUpDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="SOC124">
           <Key>
             <PropertyRef Name="Id" />
@@ -166,6 +183,7 @@
           <EntitySet Name="Interest" EntityType="Self.Interest" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LookUp" EntityType="Self.LookUp" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rating" EntityType="Self.Rating" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Security" EntityType="Self.Security" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SOC124" EntityType="Self.SOC124" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -195,6 +213,7 @@
           <EntitySet Name="GeneralGurantors" EntityType="gamutdatabaseModel.GeneralGurantor" />
           <EntitySet Name="Ratings" EntityType="gamutdatabaseModel.Rating" />
           <EntitySet Name="Interests" EntityType="gamutdatabaseModel.Interest" />
+          <EntitySet Name="Securities" EntityType="gamutdatabaseModel.Security" />
         </EntityContainer>
         <EntityType Name="Customer">
           <Key>
@@ -210,6 +229,8 @@
           <Property Name="Sector" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Activity" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Branch" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FinDataMappingId" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="NewsDataMappingId" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="General">
           <Key>
@@ -306,6 +327,7 @@
           <Property Name="Cust_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="gurCust_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="gurType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="netWorth" Type="Double" />
         </EntityType>
         <EntityType Name="Rating">
           <Key>
@@ -337,6 +359,20 @@
           <Property Name="compiledDate" Type="DateTime" Precision="3" />
           <Property Name="source" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="Security">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cust_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="accountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="accountType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="balanceAsOn" Type="Double" />
+          <Property Name="securityDetails" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ApportionValue" Type="Double" />
+          <Property Name="correctFlag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="followUpDate" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -359,6 +395,8 @@
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="gamutdatabaseModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="NewsDataMappingId" ColumnName="NewsDataMappingId" />
+                <ScalarProperty Name="FinDataMappingId" ColumnName="FinDataMappingId" />
                 <ScalarProperty Name="Branch" ColumnName="Branch" />
                 <ScalarProperty Name="Activity" ColumnName="Activity" />
                 <ScalarProperty Name="Sector" ColumnName="Sector" />
@@ -466,6 +504,7 @@
           <EntitySetMapping Name="GeneralGurantors">
             <EntityTypeMapping TypeName="gamutdatabaseModel.GeneralGurantor">
               <MappingFragment StoreEntitySet="GeneralGurantor">
+                <ScalarProperty Name="netWorth" ColumnName="netWorth" />
                 <ScalarProperty Name="gurType" ColumnName="gurType" />
                 <ScalarProperty Name="gurCust_Id" ColumnName="gurCust_Id" />
                 <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
@@ -498,6 +537,21 @@
                 <ScalarProperty Name="dated" ColumnName="dated" />
                 <ScalarProperty Name="asperID" ColumnName="asperID" />
                 <ScalarProperty Name="roi" ColumnName="roi" />
+                <ScalarProperty Name="accountType" ColumnName="accountType" />
+                <ScalarProperty Name="accountNo" ColumnName="accountNo" />
+                <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Securities">
+            <EntityTypeMapping TypeName="gamutdatabaseModel.Security">
+              <MappingFragment StoreEntitySet="Security">
+                <ScalarProperty Name="followUpDate" ColumnName="followUpDate" />
+                <ScalarProperty Name="correctFlag" ColumnName="correctFlag" />
+                <ScalarProperty Name="ApportionValue" ColumnName="ApportionValue" />
+                <ScalarProperty Name="securityDetails" ColumnName="securityDetails" />
+                <ScalarProperty Name="balanceAsOn" ColumnName="balanceAsOn" />
                 <ScalarProperty Name="accountType" ColumnName="accountType" />
                 <ScalarProperty Name="accountNo" ColumnName="accountNo" />
                 <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
