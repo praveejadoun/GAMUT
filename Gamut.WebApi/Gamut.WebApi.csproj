@@ -172,6 +172,7 @@
     <Compile Include="Controllers\InterestController.cs" />
     <Compile Include="Controllers\LookUpAPIController.cs" />
     <Compile Include="Controllers\RatingAPIController.cs" />
+    <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\Soc124APIController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

@@ -142,12 +142,13 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Cust_Id" Type="varchar" MaxLength="50" />
           <Property Name="accountNo" Type="varchar" MaxLength="50" />
-          <Property Name="accountType" Type="varchar" MaxLength="50" />
+          <Property Name="securityType" Type="varchar" MaxLength="50" />
           <Property Name="balanceAsOn" Type="float" />
           <Property Name="securityDetails" Type="varchar" MaxLength="250" />
-          <Property Name="ApportionValue" Type="float" />
+          <Property Name="apportionValue" Type="float" />
           <Property Name="correctFlag" Type="varchar" MaxLength="50" />
           <Property Name="followUpDate" Type="datetime" />
+          <Property Name="coverage" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="SOC124">
           <Key>
@@ -366,12 +367,13 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Cust_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="accountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="accountType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="securityType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="balanceAsOn" Type="Double" />
           <Property Name="securityDetails" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="ApportionValue" Type="Double" />
+          <Property Name="apportionValue" Type="Double" />
           <Property Name="correctFlag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="followUpDate" Type="DateTime" Precision="3" />
+          <Property Name="coverage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -547,12 +549,13 @@
           <EntitySetMapping Name="Securities">
             <EntityTypeMapping TypeName="gamutdatabaseModel.Security">
               <MappingFragment StoreEntitySet="Security">
+                <ScalarProperty Name="coverage" ColumnName="coverage" />
                 <ScalarProperty Name="followUpDate" ColumnName="followUpDate" />
                 <ScalarProperty Name="correctFlag" ColumnName="correctFlag" />
-                <ScalarProperty Name="ApportionValue" ColumnName="ApportionValue" />
+                <ScalarProperty Name="apportionValue" ColumnName="apportionValue" />
                 <ScalarProperty Name="securityDetails" ColumnName="securityDetails" />
                 <ScalarProperty Name="balanceAsOn" ColumnName="balanceAsOn" />
-                <ScalarProperty Name="accountType" ColumnName="accountType" />
+                <ScalarProperty Name="securityType" ColumnName="securityType" />
                 <ScalarProperty Name="accountNo" ColumnName="accountNo" />
                 <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
