@@ -149,6 +149,8 @@
           <Property Name="correctFlag" Type="varchar" MaxLength="50" />
           <Property Name="followUpDate" Type="datetime" />
           <Property Name="coverage" Type="varchar" MaxLength="50" />
+          <Property Name="guarantorId" Type="varchar" MaxLength="50" />
+          <Property Name="guarantorNetWorth" Type="float" />
         </EntityType>
         <EntityType Name="SOC124">
           <Key>
@@ -374,6 +376,8 @@
           <Property Name="correctFlag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="followUpDate" Type="DateTime" Precision="3" />
           <Property Name="coverage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="guarantorId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="guarantorNetWorth" Type="Double" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -549,6 +553,8 @@
           <EntitySetMapping Name="Securities">
             <EntityTypeMapping TypeName="gamutdatabaseModel.Security">
               <MappingFragment StoreEntitySet="Security">
+                <ScalarProperty Name="guarantorNetWorth" ColumnName="guarantorNetWorth" />
+                <ScalarProperty Name="guarantorId" ColumnName="guarantorId" />
                 <ScalarProperty Name="coverage" ColumnName="coverage" />
                 <ScalarProperty Name="followUpDate" ColumnName="followUpDate" />
                 <ScalarProperty Name="correctFlag" ColumnName="correctFlag" />
