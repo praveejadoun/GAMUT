@@ -22,6 +22,36 @@
           <Property Name="FinDataMappingId" Type="varchar" MaxLength="1000" />
           <Property Name="NewsDataMappingId" Type="varchar" MaxLength="1000" />
         </EntityType>
+        <EntityType Name="FinancialResultDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HeaderID" Type="int" />
+          <Property Name="Amount" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="ResQuarter" Type="varchar" MaxLength="100" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="Cust_id" Type="varchar" MaxLength="50" />
+          <Property Name="Trends" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FinancialResultHeader">
+          <Key>
+            <PropertyRef Name="HeaderID" />
+          </Key>
+          <Property Name="HeaderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HeaderName" Type="varchar" MaxLength="500" />
+          <Property Name="TypeId" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="FinancialResultType">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="varchar" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
         <EntityType Name="General">
           <Key>
             <PropertyRef Name="Cust_id" />
@@ -121,6 +151,18 @@
           <Property Name="LookUp_Name" Type="varchar" MaxLength="150" />
           <Property Name="LookUp_Value" Type="varchar" MaxLength="250" />
         </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="NewsID" />
+          </Key>
+          <Property Name="NewsID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="Source" Type="varchar" MaxLength="100" />
+          <Property Name="Heading" Type="varchar" MaxLength="500" />
+          <Property Name="Url" Type="varchar" MaxLength="500" />
+          <Property Name="Cust_id" Type="varchar" MaxLength="50" />
+          <Property Name="Comments" Type="varchar" MaxLength="5000" />
+        </EntityType>
         <EntityType Name="Rating">
           <Key>
             <PropertyRef Name="Id" />
@@ -178,17 +220,53 @@
           <Property Name="City" Type="varchar" MaxLength="100" />
           <Property Name="Country" Type="varchar" MaxLength="100" />
         </EntityType>
+        <Association Name="FK_FinancialResultDetails_FinancialResultHeader">
+          <End Role="FinancialResultHeader" Type="Self.FinancialResultHeader" Multiplicity="0..1" />
+          <End Role="FinancialResultDetails" Type="Self.FinancialResultDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FinancialResultHeader">
+              <PropertyRef Name="HeaderID" />
+            </Principal>
+            <Dependent Role="FinancialResultDetails">
+              <PropertyRef Name="HeaderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FinancialResultHeader_FinancialResultType">
+          <End Role="FinancialResultType" Type="Self.FinancialResultType" Multiplicity="0..1" />
+          <End Role="FinancialResultHeader" Type="Self.FinancialResultHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FinancialResultType">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="FinancialResultHeader">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="gamutdatabaseModelStoreContainer">
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FinancialResultDetails" EntityType="Self.FinancialResultDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FinancialResultHeader" EntityType="Self.FinancialResultHeader" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FinancialResultType" EntityType="Self.FinancialResultType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="General" EntityType="Self.General" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GeneralExposure" EntityType="Self.GeneralExposure" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GeneralGurantor" EntityType="Self.GeneralGurantor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Interest" EntityType="Self.Interest" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LookUp" EntityType="Self.LookUp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rating" EntityType="Self.Rating" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Security" EntityType="Self.Security" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SOC124" EntityType="Self.SOC124" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_FinancialResultDetails_FinancialResultHeader" Association="Self.FK_FinancialResultDetails_FinancialResultHeader">
+            <End Role="FinancialResultHeader" EntitySet="FinancialResultHeader" />
+            <End Role="FinancialResultDetails" EntitySet="FinancialResultDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FinancialResultHeader_FinancialResultType" Association="Self.FK_FinancialResultHeader_FinancialResultType">
+            <End Role="FinancialResultType" EntitySet="FinancialResultType" />
+            <End Role="FinancialResultHeader" EntitySet="FinancialResultHeader" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -217,6 +295,18 @@
           <EntitySet Name="Ratings" EntityType="gamutdatabaseModel.Rating" />
           <EntitySet Name="Interests" EntityType="gamutdatabaseModel.Interest" />
           <EntitySet Name="Securities" EntityType="gamutdatabaseModel.Security" />
+          <EntitySet Name="FinancialResultDetails" EntityType="gamutdatabaseModel.FinancialResultDetail" />
+          <EntitySet Name="FinancialResultHeaders" EntityType="gamutdatabaseModel.FinancialResultHeader" />
+          <EntitySet Name="FinancialResultTypes" EntityType="gamutdatabaseModel.FinancialResultType" />
+          <EntitySet Name="News" EntityType="gamutdatabaseModel.News" />
+          <AssociationSet Name="FK_FinancialResultDetails_FinancialResultHeader" Association="gamutdatabaseModel.FK_FinancialResultDetails_FinancialResultHeader">
+            <End Role="FinancialResultHeader" EntitySet="FinancialResultHeaders" />
+            <End Role="FinancialResultDetail" EntitySet="FinancialResultDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FinancialResultHeader_FinancialResultType" Association="gamutdatabaseModel.FK_FinancialResultHeader_FinancialResultType">
+            <End Role="FinancialResultType" EntitySet="FinancialResultTypes" />
+            <End Role="FinancialResultHeader" EntitySet="FinancialResultHeaders" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Customer">
           <Key>
@@ -379,6 +469,76 @@
           <Property Name="guarantorId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="guarantorNetWorth" Type="Double" />
         </EntityType>
+        <EntityType Name="FinancialResultDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HeaderID" Type="Int32" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ResQuarter" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Cust_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Trends" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="FinancialResultHeader" Relationship="gamutdatabaseModel.FK_FinancialResultDetails_FinancialResultHeader" FromRole="FinancialResultDetail" ToRole="FinancialResultHeader" />
+        </EntityType>
+        <EntityType Name="FinancialResultHeader">
+          <Key>
+            <PropertyRef Name="HeaderID" />
+          </Key>
+          <Property Name="HeaderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HeaderName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TypeId" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="FinancialResultDetails" Relationship="gamutdatabaseModel.FK_FinancialResultDetails_FinancialResultHeader" FromRole="FinancialResultHeader" ToRole="FinancialResultDetail" />
+          <NavigationProperty Name="FinancialResultType" Relationship="gamutdatabaseModel.FK_FinancialResultHeader_FinancialResultType" FromRole="FinancialResultHeader" ToRole="FinancialResultType" />
+        </EntityType>
+        <EntityType Name="FinancialResultType">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="FinancialResultHeaders" Relationship="gamutdatabaseModel.FK_FinancialResultHeader_FinancialResultType" FromRole="FinancialResultType" ToRole="FinancialResultHeader" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="NewsID" />
+          </Key>
+          <Property Name="NewsID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="Source" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Heading" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Cust_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_FinancialResultDetails_FinancialResultHeader">
+          <End Type="gamutdatabaseModel.FinancialResultHeader" Role="FinancialResultHeader" Multiplicity="0..1" />
+          <End Type="gamutdatabaseModel.FinancialResultDetail" Role="FinancialResultDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FinancialResultHeader">
+              <PropertyRef Name="HeaderID" />
+            </Principal>
+            <Dependent Role="FinancialResultDetail">
+              <PropertyRef Name="HeaderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FinancialResultHeader_FinancialResultType">
+          <End Type="gamutdatabaseModel.FinancialResultType" Role="FinancialResultType" Multiplicity="0..1" />
+          <End Type="gamutdatabaseModel.FinancialResultHeader" Role="FinancialResultHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FinancialResultType">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="FinancialResultHeader">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -565,6 +725,52 @@
                 <ScalarProperty Name="accountNo" ColumnName="accountNo" />
                 <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FinancialResultDetails">
+            <EntityTypeMapping TypeName="gamutdatabaseModel.FinancialResultDetail">
+              <MappingFragment StoreEntitySet="FinancialResultDetails">
+                <ScalarProperty Name="Trends" ColumnName="Trends" />
+                <ScalarProperty Name="Cust_id" ColumnName="Cust_id" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="ResQuarter" ColumnName="ResQuarter" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="HeaderID" ColumnName="HeaderID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FinancialResultHeaders">
+            <EntityTypeMapping TypeName="gamutdatabaseModel.FinancialResultHeader">
+              <MappingFragment StoreEntitySet="FinancialResultHeader">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="HeaderName" ColumnName="HeaderName" />
+                <ScalarProperty Name="HeaderID" ColumnName="HeaderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FinancialResultTypes">
+            <EntityTypeMapping TypeName="gamutdatabaseModel.FinancialResultType">
+              <MappingFragment StoreEntitySet="FinancialResultType">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="gamutdatabaseModel.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Cust_id" ColumnName="Cust_id" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Heading" ColumnName="Heading" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="NewsID" ColumnName="NewsID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
