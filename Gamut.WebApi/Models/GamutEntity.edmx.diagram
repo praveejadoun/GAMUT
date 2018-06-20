@@ -15,6 +15,12 @@
         <EntityTypeShape EntityType="gamutdatabaseModel.Rating" Width="1.5" PointX="7.375" PointY="7.75" />
         <EntityTypeShape EntityType="gamutdatabaseModel.Interest" Width="1.5" PointX="9.375" PointY="0.75" />
         <EntityTypeShape EntityType="gamutdatabaseModel.Security" Width="1.5" PointX="9.375" PointY="7.75" />
+        <EntityTypeShape EntityType="gamutdatabaseModel.FinancialResultDetail" Width="1.5" PointX="16.25" PointY="1" />
+        <EntityTypeShape EntityType="gamutdatabaseModel.FinancialResultHeader" Width="1.5" PointX="14" PointY="1.25" />
+        <EntityTypeShape EntityType="gamutdatabaseModel.FinancialResultType" Width="1.5" PointX="11.75" PointY="1.5" />
+        <EntityTypeShape EntityType="gamutdatabaseModel.News" Width="1.5" PointX="0.75" PointY="10.75" />
+        <AssociationConnector Association="gamutdatabaseModel.FK_FinancialResultDetails_FinancialResultHeader" />
+        <AssociationConnector Association="gamutdatabaseModel.FK_FinancialResultHeader_FinancialResultType" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
