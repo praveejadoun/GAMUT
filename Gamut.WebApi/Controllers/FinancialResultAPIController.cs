@@ -17,13 +17,26 @@ namespace Gamut.WebAPI.Controllers
         
         private gamutdatabaseEntities db = new gamutdatabaseEntities();
 
-        [ResponseType(typeof(FinancialResultDetail))]
+       // [ResponseType(typeof(FinancialResultDetail))]
         public IHttpActionResult GetFinancialResultTrends(string id)
         {
-          
 
+            var financiaResult = (from d in db.FinancialResultDetails
+                             join f in db.FinancialResultHeaders
+                             on d.HeaderID equals f.HeaderID
+                             where d.Cust_id == id.Trim()
+                             select new
+                             {
+                                 d.ID,
+                                 d.ResQuarter,
+                                 d.Trends,
+                                 d.UpdateDate,
+                                 d.Amount,
+                                 d.Cust_id,
+                                 f.HeaderName
+                             }).ToList();
 
-            List<FinancialResultDetail> financiaResult = db.FinancialResultDetails.Where(i => i.Cust_id == id).ToList();
+            //List<FinancialResultDetail> financiaResult = db.FinancialResultDetails.Where(i => i.Cust_id == id).ToList();
             if (financiaResult == null)
             {
                 return null;
