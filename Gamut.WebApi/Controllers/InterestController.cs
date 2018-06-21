@@ -43,7 +43,7 @@ namespace Gamut.WebAPI.Controllers
         {
             
             List<Interest> interest = db.Interests.Where(i => i.Cust_Id == id).ToList();
-            if (interest == null)
+            if (interest == null && interest.Count <=0)
             {
                 return null;
             }
