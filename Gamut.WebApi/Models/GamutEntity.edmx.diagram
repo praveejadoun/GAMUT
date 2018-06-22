@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="afc691f802ad4491a7d16a9e9ee357e6" Name="Diagram1">
+      <Diagram DiagramId="afc691f802ad4491a7d16a9e9ee357e6" Name="Diagram1" ZoomLevel="99">
         <EntityTypeShape EntityType="gamutdatabaseModel.Student" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="gamutdatabaseModel.Customer" Width="1.5" PointX="2.625" PointY="0.875" />
         <EntityTypeShape EntityType="gamutdatabaseModel.General" Width="1.5" PointX="4.625" PointY="0.5" />
@@ -21,6 +21,8 @@
         <EntityTypeShape EntityType="gamutdatabaseModel.News" Width="1.5" PointX="0.75" PointY="10.75" />
         <AssociationConnector Association="gamutdatabaseModel.FK_FinancialResultDetails_FinancialResultHeader" />
         <AssociationConnector Association="gamutdatabaseModel.FK_FinancialResultHeader_FinancialResultType" />
+        <EntityTypeShape EntityType="gamutdatabaseModel.RestucturingDetail" Width="1.5" PointX="3.375" PointY="11.75" />
+        <EntityTypeShape EntityType="gamutdatabaseModel.RestucturingHeader" Width="1.5" PointX="11.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -39,7 +39,7 @@ namespace Gamut.WebAPI.Controllers
         //}
 
       
-        [ResponseType(typeof(Rating))]
+        [ResponseType(typeof(RatingDecorator))]
         [Route("api/RatingAPICust/{id}")]
         public IHttpActionResult GetRatingBy(string id)
         {

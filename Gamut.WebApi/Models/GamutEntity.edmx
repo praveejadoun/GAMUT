@@ -177,6 +177,39 @@
           <Property Name="byId" Type="varchar" MaxLength="50" />
           <Property Name="source" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="RestucturingDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cust_id" Type="varchar" MaxLength="50" />
+          <Property Name="accountNo" Type="varchar" MaxLength="50" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+          <Property Name="accountDate" Type="datetime" />
+          <Property Name="cutofDate" Type="datetime" />
+          <Property Name="sacrifice" Type="float" />
+          <Property Name="repaymentStartDate" Type="datetime" />
+          <Property Name="frequency" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RestucturingHeader">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cust_Id" Type="varchar" MaxLength="50" />
+          <Property Name="accountRestructured" Type="varchar" MaxLength="50" />
+          <Property Name="accountRescheduled" Type="varchar" MaxLength="50" />
+          <Property Name="idNo" Type="varchar" MaxLength="50" />
+          <Property Name="soApplicationDate" Type="datetime" />
+          <Property Name="checkedByCRMD" Type="varchar" MaxLength="50" />
+          <Property Name="pfNo" Type="varchar" MaxLength="50" />
+          <Property Name="followupDate" Type="datetime" />
+          <Property Name="accountRegularisedDate" Type="datetime" />
+          <Property Name="projectType" Type="varchar" MaxLength="50" />
+          <Property Name="dccoDate" Type="datetime" />
+          <Property Name="ExtendedDate" Type="datetime" />
+          <Property Name="actualDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="Security">
           <Key>
             <PropertyRef Name="Id" />
@@ -256,6 +289,8 @@
           <EntitySet Name="LookUp" EntityType="Self.LookUp" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rating" EntityType="Self.Rating" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RestucturingDetail" EntityType="Self.RestucturingDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RestucturingHeader" EntityType="Self.RestucturingHeader" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Security" EntityType="Self.Security" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SOC124" EntityType="Self.SOC124" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
@@ -307,6 +342,8 @@
             <End Role="FinancialResultType" EntitySet="FinancialResultTypes" />
             <End Role="FinancialResultHeader" EntitySet="FinancialResultHeaders" />
           </AssociationSet>
+          <EntitySet Name="RestucturingDetails" EntityType="gamutdatabaseModel.RestucturingDetail" />
+          <EntitySet Name="RestucturingHeaders" EntityType="gamutdatabaseModel.RestucturingHeader" />
         </EntityContainer>
         <EntityType Name="Customer">
           <Key>
@@ -539,6 +576,39 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="RestucturingDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cust_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="accountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="accountDate" Type="DateTime" Precision="3" />
+          <Property Name="cutofDate" Type="DateTime" Precision="3" />
+          <Property Name="sacrifice" Type="Double" />
+          <Property Name="repaymentStartDate" Type="DateTime" Precision="3" />
+          <Property Name="frequency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="RestucturingHeader">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cust_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="accountRestructured" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="accountRescheduled" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="soApplicationDate" Type="DateTime" Precision="3" />
+          <Property Name="checkedByCRMD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pfNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="followupDate" Type="DateTime" Precision="3" />
+          <Property Name="accountRegularisedDate" Type="DateTime" Precision="3" />
+          <Property Name="projectType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dccoDate" Type="DateTime" Precision="3" />
+          <Property Name="ExtendedDate" Type="DateTime" Precision="3" />
+          <Property Name="actualDate" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -771,6 +841,41 @@
                 <ScalarProperty Name="Source" ColumnName="Source" />
                 <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
                 <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RestucturingDetails">
+            <EntityTypeMapping TypeName="gamutdatabaseModel.RestucturingDetail">
+              <MappingFragment StoreEntitySet="RestucturingDetail">
+                <ScalarProperty Name="frequency" ColumnName="frequency" />
+                <ScalarProperty Name="repaymentStartDate" ColumnName="repaymentStartDate" />
+                <ScalarProperty Name="sacrifice" ColumnName="sacrifice" />
+                <ScalarProperty Name="cutofDate" ColumnName="cutofDate" />
+                <ScalarProperty Name="accountDate" ColumnName="accountDate" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="accountNo" ColumnName="accountNo" />
+                <ScalarProperty Name="Cust_id" ColumnName="Cust_id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RestucturingHeaders">
+            <EntityTypeMapping TypeName="gamutdatabaseModel.RestucturingHeader">
+              <MappingFragment StoreEntitySet="RestucturingHeader">
+                <ScalarProperty Name="actualDate" ColumnName="actualDate" />
+                <ScalarProperty Name="ExtendedDate" ColumnName="ExtendedDate" />
+                <ScalarProperty Name="dccoDate" ColumnName="dccoDate" />
+                <ScalarProperty Name="projectType" ColumnName="projectType" />
+                <ScalarProperty Name="accountRegularisedDate" ColumnName="accountRegularisedDate" />
+                <ScalarProperty Name="followupDate" ColumnName="followupDate" />
+                <ScalarProperty Name="pfNo" ColumnName="pfNo" />
+                <ScalarProperty Name="checkedByCRMD" ColumnName="checkedByCRMD" />
+                <ScalarProperty Name="soApplicationDate" ColumnName="soApplicationDate" />
+                <ScalarProperty Name="idNo" ColumnName="idNo" />
+                <ScalarProperty Name="accountRescheduled" ColumnName="accountRescheduled" />
+                <ScalarProperty Name="accountRestructured" ColumnName="accountRestructured" />
+                <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

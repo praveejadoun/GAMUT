@@ -173,6 +173,7 @@
     <Compile Include="Controllers\InterestController.cs" />
     <Compile Include="Controllers\LookUpAPIController.cs" />
     <Compile Include="Controllers\RatingAPIController.cs" />
+    <Compile Include="Controllers\RestucturingController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\Soc124APIController.cs" />
     <Compile Include="Global.asax.cs">
@@ -224,6 +225,12 @@
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Rating.cs">
+      <DependentUpon>GamutEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RestucturingDetail.cs">
+      <DependentUpon>GamutEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RestucturingHeader.cs">
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Security.cs">
@@ -324,13 +331,8 @@
     </Content>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Scripts\version.json" />
-    <Content Include="Views\ManageData\AddNew.cshtml" />
-    <Content Include="Views\ManageData\ShowAll.cshtml" />
-    <Content Include="Views\ManageData\Edit.cshtml" />
-    <Content Include="Views\ManageData\Delete.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\ManageData\General.cshtml" />
-    <Content Include="Views\ManageData\Documents.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

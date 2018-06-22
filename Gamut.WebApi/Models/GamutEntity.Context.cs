@@ -39,5 +39,7 @@ namespace Gamut.WebAPI.Models
         public virtual DbSet<FinancialResultHeader> FinancialResultHeaders { get; set; }
         public virtual DbSet<FinancialResultType> FinancialResultTypes { get; set; }
         public virtual DbSet<News> News { get; set; }
+        public virtual DbSet<RestucturingDetail> RestucturingDetails { get; set; }
+        public virtual DbSet<RestucturingHeader> RestucturingHeaders { get; set; }
     }
 }

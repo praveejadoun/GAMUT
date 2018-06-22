@@ -13,17 +13,17 @@ namespace Gamut.WebAPI
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                name: "indexroute",
-                url: "index",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+            //routes.MapRoute(
+            //    name: "indexroute",
+            //    url: "index",
+            //    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            //);
 
-            routes.MapRoute(
-                name: "loginroute",
-                url: "logout",
-                defaults: new { controller = "Home", action = "Login", id = UrlParameter.Optional }
-            );
+            //routes.MapRoute(
+            //    name: "loginroute",
+            //    url: "logout",
+            //    defaults: new { controller = "Home", action = "Login", id = UrlParameter.Optional }
+            //);
 
             routes.MapRoute(
                 name: "Default",
