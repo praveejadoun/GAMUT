@@ -17,7 +17,7 @@ namespace Gamut.WebAPI.Controllers
         
         private gamutdatabaseEntities db = new gamutdatabaseEntities();
 
-        [ResponseType(typeof(FinancialResultDetail))]
+        [HttpGet]
         public IHttpActionResult GetFinancialResultByQuarter(string id)
         {
             
@@ -33,13 +33,13 @@ namespace Gamut.WebAPI.Controllers
 
             return Ok(financiaResult);
         }
-        
+        [HttpGet]
         public IHttpActionResult GetFinancialResultQuarterlyTrendz(string id,string trendz)
         {
 
             var financiaResult = (from frd in db.FinancialResultDetails
                                   join fh in db.FinancialResultHeaders on frd.HeaderID equals fh.HeaderID
-                                  where frd.Cust_id == id && frd.Trends == "Quarterly" && DbFunctions.DiffDays(frd.UpdateDate, DateTime.Now) < 455
+                                  where frd.Cust_id == id && frd.Trends == trendz
                                   select new { CustID = frd.Cust_id, FinanceHeader = fh.HeaderName, QuarterInfo = frd.ResQuarter, QuarterDate = frd.UpdateDate, Amount = frd.Amount }).ToList();
 
 
