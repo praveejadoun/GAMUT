@@ -17,6 +17,7 @@ namespace Gamut.WebAPI.Controllers
         
         private gamutdatabaseEntities db = new gamutdatabaseEntities();
 
+
         [HttpGet]
         public IHttpActionResult GetFinancialResultByQuarter(string id)
         {
