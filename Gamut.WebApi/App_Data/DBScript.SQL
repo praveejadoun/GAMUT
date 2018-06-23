@@ -1,6 +1,36 @@
 ﻿USE [gamutdatabase]
 GO
-/****** Object:  Table [dbo].[Customer]    Script Date: 23-06-2018 00:32:06 ******/
+/****** Object:  Table [dbo].[AccountDetails]    Script Date: 23-06-2018 15:54:32 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[AccountDetails](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Cust_Id] [varchar](50) NULL,
+	[accountNumber] [varchar](50) NULL,
+	[accountType] [varchar](50) NULL,
+	[sanctionedLimit] [float] NULL,
+	[undisbursed] [float] NULL,
+	[balance] [float] NULL,
+	[arrears] [float] NULL,
+	[roi] [float] NULL,
+	[period] [varchar](50) NULL,
+	[cashMargin] [float] NULL,
+	[lastUpdateOn] [datetime] NULL,
+	[lastUpdateBy] [varchar](50) NULL,
+ CONSTRAINT [PK_AccountDetails] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[Customer]    Script Date: 23-06-2018 15:54:34 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -29,7 +59,7 @@ CREATE TABLE [dbo].[Customer](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[FinancialResultDetails]    Script Date: 23-06-2018 00:32:07 ******/
+/****** Object:  Table [dbo].[FinancialResultDetails]    Script Date: 23-06-2018 15:54:34 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -54,7 +84,7 @@ CREATE TABLE [dbo].[FinancialResultDetails](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[FinancialResultHeader]    Script Date: 23-06-2018 00:32:07 ******/
+/****** Object:  Table [dbo].[FinancialResultHeader]    Script Date: 23-06-2018 15:54:34 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -75,7 +105,7 @@ CREATE TABLE [dbo].[FinancialResultHeader](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[FinancialResultType]    Script Date: 23-06-2018 00:32:07 ******/
+/****** Object:  Table [dbo].[FinancialResultType]    Script Date: 23-06-2018 15:54:34 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -95,7 +125,7 @@ CREATE TABLE [dbo].[FinancialResultType](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[General]    Script Date: 23-06-2018 00:32:07 ******/
+/****** Object:  Table [dbo].[General]    Script Date: 23-06-2018 15:54:34 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -160,7 +190,7 @@ CREATE TABLE [dbo].[General](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[GeneralExposure]    Script Date: 23-06-2018 00:32:07 ******/
+/****** Object:  Table [dbo].[GeneralExposure]    Script Date: 23-06-2018 15:54:34 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -183,7 +213,7 @@ CREATE TABLE [dbo].[GeneralExposure](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[GeneralGurantor]    Script Date: 23-06-2018 00:32:07 ******/
+/****** Object:  Table [dbo].[GeneralGurantor]    Script Date: 23-06-2018 15:54:34 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -205,7 +235,7 @@ CREATE TABLE [dbo].[GeneralGurantor](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Interest]    Script Date: 23-06-2018 00:32:07 ******/
+/****** Object:  Table [dbo].[Interest]    Script Date: 23-06-2018 15:54:34 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -233,7 +263,7 @@ CREATE TABLE [dbo].[Interest](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[LookUp]    Script Date: 23-06-2018 00:32:07 ******/
+/****** Object:  Table [dbo].[LookUp]    Script Date: 23-06-2018 15:54:34 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -254,7 +284,7 @@ CREATE TABLE [dbo].[LookUp](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[News]    Script Date: 23-06-2018 00:32:07 ******/
+/****** Object:  Table [dbo].[News]    Script Date: 23-06-2018 15:54:34 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -278,7 +308,7 @@ CREATE TABLE [dbo].[News](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Rating]    Script Date: 23-06-2018 00:32:07 ******/
+/****** Object:  Table [dbo].[Rating]    Script Date: 23-06-2018 15:54:34 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -304,7 +334,7 @@ CREATE TABLE [dbo].[Rating](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[RestucturingDetail]    Script Date: 23-06-2018 00:32:07 ******/
+/****** Object:  Table [dbo].[RestucturingDetail]    Script Date: 23-06-2018 15:54:34 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -330,7 +360,7 @@ CREATE TABLE [dbo].[RestucturingDetail](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[RestucturingHeader]    Script Date: 23-06-2018 00:32:07 ******/
+/****** Object:  Table [dbo].[RestucturingHeader]    Script Date: 23-06-2018 15:54:34 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -361,7 +391,7 @@ CREATE TABLE [dbo].[RestucturingHeader](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Security]    Script Date: 23-06-2018 00:32:07 ******/
+/****** Object:  Table [dbo].[Security]    Script Date: 23-06-2018 15:54:34 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -390,7 +420,7 @@ CREATE TABLE [dbo].[Security](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[SOC124]    Script Date: 23-06-2018 00:32:07 ******/
+/****** Object:  Table [dbo].[SOC124]    Script Date: 23-06-2018 15:54:34 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -416,7 +446,7 @@ CREATE TABLE [dbo].[SOC124](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Student]    Script Date: 23-06-2018 00:32:07 ******/
+/****** Object:  Table [dbo].[Student]    Script Date: 23-06-2018 15:54:34 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -434,6 +464,35 @@ CREATE TABLE [dbo].[Student](
  CONSTRAINT [PK_Student] PRIMARY KEY CLUSTERED 
 (
 	[StudentID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[WarningIndicator]    Script Date: 23-06-2018 15:54:34 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[WarningIndicator](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Cust_Id] [varchar](50) NULL,
+	[fromDate] [datetime] NULL,
+	[toDate] [datetime] NULL,
+	[asOnDate] [datetime] NULL,
+	[WarningSignal] [varchar](250) NULL,
+	[irregularities] [varchar](50) NULL,
+	[observedOn] [datetime] NULL,
+	[observationRemarks] [varchar](250) NULL,
+	[actionFor] [varchar](250) NULL,
+	[lastUpdatedOn] [datetime] NULL,
+	[lastUpdatedBy] [varchar](50) NULL,
+ CONSTRAINT [PK_WarningIndicator] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 

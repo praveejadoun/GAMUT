@@ -41,5 +41,7 @@ namespace Gamut.WebAPI.Models
         public virtual DbSet<News> News { get; set; }
         public virtual DbSet<RestucturingDetail> RestucturingDetails { get; set; }
         public virtual DbSet<RestucturingHeader> RestucturingHeaders { get; set; }
+        public virtual DbSet<AccountDetail> AccountDetails { get; set; }
+        public virtual DbSet<WarningIndicator> WarningIndicators { get; set; }
     }
 }

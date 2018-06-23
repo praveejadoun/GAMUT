@@ -5,6 +5,24 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="gamutdatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccountDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cust_Id" Type="varchar" MaxLength="50" />
+          <Property Name="accountNumber" Type="varchar" MaxLength="50" />
+          <Property Name="accountType" Type="varchar" MaxLength="50" />
+          <Property Name="sanctionedLimit" Type="float" />
+          <Property Name="undisbursed" Type="float" />
+          <Property Name="balance" Type="float" />
+          <Property Name="arrears" Type="float" />
+          <Property Name="roi" Type="float" />
+          <Property Name="period" Type="varchar" MaxLength="50" />
+          <Property Name="cashMargin" Type="float" />
+          <Property Name="lastUpdateOn" Type="datetime" />
+          <Property Name="lastUpdateBy" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="Cust_id" />
@@ -253,6 +271,23 @@
           <Property Name="City" Type="varchar" MaxLength="100" />
           <Property Name="Country" Type="varchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="WarningIndicator">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cust_Id" Type="varchar" MaxLength="50" />
+          <Property Name="fromDate" Type="datetime" />
+          <Property Name="toDate" Type="datetime" />
+          <Property Name="asOnDate" Type="datetime" />
+          <Property Name="WarningSignal" Type="varchar" MaxLength="250" />
+          <Property Name="irregularities" Type="varchar" MaxLength="50" />
+          <Property Name="observedOn" Type="datetime" />
+          <Property Name="observationRemarks" Type="varchar" MaxLength="250" />
+          <Property Name="actionFor" Type="varchar" MaxLength="250" />
+          <Property Name="lastUpdatedOn" Type="datetime" />
+          <Property Name="lastUpdatedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
         <Association Name="FK_FinancialResultDetails_FinancialResultHeader">
           <End Role="FinancialResultHeader" Type="Self.FinancialResultHeader" Multiplicity="0..1" />
           <End Role="FinancialResultDetails" Type="Self.FinancialResultDetails" Multiplicity="*" />
@@ -278,6 +313,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="gamutdatabaseModelStoreContainer">
+          <EntitySet Name="AccountDetails" EntityType="Self.AccountDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FinancialResultDetails" EntityType="Self.FinancialResultDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FinancialResultHeader" EntityType="Self.FinancialResultHeader" Schema="dbo" store:Type="Tables" />
@@ -294,6 +330,7 @@
           <EntitySet Name="Security" EntityType="Self.Security" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SOC124" EntityType="Self.SOC124" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WarningIndicator" EntityType="Self.WarningIndicator" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_FinancialResultDetails_FinancialResultHeader" Association="Self.FK_FinancialResultDetails_FinancialResultHeader">
             <End Role="FinancialResultHeader" EntitySet="FinancialResultHeader" />
             <End Role="FinancialResultDetails" EntitySet="FinancialResultDetails" />
@@ -344,6 +381,8 @@
           </AssociationSet>
           <EntitySet Name="RestucturingDetails" EntityType="gamutdatabaseModel.RestucturingDetail" />
           <EntitySet Name="RestucturingHeaders" EntityType="gamutdatabaseModel.RestucturingHeader" />
+          <EntitySet Name="AccountDetails" EntityType="gamutdatabaseModel.AccountDetail" />
+          <EntitySet Name="WarningIndicators" EntityType="gamutdatabaseModel.WarningIndicator" />
         </EntityContainer>
         <EntityType Name="Customer">
           <Key>
@@ -608,6 +647,41 @@
           <Property Name="dccoDate" Type="DateTime" Precision="3" />
           <Property Name="ExtendedDate" Type="DateTime" Precision="3" />
           <Property Name="actualDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="AccountDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cust_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="accountNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="accountType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sanctionedLimit" Type="Double" />
+          <Property Name="undisbursed" Type="Double" />
+          <Property Name="balance" Type="Double" />
+          <Property Name="arrears" Type="Double" />
+          <Property Name="roi" Type="Double" />
+          <Property Name="period" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cashMargin" Type="Double" />
+          <Property Name="lastUpdateOn" Type="DateTime" Precision="3" />
+          <Property Name="lastUpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="WarningIndicator">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fromDate" Type="DateTime" Precision="3" />
+          <Property Name="toDate" Type="DateTime" Precision="3" />
+          <Property Name="asOnDate" Type="DateTime" Precision="3" />
+          <Property Name="WarningSignal" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="irregularities" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="observedOn" Type="DateTime" Precision="3" />
+          <Property Name="observationRemarks" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="actionFor" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="lastUpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="lastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cust_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -875,6 +949,43 @@
                 <ScalarProperty Name="accountRescheduled" ColumnName="accountRescheduled" />
                 <ScalarProperty Name="accountRestructured" ColumnName="accountRestructured" />
                 <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountDetails">
+            <EntityTypeMapping TypeName="gamutdatabaseModel.AccountDetail">
+              <MappingFragment StoreEntitySet="AccountDetails">
+                <ScalarProperty Name="lastUpdateBy" ColumnName="lastUpdateBy" />
+                <ScalarProperty Name="lastUpdateOn" ColumnName="lastUpdateOn" />
+                <ScalarProperty Name="cashMargin" ColumnName="cashMargin" />
+                <ScalarProperty Name="period" ColumnName="period" />
+                <ScalarProperty Name="roi" ColumnName="roi" />
+                <ScalarProperty Name="arrears" ColumnName="arrears" />
+                <ScalarProperty Name="balance" ColumnName="balance" />
+                <ScalarProperty Name="undisbursed" ColumnName="undisbursed" />
+                <ScalarProperty Name="sanctionedLimit" ColumnName="sanctionedLimit" />
+                <ScalarProperty Name="accountType" ColumnName="accountType" />
+                <ScalarProperty Name="accountNumber" ColumnName="accountNumber" />
+                <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WarningIndicators">
+            <EntityTypeMapping TypeName="gamutdatabaseModel.WarningIndicator">
+              <MappingFragment StoreEntitySet="WarningIndicator">
+                <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
+                <ScalarProperty Name="lastUpdatedBy" ColumnName="lastUpdatedBy" />
+                <ScalarProperty Name="lastUpdatedOn" ColumnName="lastUpdatedOn" />
+                <ScalarProperty Name="actionFor" ColumnName="actionFor" />
+                <ScalarProperty Name="observationRemarks" ColumnName="observationRemarks" />
+                <ScalarProperty Name="observedOn" ColumnName="observedOn" />
+                <ScalarProperty Name="irregularities" ColumnName="irregularities" />
+                <ScalarProperty Name="WarningSignal" ColumnName="WarningSignal" />
+                <ScalarProperty Name="asOnDate" ColumnName="asOnDate" />
+                <ScalarProperty Name="toDate" ColumnName="toDate" />
+                <ScalarProperty Name="fromDate" ColumnName="fromDate" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
