@@ -1,6 +1,6 @@
 ﻿USE [gamutdatabase]
 GO
-/****** Object:  Table [dbo].[AccountDetails]    Script Date: 23-06-2018 16:14:32 ******/
+/****** Object:  Table [dbo].[AccountDetails]    Script Date: 24-06-2018 00:50:23 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -11,14 +11,23 @@ CREATE TABLE [dbo].[AccountDetails](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Cust_Id] [varchar](50) NULL,
 	[accountNumber] [varchar](50) NULL,
-	[accountType] [varchar](50) NULL,
-	[sanctionedLimit] [float] NULL,
-	[undisbursed] [float] NULL,
+	[nature] [varchar](50) NULL,
+	[smaRiskType] [varchar](50) NULL,
+	[smaRiskLevel] [int] NULL,
+	[limit] [float] NULL,
 	[balance] [float] NULL,
+	[exposure] [float] NULL,
 	[arrears] [float] NULL,
+	[bankingArr] [varchar](50) NULL,
+	[leadBank] [varchar](250) NULL,
+	[dcco] [datetime] NULL,
 	[roi] [float] NULL,
 	[period] [varchar](50) NULL,
+	[security] [varchar](250) NULL,
 	[cashMargin] [float] NULL,
+	[lastRenewalDate] [datetime] NULL,
+	[lastReviewDate] [datetime] NULL,
+	[lastReviewDate1or2] [varchar](50) NULL,
 	[lastUpdateOn] [datetime] NULL,
 	[lastUpdateBy] [varchar](50) NULL,
  CONSTRAINT [PK_AccountDetails] PRIMARY KEY CLUSTERED 
@@ -30,7 +39,7 @@ CREATE TABLE [dbo].[AccountDetails](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Customer]    Script Date: 23-06-2018 16:14:33 ******/
+/****** Object:  Table [dbo].[Customer]    Script Date: 24-06-2018 00:50:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -59,7 +68,7 @@ CREATE TABLE [dbo].[Customer](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[FinancialResultDetails]    Script Date: 23-06-2018 16:14:33 ******/
+/****** Object:  Table [dbo].[FinancialResultDetails]    Script Date: 24-06-2018 00:50:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -84,7 +93,7 @@ CREATE TABLE [dbo].[FinancialResultDetails](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[FinancialResultHeader]    Script Date: 23-06-2018 16:14:33 ******/
+/****** Object:  Table [dbo].[FinancialResultHeader]    Script Date: 24-06-2018 00:50:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -105,7 +114,7 @@ CREATE TABLE [dbo].[FinancialResultHeader](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[FinancialResultType]    Script Date: 23-06-2018 16:14:33 ******/
+/****** Object:  Table [dbo].[FinancialResultType]    Script Date: 24-06-2018 00:50:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -125,7 +134,7 @@ CREATE TABLE [dbo].[FinancialResultType](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[General]    Script Date: 23-06-2018 16:14:33 ******/
+/****** Object:  Table [dbo].[General]    Script Date: 24-06-2018 00:50:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -190,7 +199,7 @@ CREATE TABLE [dbo].[General](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[GeneralExposure]    Script Date: 23-06-2018 16:14:33 ******/
+/****** Object:  Table [dbo].[GeneralExposure]    Script Date: 24-06-2018 00:50:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -213,7 +222,7 @@ CREATE TABLE [dbo].[GeneralExposure](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[GeneralGurantor]    Script Date: 23-06-2018 16:14:33 ******/
+/****** Object:  Table [dbo].[GeneralGurantor]    Script Date: 24-06-2018 00:50:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -223,6 +232,7 @@ GO
 CREATE TABLE [dbo].[GeneralGurantor](
 	[id] [int] IDENTITY(1,1) NOT NULL,
 	[Cust_Id] [varchar](50) NULL,
+	[accountNo] [varchar](50) NULL,
 	[gurCust_Id] [varchar](50) NULL,
 	[gurType] [varchar](50) NULL,
 	[netWorth] [float] NULL,
@@ -235,7 +245,7 @@ CREATE TABLE [dbo].[GeneralGurantor](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Interest]    Script Date: 23-06-2018 16:14:33 ******/
+/****** Object:  Table [dbo].[Interest]    Script Date: 24-06-2018 00:50:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -263,7 +273,7 @@ CREATE TABLE [dbo].[Interest](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[LookUp]    Script Date: 23-06-2018 16:14:33 ******/
+/****** Object:  Table [dbo].[LookUp]    Script Date: 24-06-2018 00:50:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -284,7 +294,7 @@ CREATE TABLE [dbo].[LookUp](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[News]    Script Date: 23-06-2018 16:14:33 ******/
+/****** Object:  Table [dbo].[News]    Script Date: 24-06-2018 00:50:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -308,7 +318,7 @@ CREATE TABLE [dbo].[News](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Rating]    Script Date: 23-06-2018 16:14:33 ******/
+/****** Object:  Table [dbo].[Rating]    Script Date: 24-06-2018 00:50:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -321,6 +331,7 @@ CREATE TABLE [dbo].[Rating](
 	[particular] [varchar](150) NULL,
 	[dateFrom] [datetime] NULL,
 	[dateTo] [datetime] NULL,
+	[ratingType] [varchar](50) NULL,
 	[ratingYear] [int] NULL,
 	[ratingValue] [varchar](50) NULL,
 	[byId] [varchar](50) NULL,
@@ -334,7 +345,7 @@ CREATE TABLE [dbo].[Rating](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[RestucturingDetail]    Script Date: 23-06-2018 16:14:33 ******/
+/****** Object:  Table [dbo].[RestucturingDetail]    Script Date: 24-06-2018 00:50:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -360,7 +371,7 @@ CREATE TABLE [dbo].[RestucturingDetail](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[RestucturingHeader]    Script Date: 23-06-2018 16:14:33 ******/
+/****** Object:  Table [dbo].[RestucturingHeader]    Script Date: 24-06-2018 00:50:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -391,7 +402,7 @@ CREATE TABLE [dbo].[RestucturingHeader](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Security]    Script Date: 23-06-2018 16:14:33 ******/
+/****** Object:  Table [dbo].[Security]    Script Date: 24-06-2018 00:50:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -420,7 +431,7 @@ CREATE TABLE [dbo].[Security](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[SOC124]    Script Date: 23-06-2018 16:14:33 ******/
+/****** Object:  Table [dbo].[SOC124]    Script Date: 24-06-2018 00:50:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -446,7 +457,7 @@ CREATE TABLE [dbo].[SOC124](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Student]    Script Date: 23-06-2018 16:14:33 ******/
+/****** Object:  Table [dbo].[Student]    Script Date: 24-06-2018 00:50:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -470,7 +481,7 @@ CREATE TABLE [dbo].[Student](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[WarningIndicator]    Script Date: 23-06-2018 16:14:33 ******/
+/****** Object:  Table [dbo].[WarningIndicator]    Script Date: 24-06-2018 00:50:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -502,13 +513,21 @@ GO
 SET IDENTITY_INSERT [dbo].[AccountDetails] ON 
 
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [accountType], [sanctionedLimit], [undisbursed], [balance], [arrears], [roi], [period], [cashMargin], [lastUpdateOn], [lastUpdateBy]) VALUES (1, N'maruti', N'12345678', N'term loan', 434343, 4343, 43353, 4535, 9, N'mar-jun', 3434, CAST(0x0000AA4400000000 AS DateTime), N'praveen')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (1, N'maruti', N'12345678', N'term loan', N'SMA0', 0, 434343, 4343, NULL, 4535, N'Consortium
+', N'hdfc', NULL, 9, N'mar-jun', NULL, 3434, NULL, NULL, NULL, CAST(0x0000AA4400000000 AS DateTime), N'praveen')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [accountType], [sanctionedLimit], [undisbursed], [balance], [arrears], [roi], [period], [cashMargin], [lastUpdateOn], [lastUpdateBy]) VALUES (2, N'maruti', N'34567989', N'term loan', 87757, 5, 644, 4354, 8, N'mar-jun', 343, CAST(0x0000AA4400000000 AS DateTime), N'praveen')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (2, N'maruti', N'34567989', N'term loan', N'SMA1', 1, 87757, 5, NULL, 4354, N'Multiple', N'hdfc', NULL, 8, N'mar-jun', NULL, 343, NULL, NULL, NULL, CAST(0x0000AA4400000000 AS DateTime), N'praveen')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [accountType], [sanctionedLimit], [undisbursed], [balance], [arrears], [roi], [period], [cashMargin], [lastUpdateOn], [lastUpdateBy]) VALUES (3, N'maruti', N'8668656656', N'CC', 3353535, 533, 4545, 4343, 7, N'mar-jun', 57655, CAST(0x0000AA8300000000 AS DateTime), N'praveen')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (3, N'maruti', N'8668656656', N'CC', N'SMA2', 2, 3353535, 533, NULL, 4343, N'Consortium
+', N'hdfc', NULL, 7, N'mar-jun', NULL, 57655, NULL, NULL, NULL, CAST(0x0000AA8300000000 AS DateTime), N'praveen')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [accountType], [sanctionedLimit], [undisbursed], [balance], [arrears], [roi], [period], [cashMargin], [lastUpdateOn], [lastUpdateBy]) VALUES (4, N'maruti', N'4646755656', N'CC', 43433, 533, 544, 554, 7, N'mar-jun', 57655, CAST(0x0000AA8300000000 AS DateTime), N'praveen')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (4, N'maruti', N'4646755656', N'CC', N'SMA3', 3, 43433, 533, NULL, 554, N'Multiple', N'ICICI', NULL, 7, N'mar-jun', NULL, 57655, NULL, NULL, NULL, CAST(0x0000AA8300000000 AS DateTime), N'praveen')
+GO
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (5, N'tatapower', N'12345678', N'CC', N'SMA0', 1, 1000, 750, 1000, 23432, N'Consortium', N'SBI', NULL, 8.75, NULL, N'gold', NULL, CAST(0x0000A8A700000000 AS DateTime), CAST(0x0000A8A700000000 AS DateTime), NULL, CAST(0x0000A8A700000000 AS DateTime), N'praveen')
+GO
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (6, N'tatapower', N'23456789', N'Term Loan', N'SMA1', 2, 5000, 4850, 4900, 3243, N'Multiple', N'NA', CAST(0x0000A04700000000 AS DateTime), 8.2, NULL, N'silver', NULL, CAST(0x0000A8A700000000 AS DateTime), CAST(0x0000A8A700000000 AS DateTime), NULL, CAST(0x0000A8A700000000 AS DateTime), N'praveen')
+GO
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (7, N'tatapower', N'34567890', N'BG/LC', N'NA', 0, 500, 400, 500, 32432, N'Consortium', N'SBI', NULL, 0.25, NULL, N'future payments', NULL, CAST(0x0000A8A700000000 AS DateTime), CAST(0x0000A8A700000000 AS DateTime), NULL, CAST(0x0000A8A700000000 AS DateTime), N'praveen')
 GO
 SET IDENTITY_INSERT [dbo].[AccountDetails] OFF
 GO
@@ -1327,11 +1346,11 @@ GO
 SET IDENTITY_INSERT [dbo].[GeneralGurantor] ON 
 
 GO
-INSERT [dbo].[GeneralGurantor] ([id], [Cust_Id], [gurCust_Id], [gurType], [netWorth]) VALUES (1, N'jpmc', N'jpmc', N'gur', NULL)
+INSERT [dbo].[GeneralGurantor] ([id], [Cust_Id], [accountNo], [gurCust_Id], [gurType], [netWorth]) VALUES (1, N'jpmc', NULL, N'jpmc', N'gur', NULL)
 GO
-INSERT [dbo].[GeneralGurantor] ([id], [Cust_Id], [gurCust_Id], [gurType], [netWorth]) VALUES (2, N'jpmc', N'boa', N'gur', NULL)
+INSERT [dbo].[GeneralGurantor] ([id], [Cust_Id], [accountNo], [gurCust_Id], [gurType], [netWorth]) VALUES (2, N'jpmc', NULL, N'boa', N'gur', NULL)
 GO
-INSERT [dbo].[GeneralGurantor] ([id], [Cust_Id], [gurCust_Id], [gurType], [netWorth]) VALUES (3, N'jpmc', N'dbs', N'gur', NULL)
+INSERT [dbo].[GeneralGurantor] ([id], [Cust_Id], [accountNo], [gurCust_Id], [gurType], [netWorth]) VALUES (3, N'jpmc', NULL, N'dbs', N'gur', NULL)
 GO
 SET IDENTITY_INSERT [dbo].[GeneralGurantor] OFF
 GO
@@ -1481,125 +1500,125 @@ GO
 SET IDENTITY_INSERT [dbo].[Rating] ON 
 
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (1, N'tatapower', N'as per SO', CAST(0x0000A5FF00000000 AS DateTime), CAST(0x0000A76C00000000 AS DateTime), 2018, N'AA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (1, N'tatapower', N'as per SO', CAST(0x0000A5FF00000000 AS DateTime), CAST(0x0000A76C00000000 AS DateTime), NULL, 2018, N'AA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (2, N'tatapower', N'as per SO', CAST(0x0000A49100000000 AS DateTime), CAST(0x0000A32400000000 AS DateTime), 2017, N'A', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (2, N'tatapower', N'as per SO', CAST(0x0000A49100000000 AS DateTime), CAST(0x0000A32400000000 AS DateTime), NULL, 2017, N'A', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (3, N'tatapower', N'as per SO', CAST(0x0000A32400000000 AS DateTime), CAST(0x0000A1B700000000 AS DateTime), 2016, N'A', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (3, N'tatapower', N'as per SO', CAST(0x0000A32400000000 AS DateTime), CAST(0x0000A1B700000000 AS DateTime), NULL, 2016, N'A', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (4, N'tatapower', N'as per SO', CAST(0x0000A1B700000000 AS DateTime), CAST(0x0000A04A00000000 AS DateTime), 2015, N'A', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (4, N'tatapower', N'as per SO', CAST(0x0000A1B700000000 AS DateTime), CAST(0x0000A04A00000000 AS DateTime), NULL, 2015, N'A', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (5, N'tatapower', N'as per SO', CAST(0x0000A5FF00000000 AS DateTime), CAST(0x0000A76C00000000 AS DateTime), 2014, N'A', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (5, N'tatapower', N'as per SO', CAST(0x0000A5FF00000000 AS DateTime), CAST(0x0000A76C00000000 AS DateTime), NULL, 2014, N'A', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (6, N'RIL', N'as per SO', CAST(0x0000A49100000000 AS DateTime), CAST(0x0000A32400000000 AS DateTime), 2018, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (6, N'RIL', N'as per SO', CAST(0x0000A49100000000 AS DateTime), CAST(0x0000A32400000000 AS DateTime), NULL, 2018, N'AAA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (7, N'RIL', N'as per SO', CAST(0x0000A32400000000 AS DateTime), CAST(0x0000A1B700000000 AS DateTime), 2017, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (7, N'RIL', N'as per SO', CAST(0x0000A32400000000 AS DateTime), CAST(0x0000A1B700000000 AS DateTime), NULL, 2017, N'AAA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (8, N'RIL', N'as per SO', CAST(0x0000A1B700000000 AS DateTime), CAST(0x0000A04A00000000 AS DateTime), 2016, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (8, N'RIL', N'as per SO', CAST(0x0000A1B700000000 AS DateTime), CAST(0x0000A04A00000000 AS DateTime), NULL, 2016, N'AAA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (9, N'RIL', N'as per SO', CAST(0x0000A5FF00000000 AS DateTime), CAST(0x0000A76C00000000 AS DateTime), 2015, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (9, N'RIL', N'as per SO', CAST(0x0000A5FF00000000 AS DateTime), CAST(0x0000A76C00000000 AS DateTime), NULL, 2015, N'AAA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (10, N'RIL', N'as per SO', CAST(0x0000A49100000000 AS DateTime), CAST(0x0000A32400000000 AS DateTime), 2014, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (10, N'RIL', N'as per SO', CAST(0x0000A49100000000 AS DateTime), CAST(0x0000A32400000000 AS DateTime), NULL, 2014, N'AAA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (11, N'ICICIHFC', N'as per SO', CAST(0x0000A32400000000 AS DateTime), CAST(0x0000A1B700000000 AS DateTime), 2018, N'AA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (11, N'ICICIHFC', N'as per SO', CAST(0x0000A32400000000 AS DateTime), CAST(0x0000A1B700000000 AS DateTime), NULL, 2018, N'AA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (12, N'ICICIHFC', N'as per SO', CAST(0x0000A1B700000000 AS DateTime), CAST(0x0000A04A00000000 AS DateTime), 2017, N'AA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (12, N'ICICIHFC', N'as per SO', CAST(0x0000A1B700000000 AS DateTime), CAST(0x0000A04A00000000 AS DateTime), NULL, 2017, N'AA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (13, N'ICICIHFC', N'as per SO', CAST(0x0000A5FF00000000 AS DateTime), CAST(0x0000A76C00000000 AS DateTime), 2016, N'AA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (13, N'ICICIHFC', N'as per SO', CAST(0x0000A5FF00000000 AS DateTime), CAST(0x0000A76C00000000 AS DateTime), NULL, 2016, N'AA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (14, N'ICICIHFC', N'as per SO', CAST(0x0000A49100000000 AS DateTime), CAST(0x0000A32400000000 AS DateTime), 2015, N'AA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (14, N'ICICIHFC', N'as per SO', CAST(0x0000A49100000000 AS DateTime), CAST(0x0000A32400000000 AS DateTime), NULL, 2015, N'AA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (15, N'ICICIHFC', N'as per SO', CAST(0x0000A32400000000 AS DateTime), CAST(0x0000A1B700000000 AS DateTime), 2014, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (15, N'ICICIHFC', N'as per SO', CAST(0x0000A32400000000 AS DateTime), CAST(0x0000A1B700000000 AS DateTime), NULL, 2014, N'AAA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (16, N'LICHFL', N'as per SO', CAST(0x0000A1B700000000 AS DateTime), CAST(0x0000A04A00000000 AS DateTime), 2018, N'AA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (16, N'LICHFL', N'as per SO', CAST(0x0000A1B700000000 AS DateTime), CAST(0x0000A04A00000000 AS DateTime), NULL, 2018, N'AA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (17, N'LICHFL', N'as per SO', CAST(0x0000A5FF00000000 AS DateTime), CAST(0x0000A76C00000000 AS DateTime), 2017, N'AA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (17, N'LICHFL', N'as per SO', CAST(0x0000A5FF00000000 AS DateTime), CAST(0x0000A76C00000000 AS DateTime), NULL, 2017, N'AA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (18, N'LICHFL', N'as per SO', CAST(0x0000A49100000000 AS DateTime), CAST(0x0000A32400000000 AS DateTime), 2016, N'AA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (18, N'LICHFL', N'as per SO', CAST(0x0000A49100000000 AS DateTime), CAST(0x0000A32400000000 AS DateTime), NULL, 2016, N'AA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (19, N'LICHFL', N'as per SO', CAST(0x0000A32400000000 AS DateTime), CAST(0x0000A1B700000000 AS DateTime), 2015, N'AA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (19, N'LICHFL', N'as per SO', CAST(0x0000A32400000000 AS DateTime), CAST(0x0000A1B700000000 AS DateTime), NULL, 2015, N'AA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (20, N'LICHFL', N'as per SO', CAST(0x0000A1B700000000 AS DateTime), CAST(0x0000A04A00000000 AS DateTime), 2014, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (20, N'LICHFL', N'as per SO', CAST(0x0000A1B700000000 AS DateTime), CAST(0x0000A04A00000000 AS DateTime), NULL, 2014, N'AAA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (21, N'maruti', N'as per SO', CAST(0x0000A1B700000000 AS DateTime), CAST(0x0000A04A00000000 AS DateTime), 2018, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (21, N'maruti', N'as per SO', CAST(0x0000A1B700000000 AS DateTime), CAST(0x0000A04A00000000 AS DateTime), N'INTERNAL', 2018, N'AAA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (22, N'maruti', N'as per SO', CAST(0x0000A5FF00000000 AS DateTime), CAST(0x0000A76C00000000 AS DateTime), 2017, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (22, N'maruti', N'as per SO', CAST(0x0000A5FF00000000 AS DateTime), CAST(0x0000A76C00000000 AS DateTime), N'INTERNAL', 2017, N'AAA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (23, N'maruti', N'as per SO', CAST(0x0000A49100000000 AS DateTime), CAST(0x0000A32400000000 AS DateTime), 2016, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (23, N'maruti', N'as per SO', CAST(0x0000A49100000000 AS DateTime), CAST(0x0000A32400000000 AS DateTime), N'INTERNAL', 2016, N'AAA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (24, N'maruti', N'as per SO', CAST(0x0000A32400000000 AS DateTime), CAST(0x0000A1B700000000 AS DateTime), 2015, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (24, N'maruti', N'as per SO', CAST(0x0000A32400000000 AS DateTime), CAST(0x0000A1B700000000 AS DateTime), N'INTERNAL', 2015, N'AAA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (25, N'maruti', N'as per SO', CAST(0x0000A1B700000000 AS DateTime), CAST(0x0000A04A00000000 AS DateTime), 2014, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (25, N'maruti', N'as per SO', CAST(0x0000A1B700000000 AS DateTime), CAST(0x0000A04A00000000 AS DateTime), N'EXTERNAL', 2014, N'AAA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (26, N'maruti', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2018, N'CBR4', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (26, N'maruti', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), N'EXTERNAL', 2018, N'CBR4', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (27, N'maruti', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2017, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (27, N'maruti', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), N'EXTERNAL', 2017, N'CBR3', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (28, N'maruti', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2016, N'CBR4', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (28, N'maruti', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), N'EXTERNAL', 2016, N'CBR4', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (29, N'maruti', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2015, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (29, N'maruti', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2015, N'CBR3', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (30, N'tatapower', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2014, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (30, N'tatapower', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2014, N'CBR3', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (31, N'RIL', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2018, N'CBR2', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (31, N'RIL', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2018, N'CBR2', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (32, N'RIL', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2017, N'CBR2', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (32, N'RIL', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2017, N'CBR2', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (33, N'RIL', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2016, N'CBR2', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (33, N'RIL', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2016, N'CBR2', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (34, N'RIL', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2015, N'NA', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (34, N'RIL', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2015, N'NA', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (35, N'RIL', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2014, N'NA', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (35, N'RIL', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2014, N'NA', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (36, N'ICICIHFC', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2018, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (36, N'ICICIHFC', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2018, N'CBR3', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (37, N'ICICIHFC', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2017, N'CBR2', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (37, N'ICICIHFC', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2017, N'CBR2', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (38, N'ICICIHFC', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2016, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (38, N'ICICIHFC', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2016, N'CBR3', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (39, N'ICICIHFC', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2015, N'CBR2', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (39, N'ICICIHFC', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2015, N'CBR2', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (40, N'ICICIHFC', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2014, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (40, N'ICICIHFC', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2014, N'CBR3', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (41, N'LICHFL', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2018, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (41, N'LICHFL', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2018, N'CBR3', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (42, N'LICHFL', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2017, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (42, N'LICHFL', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2017, N'CBR3', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (43, N'LICHFL', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2016, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (43, N'LICHFL', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2016, N'CBR3', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (44, N'LICHFL', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2015, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (44, N'LICHFL', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2015, N'CBR3', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (45, N'LICHFL', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2014, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (45, N'LICHFL', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2014, N'CBR3', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (46, N'Atul Auto', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2018, N'CBR5', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (46, N'Atul Auto', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2018, N'CBR5', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (47, N'Atul Auto', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2017, N'CBR7', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (47, N'Atul Auto', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2017, N'CBR7', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (48, N'Atul Auto', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2016, N'CBR7', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (48, N'Atul Auto', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2016, N'CBR7', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (49, N'Atul Auto', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2015, N'CBR6', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (49, N'Atul Auto', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2015, N'CBR6', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (50, N'Atul Auto', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2014, N'CBR7', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (50, N'Atul Auto', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2014, N'CBR7', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (51, N'Maruti Suzuki', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2018, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (51, N'Maruti Suzuki', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2018, N'CBR3', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (52, N'Maruti Suzuki', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2017, N'CBR4', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (52, N'Maruti Suzuki', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2017, N'CBR4', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (53, N'Maruti Suzuki', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2016, N'CBR4', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (53, N'Maruti Suzuki', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2016, N'CBR4', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (54, N'Maruti Suzuki', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2015, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (54, N'Maruti Suzuki', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2015, N'CBR3', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (55, N'Maruti Suzuki', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2014, N'CBR4', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (55, N'Maruti Suzuki', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2014, N'CBR4', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (56, N'jpmc', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2018, N'CBR5', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (56, N'jpmc', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2018, N'CBR5', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (57, N'jpmc', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2017, N'CBR7', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (57, N'jpmc', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2017, N'CBR7', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (58, N'jpmc', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2016, N'CBR7', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (58, N'jpmc', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2016, N'CBR7', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (59, N'jpmc', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2015, N'CBR6', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (59, N'jpmc', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2015, N'CBR6', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingYear], [ratingValue], [byId], [source]) VALUES (60, N'jpmc', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), 2014, N'CBR7', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (60, N'jpmc', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2014, N'CBR7', N'tesid', N'internal')
 GO
 SET IDENTITY_INSERT [dbo].[Rating] OFF
 GO
