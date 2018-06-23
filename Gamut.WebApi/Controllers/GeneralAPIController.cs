@@ -38,19 +38,48 @@ namespace Gamut.WebAPI.Controllers
             List<LookUp> bankingArgmt = db.LookUps.Where(id => id.LookUp_Table == "General" && id.LookUp_Name == "Banking_Argmt").ToList();
             List<LookUp> takeover = db.LookUps.Where(id => id.LookUp_Table == "General" && id.LookUp_Name == "Takeover").ToList();
             List<GeneralGurantor> gurantors = db.GeneralGurantors.Where(i => i.Cust_Id == customer.Cust_id).ToList();
-            List<GeneralExposure> exposures = db.GeneralExposures.Where(i => i.Cust_Id == customer.Cust_id).ToList();
-            double totalLimit=0;
+            List<AccountDetail> exposures = db.AccountDetails.Where(i => i.Cust_Id == customer.Cust_id).ToList();
+            general.SMA = exposures.Max(i => i.smaRiskType);
+            
+            foreach (AccountDetail accountDetil in exposures)
+            {
+                if (accountDetil.bankingArr != null && !general.Banking_Argmt.ToUpper().Contains(accountDetil.bankingArr.ToUpper()))
+                {
+                    general.Banking_Argmt = general.Banking_Argmt + "," + accountDetil.bankingArr;
+                }
+
+                if (accountDetil.leadBank != null && !general.Lead_Bank.ToUpper().Contains(accountDetil.leadBank.ToUpper()))
+                {
+                    general.Lead_Bank = general.Lead_Bank + "," + accountDetil.leadBank;
+                }
+            }
+
+            int? latestInternalRatingYear = db.Ratings.Where(j=>j.ratingType=="INTERNAL" && j.Cust_Id==Id).Select(p=>p.ratingYear).DefaultIfEmpty(0).Max();
+            Rating internalRating = db.Ratings.Where(i => i.ratingType == "INTERNAL" && i.ratingYear == latestInternalRatingYear).SingleOrDefault();
+            if (internalRating != null)
+            {
+                general.Internal_Rating = internalRating.ratingValue;
+                general.Internal_Rating_AsOn = internalRating.dateTo; 
+
+            }
+
+            int? latestExternalRatingYear = db.Ratings.Where(j => j.ratingType == "EXTERNAL" && j.Cust_Id == Id).Select(p => p.ratingYear).DefaultIfEmpty(0).Max();
+            Rating externalRating = db.Ratings.Where(i => i.ratingType == "EXTERNAL" && i.ratingYear == latestExternalRatingYear).SingleOrDefault();
+            if (externalRating != null)
+            {
+                general.External_Rating = externalRating.ratingValue;
+                general.External_Rating_AsOn = externalRating.dateTo;
+            }
+
+            double totalLimit =0;
             double totalBalance=0;
             double totalExposure=0;
             
-            foreach (GeneralExposure gen in exposures)
+            foreach (AccountDetail gen in exposures)
             {
-                if (gen.Limit != null)
-                    totalLimit = totalLimit +    gen.Limit.Value;
-                if (gen.Balance != null)
-                    totalBalance = totalBalance + gen.Balance.Value;
-                if (gen.Exposure != null)
-                    totalExposure = totalExposure + gen.Exposure.Value;
+                if (gen.limit != null)  totalLimit = totalLimit +    gen.limit.Value;
+                if (gen.balance != null) totalBalance = totalBalance + gen.balance.Value;
+                if (gen.exposure != null) totalExposure = totalExposure + gen.exposure.Value;
             }
             List<GeneralGurantorDecorator> gurantorsDecorator = new List<GeneralGurantorDecorator>();
 
@@ -185,7 +214,7 @@ namespace Gamut.WebAPI.Controllers
     
     public class GeneralDecorator
     {
-        public GeneralDecorator(General _data, List<LookUp> _lookupGovtSponsored, List<LookUp> _lookupDCCO,Customer _customer,List<LookUp> _bankingArgmt,List<LookUp> _takeover,List<GeneralGurantorDecorator> _gurantors, List<GeneralExposure> _exposures,double _totalLimit,double _totalBalance,double _totalExposure) 
+        public GeneralDecorator(General _data, List<LookUp> _lookupGovtSponsored, List<LookUp> _lookupDCCO,Customer _customer,List<LookUp> _bankingArgmt,List<LookUp> _takeover,List<GeneralGurantorDecorator> _gurantors, List<AccountDetail> _exposures,double _totalLimit,double _totalBalance,double _totalExposure) 
         {
             entData = _data;
             lookupGovtSponsored = _lookupGovtSponsored;
@@ -207,7 +236,7 @@ namespace Gamut.WebAPI.Controllers
         public List<LookUp> bankingArgmt { get; set; }
         public List<LookUp> takeover { get; set; }
         public List<GeneralGurantorDecorator> gurantors { get; set; }
-        public List<GeneralExposure> exposures { get; set; }
+        public List<AccountDetail> exposures { get; set; }
         public double totalLimit;
         public double totalBalance;
         public double totalExposure;

@@ -17,14 +17,23 @@ namespace Gamut.WebAPI.Models
         public int Id { get; set; }
         public string Cust_Id { get; set; }
         public string accountNumber { get; set; }
-        public string accountType { get; set; }
-        public Nullable<double> sanctionedLimit { get; set; }
-        public Nullable<double> undisbursed { get; set; }
+        public string nature { get; set; }
+        public string smaRiskType { get; set; }
+        public Nullable<int> smaRiskLevel { get; set; }
+        public Nullable<double> limit { get; set; }
         public Nullable<double> balance { get; set; }
+        public Nullable<double> exposure { get; set; }
         public Nullable<double> arrears { get; set; }
+        public string bankingArr { get; set; }
+        public string leadBank { get; set; }
+        public Nullable<System.DateTime> dcco { get; set; }
         public Nullable<double> roi { get; set; }
         public string period { get; set; }
+        public string security { get; set; }
         public Nullable<double> cashMargin { get; set; }
+        public Nullable<System.DateTime> lastRenewalDate { get; set; }
+        public Nullable<System.DateTime> lastReviewDate { get; set; }
+        public string lastReviewDate1or2 { get; set; }
         public Nullable<System.DateTime> lastUpdateOn { get; set; }
         public string lastUpdateBy { get; set; }
     }

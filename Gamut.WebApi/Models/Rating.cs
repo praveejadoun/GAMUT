@@ -23,5 +23,6 @@ namespace Gamut.WebAPI.Models
         public string byId { get; set; }
         public string source { get; set; }
         public Nullable<int> ratingYear { get; set; }
+        public string ratingType { get; set; }
     }
 }
