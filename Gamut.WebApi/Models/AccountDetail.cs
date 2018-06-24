@@ -36,5 +36,6 @@ namespace Gamut.WebAPI.Models
         public string lastReviewDate1or2 { get; set; }
         public Nullable<System.DateTime> lastUpdateOn { get; set; }
         public string lastUpdateBy { get; set; }
+        public Nullable<double> undisbursed { get; set; }
     }
 }

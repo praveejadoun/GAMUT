@@ -40,7 +40,7 @@ namespace Gamut.WebAPI.Controllers
 
       
         [ResponseType(typeof(RatingDecorator))]
-        [Route("api/RatingAPICust/{id}")]
+        [Route("api/RatingCust/{id}")]
         public IHttpActionResult GetRatingBy(string id)
         {
             //Rating rating = db.Ratings.Where(i => i.Cust_Id == id).FirstOrDefault();

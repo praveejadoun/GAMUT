@@ -38,6 +38,27 @@ namespace Gamut.WebAPI.Controllers
             return Ok(warningIndicatorDecorator);
         }
 
+        // GET: api/Soc124API/5
+        [ResponseType(typeof(SOC124Decorator))]
+        [Route("api/WarningIndicatorsByDate/{id}/{fromDate}/{toDate}")]
+
+        public IHttpActionResult GetWarningIndicatorsByDate(string id, string fromDate, string toDate)
+        {
+            DateTime dtFrom = Convert.ToDateTime(fromDate);
+            DateTime dtTo = Convert.ToDateTime(toDate);
+
+            List<WarningIndicator> warningIndicator = db.WarningIndicators.Where(i => i.Cust_Id == id && (i.fromDate >= dtFrom && i.toDate <= dtTo)).ToList();
+            if (warningIndicator == null)
+            {
+                return NotFound();
+            }
+
+            Customer customer = db.Customers.Where(i => i.Cust_id == id).SingleOrDefault();
+            WarningIndicatorDecorator warningIndicatorDecorator = new WarningIndicatorDecorator(warningIndicator, customer);
+
+            return Ok(warningIndicatorDecorator);
+        }
+
         // PUT: api/WarningIndicators/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutWarningIndicator(int id, WarningIndicator warningIndicator)

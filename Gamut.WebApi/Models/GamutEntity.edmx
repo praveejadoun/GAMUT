@@ -18,6 +18,7 @@
           <Property Name="limit" Type="float" />
           <Property Name="balance" Type="float" />
           <Property Name="exposure" Type="float" />
+          <Property Name="undisbursed" Type="float" />
           <Property Name="arrears" Type="float" />
           <Property Name="bankingArr" Type="varchar" MaxLength="50" />
           <Property Name="leadBank" Type="varchar" MaxLength="250" />
@@ -706,6 +707,7 @@
           <Property Name="lastReviewDate1or2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="lastUpdateOn" Type="DateTime" Precision="3" />
           <Property Name="lastUpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="undisbursed" Type="Double" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1001,6 +1003,7 @@
           <EntitySetMapping Name="AccountDetails">
             <EntityTypeMapping TypeName="gamutdatabaseModel.AccountDetail">
               <MappingFragment StoreEntitySet="AccountDetails">
+                <ScalarProperty Name="undisbursed" ColumnName="undisbursed" />
                 <ScalarProperty Name="lastUpdateBy" ColumnName="lastUpdateBy" />
                 <ScalarProperty Name="lastUpdateOn" ColumnName="lastUpdateOn" />
                 <ScalarProperty Name="lastReviewDate1or2" ColumnName="lastReviewDate1or2" />
