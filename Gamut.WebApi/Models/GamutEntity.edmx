@@ -190,6 +190,7 @@
           <Property Name="Url" Type="varchar" MaxLength="500" />
           <Property Name="Cust_id" Type="varchar" MaxLength="50" />
           <Property Name="Comments" Type="varchar" MaxLength="5000" />
+          <Property Name="InformedTo" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="Rating">
           <Key>
@@ -603,6 +604,7 @@
           <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Cust_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Comments" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="InformedTo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_FinancialResultDetails_FinancialResultHeader">
           <End Type="gamutdatabaseModel.FinancialResultHeader" Role="FinancialResultHeader" Multiplicity="0..1" />
@@ -932,6 +934,7 @@
           <EntitySetMapping Name="News">
             <EntityTypeMapping TypeName="gamutdatabaseModel.News">
               <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="InformedTo" ColumnName="InformedTo" />
                 <ScalarProperty Name="Comments" ColumnName="Comments" />
                 <ScalarProperty Name="Cust_id" ColumnName="Cust_id" />
                 <ScalarProperty Name="Url" ColumnName="Url" />

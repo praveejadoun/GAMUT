@@ -21,5 +21,6 @@ namespace Gamut.WebAPI.Models
         public string Url { get; set; }
         public string Cust_id { get; set; }
         public string Comments { get; set; }
+        public string InformedTo { get; set; }
     }
 }
