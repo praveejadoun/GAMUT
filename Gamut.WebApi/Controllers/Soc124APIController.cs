@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -63,8 +64,8 @@ namespace Gamut.WebAPI.Controllers
         
         public IHttpActionResult GetSOC124ByDate(string id,string fromDate,string toDate)
         {
-            DateTime dtFrom = Convert.ToDateTime(fromDate);
-            DateTime dtTo = Convert.ToDateTime(toDate);
+            DateTime dtFrom = Convert.ToDateTime(DateTime.ParseExact(fromDate, "dd-MM-yyyy", CultureInfo.InvariantCulture));
+            DateTime dtTo = Convert.ToDateTime(DateTime.ParseExact(toDate, "dd-MM-yyyy", CultureInfo.InvariantCulture));
             List<SOC124> lstSOC124 = db.SOC124.Where(i => i.Cust_id == id && (i.compiledDate >= dtFrom && i.compiledDate<= dtTo)).ToList();
 
             List<SOC124Decorator> lstSOC124Decorators = new List<SOC124Decorator>();

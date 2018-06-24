@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -44,11 +45,12 @@ namespace Gamut.WebAPI.Controllers
 
         public IHttpActionResult GetWarningIndicatorsByDate(string id, string fromDate, string toDate)
         {
-            DateTime dtFrom = Convert.ToDateTime(fromDate);
-            DateTime dtTo = Convert.ToDateTime(toDate);
+           // DateTime dtFrom = Convert.ToDateTime(fromDate,"DD-MMM-YYYY");
+            DateTime dtFrom =Convert.ToDateTime(DateTime.ParseExact(fromDate, "dd-MM-yyyy", CultureInfo.InvariantCulture));
+            DateTime dtTo = Convert.ToDateTime(DateTime.ParseExact(toDate, "dd-MM-yyyy", CultureInfo.InvariantCulture));
 
-            List<WarningIndicator> warningIndicator = db.WarningIndicators.Where(i => i.Cust_Id == id && (i.fromDate >= dtFrom && i.toDate <= dtTo)).ToList();
-            if (warningIndicator == null)
+            List<WarningIndicator> warningIndicator = db.WarningIndicators.Where(i => i.Cust_Id == id && (i.observedOn >= dtFrom && i.observedOn <= dtTo)).ToList();
+            if (warningIndicator == null || warningIndicator.Count() <=0)
             {
                 return NotFound();
             }

@@ -29,6 +29,36 @@ namespace Gamut.WebAPI.Controllers
             return Ok(interestDecorator);
         }
 
+        [ResponseType(typeof(void))]
+        public IHttpActionResult OptionsNews(int id, News news)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != news.NewsID)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(news).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+
+                throw;
+
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
+
         // PUT: api/Interest/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutNews(int id, News news)
