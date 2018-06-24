@@ -19,5 +19,6 @@ namespace Gamut.WebAPI.Models
         public string gurCust_Id { get; set; }
         public string gurType { get; set; }
         public Nullable<double> netWorth { get; set; }
+        public string accountNo { get; set; }
     }
 }
