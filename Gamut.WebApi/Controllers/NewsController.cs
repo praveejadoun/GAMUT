@@ -15,7 +15,6 @@ namespace Gamut.WebAPI.Controllers
         private gamutdatabaseEntities db = new gamutdatabaseEntities();
 
         [ResponseType(typeof(News))]
-        [Route("api/News/{id}")]
         public IHttpActionResult GetNewsByCustomer(string id)
         {
 
