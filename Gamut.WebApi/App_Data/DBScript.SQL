@@ -1,11 +1,9 @@
 ﻿USE [gamutdatabase]
 GO
-/****** Object:  Table [dbo].[AccountDetails]    Script Date: 24-06-2018 00:50:23 ******/
+/****** Object:  Table [dbo].[AccountDetails]    Script Date: 27-06-2018 23:34:08 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[AccountDetails](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
@@ -17,6 +15,7 @@ CREATE TABLE [dbo].[AccountDetails](
 	[limit] [float] NULL,
 	[balance] [float] NULL,
 	[exposure] [float] NULL,
+	[undisbursed] [float] NULL,
 	[arrears] [float] NULL,
 	[bankingArr] [varchar](50) NULL,
 	[leadBank] [varchar](250) NULL,
@@ -35,16 +34,11 @@ CREATE TABLE [dbo].[AccountDetails](
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
 GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[Customer]    Script Date: 24-06-2018 00:50:24 ******/
+/****** Object:  Table [dbo].[Customer]    Script Date: 27-06-2018 23:34:10 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[Customer](
 	[Cust_id] [varchar](50) NOT NULL,
@@ -64,16 +58,46 @@ CREATE TABLE [dbo].[Customer](
 	[Cust_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
 GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[FinancialResultDetails]    Script Date: 24-06-2018 00:50:24 ******/
+/****** Object:  Table [dbo].[CustomerDataMapping]    Script Date: 27-06-2018 23:34:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-SET ANSI_PADDING ON
+CREATE TABLE [dbo].[CustomerDataMapping](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[CustID] [varchar](50) NULL,
+	[MAppingURl] [varchar](500) NULL,
+	[MappingType] [varchar](100) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Document]    Script Date: 27-06-2018 23:34:11 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Document](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Cust_id] [varchar](50) NULL,
+	[Periodicity] [varchar](50) NULL,
+	[DocumentType] [varchar](50) NULL,
+	[Submitted] [varchar](50) NULL,
+	[SubmittedDate] [datetime] NULL,
+	[DeviationNoted] [varchar](250) NULL,
+	[CompiledDate] [datetime] NULL,
+	[MonitorId] [varchar](100) NULL,
+	[LastUpdatedBy] [varchar](50) NULL,
+	[LastUpdatedOn] [varchar](50) NULL,
+ CONSTRAINT [PK_Document] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[FinancialResultDetails]    Script Date: 27-06-2018 23:34:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[FinancialResultDetails](
 	[ID] [bigint] IDENTITY(1,1) NOT NULL,
@@ -89,16 +113,11 @@ CREATE TABLE [dbo].[FinancialResultDetails](
 	[ID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
 GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[FinancialResultHeader]    Script Date: 24-06-2018 00:50:24 ******/
+/****** Object:  Table [dbo].[FinancialResultHeader]    Script Date: 27-06-2018 23:34:13 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[FinancialResultHeader](
 	[HeaderID] [int] IDENTITY(1,1) NOT NULL,
@@ -110,16 +129,11 @@ CREATE TABLE [dbo].[FinancialResultHeader](
 	[HeaderID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
 GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[FinancialResultType]    Script Date: 24-06-2018 00:50:24 ******/
+/****** Object:  Table [dbo].[FinancialResultType]    Script Date: 27-06-2018 23:34:14 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[FinancialResultType](
 	[TypeID] [int] IDENTITY(1,1) NOT NULL,
@@ -130,16 +144,11 @@ CREATE TABLE [dbo].[FinancialResultType](
 	[TypeID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
 GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[General]    Script Date: 24-06-2018 00:50:24 ******/
+/****** Object:  Table [dbo].[General]    Script Date: 27-06-2018 23:34:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[General](
 	[Cust_id] [varchar](50) NOT NULL,
@@ -195,16 +204,11 @@ CREATE TABLE [dbo].[General](
 	[Cust_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
 GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[GeneralExposure]    Script Date: 24-06-2018 00:50:24 ******/
+/****** Object:  Table [dbo].[GeneralExposure]    Script Date: 27-06-2018 23:34:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[GeneralExposure](
 	[id] [int] IDENTITY(1,1) NOT NULL,
@@ -218,16 +222,11 @@ CREATE TABLE [dbo].[GeneralExposure](
 	[id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
 GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[GeneralGurantor]    Script Date: 24-06-2018 00:50:24 ******/
+/****** Object:  Table [dbo].[GeneralGurantor]    Script Date: 27-06-2018 23:34:17 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[GeneralGurantor](
 	[id] [int] IDENTITY(1,1) NOT NULL,
@@ -241,16 +240,11 @@ CREATE TABLE [dbo].[GeneralGurantor](
 	[id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
 GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[Interest]    Script Date: 24-06-2018 00:50:24 ******/
+/****** Object:  Table [dbo].[Interest]    Script Date: 27-06-2018 23:34:18 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING OFF
 GO
 CREATE TABLE [dbo].[Interest](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
@@ -269,16 +263,11 @@ CREATE TABLE [dbo].[Interest](
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
 GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[LookUp]    Script Date: 24-06-2018 00:50:24 ******/
+/****** Object:  Table [dbo].[LookUp]    Script Date: 27-06-2018 23:34:18 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[LookUp](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
@@ -290,16 +279,11 @@ CREATE TABLE [dbo].[LookUp](
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
 GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[News]    Script Date: 24-06-2018 00:50:24 ******/
+/****** Object:  Table [dbo].[News]    Script Date: 27-06-2018 23:34:19 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[News](
 	[NewsID] [bigint] IDENTITY(1,1) NOT NULL,
@@ -309,21 +293,17 @@ CREATE TABLE [dbo].[News](
 	[Url] [varchar](500) NULL,
 	[Cust_id] [varchar](50) NULL,
 	[Comments] [varchar](5000) NULL,
+	[InformedTo] [varchar](500) NULL,
  CONSTRAINT [PK_News] PRIMARY KEY CLUSTERED 
 (
 	[NewsID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
 GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[Rating]    Script Date: 24-06-2018 00:50:24 ******/
+/****** Object:  Table [dbo].[Rating]    Script Date: 27-06-2018 23:34:20 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[Rating](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
@@ -341,16 +321,11 @@ CREATE TABLE [dbo].[Rating](
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
 GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[RestucturingDetail]    Script Date: 24-06-2018 00:50:24 ******/
+/****** Object:  Table [dbo].[RestucturingDetail]    Script Date: 27-06-2018 23:34:21 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[RestucturingDetail](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
@@ -367,16 +342,11 @@ CREATE TABLE [dbo].[RestucturingDetail](
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
 GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[RestucturingHeader]    Script Date: 24-06-2018 00:50:24 ******/
+/****** Object:  Table [dbo].[RestucturingHeader]    Script Date: 27-06-2018 23:34:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[RestucturingHeader](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
@@ -398,16 +368,11 @@ CREATE TABLE [dbo].[RestucturingHeader](
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
 GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[Security]    Script Date: 24-06-2018 00:50:24 ******/
+/****** Object:  Table [dbo].[Security]    Script Date: 27-06-2018 23:34:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[Security](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
@@ -427,16 +392,11 @@ CREATE TABLE [dbo].[Security](
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
 GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[SOC124]    Script Date: 24-06-2018 00:50:24 ******/
+/****** Object:  Table [dbo].[SOC124]    Script Date: 27-06-2018 23:34:23 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[SOC124](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
@@ -453,16 +413,11 @@ CREATE TABLE [dbo].[SOC124](
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
 GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[Student]    Script Date: 24-06-2018 00:50:24 ******/
+/****** Object:  Table [dbo].[Student]    Script Date: 27-06-2018 23:34:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[Student](
 	[StudentID] [int] NOT NULL,
@@ -477,16 +432,11 @@ CREATE TABLE [dbo].[Student](
 	[StudentID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
 GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[WarningIndicator]    Script Date: 24-06-2018 00:50:24 ******/
+/****** Object:  Table [dbo].[WarningIndicator]    Script Date: 27-06-2018 23:34:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[WarningIndicator](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
@@ -506,57 +456,52 @@ CREATE TABLE [dbo].[WarningIndicator](
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
-GO
-SET ANSI_PADDING OFF
 GO
 SET IDENTITY_INSERT [dbo].[AccountDetails] ON 
-
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (1, N'maruti', N'12345678', N'term loan', N'SMA0', 0, 434343, 4343, NULL, 4535, N'Consortium
-', N'hdfc', NULL, 9, N'mar-jun', NULL, 3434, NULL, NULL, NULL, CAST(0x0000AA4400000000 AS DateTime), N'praveen')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (1, N'maruti', N'12345678', N'term loan', N'SMA0', 0, 434343, 4343, 429608, 4735, 4535, N'Consortium
+', N'hdfc', NULL, 9, N'mar-jun', NULL, 3434, NULL, NULL, NULL, CAST(N'2019-05-05T00:00:00.000' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (2, N'maruti', N'34567989', N'term loan', N'SMA1', 1, 87757, 5, NULL, 4354, N'Multiple', N'hdfc', NULL, 8, N'mar-jun', NULL, 343, NULL, NULL, NULL, CAST(0x0000AA4400000000 AS DateTime), N'praveen')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (2, N'maruti', N'34567989', N'term loan', N'SMA1', 1, 87757, 5, 83203, 4554, 4354, N'Multiple', N'hdfc', NULL, 8, N'mar-jun', NULL, 343, NULL, NULL, NULL, CAST(N'2019-05-05T00:00:00.000' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (3, N'maruti', N'8668656656', N'CC', N'SMA2', 2, 3353535, 533, NULL, 4343, N'Consortium
-', N'hdfc', NULL, 7, N'mar-jun', NULL, 57655, NULL, NULL, NULL, CAST(0x0000AA8300000000 AS DateTime), N'praveen')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (3, N'maruti', N'8668656656', N'CC', N'SMA2', 2, 3353535, 533, 3348992, 4543, 4343, N'Consortium
+', N'hdfc', NULL, 7, N'mar-jun', NULL, 57655, NULL, NULL, NULL, CAST(N'2019-07-07T00:00:00.000' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (4, N'maruti', N'4646755656', N'CC', N'SMA3', 3, 43433, 533, NULL, 554, N'Multiple', N'ICICI', NULL, 7, N'mar-jun', NULL, 57655, NULL, NULL, NULL, CAST(0x0000AA8300000000 AS DateTime), N'praveen')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (4, N'maruti', N'4646755656', N'CC', N'SMA3', 3, 43433, 533, 42679, 754, 554, N'Multiple', N'ICICI', NULL, 7, N'mar-jun', NULL, 57655, NULL, NULL, NULL, CAST(N'2019-07-07T00:00:00.000' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (5, N'tatapower', N'12345678', N'CC', N'SMA0', 1, 1000, 750, 1000, 23432, N'Consortium', N'SBI', NULL, 8.75, NULL, N'gold', NULL, CAST(0x0000A8A700000000 AS DateTime), CAST(0x0000A8A700000000 AS DateTime), NULL, CAST(0x0000A8A700000000 AS DateTime), N'praveen')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (5, N'tatapower', N'12345678', N'CC', N'SMA0', 1, 1000, 750, -22632, 23632, 23432, N'Consortium', N'SBI', NULL, 8.75, NULL, N'gold', NULL, CAST(N'2018-03-18T00:00:00.000' AS DateTime), CAST(N'2018-03-18T00:00:00.000' AS DateTime), NULL, CAST(N'2018-03-18T00:00:00.000' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (6, N'tatapower', N'23456789', N'Term Loan', N'SMA1', 2, 5000, 4850, 4900, 3243, N'Multiple', N'NA', CAST(0x0000A04700000000 AS DateTime), 8.2, NULL, N'silver', NULL, CAST(0x0000A8A700000000 AS DateTime), CAST(0x0000A8A700000000 AS DateTime), NULL, CAST(0x0000A8A700000000 AS DateTime), N'praveen')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (6, N'tatapower', N'23456789', N'Term Loan', N'SMA1', 2, 5000, 4850, 1557, 3443, 3243, N'Multiple', N'NA', CAST(N'2012-05-04T00:00:00.000' AS DateTime), 8.2, NULL, N'silver', NULL, CAST(N'2018-03-18T00:00:00.000' AS DateTime), CAST(N'2018-03-18T00:00:00.000' AS DateTime), NULL, CAST(N'2018-03-18T00:00:00.000' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (7, N'tatapower', N'34567890', N'BG/LC', N'NA', 0, 500, 400, 500, 32432, N'Consortium', N'SBI', NULL, 0.25, NULL, N'future payments', NULL, CAST(0x0000A8A700000000 AS DateTime), CAST(0x0000A8A700000000 AS DateTime), NULL, CAST(0x0000A8A700000000 AS DateTime), N'praveen')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (7, N'tatapower', N'34567890', N'BG/LC', N'NA', 0, 500, 400, -32132, 32632, 32432, N'Consortium', N'SBI', NULL, 0.25, NULL, N'future payments', NULL, CAST(N'2018-03-18T00:00:00.000' AS DateTime), CAST(N'2018-03-18T00:00:00.000' AS DateTime), NULL, CAST(N'2018-03-18T00:00:00.000' AS DateTime), N'praveen')
 GO
 SET IDENTITY_INSERT [dbo].[AccountDetails] OFF
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'AtulAuto', N'Atul Auto', N'EFGHI4567E', 10000, CAST(0x4C320B00 AS Date), N'Public', N'Auto', N'Auto', N'Mfg of Motor Vehicles', N'Hyerabad Lakdi Ka Pul', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=531795&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/auto-2-3-wheelers/atulauto/AA08')
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'AtulAuto', N'Atul Auto', N'EFGHI4567E', 10000, CAST(N'2010-01-01' AS Date), N'Public', N'Auto', N'Auto', N'Mfg of Motor Vehicles', N'Hyerabad Lakdi Ka Pul', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=531795&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/auto-2-3-wheelers/atulauto/AA08')
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'dbs', N'development bank of spore', N'PANSPORE', 3334, CAST(0xD5310B00 AS Date), N'pubic limited', NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'dbs', N'development bank of spore', N'PANSPORE', 3334, CAST(N'2009-09-04' AS Date), N'pubic limited', NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'HCC', N'HCC', N'JKLMN9012J', 10000, CAST(0x4C320B00 AS Date), N'Public', N'Infrastructure', N'Infra', N'Construction/Maintenance of Roads', N'Hyerabad Lakdi Ka Pul', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=500185&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/construction-contracting-civil/hindustanconstructioncompany/HCC')
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'HCC', N'HCC', N'JKLMN9012J', 10000, CAST(N'2010-01-01' AS Date), N'Public', N'Infrastructure', N'Infra', N'Construction/Maintenance of Roads', N'Hyerabad Lakdi Ka Pul', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=500185&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/construction-contracting-civil/hindustanconstructioncompany/HCC')
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'HUL', N'HUL', N'HIJKL7890H', 10000, CAST(0x4C320B00 AS Date), N'Public', N'Consumables', N'FMCG', N'SOAPS,COSMETICS, TOILETRIES, ETC.', N'Bangalore Indira Nagar', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=500696&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/personal-care/hindustanunilever/HU')
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'HUL', N'HUL', N'HIJKL7890H', 10000, CAST(N'2010-01-01' AS Date), N'Public', N'Consumables', N'FMCG', N'SOAPS,COSMETICS, TOILETRIES, ETC.', N'Bangalore Indira Nagar', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=500696&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/personal-care/hindustanunilever/HU')
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'ICICIHFC', N'ICICI HFC', N'CDEFG2345C', 10000, CAST(0x4C320B00 AS Date), N'Public', N'FI', N'NBFC-HFC', N'NBFCs- in the housing sector', N'Bangalore Indira Nagar', NULL, NULL)
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'ICICIHFC', N'ICICI HFC', N'CDEFG2345C', 10000, CAST(N'2010-01-01' AS Date), N'Public', N'FI', N'NBFC-HFC', N'NBFCs- in the housing sector', N'Bangalore Indira Nagar', NULL, NULL)
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'JaypeeInfra', N'Jaypee Infratech Limited', N'IJKLM8901I', 10000, CAST(0x4C320B00 AS Date), N'Public', N'Infrastructure', N'Infra', N'Construction/Maintenance of Roads', N'Delhi Karol Baug', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=533207&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/infrastructure-general/jaypeeinfratech/JI09')
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'JaypeeInfra', N'Jaypee Infratech Limited', N'IJKLM8901I', 10000, CAST(N'2010-01-01' AS Date), N'Public', N'Infrastructure', N'Infra', N'Construction/Maintenance of Roads', N'Delhi Karol Baug', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=533207&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/infrastructure-general/jaypeeinfratech/JI09')
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'LICHFL', N'LIC Housing Finance', N'DEFGH3456D', 10000, CAST(0x4C320B00 AS Date), N'Public', N'FI', N'NBFC-HFC', N'NBFCs- in the housing sector', N'Delhi Karol Baug', NULL, NULL)
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'LICHFL', N'LIC Housing Finance', N'DEFGH3456D', 10000, CAST(N'2010-01-01' AS Date), N'Public', N'FI', N'NBFC-HFC', N'NBFCs- in the housing sector', N'Delhi Karol Baug', NULL, NULL)
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'Maruti', N'Maruti Suzuki', N'FGHIJ5678F', 10000, CAST(0x4C320B00 AS Date), N'Public', N'Auto', N'Auto', N'Mfg of Motor Vehicles', N'Mumbai Fort', NULL, NULL)
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'Maruti', N'Maruti Suzuki', N'FGHIJ5678F', 10000, CAST(N'2010-01-01' AS Date), N'Public', N'Auto', N'Auto', N'Mfg of Motor Vehicles', N'Mumbai Fort', NULL, NULL)
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'PatanjaliAgro', N'Patanjali Agro India P Ltd', N'GHIJK6789G', 10000, CAST(0x4C320B00 AS Date), N'Private', N'Consumables', N'FMCG', N'SOAPS,COSMETICS, TOILETRIES, ETC.', N'Chennai Mount Road', NULL, NULL)
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'PatanjaliAgro', N'Patanjali Agro India P Ltd', N'GHIJK6789G', 10000, CAST(N'2010-01-01' AS Date), N'Private', N'Consumables', N'FMCG', N'SOAPS,COSMETICS, TOILETRIES, ETC.', N'Chennai Mount Road', NULL, NULL)
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'RIL', N'Reliance Industries Limited', N'BCDEF0123B', 10000, CAST(0x4C320B00 AS Date), N'Public', N'Oil', N'Energy', N'Manufacture of refined petroleum products', N'Chennai Mount Road', NULL, NULL)
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'RIL', N'Reliance Industries Limited', N'BCDEF0123B', 10000, CAST(N'2010-01-01' AS Date), N'Public', N'Oil', N'Energy', N'Manufacture of refined petroleum products', N'Chennai Mount Road', NULL, NULL)
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'TataPower', N'Tata Power', N'ABCDE1234A', 10000, CAST(0x4C320B00 AS Date), N'Public', N'Power', N'Energy', N'Collection and Distn of Electricity', N'Mumbai Fort', NULL, NULL)
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'TataPower', N'Tata Power', N'ABCDE1234A', 10000, CAST(N'2010-01-01' AS Date), N'Public', N'Power', N'Energy', N'Collection and Distn of Electricity', N'Mumbai Fort', NULL, NULL)
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'TataSons', N'Tata Sons', N'ABCDE1234A', 10000, CAST(0x4C320B00 AS Date), N'Public', N'Power', N'Energy', N'Collection and Distn of Electricity', N'Mumbai Fort', NULL, NULL)
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'TataSons', N'Tata Sons', N'ABCDE1234A', 10000, CAST(N'2010-01-01' AS Date), N'Public', N'Power', N'Energy', N'Collection and Distn of Electricity', N'Mumbai Fort', NULL, NULL)
 GO
 SET IDENTITY_INSERT [dbo].[FinancialResultDetails] ON 
-
 GO
 INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (106, 49, CAST(150.5800 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'AtulAuto', N'Quarterly')
 GO
@@ -1261,7 +1206,6 @@ GO
 SET IDENTITY_INSERT [dbo].[FinancialResultDetails] OFF
 GO
 SET IDENTITY_INSERT [dbo].[FinancialResultHeader] ON 
-
 GO
 INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive]) VALUES (49, N'Revenue', 1, 1)
 GO
@@ -1296,7 +1240,6 @@ GO
 SET IDENTITY_INSERT [dbo].[FinancialResultHeader] OFF
 GO
 SET IDENTITY_INSERT [dbo].[FinancialResultType] ON 
-
 GO
 INSERT [dbo].[FinancialResultType] ([TypeID], [TypeName], [IsActive]) VALUES (1, N'PROFIT & LOSS', 1)
 GO
@@ -1310,7 +1253,7 @@ SET IDENTITY_INSERT [dbo].[FinancialResultType] OFF
 GO
 INSERT [dbo].[General] ([Cust_id], [Activity], [Sector_SubSector], [Priority_Non_Priority], [Govt_sponsored], [Industry], [Incorporation], [Connection_Since], [Internal_Rating], [Internal_Rating_AsOn], [External_Rating], [External_Rating_AsOn], [Inspection_Comments], [Banking_Argmt], [If_Consortium], [Lead_Bank], [SMA], [DCCO], [DCCO_AsOn], [Takeover], [Takeover_AsOn], [Takeover_From], [Reason_for_Takeover], [Working_capital_L], [Term_Load_L], [Bank_Gurantee_L], [Letter_of_credit_L], [PCL_L], [Bill_Purchase_L], [Working_capital_B], [Term_Load_B], [Bank_Gurantee_B], [Letter_of_credit_B], [PCL_B], [Bill_Purchase_B], [Working_capital_E], [Term_Load_E], [Bank_Gurantee_E], [Letter_of_credit_E], [PCL_E], [Bill_Purchase_E], [Defaults], [Defaults_As_On], [Gurantor_1], [Gurantor_2], [Promoter_1], [Promoter_2], [Promoter_3]) VALUES (N'AutlAuto', N'Mfg of Motor Vehicles', N'Auto', N'No', N'N', N'Auto', N'18-Jun-86', N'02-Feb-10', NULL, NULL, NULL, NULL, NULL, N'Sole', NULL, N'NA', N'NA', N'NA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[General] ([Cust_id], [Activity], [Sector_SubSector], [Priority_Non_Priority], [Govt_sponsored], [Industry], [Incorporation], [Connection_Since], [Internal_Rating], [Internal_Rating_AsOn], [External_Rating], [External_Rating_AsOn], [Inspection_Comments], [Banking_Argmt], [If_Consortium], [Lead_Bank], [SMA], [DCCO], [DCCO_AsOn], [Takeover], [Takeover_AsOn], [Takeover_From], [Reason_for_Takeover], [Working_capital_L], [Term_Load_L], [Bank_Gurantee_L], [Letter_of_credit_L], [PCL_L], [Bill_Purchase_L], [Working_capital_B], [Term_Load_B], [Bank_Gurantee_B], [Letter_of_credit_B], [PCL_B], [Bill_Purchase_B], [Working_capital_E], [Term_Load_E], [Bank_Gurantee_E], [Letter_of_credit_E], [PCL_E], [Bill_Purchase_E], [Defaults], [Defaults_As_On], [Gurantor_1], [Gurantor_2], [Promoter_1], [Promoter_2], [Promoter_3]) VALUES (N'HCC', N'Construction/Maintenance of Roads', N'Infra', N'No', N'N', N'Infrastructure', N'27-Jan-26', N'09-Sep-00', NULL, NULL, NULL, NULL, NULL, N'Multiple', NULL, N'NA', N'SMA2', N'04-06-2003', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[General] ([Cust_id], [Activity], [Sector_SubSector], [Priority_Non_Priority], [Govt_sponsored], [Industry], [Incorporation], [Connection_Since], [Internal_Rating], [Internal_Rating_AsOn], [External_Rating], [External_Rating_AsOn], [Inspection_Comments], [Banking_Argmt], [If_Consortium], [Lead_Bank], [SMA], [DCCO], [DCCO_AsOn], [Takeover], [Takeover_AsOn], [Takeover_From], [Reason_for_Takeover], [Working_capital_L], [Term_Load_L], [Bank_Gurantee_L], [Letter_of_credit_L], [PCL_L], [Bill_Purchase_L], [Working_capital_B], [Term_Load_B], [Bank_Gurantee_B], [Letter_of_credit_B], [PCL_B], [Bill_Purchase_B], [Working_capital_E], [Term_Load_E], [Bank_Gurantee_E], [Letter_of_credit_E], [PCL_E], [Bill_Purchase_E], [Defaults], [Defaults_As_On], [Gurantor_1], [Gurantor_2], [Promoter_1], [Promoter_2], [Promoter_3]) VALUES (N'HCC', N'Construction/Maintenance of Roads', N'Infra', N'No', N'N', N'Infrastructure', N'27-Jan-26', N'09-Sep-00', NULL, NULL, NULL, NULL, NULL, N'Multiple', NULL, N'NA', NULL, N'04-06-2003', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
 INSERT [dbo].[General] ([Cust_id], [Activity], [Sector_SubSector], [Priority_Non_Priority], [Govt_sponsored], [Industry], [Incorporation], [Connection_Since], [Internal_Rating], [Internal_Rating_AsOn], [External_Rating], [External_Rating_AsOn], [Inspection_Comments], [Banking_Argmt], [If_Consortium], [Lead_Bank], [SMA], [DCCO], [DCCO_AsOn], [Takeover], [Takeover_AsOn], [Takeover_From], [Reason_for_Takeover], [Working_capital_L], [Term_Load_L], [Bank_Gurantee_L], [Letter_of_credit_L], [PCL_L], [Bill_Purchase_L], [Working_capital_B], [Term_Load_B], [Bank_Gurantee_B], [Letter_of_credit_B], [PCL_B], [Bill_Purchase_B], [Working_capital_E], [Term_Load_E], [Bank_Gurantee_E], [Letter_of_credit_E], [PCL_E], [Bill_Purchase_E], [Defaults], [Defaults_As_On], [Gurantor_1], [Gurantor_2], [Promoter_1], [Promoter_2], [Promoter_3]) VALUES (N'HL', N'SOAPS,COSMETICS, TOILETRIES, ETC.', N'FMCG', N'No', N'N', N'Consumables', N'17-Oct-33', N'22-May-96', NULL, NULL, NULL, NULL, NULL, N'Consortium', NULL, N'ICICI Bank', N'NA', N'NA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
@@ -1318,13 +1261,13 @@ INSERT [dbo].[General] ([Cust_id], [Activity], [Sector_SubSector], [Priority_Non
 GO
 INSERT [dbo].[General] ([Cust_id], [Activity], [Sector_SubSector], [Priority_Non_Priority], [Govt_sponsored], [Industry], [Incorporation], [Connection_Since], [Internal_Rating], [Internal_Rating_AsOn], [External_Rating], [External_Rating_AsOn], [Inspection_Comments], [Banking_Argmt], [If_Consortium], [Lead_Bank], [SMA], [DCCO], [DCCO_AsOn], [Takeover], [Takeover_AsOn], [Takeover_From], [Reason_for_Takeover], [Working_capital_L], [Term_Load_L], [Bank_Gurantee_L], [Letter_of_credit_L], [PCL_L], [Bill_Purchase_L], [Working_capital_B], [Term_Load_B], [Bank_Gurantee_B], [Letter_of_credit_B], [PCL_B], [Bill_Purchase_B], [Working_capital_E], [Term_Load_E], [Bank_Gurantee_E], [Letter_of_credit_E], [PCL_E], [Bill_Purchase_E], [Defaults], [Defaults_As_On], [Gurantor_1], [Gurantor_2], [Promoter_1], [Promoter_2], [Promoter_3]) VALUES (N'Jaypee', N'Construction/Maintenance of Roads', N'Infra', N'No', N'N', N'Infrastructure', N'05-Apr-07', N'15-Jun-13', NULL, NULL, NULL, NULL, NULL, N'Multiple', NULL, N'NA', N'SMA2', N'31-12-2017', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[General] ([Cust_id], [Activity], [Sector_SubSector], [Priority_Non_Priority], [Govt_sponsored], [Industry], [Incorporation], [Connection_Since], [Internal_Rating], [Internal_Rating_AsOn], [External_Rating], [External_Rating_AsOn], [Inspection_Comments], [Banking_Argmt], [If_Consortium], [Lead_Bank], [SMA], [DCCO], [DCCO_AsOn], [Takeover], [Takeover_AsOn], [Takeover_From], [Reason_for_Takeover], [Working_capital_L], [Term_Load_L], [Bank_Gurantee_L], [Letter_of_credit_L], [PCL_L], [Bill_Purchase_L], [Working_capital_B], [Term_Load_B], [Bank_Gurantee_B], [Letter_of_credit_B], [PCL_B], [Bill_Purchase_B], [Working_capital_E], [Term_Load_E], [Bank_Gurantee_E], [Letter_of_credit_E], [PCL_E], [Bill_Purchase_E], [Defaults], [Defaults_As_On], [Gurantor_1], [Gurantor_2], [Promoter_1], [Promoter_2], [Promoter_3]) VALUES (N'jpmc', N'activity', N'sector or subsector', N'priority non priority', N'No', N'industry', N'incorporation', N'conection since', N'internal ration', CAST(0xCD120B00 AS Date), N'eexternal rating', CAST(0xD0120B00 AS Date), N'inspection comments', N'Multiple', N'if consortium', N'lead bank', N'sma', N'Yes', CAST(0xCF120B00 AS Date), N'Yes', CAST(0xCE120B00 AS Date), N'takeover from bank of america', N'reason for takeover', 1001, 324, 342324, 423, 324, 234, 23423, 324, 324, 24, 23423423, 32432, 4324324324, 23423, 23432, 324324, 3242, 3432, N'2 ', CAST(0xA91F0B00 AS Date), N'jpmc', N'jpmc', N'jpmc', N'jpmc', N'jpmc')
+INSERT [dbo].[General] ([Cust_id], [Activity], [Sector_SubSector], [Priority_Non_Priority], [Govt_sponsored], [Industry], [Incorporation], [Connection_Since], [Internal_Rating], [Internal_Rating_AsOn], [External_Rating], [External_Rating_AsOn], [Inspection_Comments], [Banking_Argmt], [If_Consortium], [Lead_Bank], [SMA], [DCCO], [DCCO_AsOn], [Takeover], [Takeover_AsOn], [Takeover_From], [Reason_for_Takeover], [Working_capital_L], [Term_Load_L], [Bank_Gurantee_L], [Letter_of_credit_L], [PCL_L], [Bill_Purchase_L], [Working_capital_B], [Term_Load_B], [Bank_Gurantee_B], [Letter_of_credit_B], [PCL_B], [Bill_Purchase_B], [Working_capital_E], [Term_Load_E], [Bank_Gurantee_E], [Letter_of_credit_E], [PCL_E], [Bill_Purchase_E], [Defaults], [Defaults_As_On], [Gurantor_1], [Gurantor_2], [Promoter_1], [Promoter_2], [Promoter_3]) VALUES (N'jpmc', N'activity', N'sector or subsector', N'priority non priority', N'No', N'industry', N'incorporation', N'conection since', N'internal ration', CAST(N'1987-12-05' AS Date), N'eexternal rating', CAST(N'1987-12-08' AS Date), N'inspection comments', N'Multiple', N'if consortium', N'lead bank', N'sma', N'Yes', CAST(N'1987-12-07' AS Date), N'Yes', CAST(N'1987-12-06' AS Date), N'takeover from bank of america', N'reason for takeover', 1001, 324, 342324, 423, 324, 234, 23423, 324, 324, 24, 23423423, 32432, 4324324324, 23423, 23432, 324324, 3242, 3432, N'2 ', CAST(N'1996-12-09' AS Date), N'jpmc', N'jpmc', N'jpmc', N'jpmc', N'jpmc')
 GO
 INSERT [dbo].[General] ([Cust_id], [Activity], [Sector_SubSector], [Priority_Non_Priority], [Govt_sponsored], [Industry], [Incorporation], [Connection_Since], [Internal_Rating], [Internal_Rating_AsOn], [External_Rating], [External_Rating_AsOn], [Inspection_Comments], [Banking_Argmt], [If_Consortium], [Lead_Bank], [SMA], [DCCO], [DCCO_AsOn], [Takeover], [Takeover_AsOn], [Takeover_From], [Reason_for_Takeover], [Working_capital_L], [Term_Load_L], [Bank_Gurantee_L], [Letter_of_credit_L], [PCL_L], [Bill_Purchase_L], [Working_capital_B], [Term_Load_B], [Bank_Gurantee_B], [Letter_of_credit_B], [PCL_B], [Bill_Purchase_B], [Working_capital_E], [Term_Load_E], [Bank_Gurantee_E], [Letter_of_credit_E], [PCL_E], [Bill_Purchase_E], [Defaults], [Defaults_As_On], [Gurantor_1], [Gurantor_2], [Promoter_1], [Promoter_2], [Promoter_3]) VALUES (N'LICHFL', N'NBFCs- in the housing sector', N'NBFC-HFC', N'No', N'N', N'FI', N'19-Jun-89', N'04-Jan-17', NULL, NULL, NULL, NULL, NULL, N'Multiple', NULL, N'NA', N'NA', N'NA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
 INSERT [dbo].[General] ([Cust_id], [Activity], [Sector_SubSector], [Priority_Non_Priority], [Govt_sponsored], [Industry], [Incorporation], [Connection_Since], [Internal_Rating], [Internal_Rating_AsOn], [External_Rating], [External_Rating_AsOn], [Inspection_Comments], [Banking_Argmt], [If_Consortium], [Lead_Bank], [SMA], [DCCO], [DCCO_AsOn], [Takeover], [Takeover_AsOn], [Takeover_From], [Reason_for_Takeover], [Working_capital_L], [Term_Load_L], [Bank_Gurantee_L], [Letter_of_credit_L], [PCL_L], [Bill_Purchase_L], [Working_capital_B], [Term_Load_B], [Bank_Gurantee_B], [Letter_of_credit_B], [PCL_B], [Bill_Purchase_B], [Working_capital_E], [Term_Load_E], [Bank_Gurantee_E], [Letter_of_credit_E], [PCL_E], [Bill_Purchase_E], [Defaults], [Defaults_As_On], [Gurantor_1], [Gurantor_2], [Promoter_1], [Promoter_2], [Promoter_3]) VALUES (N'maruti', N'Mfg of Motor Vehicles', N'Auto', N'No', N'No', N'Auto', N'24-Feb-81', N'12-Oct-98', NULL, NULL, NULL, NULL, NULL, N'Consortium', NULL, N'HDFC Bank', N'NA', N'Yes', NULL, N'No', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[General] ([Cust_id], [Activity], [Sector_SubSector], [Priority_Non_Priority], [Govt_sponsored], [Industry], [Incorporation], [Connection_Since], [Internal_Rating], [Internal_Rating_AsOn], [External_Rating], [External_Rating_AsOn], [Inspection_Comments], [Banking_Argmt], [If_Consortium], [Lead_Bank], [SMA], [DCCO], [DCCO_AsOn], [Takeover], [Takeover_AsOn], [Takeover_From], [Reason_for_Takeover], [Working_capital_L], [Term_Load_L], [Bank_Gurantee_L], [Letter_of_credit_L], [PCL_L], [Bill_Purchase_L], [Working_capital_B], [Term_Load_B], [Bank_Gurantee_B], [Letter_of_credit_B], [PCL_B], [Bill_Purchase_B], [Working_capital_E], [Term_Load_E], [Bank_Gurantee_E], [Letter_of_credit_E], [PCL_E], [Bill_Purchase_E], [Defaults], [Defaults_As_On], [Gurantor_1], [Gurantor_2], [Promoter_1], [Promoter_2], [Promoter_3]) VALUES (N'Maruti1', N'activity', N'sdafasd', N'asdfasd', N'sfasf', N'asdfsad', N'asdfsda', N'adfsda', N'asdf', NULL, N'sdafa', NULL, NULL, N'sdf', N'asdf', N'sdaf', N'sdaf', N'adsf', NULL, N'asdf', NULL, N'dsfa', N'fsda', 1001, 324, 342324, 423, 324, 234, 23423, 324, 324, 24, 23423423, 32432, 4324324324, 23423, 23432, 324324, 3242, 3432, N'32432', CAST(0xA51F0B00 AS Date), N'g1', N'g2', N'g3', N'p1', N'p2')
+INSERT [dbo].[General] ([Cust_id], [Activity], [Sector_SubSector], [Priority_Non_Priority], [Govt_sponsored], [Industry], [Incorporation], [Connection_Since], [Internal_Rating], [Internal_Rating_AsOn], [External_Rating], [External_Rating_AsOn], [Inspection_Comments], [Banking_Argmt], [If_Consortium], [Lead_Bank], [SMA], [DCCO], [DCCO_AsOn], [Takeover], [Takeover_AsOn], [Takeover_From], [Reason_for_Takeover], [Working_capital_L], [Term_Load_L], [Bank_Gurantee_L], [Letter_of_credit_L], [PCL_L], [Bill_Purchase_L], [Working_capital_B], [Term_Load_B], [Bank_Gurantee_B], [Letter_of_credit_B], [PCL_B], [Bill_Purchase_B], [Working_capital_E], [Term_Load_E], [Bank_Gurantee_E], [Letter_of_credit_E], [PCL_E], [Bill_Purchase_E], [Defaults], [Defaults_As_On], [Gurantor_1], [Gurantor_2], [Promoter_1], [Promoter_2], [Promoter_3]) VALUES (N'Maruti1', N'activity', N'sdafasd', N'asdfasd', N'sfasf', N'asdfsad', N'asdfsda', N'adfsda', N'asdf', NULL, N'sdafa', NULL, NULL, N'sdf', N'asdf', N'sdaf', N'sdaf', N'adsf', NULL, N'asdf', NULL, N'dsfa', N'fsda', 1001, 324, 342324, 423, 324, 234, 23423, 324, 324, 24, 23423423, 32432, 4324324324, 23423, 23432, 324324, 3242, 3432, N'32432', CAST(N'1996-12-05' AS Date), N'g1', N'g2', N'g3', N'p1', N'p2')
 GO
 INSERT [dbo].[General] ([Cust_id], [Activity], [Sector_SubSector], [Priority_Non_Priority], [Govt_sponsored], [Industry], [Incorporation], [Connection_Since], [Internal_Rating], [Internal_Rating_AsOn], [External_Rating], [External_Rating_AsOn], [Inspection_Comments], [Banking_Argmt], [If_Consortium], [Lead_Bank], [SMA], [DCCO], [DCCO_AsOn], [Takeover], [Takeover_AsOn], [Takeover_From], [Reason_for_Takeover], [Working_capital_L], [Term_Load_L], [Bank_Gurantee_L], [Letter_of_credit_L], [PCL_L], [Bill_Purchase_L], [Working_capital_B], [Term_Load_B], [Bank_Gurantee_B], [Letter_of_credit_B], [PCL_B], [Bill_Purchase_B], [Working_capital_E], [Term_Load_E], [Bank_Gurantee_E], [Letter_of_credit_E], [PCL_E], [Bill_Purchase_E], [Defaults], [Defaults_As_On], [Gurantor_1], [Gurantor_2], [Promoter_1], [Promoter_2], [Promoter_3]) VALUES (N'Patanjali', N'SOAPS,COSMETICS, TOILETRIES, ETC.', N'FMCG', N'No', N'N', N'Consumables', N'19-Aug-09', N'04-Aug-10', NULL, NULL, NULL, NULL, NULL, N'Sole', NULL, N'NA', N'NA', N'NA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
@@ -1333,7 +1276,6 @@ GO
 INSERT [dbo].[General] ([Cust_id], [Activity], [Sector_SubSector], [Priority_Non_Priority], [Govt_sponsored], [Industry], [Incorporation], [Connection_Since], [Internal_Rating], [Internal_Rating_AsOn], [External_Rating], [External_Rating_AsOn], [Inspection_Comments], [Banking_Argmt], [If_Consortium], [Lead_Bank], [SMA], [DCCO], [DCCO_AsOn], [Takeover], [Takeover_AsOn], [Takeover_From], [Reason_for_Takeover], [Working_capital_L], [Term_Load_L], [Bank_Gurantee_L], [Letter_of_credit_L], [PCL_L], [Bill_Purchase_L], [Working_capital_B], [Term_Load_B], [Bank_Gurantee_B], [Letter_of_credit_B], [PCL_B], [Bill_Purchase_B], [Working_capital_E], [Term_Load_E], [Bank_Gurantee_E], [Letter_of_credit_E], [PCL_E], [Bill_Purchase_E], [Defaults], [Defaults_As_On], [Gurantor_1], [Gurantor_2], [Promoter_1], [Promoter_2], [Promoter_3]) VALUES (N'TataPower', N'Collection and Distn of Electricity', N'Energy', N'No', N'N', N'Power', N'18-Sep-19', N'02-Apr-08', NULL, NULL, NULL, NULL, NULL, N'Consortium', NULL, N'SBI', N'SMA0', N'NA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
 SET IDENTITY_INSERT [dbo].[GeneralExposure] ON 
-
 GO
 INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (1, N'maruti', N'Working Capital', 434, 4343, 43)
 GO
@@ -1344,7 +1286,6 @@ GO
 SET IDENTITY_INSERT [dbo].[GeneralExposure] OFF
 GO
 SET IDENTITY_INSERT [dbo].[GeneralGurantor] ON 
-
 GO
 INSERT [dbo].[GeneralGurantor] ([id], [Cust_Id], [accountNo], [gurCust_Id], [gurType], [netWorth]) VALUES (1, N'jpmc', NULL, N'jpmc', N'gur', NULL)
 GO
@@ -1355,36 +1296,34 @@ GO
 SET IDENTITY_INSERT [dbo].[GeneralGurantor] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Interest] ON 
-
 GO
-INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (1, N'jpmc', N'3456789', N'cash-credit', N'as per finacle', 9.9, CAST(0x00009B8800000000 AS DateTime), NULL, CAST(0x0000AC3200000000 AS DateTime), CAST(0x00009C9E00000000 AS DateTime), N'finacle')
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (1, N'jpmc', N'3456789', N'cash-credit', N'as per finacle', 9.9, CAST(N'2009-01-05T00:00:00.000' AS DateTime), NULL, CAST(N'2020-09-10T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'finacle')
 GO
-INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (2, N'jpmc', N'3456785', N'cash-credit', N'as per finacle', 9.9, CAST(0x00009B8800000000 AS DateTime), NULL, CAST(0x0000AC3200000000 AS DateTime), CAST(0x00009C9E00000000 AS DateTime), N'finacle')
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (2, N'jpmc', N'3456785', N'cash-credit', N'as per finacle', 9.9, CAST(N'2009-01-05T00:00:00.000' AS DateTime), NULL, CAST(N'2020-09-10T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'finacle')
 GO
-INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (3, N'jpmc', N'34567867', N'Term-Loan', N'CBS', 10, CAST(0x00009B8800000000 AS DateTime), NULL, CAST(0x0000AC3200000000 AS DateTime), CAST(0x00009C9E00000000 AS DateTime), N'CBS')
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (3, N'jpmc', N'34567867', N'Term-Loan', N'CBS', 10, CAST(N'2009-01-05T00:00:00.000' AS DateTime), NULL, CAST(N'2020-09-10T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
 GO
-INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (4, N'jpmc', N'3456782', N'Term-Loan', N'CBS', 10, CAST(0x00009B8800000000 AS DateTime), NULL, CAST(0x0000AC3200000000 AS DateTime), CAST(0x00009C9E00000000 AS DateTime), N'CBS')
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (4, N'jpmc', N'3456782', N'Term-Loan', N'CBS', 10, CAST(N'2009-01-05T00:00:00.000' AS DateTime), NULL, CAST(N'2020-09-10T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
 GO
-INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (5, N'jpmc', N'3456781', N'PCL', N'CBS', 10, CAST(0x00009B8800000000 AS DateTime), NULL, CAST(0x0000AC3200000000 AS DateTime), CAST(0x00009C9E00000000 AS DateTime), N'CBS')
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (5, N'jpmc', N'3456781', N'PCL', N'CBS', 10, CAST(N'2009-01-05T00:00:00.000' AS DateTime), NULL, CAST(N'2020-09-10T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
 GO
-INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (6, N'jpmc', N'3456788', N'PCL', N'CBS', 11, CAST(0x00009B8800000000 AS DateTime), NULL, CAST(0x0000AC3200000000 AS DateTime), CAST(0x00009C9E00000000 AS DateTime), N'CBS')
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (6, N'jpmc', N'3456788', N'PCL', N'CBS', 11, CAST(N'2009-01-05T00:00:00.000' AS DateTime), NULL, CAST(N'2020-09-10T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
 GO
-INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (7, N'jpmc', N'3456789', N'cash-credit', N'as per finacle', 9.9, CAST(0x00009B8800000000 AS DateTime), NULL, CAST(0x0000AC3200000000 AS DateTime), CAST(0x00009C9E00000000 AS DateTime), N'finacle')
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (7, N'jpmc', N'3456789', N'cash-credit', N'as per finacle', 9.9, CAST(N'2009-01-05T00:00:00.000' AS DateTime), NULL, CAST(N'2020-09-10T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'finacle')
 GO
-INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (8, N'maruti', N'3456785', N'cash-credit', N'as per finacle', 9.9, CAST(0x00009B8800000000 AS DateTime), NULL, CAST(0x0000AC3200000000 AS DateTime), CAST(0x00009C9E00000000 AS DateTime), N'finacle')
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (8, N'maruti', N'3456785', N'cash-credit', N'as per finacle', 9.9, CAST(N'2009-01-05T00:00:00.000' AS DateTime), NULL, CAST(N'2020-09-10T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'finacle')
 GO
-INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (9, N'maruti', N'34567867', N'Term-Loan', N'CBS', 10, CAST(0x00009B8800000000 AS DateTime), NULL, CAST(0x0000AC3200000000 AS DateTime), CAST(0x00009C9E00000000 AS DateTime), N'CBS')
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (9, N'maruti', N'34567867', N'Term-Loan', N'CBS', 10, CAST(N'2009-01-05T00:00:00.000' AS DateTime), NULL, CAST(N'2020-09-10T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
 GO
-INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (10, N'maruti', N'3456782', N'Term-Loan', N'CBS', 10, CAST(0x00009B8800000000 AS DateTime), NULL, CAST(0x0000AC3200000000 AS DateTime), CAST(0x00009C9E00000000 AS DateTime), N'CBS')
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (10, N'maruti', N'3456782', N'Term-Loan', N'CBS', 10, CAST(N'2009-01-05T00:00:00.000' AS DateTime), NULL, CAST(N'2020-09-10T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
 GO
-INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (11, N'hcc', N'3456781', N'PCL', N'CBS', 10, CAST(0x00009B8800000000 AS DateTime), NULL, CAST(0x0000AC3200000000 AS DateTime), CAST(0x00009C9E00000000 AS DateTime), N'CBS')
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (11, N'hcc', N'3456781', N'PCL', N'CBS', 10, CAST(N'2009-01-05T00:00:00.000' AS DateTime), NULL, CAST(N'2020-09-10T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
 GO
-INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (12, N'hcc', N'3456788', N'PCL', N'CBS', 11, CAST(0x00009B8800000000 AS DateTime), NULL, CAST(0x0000AC3200000000 AS DateTime), CAST(0x00009C9E00000000 AS DateTime), N'CBS')
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (12, N'hcc', N'3456788', N'PCL', N'CBS', 11, CAST(N'2009-01-05T00:00:00.000' AS DateTime), NULL, CAST(N'2020-09-10T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
 GO
 SET IDENTITY_INSERT [dbo].[Interest] OFF
 GO
 SET IDENTITY_INSERT [dbo].[LookUp] ON 
-
 GO
 INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (1, N'General', N'Govt_sponsored', N'Yes')
 GO
@@ -1419,262 +1358,256 @@ GO
 SET IDENTITY_INSERT [dbo].[LookUp] OFF
 GO
 SET IDENTITY_INSERT [dbo].[News] ON 
-
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (1, CAST(0x0000A8C700000000 AS DateTime), N'MoneyControl', N'Atul Auto Q4 PAT seen up 146.4% YoY to Rs. 20 cr: HDFC Securities', N'https://www.moneycontrol.com/news/result-poll/atul-auto-q4-pat-seen1464-yoy-to-rs-20-cr-hdfc-securities_10803261.html', N'AtulAuto', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (1, CAST(N'2018-04-19T00:00:00.000' AS DateTime), N'MoneyControl', N'Atul Auto Q4 PAT seen up 146.4% YoY to Rs. 20 cr: HDFC Securities', N'https://www.moneycontrol.com/news/result-poll/atul-auto-q4-pat-seen1464-yoy-to-rs-20-cr-hdfc-securities_10803261.html', N'AtulAuto', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (2, CAST(0x0000A89600000000 AS DateTime), N'MoneyControl', N'Atul Auto Q4 PAT seen up 146.4% YoY to Rs. 20 cr: HDFC Securities', N'https://www.moneycontrol.com/news/result-poll/atul-auto-q4-pat-seen1464-yoy-to-rs-20-cr-hdfc-securities_10803261.html', N'AtulAuto', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (2, CAST(N'2018-03-01T00:00:00.000' AS DateTime), N'MoneyControl', N'Atul Auto Q4 PAT seen up 146.4% YoY to Rs. 20 cr: HDFC Securities', N'https://www.moneycontrol.com/news/result-poll/atul-auto-q4-pat-seen1464-yoy-to-rs-20-cr-hdfc-securities_10803261.html', N'AtulAuto', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (3, CAST(0x0000A89600000000 AS DateTime), N'MoneyControl', N'Atul Auto Q4 PAT seen up 146.4% YoY to Rs. 20 cr: HDFC Securities', N'https://www.moneycontrol.com/news/result-poll/atul-auto-q4-pat-seen1464-yoy-to-rs-20-cr-hdfc-securities_10803261.html', N'AtulAuto', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (3, CAST(N'2018-03-01T00:00:00.000' AS DateTime), N'MoneyControl', N'Atul Auto Q4 PAT seen up 146.4% YoY to Rs. 20 cr: HDFC Securities', N'https://www.moneycontrol.com/news/result-poll/atul-auto-q4-pat-seen1464-yoy-to-rs-20-cr-hdfc-securities_10803261.html', N'AtulAuto', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (4, CAST(0x0000A85B00000000 AS DateTime), N'MoneyControl', N'Atul Auto Q4 PAT seen up 146.4% YoY to Rs. 20 cr: HDFC Securities', N'https://www.moneycontrol.com/news/result-poll/atul-auto-q4-pat-seen1464-yoy-to-rs-20-cr-hdfc-securities_10803261.html', N'AtulAuto', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (4, CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'MoneyControl', N'Atul Auto Q4 PAT seen up 146.4% YoY to Rs. 20 cr: HDFC Securities', N'https://www.moneycontrol.com/news/result-poll/atul-auto-q4-pat-seen1464-yoy-to-rs-20-cr-hdfc-securities_10803261.html', N'AtulAuto', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (5, CAST(0x0000A80100000000 AS DateTime), N'MoneyControl', N'Atul Auto Q4 PAT seen up 146.4% YoY to Rs. 20 cr: HDFC Securities', N'https://www.moneycontrol.com/news/result-poll/atul-auto-q4-pat-seen1464-yoy-to-rs-20-cr-hdfc-securities_10803261.html', N'AtulAuto', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (5, CAST(N'2017-10-03T00:00:00.000' AS DateTime), N'MoneyControl', N'Atul Auto Q4 PAT seen up 146.4% YoY to Rs. 20 cr: HDFC Securities', N'https://www.moneycontrol.com/news/result-poll/atul-auto-q4-pat-seen1464-yoy-to-rs-20-cr-hdfc-securities_10803261.html', N'AtulAuto', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (6, CAST(0x0000A8F600000000 AS DateTime), N'MoneyControl', N'Atul Auto Q4 PAT seen up 146.4% YoY to Rs. 20 cr: HDFC Securities', N'https://www.moneycontrol.com/news/result-poll/atul-auto-q4-pat-seen1464-yoy-to-rs-20-cr-hdfc-securities_10803261.html', N'AtulAuto', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (6, CAST(N'2018-06-05T00:00:00.000' AS DateTime), N'MoneyControl', N'Atul Auto Q4 PAT seen up 146.4% YoY to Rs. 20 cr: HDFC Securities', N'https://www.moneycontrol.com/news/result-poll/atul-auto-q4-pat-seen1464-yoy-to-rs-20-cr-hdfc-securities_10803261.html', N'AtulAuto', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (7, CAST(0x0000A8F200000000 AS DateTime), N'MoneyControl', N'Atul Auto Q4 PAT seen up 146.4% YoY to Rs. 20 cr: HDFC Securities', N'https://www.moneycontrol.com/news/result-poll/atul-auto-q4-pat-seen1464-yoy-to-rs-20-cr-hdfc-securities_10803261.html', N'AtulAuto', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (7, CAST(N'2018-06-01T00:00:00.000' AS DateTime), N'MoneyControl', N'Atul Auto Q4 PAT seen up 146.4% YoY to Rs. 20 cr: HDFC Securities', N'https://www.moneycontrol.com/news/result-poll/atul-auto-q4-pat-seen1464-yoy-to-rs-20-cr-hdfc-securities_10803261.html', N'AtulAuto', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (8, CAST(0x0000A8E500000000 AS DateTime), N'MoneyControl', N'Atul Auto Q4 PAT seen up 146.4% YoY to Rs. 20 cr: HDFC Securities', N'https://www.moneycontrol.com/news/result-poll/atul-auto-q4-pat-seen1464-yoy-to-rs-20-cr-hdfc-securities_10803261.html', N'AtulAuto', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (8, CAST(N'2018-05-19T00:00:00.000' AS DateTime), N'MoneyControl', N'Atul Auto Q4 PAT seen up 146.4% YoY to Rs. 20 cr: HDFC Securities', N'https://www.moneycontrol.com/news/result-poll/atul-auto-q4-pat-seen1464-yoy-to-rs-20-cr-hdfc-securities_10803261.html', N'AtulAuto', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (9, CAST(0x0000A8E500000000 AS DateTime), N'MoneyControl', N'Atul Auto Q4 PAT seen up 146.4% YoY to Rs. 20 cr: HDFC Securities', N'https://www.moneycontrol.com/news/result-poll/atul-auto-q4-pat-seen1464-yoy-to-rs-20-cr-hdfc-securities_10803261.html', N'AtulAuto', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (9, CAST(N'2018-05-19T00:00:00.000' AS DateTime), N'MoneyControl', N'Atul Auto Q4 PAT seen up 146.4% YoY to Rs. 20 cr: HDFC Securities', N'https://www.moneycontrol.com/news/result-poll/atul-auto-q4-pat-seen1464-yoy-to-rs-20-cr-hdfc-securities_10803261.html', N'AtulAuto', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (10, CAST(0x0000A8E200000000 AS DateTime), N'MoneyControl', N'Atul Auto Q4 PAT seen up 146.4% YoY to Rs. 20 cr: HDFC Securities', N'https://www.moneycontrol.com/news/result-poll/atul-auto-q4-pat-seen1464-yoy-to-rs-20-cr-hdfc-securities_10803261.html', N'AtulAuto', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (10, CAST(N'2018-05-16T00:00:00.000' AS DateTime), N'MoneyControl', N'Atul Auto Q4 PAT seen up 146.4% YoY to Rs. 20 cr: HDFC Securities', N'https://www.moneycontrol.com/news/result-poll/atul-auto-q4-pat-seen1464-yoy-to-rs-20-cr-hdfc-securities_10803261.html', N'AtulAuto', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (11, CAST(0x0000A8F700000000 AS DateTime), N'MoneyControl', N'HCC bags Rs 737 cr contract for Bangladesh nuclear power plant', N'https://www.moneycontrol.com/news/business/hcc-bags-rs-737-cr-contract-for-bangladesh-nuclear-power-plant_10983281.html', N'HCC', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (11, CAST(N'2018-06-06T00:00:00.000' AS DateTime), N'MoneyControl', N'HCC bags Rs 737 cr contract for Bangladesh nuclear power plant', N'https://www.moneycontrol.com/news/business/hcc-bags-rs-737-cr-contract-for-bangladesh-nuclear-power-plant_10983281.html', N'HCC', N'hello', N'hello')
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (12, CAST(0x0000A8F700000000 AS DateTime), N'MoneyControl', N'HCC bags Rs 737 cr contract for Bangladesh nuclear power plant', N'https://www.moneycontrol.com/news/business/hcc-bags-rs-737-cr-contract-for-bangladesh-nuclear-power-plant_10983281.html', N'HCC', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (12, CAST(N'2018-06-06T00:00:00.000' AS DateTime), N'MoneyControl', N'HCC bags Rs 737 cr contract for Bangladesh nuclear power plant', N'https://www.moneycontrol.com/news/business/hcc-bags-rs-737-cr-contract-for-bangladesh-nuclear-power-plant_10983281.html', N'HCC', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (13, CAST(0x0000A8D500000000 AS DateTime), N'MoneyControl', N'HCC bags Rs 737 cr contract for Bangladesh nuclear power plant', N'https://www.moneycontrol.com/news/business/hcc-bags-rs-737-cr-contract-for-bangladesh-nuclear-power-plant_10983281.html', N'HCC', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (13, CAST(N'2018-05-03T00:00:00.000' AS DateTime), N'MoneyControl', N'HCC bags Rs 737 cr contract for Bangladesh nuclear power plant', N'https://www.moneycontrol.com/news/business/hcc-bags-rs-737-cr-contract-for-bangladesh-nuclear-power-plant_10983281.html', N'HCC', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (14, CAST(0x0000A8AB00000000 AS DateTime), N'MoneyControl', N'HCC bags Rs 737 cr contract for Bangladesh nuclear power plant', N'https://www.moneycontrol.com/news/business/hcc-bags-rs-737-cr-contract-for-bangladesh-nuclear-power-plant_10983281.html', N'HCC', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (14, CAST(N'2018-03-22T00:00:00.000' AS DateTime), N'MoneyControl', N'HCC bags Rs 737 cr contract for Bangladesh nuclear power plant', N'https://www.moneycontrol.com/news/business/hcc-bags-rs-737-cr-contract-for-bangladesh-nuclear-power-plant_10983281.html', N'HCC', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (15, CAST(0x0000A8F700000000 AS DateTime), N'MoneyControl', N'HCC bags Rs 737 cr contract for Bangladesh nuclear power plant', N'https://www.moneycontrol.com/news/business/hcc-bags-rs-737-cr-contract-for-bangladesh-nuclear-power-plant_10983281.html', N'HCC', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (15, CAST(N'2018-06-06T00:00:00.000' AS DateTime), N'MoneyControl', N'HCC bags Rs 737 cr contract for Bangladesh nuclear power plant', N'https://www.moneycontrol.com/news/business/hcc-bags-rs-737-cr-contract-for-bangladesh-nuclear-power-plant_10983281.html', N'HCC', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (16, CAST(0x0000A8E300000000 AS DateTime), N'MoneyControl', N'HCC bags Rs 737 cr contract for Bangladesh nuclear power plant', N'https://www.moneycontrol.com/news/business/hcc-bags-rs-737-cr-contract-for-bangladesh-nuclear-power-plant_10983281.html', N'HCC', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (16, CAST(N'2018-05-17T00:00:00.000' AS DateTime), N'MoneyControl', N'HCC bags Rs 737 cr contract for Bangladesh nuclear power plant', N'https://www.moneycontrol.com/news/business/hcc-bags-rs-737-cr-contract-for-bangladesh-nuclear-power-plant_10983281.html', N'HCC', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (17, CAST(0x0000A8D600000000 AS DateTime), N'MoneyControl', N'HCC bags Rs 737 cr contract for Bangladesh nuclear power plant', N'https://www.moneycontrol.com/news/business/hcc-bags-rs-737-cr-contract-for-bangladesh-nuclear-power-plant_10983281.html', N'HCC', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (17, CAST(N'2018-05-04T00:00:00.000' AS DateTime), N'MoneyControl', N'HCC bags Rs 737 cr contract for Bangladesh nuclear power plant', N'https://www.moneycontrol.com/news/business/hcc-bags-rs-737-cr-contract-for-bangladesh-nuclear-power-plant_10983281.html', N'HCC', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (18, CAST(0x0000A8D600000000 AS DateTime), N'MoneyControl', N'HCC bags Rs 737 cr contract for Bangladesh nuclear power plant', N'https://www.moneycontrol.com/news/business/hcc-bags-rs-737-cr-contract-for-bangladesh-nuclear-power-plant_10983281.html', N'HCC', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (18, CAST(N'2018-05-04T00:00:00.000' AS DateTime), N'MoneyControl', N'HCC bags Rs 737 cr contract for Bangladesh nuclear power plant', N'https://www.moneycontrol.com/news/business/hcc-bags-rs-737-cr-contract-for-bangladesh-nuclear-power-plant_10983281.html', N'HCC', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (19, CAST(0x0000A8D500000000 AS DateTime), N'MoneyControl', N'HCC bags Rs 737 cr contract for Bangladesh nuclear power plant', N'https://www.moneycontrol.com/news/business/hcc-bags-rs-737-cr-contract-for-bangladesh-nuclear-power-plant_10983281.html', N'HCC', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (19, CAST(N'2018-05-03T00:00:00.000' AS DateTime), N'MoneyControl', N'HCC bags Rs 737 cr contract for Bangladesh nuclear power plant', N'https://www.moneycontrol.com/news/business/hcc-bags-rs-737-cr-contract-for-bangladesh-nuclear-power-plant_10983281.html', N'HCC', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (20, CAST(0x0000A90200000000 AS DateTime), N'MoneyControl', N'Seven of top 10 valued companies add Rs 73,872 crore in MCap', N'https://www.moneycontrol.com/news/business/seventop-10-valued-companies-add-rs-73872-croremcap_11020341.html', N'HUL', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (20, CAST(N'2018-06-17T00:00:00.000' AS DateTime), N'MoneyControl', N'Seven of top 10 valued companies add Rs 73,872 crore in MCap', N'https://www.moneycontrol.com/news/business/seventop-10-valued-companies-add-rs-73872-croremcap_11020341.html', N'HUL', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (21, CAST(0x0000A8F500000000 AS DateTime), N'MoneyControl', N'Seven of top 10 valued companies add Rs 73,872 crore in MCap', N'https://www.moneycontrol.com/news/business/seventop-10-valued-companies-add-rs-73872-croremcap_11020341.html', N'HUL', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (21, CAST(N'2018-06-04T00:00:00.000' AS DateTime), N'MoneyControl', N'Seven of top 10 valued companies add Rs 73,872 crore in MCap', N'https://www.moneycontrol.com/news/business/seventop-10-valued-companies-add-rs-73872-croremcap_11020341.html', N'HUL', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (22, CAST(0x0000A8F200000000 AS DateTime), N'MoneyControl', N'Seven of top 10 valued companies add Rs 73,872 crore in MCap', N'https://www.moneycontrol.com/news/business/seventop-10-valued-companies-add-rs-73872-croremcap_11020341.html', N'HUL', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (22, CAST(N'2018-06-01T00:00:00.000' AS DateTime), N'MoneyControl', N'Seven of top 10 valued companies add Rs 73,872 crore in MCap', N'https://www.moneycontrol.com/news/business/seventop-10-valued-companies-add-rs-73872-croremcap_11020341.html', N'HUL', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (23, CAST(0x0000A8F800000000 AS DateTime), N'MoneyControl', N'Seven of top 10 valued companies add Rs 73,872 crore in MCap', N'https://www.moneycontrol.com/news/business/seventop-10-valued-companies-add-rs-73872-croremcap_11020341.html', N'HUL', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (23, CAST(N'2018-06-07T00:00:00.000' AS DateTime), N'MoneyControl', N'Seven of top 10 valued companies add Rs 73,872 crore in MCap', N'https://www.moneycontrol.com/news/business/seventop-10-valued-companies-add-rs-73872-croremcap_11020341.html', N'HUL', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (24, CAST(0x0000A8F700000000 AS DateTime), N'MoneyControl', N'Seven of top 10 valued companies add Rs 73,872 crore in MCap', N'https://www.moneycontrol.com/news/business/seventop-10-valued-companies-add-rs-73872-croremcap_11020341.html', N'HUL', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (24, CAST(N'2018-06-06T00:00:00.000' AS DateTime), N'MoneyControl', N'Seven of top 10 valued companies add Rs 73,872 crore in MCap', N'https://www.moneycontrol.com/news/business/seventop-10-valued-companies-add-rs-73872-croremcap_11020341.html', N'HUL', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (25, CAST(0x0000A8F600000000 AS DateTime), N'MoneyControl', N'Seven of top 10 valued companies add Rs 73,872 crore in MCap', N'https://www.moneycontrol.com/news/business/seventop-10-valued-companies-add-rs-73872-croremcap_11020341.html', N'HUL', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (25, CAST(N'2018-06-05T00:00:00.000' AS DateTime), N'MoneyControl', N'Seven of top 10 valued companies add Rs 73,872 crore in MCap', N'https://www.moneycontrol.com/news/business/seventop-10-valued-companies-add-rs-73872-croremcap_11020341.html', N'HUL', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (26, CAST(0x0000A8F600000000 AS DateTime), N'MoneyControl', N'Seven of top 10 valued companies add Rs 73,872 crore in MCap', N'https://www.moneycontrol.com/news/business/seventop-10-valued-companies-add-rs-73872-croremcap_11020341.html', N'HUL', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (26, CAST(N'2018-06-05T00:00:00.000' AS DateTime), N'MoneyControl', N'Seven of top 10 valued companies add Rs 73,872 crore in MCap', N'https://www.moneycontrol.com/news/business/seventop-10-valued-companies-add-rs-73872-croremcap_11020341.html', N'HUL', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (27, CAST(0x0000A8F000000000 AS DateTime), N'MoneyControl', N'Seven of top 10 valued companies add Rs 73,872 crore in MCap', N'https://www.moneycontrol.com/news/business/seventop-10-valued-companies-add-rs-73872-croremcap_11020341.html', N'HUL', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (27, CAST(N'2018-05-30T00:00:00.000' AS DateTime), N'MoneyControl', N'Seven of top 10 valued companies add Rs 73,872 crore in MCap', N'https://www.moneycontrol.com/news/business/seventop-10-valued-companies-add-rs-73872-croremcap_11020341.html', N'HUL', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (28, CAST(0x0000A90000000000 AS DateTime), N'MoneyControl', N'Jaypee fails to pay up at SC, talking to YES Bank, Deutsche under alternative plan', N'https://www.moneycontrol.com/news/real-estate/jaypee-fails-to-payat-sc-talking-to-yes-bank-deutsche-under-alternative-plan_11017681.html', N'JaypeeInfra', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (28, CAST(N'2018-06-15T00:00:00.000' AS DateTime), N'MoneyControl', N'Jaypee fails to pay up at SC, talking to YES Bank, Deutsche under alternative plan', N'https://www.moneycontrol.com/news/real-estate/jaypee-fails-to-payat-sc-talking-to-yes-bank-deutsche-under-alternative-plan_11017681.html', N'JaypeeInfra', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (29, CAST(0x0000A8EA00000000 AS DateTime), N'MoneyControl', N'Jaypee fails to pay up at SC, talking to YES Bank, Deutsche under alternative plan', N'https://www.moneycontrol.com/news/real-estate/jaypee-fails-to-payat-sc-talking-to-yes-bank-deutsche-under-alternative-plan_11017681.html', N'JaypeeInfra', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (29, CAST(N'2018-05-24T00:00:00.000' AS DateTime), N'MoneyControl', N'Jaypee fails to pay up at SC, talking to YES Bank, Deutsche under alternative plan', N'https://www.moneycontrol.com/news/real-estate/jaypee-fails-to-payat-sc-talking-to-yes-bank-deutsche-under-alternative-plan_11017681.html', N'JaypeeInfra', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (30, CAST(0x0000A8E400000000 AS DateTime), N'MoneyControl', N'Jaypee fails to pay up at SC, talking to YES Bank, Deutsche under alternative plan', N'https://www.moneycontrol.com/news/real-estate/jaypee-fails-to-payat-sc-talking-to-yes-bank-deutsche-under-alternative-plan_11017681.html', N'JaypeeInfra', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (30, CAST(N'2018-05-18T00:00:00.000' AS DateTime), N'MoneyControl', N'Jaypee fails to pay up at SC, talking to YES Bank, Deutsche under alternative plan', N'https://www.moneycontrol.com/news/real-estate/jaypee-fails-to-payat-sc-talking-to-yes-bank-deutsche-under-alternative-plan_11017681.html', N'JaypeeInfra', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (31, CAST(0x0000A8E000000000 AS DateTime), N'MoneyControl', N'Jaypee fails to pay up at SC, talking to YES Bank, Deutsche under alternative plan', N'https://www.moneycontrol.com/news/real-estate/jaypee-fails-to-payat-sc-talking-to-yes-bank-deutsche-under-alternative-plan_11017681.html', N'JaypeeInfra', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (31, CAST(N'2018-05-14T00:00:00.000' AS DateTime), N'MoneyControl', N'Jaypee fails to pay up at SC, talking to YES Bank, Deutsche under alternative plan', N'https://www.moneycontrol.com/news/real-estate/jaypee-fails-to-payat-sc-talking-to-yes-bank-deutsche-under-alternative-plan_11017681.html', N'JaypeeInfra', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (32, CAST(0x0000A8DC00000000 AS DateTime), N'MoneyControl', N'Jaypee fails to pay up at SC, talking to YES Bank, Deutsche under alternative plan', N'https://www.moneycontrol.com/news/real-estate/jaypee-fails-to-payat-sc-talking-to-yes-bank-deutsche-under-alternative-plan_11017681.html', N'JaypeeInfra', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (32, CAST(N'2018-05-10T00:00:00.000' AS DateTime), N'MoneyControl', N'Jaypee fails to pay up at SC, talking to YES Bank, Deutsche under alternative plan', N'https://www.moneycontrol.com/news/real-estate/jaypee-fails-to-payat-sc-talking-to-yes-bank-deutsche-under-alternative-plan_11017681.html', N'JaypeeInfra', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (33, CAST(0x0000A8E300000000 AS DateTime), N'MoneyControl', N'Jaypee fails to pay up at SC, talking to YES Bank, Deutsche under alternative plan', N'https://www.moneycontrol.com/news/real-estate/jaypee-fails-to-payat-sc-talking-to-yes-bank-deutsche-under-alternative-plan_11017681.html', N'JaypeeInfra', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (33, CAST(N'2018-05-17T00:00:00.000' AS DateTime), N'MoneyControl', N'Jaypee fails to pay up at SC, talking to YES Bank, Deutsche under alternative plan', N'https://www.moneycontrol.com/news/real-estate/jaypee-fails-to-payat-sc-talking-to-yes-bank-deutsche-under-alternative-plan_11017681.html', N'JaypeeInfra', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (34, CAST(0x0000A8E300000000 AS DateTime), N'MoneyControl', N'Jaypee fails to pay up at SC, talking to YES Bank, Deutsche under alternative plan', N'https://www.moneycontrol.com/news/real-estate/jaypee-fails-to-payat-sc-talking-to-yes-bank-deutsche-under-alternative-plan_11017681.html', N'JaypeeInfra', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (34, CAST(N'2018-05-17T00:00:00.000' AS DateTime), N'MoneyControl', N'Jaypee fails to pay up at SC, talking to YES Bank, Deutsche under alternative plan', N'https://www.moneycontrol.com/news/real-estate/jaypee-fails-to-payat-sc-talking-to-yes-bank-deutsche-under-alternative-plan_11017681.html', N'JaypeeInfra', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (35, CAST(0x0000A8E100000000 AS DateTime), N'MoneyControl', N'Jaypee fails to pay up at SC, talking to YES Bank, Deutsche under alternative plan', N'https://www.moneycontrol.com/news/real-estate/jaypee-fails-to-payat-sc-talking-to-yes-bank-deutsche-under-alternative-plan_11017681.html', N'JaypeeInfra', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (35, CAST(N'2018-05-15T00:00:00.000' AS DateTime), N'MoneyControl', N'Jaypee fails to pay up at SC, talking to YES Bank, Deutsche under alternative plan', N'https://www.moneycontrol.com/news/real-estate/jaypee-fails-to-payat-sc-talking-to-yes-bank-deutsche-under-alternative-plan_11017681.html', N'JaypeeInfra', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (36, CAST(0x0000A8E000000000 AS DateTime), N'MoneyControl', N'Jaypee fails to pay up at SC, talking to YES Bank, Deutsche under alternative plan', N'https://www.moneycontrol.com/news/real-estate/jaypee-fails-to-payat-sc-talking-to-yes-bank-deutsche-under-alternative-plan_11017681.html', N'JaypeeInfra', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (36, CAST(N'2018-05-14T00:00:00.000' AS DateTime), N'MoneyControl', N'Jaypee fails to pay up at SC, talking to YES Bank, Deutsche under alternative plan', N'https://www.moneycontrol.com/news/real-estate/jaypee-fails-to-payat-sc-talking-to-yes-bank-deutsche-under-alternative-plan_11017681.html', N'JaypeeInfra', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments]) VALUES (37, CAST(0x0000A8DD00000000 AS DateTime), N'MoneyControl', N'Jaypee fails to pay up at SC, talking to YES Bank, Deutsche under alternative plan', N'https://www.moneycontrol.com/news/real-estate/jaypee-fails-to-payat-sc-talking-to-yes-bank-deutsche-under-alternative-plan_11017681.html', N'JaypeeInfra', NULL)
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (37, CAST(N'2018-05-11T00:00:00.000' AS DateTime), N'MoneyControl', N'Jaypee fails to pay up at SC, talking to YES Bank, Deutsche under alternative plan', N'https://www.moneycontrol.com/news/real-estate/jaypee-fails-to-payat-sc-talking-to-yes-bank-deutsche-under-alternative-plan_11017681.html', N'JaypeeInfra', NULL, NULL)
 GO
 SET IDENTITY_INSERT [dbo].[News] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Rating] ON 
-
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (1, N'tatapower', N'as per SO', CAST(0x0000A5FF00000000 AS DateTime), CAST(0x0000A76C00000000 AS DateTime), NULL, 2018, N'AA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (1, N'tatapower', N'as per SO', CAST(N'2016-05-07T00:00:00.000' AS DateTime), CAST(N'2017-05-07T00:00:00.000' AS DateTime), NULL, 2018, N'AA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (2, N'tatapower', N'as per SO', CAST(0x0000A49100000000 AS DateTime), CAST(0x0000A32400000000 AS DateTime), NULL, 2017, N'A', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (2, N'tatapower', N'as per SO', CAST(N'2015-05-07T00:00:00.000' AS DateTime), CAST(N'2014-05-07T00:00:00.000' AS DateTime), NULL, 2017, N'A', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (3, N'tatapower', N'as per SO', CAST(0x0000A32400000000 AS DateTime), CAST(0x0000A1B700000000 AS DateTime), NULL, 2016, N'A', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (3, N'tatapower', N'as per SO', CAST(N'2014-05-07T00:00:00.000' AS DateTime), CAST(N'2013-05-07T00:00:00.000' AS DateTime), NULL, 2016, N'A', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (4, N'tatapower', N'as per SO', CAST(0x0000A1B700000000 AS DateTime), CAST(0x0000A04A00000000 AS DateTime), NULL, 2015, N'A', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (4, N'tatapower', N'as per SO', CAST(N'2013-05-07T00:00:00.000' AS DateTime), CAST(N'2012-05-07T00:00:00.000' AS DateTime), NULL, 2015, N'A', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (5, N'tatapower', N'as per SO', CAST(0x0000A5FF00000000 AS DateTime), CAST(0x0000A76C00000000 AS DateTime), NULL, 2014, N'A', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (5, N'tatapower', N'as per SO', CAST(N'2016-05-07T00:00:00.000' AS DateTime), CAST(N'2017-05-07T00:00:00.000' AS DateTime), NULL, 2014, N'A', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (6, N'RIL', N'as per SO', CAST(0x0000A49100000000 AS DateTime), CAST(0x0000A32400000000 AS DateTime), NULL, 2018, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (6, N'RIL', N'as per SO', CAST(N'2015-05-07T00:00:00.000' AS DateTime), CAST(N'2014-05-07T00:00:00.000' AS DateTime), NULL, 2018, N'AAA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (7, N'RIL', N'as per SO', CAST(0x0000A32400000000 AS DateTime), CAST(0x0000A1B700000000 AS DateTime), NULL, 2017, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (7, N'RIL', N'as per SO', CAST(N'2014-05-07T00:00:00.000' AS DateTime), CAST(N'2013-05-07T00:00:00.000' AS DateTime), NULL, 2017, N'AAA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (8, N'RIL', N'as per SO', CAST(0x0000A1B700000000 AS DateTime), CAST(0x0000A04A00000000 AS DateTime), NULL, 2016, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (8, N'RIL', N'as per SO', CAST(N'2013-05-07T00:00:00.000' AS DateTime), CAST(N'2012-05-07T00:00:00.000' AS DateTime), NULL, 2016, N'AAA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (9, N'RIL', N'as per SO', CAST(0x0000A5FF00000000 AS DateTime), CAST(0x0000A76C00000000 AS DateTime), NULL, 2015, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (9, N'RIL', N'as per SO', CAST(N'2016-05-07T00:00:00.000' AS DateTime), CAST(N'2017-05-07T00:00:00.000' AS DateTime), NULL, 2015, N'AAA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (10, N'RIL', N'as per SO', CAST(0x0000A49100000000 AS DateTime), CAST(0x0000A32400000000 AS DateTime), NULL, 2014, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (10, N'RIL', N'as per SO', CAST(N'2015-05-07T00:00:00.000' AS DateTime), CAST(N'2014-05-07T00:00:00.000' AS DateTime), NULL, 2014, N'AAA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (11, N'ICICIHFC', N'as per SO', CAST(0x0000A32400000000 AS DateTime), CAST(0x0000A1B700000000 AS DateTime), NULL, 2018, N'AA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (11, N'ICICIHFC', N'as per SO', CAST(N'2014-05-07T00:00:00.000' AS DateTime), CAST(N'2013-05-07T00:00:00.000' AS DateTime), NULL, 2018, N'AA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (12, N'ICICIHFC', N'as per SO', CAST(0x0000A1B700000000 AS DateTime), CAST(0x0000A04A00000000 AS DateTime), NULL, 2017, N'AA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (12, N'ICICIHFC', N'as per SO', CAST(N'2013-05-07T00:00:00.000' AS DateTime), CAST(N'2012-05-07T00:00:00.000' AS DateTime), NULL, 2017, N'AA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (13, N'ICICIHFC', N'as per SO', CAST(0x0000A5FF00000000 AS DateTime), CAST(0x0000A76C00000000 AS DateTime), NULL, 2016, N'AA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (13, N'ICICIHFC', N'as per SO', CAST(N'2016-05-07T00:00:00.000' AS DateTime), CAST(N'2017-05-07T00:00:00.000' AS DateTime), NULL, 2016, N'AA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (14, N'ICICIHFC', N'as per SO', CAST(0x0000A49100000000 AS DateTime), CAST(0x0000A32400000000 AS DateTime), NULL, 2015, N'AA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (14, N'ICICIHFC', N'as per SO', CAST(N'2015-05-07T00:00:00.000' AS DateTime), CAST(N'2014-05-07T00:00:00.000' AS DateTime), NULL, 2015, N'AA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (15, N'ICICIHFC', N'as per SO', CAST(0x0000A32400000000 AS DateTime), CAST(0x0000A1B700000000 AS DateTime), NULL, 2014, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (15, N'ICICIHFC', N'as per SO', CAST(N'2014-05-07T00:00:00.000' AS DateTime), CAST(N'2013-05-07T00:00:00.000' AS DateTime), NULL, 2014, N'AAA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (16, N'LICHFL', N'as per SO', CAST(0x0000A1B700000000 AS DateTime), CAST(0x0000A04A00000000 AS DateTime), NULL, 2018, N'AA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (16, N'LICHFL', N'as per SO', CAST(N'2013-05-07T00:00:00.000' AS DateTime), CAST(N'2012-05-07T00:00:00.000' AS DateTime), NULL, 2018, N'AA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (17, N'LICHFL', N'as per SO', CAST(0x0000A5FF00000000 AS DateTime), CAST(0x0000A76C00000000 AS DateTime), NULL, 2017, N'AA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (17, N'LICHFL', N'as per SO', CAST(N'2016-05-07T00:00:00.000' AS DateTime), CAST(N'2017-05-07T00:00:00.000' AS DateTime), NULL, 2017, N'AA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (18, N'LICHFL', N'as per SO', CAST(0x0000A49100000000 AS DateTime), CAST(0x0000A32400000000 AS DateTime), NULL, 2016, N'AA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (18, N'LICHFL', N'as per SO', CAST(N'2015-05-07T00:00:00.000' AS DateTime), CAST(N'2014-05-07T00:00:00.000' AS DateTime), NULL, 2016, N'AA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (19, N'LICHFL', N'as per SO', CAST(0x0000A32400000000 AS DateTime), CAST(0x0000A1B700000000 AS DateTime), NULL, 2015, N'AA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (19, N'LICHFL', N'as per SO', CAST(N'2014-05-07T00:00:00.000' AS DateTime), CAST(N'2013-05-07T00:00:00.000' AS DateTime), NULL, 2015, N'AA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (20, N'LICHFL', N'as per SO', CAST(0x0000A1B700000000 AS DateTime), CAST(0x0000A04A00000000 AS DateTime), NULL, 2014, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (20, N'LICHFL', N'as per SO', CAST(N'2013-05-07T00:00:00.000' AS DateTime), CAST(N'2012-05-07T00:00:00.000' AS DateTime), NULL, 2014, N'AAA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (21, N'maruti', N'as per SO', CAST(0x0000A1B700000000 AS DateTime), CAST(0x0000A04A00000000 AS DateTime), N'INTERNAL', 2018, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (21, N'maruti', N'as per SO', CAST(N'2013-05-07T00:00:00.000' AS DateTime), CAST(N'2012-05-07T00:00:00.000' AS DateTime), N'INTERNAL', 2018, N'AAA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (22, N'maruti', N'as per SO', CAST(0x0000A5FF00000000 AS DateTime), CAST(0x0000A76C00000000 AS DateTime), N'INTERNAL', 2017, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (22, N'maruti', N'as per SO', CAST(N'2016-05-07T00:00:00.000' AS DateTime), CAST(N'2017-05-07T00:00:00.000' AS DateTime), N'INTERNAL', 2017, N'AAA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (23, N'maruti', N'as per SO', CAST(0x0000A49100000000 AS DateTime), CAST(0x0000A32400000000 AS DateTime), N'INTERNAL', 2016, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (23, N'maruti', N'as per SO', CAST(N'2015-05-07T00:00:00.000' AS DateTime), CAST(N'2014-05-07T00:00:00.000' AS DateTime), N'INTERNAL', 2016, N'AAA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (24, N'maruti', N'as per SO', CAST(0x0000A32400000000 AS DateTime), CAST(0x0000A1B700000000 AS DateTime), N'INTERNAL', 2015, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (24, N'maruti', N'as per SO', CAST(N'2014-05-07T00:00:00.000' AS DateTime), CAST(N'2013-05-07T00:00:00.000' AS DateTime), N'INTERNAL', 2015, N'AAA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (25, N'maruti', N'as per SO', CAST(0x0000A1B700000000 AS DateTime), CAST(0x0000A04A00000000 AS DateTime), N'EXTERNAL', 2014, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (25, N'maruti', N'as per SO', CAST(N'2013-05-07T00:00:00.000' AS DateTime), CAST(N'2012-05-07T00:00:00.000' AS DateTime), N'EXTERNAL', 2014, N'AAA', N'testid', N'Web')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (26, N'maruti', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), N'EXTERNAL', 2018, N'CBR4', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (26, N'maruti', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), N'EXTERNAL', 2018, N'CBR4', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (27, N'maruti', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), N'EXTERNAL', 2017, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (27, N'maruti', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), N'EXTERNAL', 2017, N'CBR3', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (28, N'maruti', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), N'EXTERNAL', 2016, N'CBR4', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (28, N'maruti', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), N'EXTERNAL', 2016, N'CBR4', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (29, N'maruti', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2015, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (29, N'maruti', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2015, N'CBR3', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (30, N'tatapower', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2014, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (30, N'tatapower', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2014, N'CBR3', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (31, N'RIL', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2018, N'CBR2', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (31, N'RIL', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2018, N'CBR2', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (32, N'RIL', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2017, N'CBR2', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (32, N'RIL', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2017, N'CBR2', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (33, N'RIL', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2016, N'CBR2', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (33, N'RIL', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2016, N'CBR2', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (34, N'RIL', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2015, N'NA', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (34, N'RIL', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2015, N'NA', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (35, N'RIL', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2014, N'NA', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (35, N'RIL', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2014, N'NA', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (36, N'ICICIHFC', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2018, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (36, N'ICICIHFC', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2018, N'CBR3', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (37, N'ICICIHFC', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2017, N'CBR2', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (37, N'ICICIHFC', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2017, N'CBR2', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (38, N'ICICIHFC', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2016, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (38, N'ICICIHFC', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2016, N'CBR3', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (39, N'ICICIHFC', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2015, N'CBR2', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (39, N'ICICIHFC', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2015, N'CBR2', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (40, N'ICICIHFC', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2014, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (40, N'ICICIHFC', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2014, N'CBR3', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (41, N'LICHFL', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2018, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (41, N'LICHFL', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2018, N'CBR3', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (42, N'LICHFL', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2017, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (42, N'LICHFL', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2017, N'CBR3', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (43, N'LICHFL', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2016, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (43, N'LICHFL', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2016, N'CBR3', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (44, N'LICHFL', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2015, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (44, N'LICHFL', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2015, N'CBR3', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (45, N'LICHFL', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2014, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (45, N'LICHFL', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2014, N'CBR3', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (46, N'Atul Auto', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2018, N'CBR5', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (46, N'Atul Auto', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2018, N'CBR5', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (47, N'Atul Auto', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2017, N'CBR7', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (47, N'Atul Auto', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2017, N'CBR7', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (48, N'Atul Auto', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2016, N'CBR7', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (48, N'Atul Auto', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2016, N'CBR7', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (49, N'Atul Auto', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2015, N'CBR6', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (49, N'Atul Auto', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2015, N'CBR6', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (50, N'Atul Auto', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2014, N'CBR7', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (50, N'Atul Auto', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2014, N'CBR7', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (51, N'Maruti Suzuki', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2018, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (51, N'Maruti Suzuki', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2018, N'CBR3', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (52, N'Maruti Suzuki', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2017, N'CBR4', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (52, N'Maruti Suzuki', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2017, N'CBR4', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (53, N'Maruti Suzuki', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2016, N'CBR4', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (53, N'Maruti Suzuki', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2016, N'CBR4', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (54, N'Maruti Suzuki', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2015, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (54, N'Maruti Suzuki', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2015, N'CBR3', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (55, N'Maruti Suzuki', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2014, N'CBR4', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (55, N'Maruti Suzuki', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2014, N'CBR4', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (56, N'jpmc', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2018, N'CBR5', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (56, N'jpmc', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2018, N'CBR5', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (57, N'jpmc', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2017, N'CBR7', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (57, N'jpmc', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2017, N'CBR7', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (58, N'jpmc', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2016, N'CBR7', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (58, N'jpmc', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2016, N'CBR7', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (59, N'jpmc', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2015, N'CBR6', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (59, N'jpmc', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2015, N'CBR6', N'tesid', N'internal')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (60, N'jpmc', N'as per SO', CAST(0x0000A6CE00000000 AS DateTime), CAST(0x0000A7B300000000 AS DateTime), NULL, 2014, N'CBR7', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (60, N'jpmc', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2014, N'CBR7', N'tesid', N'internal')
 GO
 SET IDENTITY_INSERT [dbo].[Rating] OFF
 GO
 SET IDENTITY_INSERT [dbo].[RestucturingDetail] ON 
-
 GO
-INSERT [dbo].[RestucturingDetail] ([Id], [Cust_id], [accountNo], [type], [accountDate], [cutofDate], [sacrifice], [repaymentStartDate], [frequency]) VALUES (1, N'maruti', N'42423432', N'cc', CAST(0x0000AA4400000000 AS DateTime), CAST(0x0000AA4400000000 AS DateTime), 5000, CAST(0x0000ABB200000000 AS DateTime), N'M')
+INSERT [dbo].[RestucturingDetail] ([Id], [Cust_id], [accountNo], [type], [accountDate], [cutofDate], [sacrifice], [repaymentStartDate], [frequency]) VALUES (1, N'maruti', N'42423432', N'cc', CAST(N'2019-05-05T00:00:00.000' AS DateTime), CAST(N'2019-05-05T00:00:00.000' AS DateTime), 5000, CAST(N'2020-05-05T00:00:00.000' AS DateTime), N'M')
 GO
-INSERT [dbo].[RestucturingDetail] ([Id], [Cust_id], [accountNo], [type], [accountDate], [cutofDate], [sacrifice], [repaymentStartDate], [frequency]) VALUES (2, N'maruti', N'34234324', N'term', CAST(0x0000AA4400000000 AS DateTime), CAST(0x0000AA4400000000 AS DateTime), 543434, CAST(0x0000920300000000 AS DateTime), N'Y')
+INSERT [dbo].[RestucturingDetail] ([Id], [Cust_id], [accountNo], [type], [accountDate], [cutofDate], [sacrifice], [repaymentStartDate], [frequency]) VALUES (2, N'maruti', N'34234324', N'term', CAST(N'2019-05-05T00:00:00.000' AS DateTime), CAST(N'2019-05-05T00:00:00.000' AS DateTime), 543434, CAST(N'2002-05-05T00:00:00.000' AS DateTime), N'Y')
 GO
-INSERT [dbo].[RestucturingDetail] ([Id], [Cust_id], [accountNo], [type], [accountDate], [cutofDate], [sacrifice], [repaymentStartDate], [frequency]) VALUES (3, N'HCC', N'42423432', N'cc', CAST(0x0000AA4400000000 AS DateTime), CAST(0x0000AA4400000000 AS DateTime), 5000, CAST(0x0000ABB200000000 AS DateTime), N'M')
+INSERT [dbo].[RestucturingDetail] ([Id], [Cust_id], [accountNo], [type], [accountDate], [cutofDate], [sacrifice], [repaymentStartDate], [frequency]) VALUES (3, N'HCC', N'42423432', N'cc', CAST(N'2019-05-05T00:00:00.000' AS DateTime), CAST(N'2019-05-05T00:00:00.000' AS DateTime), 5000, CAST(N'2020-05-05T00:00:00.000' AS DateTime), N'M')
 GO
-INSERT [dbo].[RestucturingDetail] ([Id], [Cust_id], [accountNo], [type], [accountDate], [cutofDate], [sacrifice], [repaymentStartDate], [frequency]) VALUES (4, N'HCC', N'34234324', N'term', CAST(0x0000AA4400000000 AS DateTime), CAST(0x0000AA4400000000 AS DateTime), 543434, CAST(0x0000920300000000 AS DateTime), N'Y')
+INSERT [dbo].[RestucturingDetail] ([Id], [Cust_id], [accountNo], [type], [accountDate], [cutofDate], [sacrifice], [repaymentStartDate], [frequency]) VALUES (4, N'HCC', N'34234324', N'term', CAST(N'2019-05-05T00:00:00.000' AS DateTime), CAST(N'2019-05-05T00:00:00.000' AS DateTime), 543434, CAST(N'2002-05-05T00:00:00.000' AS DateTime), N'Y')
 GO
 SET IDENTITY_INSERT [dbo].[RestucturingDetail] OFF
 GO
 SET IDENTITY_INSERT [dbo].[RestucturingHeader] ON 
-
 GO
-INSERT [dbo].[RestucturingHeader] ([Id], [Cust_Id], [accountRestructured], [accountRescheduled], [idNo], [soApplicationDate], [checkedByCRMD], [pfNo], [followupDate], [accountRegularisedDate], [projectType], [dccoDate], [ExtendedDate], [actualDate]) VALUES (1, N'Maruti', N'yes', N'no', N'1', CAST(0x00009C9900000000 AS DateTime), N'yes', N'pfnotest', CAST(0x00009D6D00000000 AS DateTime), CAST(0x0000AAE200000000 AS DateTime), N'projecttype', CAST(0x0000A88300000000 AS DateTime), CAST(0x00009BAD00000000 AS DateTime), CAST(0x0000AA4400000000 AS DateTime))
+INSERT [dbo].[RestucturingHeader] ([Id], [Cust_Id], [accountRestructured], [accountRescheduled], [idNo], [soApplicationDate], [checkedByCRMD], [pfNo], [followupDate], [accountRegularisedDate], [projectType], [dccoDate], [ExtendedDate], [actualDate]) VALUES (1, N'Maruti', N'yes', N'no', N'1', CAST(N'2009-10-05T00:00:00.000' AS DateTime), N'yes', N'pfnotest', CAST(N'2010-05-05T00:00:00.000' AS DateTime), CAST(N'2019-10-10T00:00:00.000' AS DateTime), N'projecttype', CAST(N'2018-02-10T00:00:00.000' AS DateTime), CAST(N'2009-02-11T00:00:00.000' AS DateTime), CAST(N'2019-05-05T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[RestucturingHeader] ([Id], [Cust_Id], [accountRestructured], [accountRescheduled], [idNo], [soApplicationDate], [checkedByCRMD], [pfNo], [followupDate], [accountRegularisedDate], [projectType], [dccoDate], [ExtendedDate], [actualDate]) VALUES (2, N'HCC', N'no', N'yes', N'2', CAST(0x00009C9900000000 AS DateTime), N'yes', N'phnoHCC', CAST(0x00009D6D00000000 AS DateTime), CAST(0x0000AAE200000000 AS DateTime), N'projecttype', CAST(0x0000A88300000000 AS DateTime), CAST(0x00009BAD00000000 AS DateTime), CAST(0x0000AA4400000000 AS DateTime))
+INSERT [dbo].[RestucturingHeader] ([Id], [Cust_Id], [accountRestructured], [accountRescheduled], [idNo], [soApplicationDate], [checkedByCRMD], [pfNo], [followupDate], [accountRegularisedDate], [projectType], [dccoDate], [ExtendedDate], [actualDate]) VALUES (2, N'HCC', N'no', N'yes', N'2', CAST(N'2009-10-05T00:00:00.000' AS DateTime), N'yes', N'phnoHCC', CAST(N'2010-05-05T00:00:00.000' AS DateTime), CAST(N'2019-10-10T00:00:00.000' AS DateTime), N'projecttype', CAST(N'2018-02-10T00:00:00.000' AS DateTime), CAST(N'2009-02-11T00:00:00.000' AS DateTime), CAST(N'2019-05-05T00:00:00.000' AS DateTime))
 GO
 SET IDENTITY_INSERT [dbo].[RestucturingHeader] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Security] ON 
-
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth]) VALUES (1, N'tatapower', N'34343432', N'Primary', 540400, N'Receivables and Inventory', 860, N'Yes', CAST(0x0000A74700000000 AS DateTime), N'70%', N'TataSons', 500)
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth]) VALUES (1, N'tatapower', N'34343432', N'Primary', 540400, N'Receivables and Inventory', 860, N'Yes', CAST(N'2017-03-31T00:00:00.000' AS DateTime), N'70%', N'TataSons', 500)
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth]) VALUES (2, N'tatapower', N'2456335', N'Primary', 4044, N'Land and Building', 6000, N'Yes', CAST(0x0000A74700000000 AS DateTime), N'30%', N'TataSons', 500)
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth]) VALUES (2, N'tatapower', N'2456335', N'Primary', 4044, N'Land and Building', 6000, N'Yes', CAST(N'2017-03-31T00:00:00.000' AS DateTime), N'30%', N'TataSons', 500)
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth]) VALUES (3, N'tatapower', N'3455234', N'Primary', 4044, N'CC', 6000, N'Yes', CAST(0x0000A74700000000 AS DateTime), N'30%', N'TataSons', 500)
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth]) VALUES (3, N'tatapower', N'3455234', N'Primary', 4044, N'CC', 6000, N'Yes', CAST(N'2017-03-31T00:00:00.000' AS DateTime), N'30%', N'TataSons', 500)
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth]) VALUES (4, N'maruti', N'34343432', N'Primary', 540400, N'Receivables and Inventory', 860, N'Yes', CAST(0x0000A74700000000 AS DateTime), N'70%', N'TataSons', 500)
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth]) VALUES (4, N'maruti', N'34343432', N'Primary', 540400, N'Receivables and Inventory', 860, N'Yes', CAST(N'2017-03-31T00:00:00.000' AS DateTime), N'70%', N'TataSons', 500)
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth]) VALUES (5, N'maruti', N'2456335', N'Primary', 4044, N'Land and Building', 6000, N'Yes', CAST(0x0000A74700000000 AS DateTime), N'30%', N'TataSons', 500)
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth]) VALUES (5, N'maruti', N'2456335', N'Primary', 4044, N'Land and Building', 6000, N'Yes', CAST(N'2017-03-31T00:00:00.000' AS DateTime), N'30%', N'TataSons', 500)
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth]) VALUES (6, N'maruti', N'3455234', N'Primary', 4044, N'CC', 6000, N'Yes', CAST(0x0000A74700000000 AS DateTime), N'30%', N'TataSons', 500)
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth]) VALUES (6, N'maruti', N'3455234', N'Primary', 4044, N'CC', 6000, N'Yes', CAST(N'2017-03-31T00:00:00.000' AS DateTime), N'30%', N'TataSons', 500)
 GO
 SET IDENTITY_INSERT [dbo].[Security] OFF
 GO
 SET IDENTITY_INSERT [dbo].[SOC124] ON 
-
 GO
-INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate]) VALUES (1, N'HCC', N'soourcesystem', CAST(0x0000A86400000000 AS DateTime), N'via', N'appprovalfor', N'yes', CAST(0x0000A86500000000 AS DateTime), CAST(0x0000A86600000000 AS DateTime))
+INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate]) VALUES (1, N'HCC', N'soourcesystem', CAST(N'2018-01-10T00:00:00.000' AS DateTime), N'via', N'appprovalfor', N'yes', CAST(N'2018-01-11T00:00:00.000' AS DateTime), CAST(N'2018-01-12T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate]) VALUES (2, N'HCC', N'soourcesystem1', CAST(0x0000A86400000000 AS DateTime), N'via1', N'appprovalfor1', N'no', CAST(0x0000A86500000000 AS DateTime), CAST(0x0000A86600000000 AS DateTime))
+INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate]) VALUES (2, N'HCC', N'soourcesystem1', CAST(N'2018-01-10T00:00:00.000' AS DateTime), N'via1', N'appprovalfor1', N'no', CAST(N'2018-01-11T00:00:00.000' AS DateTime), CAST(N'2018-01-12T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate]) VALUES (3, N'HCC', N'soourcesystem2', CAST(0x0000A86400000000 AS DateTime), N'via1', N'appprovalfor2', N'yes', CAST(0x0000A86500000000 AS DateTime), CAST(0x0000A86600000000 AS DateTime))
+INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate]) VALUES (3, N'HCC', N'soourcesystem2', CAST(N'2018-01-10T00:00:00.000' AS DateTime), N'via1', N'appprovalfor2', N'yes', CAST(N'2018-01-11T00:00:00.000' AS DateTime), CAST(N'2018-01-12T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate]) VALUES (4, N'maruti', N'soourcesystem', CAST(0x0000A86400000000 AS DateTime), N'via', N'appprovalfor', N'yes', CAST(0x0000A86500000000 AS DateTime), CAST(0x0000A86600000000 AS DateTime))
+INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate]) VALUES (4, N'maruti', N'soourcesystem', CAST(N'2018-01-10T00:00:00.000' AS DateTime), N'via', N'appprovalfor', N'yes', CAST(N'2018-01-11T00:00:00.000' AS DateTime), CAST(N'2018-01-12T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate]) VALUES (5, N'maruti', N'soourcesystem1', CAST(0x0000A86400000000 AS DateTime), N'via1', N'appprovalfor1', N'no', CAST(0x0000A86500000000 AS DateTime), CAST(0x0000A86600000000 AS DateTime))
+INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate]) VALUES (5, N'maruti', N'soourcesystem1', CAST(N'2018-01-10T00:00:00.000' AS DateTime), N'via1', N'appprovalfor1', N'no', CAST(N'2018-01-11T00:00:00.000' AS DateTime), CAST(N'2018-01-12T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate]) VALUES (6, N'maruti', N'soourcesystem2', CAST(0x0000A86400000000 AS DateTime), N'via1', N'appprovalfor2', N'yes', CAST(0x0000A86500000000 AS DateTime), CAST(0x0000A86600000000 AS DateTime))
+INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate]) VALUES (6, N'maruti', N'soourcesystem2', CAST(N'2018-01-10T00:00:00.000' AS DateTime), N'via1', N'appprovalfor2', N'yes', CAST(N'2018-01-11T00:00:00.000' AS DateTime), CAST(N'2018-01-12T00:00:00.000' AS DateTime))
 GO
 SET IDENTITY_INSERT [dbo].[SOC124] OFF
 GO
@@ -1683,187 +1616,186 @@ GO
 INSERT [dbo].[Student] ([StudentID], [Name], [Email], [Class], [EnrollYear], [City], [Country]) VALUES (2, N'afA', N'DF', N'F', N'DF', N'DF', N'F')
 GO
 SET IDENTITY_INSERT [dbo].[WarningIndicator] ON 
-
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (1, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Claims not acknowledged as debt high', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (1, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Claims not acknowledged as debt high', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (2, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Concealment of certain vital documents like master agreement, insurance coverage', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (2, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Concealment of certain vital documents like master agreement, insurance coverage', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (3, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Costing of the project which is in wide variance with standard cost of installation of the project', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (3, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Costing of the project which is in wide variance with standard cost of installation of the project', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (4, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Critical issues highlighted in the stock audit report.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (4, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Critical issues highlighted in the stock audit report.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (5, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Default in payment to the banks/ sundry debtors and other statutory bodies, etc., bouncing of the high value cheques', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (5, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Default in payment to the banks/ sundry debtors and other statutory bodies, etc., bouncing of the high value cheques', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (6, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Delay observed in payment of outstanding dues', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (6, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Delay observed in payment of outstanding dues', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (7, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Disproportionate increase in other current assets.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (7, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Disproportionate increase in other current assets.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (8, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Dispute on title of the collateral securities', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (8, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Dispute on title of the collateral securities', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (9, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Financing the unit far away from the branch', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (9, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Financing the unit far away from the branch', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (10, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Floating front / associate companies by investing borrowed money', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (10, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Floating front / associate companies by investing borrowed money', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (11, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Foreign bills remaining outstanding for a long time and tendency for bills to remain overdue', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (11, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Foreign bills remaining outstanding for a long time and tendency for bills to remain overdue', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (12, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Frequent ad hoc sanctions.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (12, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Frequent ad hoc sanctions.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (13, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Frequent change in accounting period and/or accounting policies.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (13, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Frequent change in accounting period and/or accounting policies.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (14, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Frequent change in the scope of the project to be undertaken by the borrower', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (14, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Frequent change in the scope of the project to be undertaken by the borrower', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (15, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Frequent invocation of BGs and devolvement of LCs', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (15, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Frequent invocation of BGs and devolvement of LCs', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (16, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Frequent request for general purpose loans.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (16, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Frequent request for general purpose loans.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (17, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Funding of the interest by sanctioning additional facilities', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (17, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Funding of the interest by sanctioning additional facilities', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (18, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Funds coming from other banks to liquidate the outstanding loan amount', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (18, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Funds coming from other banks to liquidate the outstanding loan amount', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (19, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Heavy cash withdrawal in loan accounts.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (19, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Heavy cash withdrawal in loan accounts.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (20, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'High value RTGS payment to unrelated parties.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (20, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'High value RTGS payment to unrelated parties.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (21, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'In merchanting trade, import leg not revealed to the bank', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (21, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'In merchanting trade, import leg not revealed to the bank', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (22, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Increase in borrowings, despite huge cash and cash equivalents in the borrower’s balance sheet.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (22, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Increase in borrowings, despite huge cash and cash equivalents in the borrower’s balance sheet.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (23, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Increase in Fixed Assets, without corresponding increase in turnover (when project is implemented).', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (23, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Increase in Fixed Assets, without corresponding increase in turnover (when project is implemented).', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (24, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Invoices devoid of TAN and other details', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (24, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Invoices devoid of TAN and other details', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (25, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Large number of transactions with inter-connected companies and large outstanding from such companies.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (25, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Large number of transactions with inter-connected companies and large outstanding from such companies.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (26, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'LCs issued for local trade / related party transactions', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (26, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'LCs issued for local trade / related party transactions', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (27, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Liabilities appearing in ROC search report, not reported by the borrower in its annual report.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (27, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Liabilities appearing in ROC search report, not reported by the borrower in its annual report.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (28, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Material discrepancies in the annual report.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (28, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Material discrepancies in the annual report.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (29, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Movement of an account from one bank to another.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (29, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Movement of an account from one bank to another.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (30, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Non submission of original bills.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (30, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Non submission of original bills.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (31, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Not routing of sales proceeds through bank', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (31, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Not routing of sales proceeds through bank', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (32, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Onerous clause in issue of BG/LC/standby letters of credit', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (32, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Onerous clause in issue of BG/LC/standby letters of credit', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (33, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Poor disclosure of materially adverse information and no qualification by the statutory auditors.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (33, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Poor disclosure of materially adverse information and no qualification by the statutory auditors.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (34, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Raid by Income tax /sales tax/ central excise duty officials', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (34, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Raid by Income tax /sales tax/ central excise duty officials', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (35, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Reduction in the stake of promoter / director', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (35, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Reduction in the stake of promoter / director', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (36, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Request received from the borrower to postpone the inspection of the godown for flimsy reasons', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (36, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Request received from the borrower to postpone the inspection of the godown for flimsy reasons', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (37, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Resignation of the key personnel and frequent changes in the management', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (37, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Resignation of the key personnel and frequent changes in the management', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (38, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Same collateral charged to a number of lenders', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (38, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Same collateral charged to a number of lenders', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (39, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Significant inconsistencies within the annual report (between various sections).', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (39, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Significant inconsistencies within the annual report (between various sections).', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (40, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Significant increase in working capital borrowing as percentage of turnover.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (40, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Significant increase in working capital borrowing as percentage of turnover.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (41, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Significant movements in inventory, disproportionately higher than the growth in turnover.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (41, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Significant movements in inventory, disproportionately higher than the growth in turnover.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (42, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Significant movements in receivables, disproportionately higher than the growth in turnover and/or increase in ageing of the receivables.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (42, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Significant movements in receivables, disproportionately higher than the growth in turnover and/or increase in ageing of the receivables.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (43, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Substantial increase in unbilled revenue year after year.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (43, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Substantial increase in unbilled revenue year after year.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (44, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Substantial related party transactions.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (44, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Substantial related party transactions.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (45, N'maruti', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Under insured or over insured inventory', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (45, N'maruti', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Under insured or over insured inventory', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (46, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Claims not acknowledged as debt high', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (46, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Claims not acknowledged as debt high', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (47, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Concealment of certain vital documents like master agreement, insurance coverage', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (47, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Concealment of certain vital documents like master agreement, insurance coverage', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (48, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Costing of the project which is in wide variance with standard cost of installation of the project', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (48, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Costing of the project which is in wide variance with standard cost of installation of the project', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (49, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Critical issues highlighted in the stock audit report.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (49, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Critical issues highlighted in the stock audit report.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (50, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Default in payment to the banks/ sundry debtors and other statutory bodies, etc., bouncing of the high value cheques', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (50, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Default in payment to the banks/ sundry debtors and other statutory bodies, etc., bouncing of the high value cheques', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (51, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Delay observed in payment of outstanding dues', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (51, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Delay observed in payment of outstanding dues', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (52, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Disproportionate increase in other current assets.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (52, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Disproportionate increase in other current assets.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (53, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Dispute on title of the collateral securities', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (53, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Dispute on title of the collateral securities', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (54, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Financing the unit far away from the branch', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (54, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Financing the unit far away from the branch', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (55, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Floating front / associate companies by investing borrowed money', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (55, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Floating front / associate companies by investing borrowed money', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (56, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Foreign bills remaining outstanding for a long time and tendency for bills to remain overdue', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (56, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Foreign bills remaining outstanding for a long time and tendency for bills to remain overdue', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (57, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Frequent ad hoc sanctions.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (57, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Frequent ad hoc sanctions.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (58, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Frequent change in accounting period and/or accounting policies.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (58, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Frequent change in accounting period and/or accounting policies.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (59, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Frequent change in the scope of the project to be undertaken by the borrower', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (59, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Frequent change in the scope of the project to be undertaken by the borrower', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (60, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Frequent invocation of BGs and devolvement of LCs', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (60, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Frequent invocation of BGs and devolvement of LCs', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (61, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Frequent request for general purpose loans.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (61, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Frequent request for general purpose loans.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (62, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Funding of the interest by sanctioning additional facilities', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (62, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Funding of the interest by sanctioning additional facilities', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (63, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Funds coming from other banks to liquidate the outstanding loan amount', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (63, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Funds coming from other banks to liquidate the outstanding loan amount', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (64, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Heavy cash withdrawal in loan accounts.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (64, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Heavy cash withdrawal in loan accounts.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (65, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'High value RTGS payment to unrelated parties.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (65, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'High value RTGS payment to unrelated parties.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (66, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'In merchanting trade, import leg not revealed to the bank', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (66, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'In merchanting trade, import leg not revealed to the bank', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (67, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Increase in borrowings, despite huge cash and cash equivalents in the borrower’s balance sheet.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (67, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Increase in borrowings, despite huge cash and cash equivalents in the borrower’s balance sheet.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (68, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Increase in Fixed Assets, without corresponding increase in turnover (when project is implemented).', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (68, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Increase in Fixed Assets, without corresponding increase in turnover (when project is implemented).', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (69, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Invoices devoid of TAN and other details', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (69, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Invoices devoid of TAN and other details', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (70, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Large number of transactions with inter-connected companies and large outstanding from such companies.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (70, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Large number of transactions with inter-connected companies and large outstanding from such companies.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (71, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'LCs issued for local trade / related party transactions', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (71, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'LCs issued for local trade / related party transactions', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (72, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Liabilities appearing in ROC search report, not reported by the borrower in its annual report.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (72, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Liabilities appearing in ROC search report, not reported by the borrower in its annual report.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (73, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Material discrepancies in the annual report.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (73, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Material discrepancies in the annual report.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (74, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Movement of an account from one bank to another.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (74, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Movement of an account from one bank to another.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (75, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Non submission of original bills.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (75, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Non submission of original bills.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (76, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Not routing of sales proceeds through bank', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (76, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Not routing of sales proceeds through bank', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (77, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Onerous clause in issue of BG/LC/standby letters of credit', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (77, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Onerous clause in issue of BG/LC/standby letters of credit', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (78, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Poor disclosure of materially adverse information and no qualification by the statutory auditors.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (78, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Poor disclosure of materially adverse information and no qualification by the statutory auditors.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (79, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Raid by Income tax /sales tax/ central excise duty officials', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (79, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Raid by Income tax /sales tax/ central excise duty officials', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (80, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Reduction in the stake of promoter / director', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (80, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Reduction in the stake of promoter / director', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (81, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Request received from the borrower to postpone the inspection of the godown for flimsy reasons', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (81, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Request received from the borrower to postpone the inspection of the godown for flimsy reasons', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (82, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Resignation of the key personnel and frequent changes in the management', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (82, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Resignation of the key personnel and frequent changes in the management', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (83, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Same collateral charged to a number of lenders', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (83, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Same collateral charged to a number of lenders', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (84, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Significant inconsistencies within the annual report (between various sections).', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (84, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Significant inconsistencies within the annual report (between various sections).', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (85, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Significant increase in working capital borrowing as percentage of turnover.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (85, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Significant increase in working capital borrowing as percentage of turnover.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (86, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Significant movements in inventory, disproportionately higher than the growth in turnover.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (86, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Significant movements in inventory, disproportionately higher than the growth in turnover.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (87, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Significant movements in receivables, disproportionately higher than the growth in turnover and/or increase in ageing of the receivables.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (87, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Significant movements in receivables, disproportionately higher than the growth in turnover and/or increase in ageing of the receivables.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (88, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Substantial increase in unbilled revenue year after year.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (88, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Substantial increase in unbilled revenue year after year.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (89, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Substantial related party transactions.', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (89, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Substantial related party transactions.', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
-INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (90, N'HCC', CAST(0x0000A85B00000000 AS DateTime), CAST(0x0000A9C800000000 AS DateTime), CAST(0x0000A908005CF1E8 AS DateTime), N'Under insured or over insured inventory', N'Yes', CAST(0x0000A9D100000000 AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(0x0000A908005CF1E8 AS DateTime), N'praveen')
+INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (90, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Under insured or over insured inventory', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
 SET IDENTITY_INSERT [dbo].[WarningIndicator] OFF
 GO
