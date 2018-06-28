@@ -25,6 +25,8 @@
         <EntityTypeShape EntityType="gamutdatabaseModel.RestucturingHeader" Width="1.5" PointX="11.375" PointY="4.75" />
         <EntityTypeShape EntityType="gamutdatabaseModel.WarningIndicator" Width="1.5" PointX="11.375" PointY="9.75" />
         <EntityTypeShape EntityType="gamutdatabaseModel.AccountDetail" Width="1.5" PointX="5.375" PointY="11.75" />
+        <EntityTypeShape EntityType="gamutdatabaseModel.Document" Width="1.5" PointX="7.375" PointY="12.75" />
+        <EntityTypeShape EntityType="gamutdatabaseModel.CustomerDataMapping" Width="1.5" PointX="13.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

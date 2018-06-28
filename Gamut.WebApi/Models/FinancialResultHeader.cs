@@ -24,6 +24,8 @@ namespace Gamut.WebAPI.Models
         public string HeaderName { get; set; }
         public Nullable<int> TypeId { get; set; }
         public Nullable<bool> IsActive { get; set; }
+        public Nullable<int> parentID { get; set; }
+        public Nullable<int> SortOrder { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FinancialResultDetail> FinancialResultDetails { get; set; }

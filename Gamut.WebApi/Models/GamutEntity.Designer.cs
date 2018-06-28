@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\praveen\source\repos\Gamut.WebApi\Gamut.WebApi\Models\GamutEntity.edmx'. 
+﻿// T4 code generation is enabled for model 'J:\Ashoke\Gamut\Gamut\Gamut.WebApi\Models\GamutEntity.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

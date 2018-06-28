@@ -18,6 +18,33 @@ namespace Gamut.WebAPI.Controllers
         private gamutdatabaseEntities db = new gamutdatabaseEntities();
 
 
+        [ResponseType(typeof(FinancialResultType))]
+        public IHttpActionResult GetFinancialResultType()
+        {
+
+            List<FinancialResultType> fianDataType = db.FinancialResultTypes.ToList();
+            if (fianDataType == null)
+            {
+                return null;
+            }
+           
+            return Ok(fianDataType);
+        }
+
+        [ResponseType(typeof(FinancialResultType))]
+        public IHttpActionResult GetFiancialResultParentHeader(int resType)
+        {
+
+            List<FinancialResultHeader> financeHeader = db.FinancialResultHeaders.Where(i => i.TypeId == resType).Where(i=> i.parentID==null).ToList();
+            if (financeHeader == null)
+            {
+                return null;
+            }
+
+            return Ok(financeHeader);
+        }
+
+
         [HttpGet]
         public IHttpActionResult GetFinancialResultByQuarter(string id)
         {
@@ -35,12 +62,12 @@ namespace Gamut.WebAPI.Controllers
             return Ok(financiaResult);
         }
         [HttpGet]
-        public IHttpActionResult GetFinancialResultQuarterlyTrendz(string id,string trendz)
+        public IHttpActionResult GetFinancialResultQuarterlyTrendz(string id,int resTypeId, int? parentHeaderID)
         {
 
             var financiaResult = (from frd in db.FinancialResultDetails
                                   join fh in db.FinancialResultHeaders on frd.HeaderID equals fh.HeaderID
-                                  where frd.Cust_id == id && frd.Trends == trendz
+                                  where frd.Cust_id == id && fh.TypeId == resTypeId && (parentHeaderID== null || fh.parentID==parentHeaderID )
                                   select new { CustID = frd.Cust_id, FinanceHeader = fh.HeaderName, QuarterInfo = frd.ResQuarter, QuarterDate = frd.UpdateDate, Amount = frd.Amount }).ToList();
 
 
@@ -59,14 +86,39 @@ namespace Gamut.WebAPI.Controllers
                                    }).ToList();
 
 
+          
+            // By Using GetAllSubject() Method we will Get the list of all subjects
+           
+            var quarter = (from f in financiaResult
+                                select f.QuarterInfo).Distinct().ToList().Take(5);
 
 
-            return Ok(quarterlyTrendz);
+            var financialData = (from f in financiaResult
+                     orderby f.QuarterDate descending
+                     group f by new { f.CustID, f.FinanceHeader }
+                            into myGroup
+                     where myGroup.Count() > 0
+                     
+                     select new
+                     {
+                         myGroup.Key.CustID,
+                         myGroup.Key.FinanceHeader,
+                         FR1= myGroup.Where(c => (quarter.Count() >= 1 && (c.QuarterInfo == quarter.ElementAt(0) || c.QuarterInfo == ""))).Select(c => c.Amount).FirstOrDefault(),
+                         FR2 = myGroup.Where(c => (quarter.Count() >= 2 && (c.QuarterInfo == quarter.ElementAt(1) || c.QuarterInfo == ""))).Select(c => c.Amount).FirstOrDefault(),
+                         FR3 = myGroup.Where(c => (quarter.Count() >= 3 && (c.QuarterInfo == quarter.ElementAt(2) || c.QuarterInfo == ""))).Select(c => c.Amount).FirstOrDefault(),
+                         FR4 = myGroup.Where(c => (quarter.Count() >= 4 && (c.QuarterInfo == quarter.ElementAt(3) || c.QuarterInfo==""))).Select(c => c.Amount).FirstOrDefault(),
+                         FR5 = myGroup.Where(c => (quarter.Count() >= 5 && (c.QuarterInfo == quarter.ElementAt(4) || c.QuarterInfo == ""))).Select(c => c.Amount).FirstOrDefault(),
+                         /* Quarter = myGroup.GroupBy(f => f.QuarterInfo).Select
+                          (m => new { m.Key, Score = m.Sum(c => c.Amount) })*/
+                     }).ToList();
+
+
+            return Ok(new { FinancialResult = financialData, resQuar = quarter });
         }
 
 
-    
 
+        
 
 
         protected override void Dispose(bool disposing)

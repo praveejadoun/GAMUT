@@ -23,6 +23,7 @@ namespace Gamut.WebAPI.Models
         public int TypeID { get; set; }
         public string TypeName { get; set; }
         public Nullable<bool> IsActive { get; set; }
+        public Nullable<bool> IsFinancialData { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FinancialResultHeader> FinancialResultHeaders { get; set; }

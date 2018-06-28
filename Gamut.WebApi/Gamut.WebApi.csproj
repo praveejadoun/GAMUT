@@ -187,6 +187,12 @@
     <Compile Include="Models\Customer.cs">
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CustomerDataMapping.cs">
+      <DependentUpon>GamutEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Document.cs">
+      <DependentUpon>GamutEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\FinancialResultDetail.cs">
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>

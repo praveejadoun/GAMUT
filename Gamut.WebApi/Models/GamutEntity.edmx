@@ -50,6 +50,33 @@
           <Property Name="FinDataMappingId" Type="varchar" MaxLength="1000" />
           <Property Name="NewsDataMappingId" Type="varchar" MaxLength="1000" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'gamutdatabase.dbo.CustomerDataMapping' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CustomerDataMapping">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustID" Type="varchar" MaxLength="50" />
+          <Property Name="MAppingURl" Type="varchar" MaxLength="500" />
+          <Property Name="MappingType" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cust_id" Type="varchar" MaxLength="50" />
+          <Property Name="Periodicity" Type="varchar" MaxLength="50" />
+          <Property Name="DocumentType" Type="varchar" MaxLength="50" />
+          <Property Name="Submitted" Type="varchar" MaxLength="50" />
+          <Property Name="SubmittedDate" Type="datetime" />
+          <Property Name="DeviationNoted" Type="varchar" MaxLength="250" />
+          <Property Name="CompiledDate" Type="datetime" />
+          <Property Name="MonitorId" Type="varchar" MaxLength="100" />
+          <Property Name="LastUpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastUpdatedOn" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="FinancialResultDetails">
           <Key>
             <PropertyRef Name="ID" />
@@ -71,6 +98,8 @@
           <Property Name="HeaderName" Type="varchar" MaxLength="500" />
           <Property Name="TypeId" Type="int" />
           <Property Name="IsActive" Type="bit" />
+          <Property Name="parentID" Type="int" />
+          <Property Name="SortOrder" Type="int" />
         </EntityType>
         <EntityType Name="FinancialResultType">
           <Key>
@@ -79,6 +108,7 @@
           <Property Name="TypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TypeName" Type="varchar" MaxLength="100" />
           <Property Name="IsActive" Type="bit" />
+          <Property Name="IsFinancialData" Type="bit" />
         </EntityType>
         <EntityType Name="General">
           <Key>
@@ -328,6 +358,7 @@
         <EntityContainer Name="gamutdatabaseModelStoreContainer">
           <EntitySet Name="AccountDetails" EntityType="Self.AccountDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Document" EntityType="Self.Document" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FinancialResultDetails" EntityType="Self.FinancialResultDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FinancialResultHeader" EntityType="Self.FinancialResultHeader" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FinancialResultType" EntityType="Self.FinancialResultType" Schema="dbo" store:Type="Tables" />
@@ -344,6 +375,14 @@
           <EntitySet Name="SOC124" EntityType="Self.SOC124" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WarningIndicator" EntityType="Self.WarningIndicator" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerDataMapping" EntityType="Self.CustomerDataMapping" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CustomerDataMapping].[ID] AS [ID], 
+    [CustomerDataMapping].[CustID] AS [CustID], 
+    [CustomerDataMapping].[MAppingURl] AS [MAppingURl], 
+    [CustomerDataMapping].[MappingType] AS [MappingType]
+    FROM [dbo].[CustomerDataMapping] AS [CustomerDataMapping]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_FinancialResultDetails_FinancialResultHeader" Association="Self.FK_FinancialResultDetails_FinancialResultHeader">
             <End Role="FinancialResultHeader" EntitySet="FinancialResultHeader" />
             <End Role="FinancialResultDetails" EntitySet="FinancialResultDetails" />
@@ -396,6 +435,8 @@
           <EntitySet Name="RestucturingHeaders" EntityType="gamutdatabaseModel.RestucturingHeader" />
           <EntitySet Name="WarningIndicators" EntityType="gamutdatabaseModel.WarningIndicator" />
           <EntitySet Name="AccountDetails" EntityType="gamutdatabaseModel.AccountDetail" />
+          <EntitySet Name="Documents" EntityType="gamutdatabaseModel.Document" />
+          <EntitySet Name="CustomerDataMappings" EntityType="gamutdatabaseModel.CustomerDataMapping" />
         </EntityContainer>
         <EntityType Name="Customer">
           <Key>
@@ -584,6 +625,8 @@
           <Property Name="IsActive" Type="Boolean" />
           <NavigationProperty Name="FinancialResultDetails" Relationship="gamutdatabaseModel.FK_FinancialResultDetails_FinancialResultHeader" FromRole="FinancialResultHeader" ToRole="FinancialResultDetail" />
           <NavigationProperty Name="FinancialResultType" Relationship="gamutdatabaseModel.FK_FinancialResultHeader_FinancialResultType" FromRole="FinancialResultHeader" ToRole="FinancialResultType" />
+          <Property Name="parentID" Type="Int32" />
+          <Property Name="SortOrder" Type="Int32" />
         </EntityType>
         <EntityType Name="FinancialResultType">
           <Key>
@@ -593,6 +636,7 @@
           <Property Name="TypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="IsActive" Type="Boolean" />
           <NavigationProperty Name="FinancialResultHeaders" Relationship="gamutdatabaseModel.FK_FinancialResultHeader_FinancialResultType" FromRole="FinancialResultType" ToRole="FinancialResultHeader" />
+          <Property Name="IsFinancialData" Type="Boolean" />
         </EntityType>
         <EntityType Name="News">
           <Key>
@@ -708,6 +752,31 @@
           <Property Name="lastUpdateOn" Type="DateTime" Precision="3" />
           <Property Name="lastUpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="undisbursed" Type="Double" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cust_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Periodicity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DocumentType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Submitted" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SubmittedDate" Type="DateTime" Precision="3" />
+          <Property Name="DeviationNoted" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CompiledDate" Type="DateTime" Precision="3" />
+          <Property Name="MonitorId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdatedOn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CustomerDataMapping">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MAppingURl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="MappingType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -917,6 +986,8 @@
           <EntitySetMapping Name="FinancialResultHeaders">
             <EntityTypeMapping TypeName="gamutdatabaseModel.FinancialResultHeader">
               <MappingFragment StoreEntitySet="FinancialResultHeader">
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="parentID" ColumnName="parentID" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="TypeId" ColumnName="TypeId" />
                 <ScalarProperty Name="HeaderName" ColumnName="HeaderName" />
@@ -927,6 +998,7 @@
           <EntitySetMapping Name="FinancialResultTypes">
             <EntityTypeMapping TypeName="gamutdatabaseModel.FinancialResultType">
               <MappingFragment StoreEntitySet="FinancialResultType">
+                <ScalarProperty Name="IsFinancialData" ColumnName="IsFinancialData" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="TypeName" ColumnName="TypeName" />
                 <ScalarProperty Name="TypeID" ColumnName="TypeID" />
@@ -1026,6 +1098,33 @@
                 <ScalarProperty Name="accountNumber" ColumnName="accountNumber" />
                 <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Documents">
+            <EntityTypeMapping TypeName="gamutdatabaseModel.Document">
+              <MappingFragment StoreEntitySet="Document">
+                <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="MonitorId" ColumnName="MonitorId" />
+                <ScalarProperty Name="CompiledDate" ColumnName="CompiledDate" />
+                <ScalarProperty Name="DeviationNoted" ColumnName="DeviationNoted" />
+                <ScalarProperty Name="SubmittedDate" ColumnName="SubmittedDate" />
+                <ScalarProperty Name="Submitted" ColumnName="Submitted" />
+                <ScalarProperty Name="DocumentType" ColumnName="DocumentType" />
+                <ScalarProperty Name="Periodicity" ColumnName="Periodicity" />
+                <ScalarProperty Name="Cust_id" ColumnName="Cust_id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerDataMappings">
+            <EntityTypeMapping TypeName="gamutdatabaseModel.CustomerDataMapping">
+              <MappingFragment StoreEntitySet="CustomerDataMapping">
+                <ScalarProperty Name="MappingType" ColumnName="MappingType" />
+                <ScalarProperty Name="MAppingURl" ColumnName="MAppingURl" />
+                <ScalarProperty Name="CustID" ColumnName="CustID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
