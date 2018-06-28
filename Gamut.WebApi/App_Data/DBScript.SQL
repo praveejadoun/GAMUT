@@ -1,6 +1,6 @@
 ﻿USE [gamutdatabase]
 GO
-/****** Object:  Table [dbo].[AccountDetails]    Script Date: 27-06-2018 23:34:08 ******/
+/****** Object:  Table [dbo].[AccountDetails]    Script Date: 28-06-2018 23:27:18 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -35,7 +35,7 @@ CREATE TABLE [dbo].[AccountDetails](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Customer]    Script Date: 27-06-2018 23:34:10 ******/
+/****** Object:  Table [dbo].[Customer]    Script Date: 28-06-2018 23:27:20 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -59,7 +59,7 @@ CREATE TABLE [dbo].[Customer](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CustomerDataMapping]    Script Date: 27-06-2018 23:34:11 ******/
+/****** Object:  Table [dbo].[CustomerDataMapping]    Script Date: 28-06-2018 23:27:21 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -71,7 +71,7 @@ CREATE TABLE [dbo].[CustomerDataMapping](
 	[MappingType] [varchar](100) NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Document]    Script Date: 27-06-2018 23:34:11 ******/
+/****** Object:  Table [dbo].[Document]    Script Date: 28-06-2018 23:27:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -94,7 +94,7 @@ CREATE TABLE [dbo].[Document](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[FinancialResultDetails]    Script Date: 27-06-2018 23:34:12 ******/
+/****** Object:  Table [dbo].[FinancialResultDetails]    Script Date: 28-06-2018 23:27:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -114,7 +114,7 @@ CREATE TABLE [dbo].[FinancialResultDetails](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[FinancialResultHeader]    Script Date: 27-06-2018 23:34:13 ******/
+/****** Object:  Table [dbo].[FinancialResultHeader]    Script Date: 28-06-2018 23:27:23 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -124,13 +124,15 @@ CREATE TABLE [dbo].[FinancialResultHeader](
 	[HeaderName] [varchar](500) NULL,
 	[TypeId] [int] NULL,
 	[IsActive] [bit] NULL,
+	[parentID] [int] NULL,
+	[SortOrder] [int] NULL,
  CONSTRAINT [PK_FinancialResultHeader] PRIMARY KEY CLUSTERED 
 (
 	[HeaderID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[FinancialResultType]    Script Date: 27-06-2018 23:34:14 ******/
+/****** Object:  Table [dbo].[FinancialResultType]    Script Date: 28-06-2018 23:27:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -139,13 +141,14 @@ CREATE TABLE [dbo].[FinancialResultType](
 	[TypeID] [int] IDENTITY(1,1) NOT NULL,
 	[TypeName] [varchar](100) NULL,
 	[IsActive] [bit] NULL,
+	[IsFinancialData] [bit] NULL,
  CONSTRAINT [PK_FinancialResultType] PRIMARY KEY CLUSTERED 
 (
 	[TypeID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[General]    Script Date: 27-06-2018 23:34:15 ******/
+/****** Object:  Table [dbo].[General]    Script Date: 28-06-2018 23:27:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -205,7 +208,7 @@ CREATE TABLE [dbo].[General](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[GeneralExposure]    Script Date: 27-06-2018 23:34:16 ******/
+/****** Object:  Table [dbo].[GeneralExposure]    Script Date: 28-06-2018 23:27:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -223,7 +226,7 @@ CREATE TABLE [dbo].[GeneralExposure](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[GeneralGurantor]    Script Date: 27-06-2018 23:34:17 ******/
+/****** Object:  Table [dbo].[GeneralGurantor]    Script Date: 28-06-2018 23:27:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -241,7 +244,7 @@ CREATE TABLE [dbo].[GeneralGurantor](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Interest]    Script Date: 27-06-2018 23:34:18 ******/
+/****** Object:  Table [dbo].[Interest]    Script Date: 28-06-2018 23:27:28 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -264,7 +267,7 @@ CREATE TABLE [dbo].[Interest](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[LookUp]    Script Date: 27-06-2018 23:34:18 ******/
+/****** Object:  Table [dbo].[LookUp]    Script Date: 28-06-2018 23:27:28 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -280,7 +283,7 @@ CREATE TABLE [dbo].[LookUp](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[News]    Script Date: 27-06-2018 23:34:19 ******/
+/****** Object:  Table [dbo].[News]    Script Date: 28-06-2018 23:27:29 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -300,7 +303,7 @@ CREATE TABLE [dbo].[News](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Rating]    Script Date: 27-06-2018 23:34:20 ******/
+/****** Object:  Table [dbo].[Rating]    Script Date: 28-06-2018 23:27:30 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -322,7 +325,7 @@ CREATE TABLE [dbo].[Rating](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[RestucturingDetail]    Script Date: 27-06-2018 23:34:21 ******/
+/****** Object:  Table [dbo].[RestucturingDetail]    Script Date: 28-06-2018 23:27:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -343,7 +346,7 @@ CREATE TABLE [dbo].[RestucturingDetail](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[RestucturingHeader]    Script Date: 27-06-2018 23:34:22 ******/
+/****** Object:  Table [dbo].[RestucturingHeader]    Script Date: 28-06-2018 23:27:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -369,7 +372,7 @@ CREATE TABLE [dbo].[RestucturingHeader](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Security]    Script Date: 27-06-2018 23:34:22 ******/
+/****** Object:  Table [dbo].[Security]    Script Date: 28-06-2018 23:27:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -393,7 +396,7 @@ CREATE TABLE [dbo].[Security](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SOC124]    Script Date: 27-06-2018 23:34:23 ******/
+/****** Object:  Table [dbo].[SOC124]    Script Date: 28-06-2018 23:27:33 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -414,7 +417,7 @@ CREATE TABLE [dbo].[SOC124](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Student]    Script Date: 27-06-2018 23:34:24 ******/
+/****** Object:  Table [dbo].[Student]    Script Date: 28-06-2018 23:27:34 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -433,7 +436,7 @@ CREATE TABLE [dbo].[Student](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[WarningIndicator]    Script Date: 27-06-2018 23:34:25 ******/
+/****** Object:  Table [dbo].[WarningIndicator]    Script Date: 28-06-2018 23:27:35 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -459,47 +462,87 @@ CREATE TABLE [dbo].[WarningIndicator](
 GO
 SET IDENTITY_INSERT [dbo].[AccountDetails] ON 
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (1, N'maruti', N'12345678', N'term loan', N'SMA0', 0, 434343, 4343, 429608, 4735, 4535, N'Consortium
-', N'hdfc', NULL, 9, N'mar-jun', NULL, 3434, NULL, NULL, NULL, CAST(N'2019-05-05T00:00:00.000' AS DateTime), N'praveen')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (1, N'TATAPOWER', N'123456780', N'CC', N'SMA0', 1, 1000, 750, 1000, 750, NULL, N'Consortium', N'SBI', NULL, 8.75, N'', N'', NULL, CAST(N'2018-03-18T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (2, N'maruti', N'34567989', N'term loan', N'SMA1', 1, 87757, 5, 83203, 4554, 4354, N'Multiple', N'hdfc', NULL, 8, N'mar-jun', NULL, 343, NULL, NULL, NULL, CAST(N'2019-05-05T00:00:00.000' AS DateTime), N'praveen')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (2, N'TATAPOWER', N'123456781', N'Term Loan', N'SMA1', 2, 5000, 4850, 4900, 4850, NULL, N'Multiple', N'NA', CAST(N'2012-04-05T00:00:00.000' AS DateTime), 8.2, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (3, N'maruti', N'8668656656', N'CC', N'SMA2', 2, 3353535, 533, 3348992, 4543, 4343, N'Consortium
-', N'hdfc', NULL, 7, N'mar-jun', NULL, 57655, NULL, NULL, NULL, CAST(N'2019-07-07T00:00:00.000' AS DateTime), N'praveen')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (3, N'TATAPOWER', N'123456782', N'BG/LC', N'NA', 0, 500, 400, 500, 400, NULL, N'Consortium', N'SBI', NULL, 0.25, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (4, N'maruti', N'4646755656', N'CC', N'SMA3', 3, 43433, 533, 42679, 754, 554, N'Multiple', N'ICICI', NULL, 7, N'mar-jun', NULL, 57655, NULL, NULL, NULL, CAST(N'2019-07-07T00:00:00.000' AS DateTime), N'praveen')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (4, N'RIL', N'123456783', N'WCDL', N'NA', 0, 10000, 10010, 10010, 10010, NULL, N'Multiple', N'NA', NULL, 8.75, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (5, N'tatapower', N'12345678', N'CC', N'SMA0', 1, 1000, 750, -22632, 23632, 23432, N'Consortium', N'SBI', NULL, 8.75, NULL, N'gold', NULL, CAST(N'2018-03-18T00:00:00.000' AS DateTime), CAST(N'2018-03-18T00:00:00.000' AS DateTime), NULL, CAST(N'2018-03-18T00:00:00.000' AS DateTime), N'praveen')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (5, N'RIL', N'123456784', N'WCDL', N'NA', 0, 7500, 2500, 7500, 2500, NULL, N'Multiple', N'NA', NULL, 8.2, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (6, N'tatapower', N'23456789', N'Term Loan', N'SMA1', 2, 5000, 4850, 1557, 3443, 3243, N'Multiple', N'NA', CAST(N'2012-05-04T00:00:00.000' AS DateTime), 8.2, NULL, N'silver', NULL, CAST(N'2018-03-18T00:00:00.000' AS DateTime), CAST(N'2018-03-18T00:00:00.000' AS DateTime), NULL, CAST(N'2018-03-18T00:00:00.000' AS DateTime), N'praveen')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (6, N'RIL', N'123456785', N'WCDL', N'NA', 0, 3000, 3003, 3003, 3003, NULL, N'Multiple', N'NA', NULL, 8.2, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (7, N'tatapower', N'34567890', N'BG/LC', N'NA', 0, 500, 400, -32132, 32632, 32432, N'Consortium', N'SBI', NULL, 0.25, NULL, N'future payments', NULL, CAST(N'2018-03-18T00:00:00.000' AS DateTime), CAST(N'2018-03-18T00:00:00.000' AS DateTime), NULL, CAST(N'2018-03-18T00:00:00.000' AS DateTime), N'praveen')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (7, N'RIL', N'123456786', N'WCDL', N'NA', 0, 2500, 2000, 2000, 2000, NULL, N'Multiple', N'NA', NULL, 8.2, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+GO
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (8, N'ICICIHF', N'123456787', N'Term Loan', N'NA', 0, 10000, 2250, 2250, 2250, NULL, N'Consortium', N'ICICI Bank', NULL, 9.03, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+GO
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (9, N'ICICIHF', N'123456788', N'Term Loan', N'NA', 0, 2000, 1000, 1000, 1000, NULL, N'Consortium', N'ICICI Bank', NULL, 9.03, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+GO
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (10, N'ICICIHF', N'123456789', N'Term Loan', N'NA', 0, 6000, 4500, 4500, 4500, NULL, N'Consortium', N'ICICI Bank', NULL, 9.03, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+GO
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (11, N'ICICIHF', N'123456701', N'Term Loan', N'NA', 0, 2200, 1400, 1400, 1400, NULL, N'Consortium', N'ICICI Bank', NULL, 9.1, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+GO
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (12, N'LICHF', N'123456702', N'Term Loan', N'NA', 0, 4000, 3000, 3000, 3000, NULL, N'Multiple', N'NA', NULL, 9.1, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+GO
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (13, N'LICHF', N'123456703', N'Term Loan', N'NA', 0, 6000, 5000, 5000, 5000, NULL, N'Multiple', N'NA', NULL, 9.1, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+GO
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (14, N'LICHF', N'123456704', N'Term Loan', N'NA', 0, 9000, 7500, 7500, 7500, NULL, N'Multiple', N'NA', NULL, 9.1, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+GO
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (15, N'LICHF', N'123456705', N'Term Loan', N'NA', 0, 6600, 2000, 2000, 2000, NULL, N'Multiple', N'NA', NULL, 9.1, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+GO
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (16, N'LICHF', N'123456706', N'Term Loan', N'NA', 0, 2400, 600, 600, 600, NULL, N'Multiple', N'NA', NULL, 9.1, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+GO
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (17, N'ATULAUTO', N'123456707', N'Term Loan', N'NA', 0, 1000, 500, 500, 500, NULL, N'Sole', N'NA', NULL, 9.76, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+GO
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (18, N'ATULAUTO', N'123456708', N'CC', N'NA', 0, 4400, 4395, 4395, 4395, NULL, N'Sole', N'NA', NULL, 9.76, N'', N'', NULL, CAST(N'2016-03-15T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'2', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+GO
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (19, N'ATULAUTO', N'123456709', N'PCA', N'SMA0', 1, 2500, 2500, 2500, 2500, NULL, N'Sole', N'NA', NULL, 9.76, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+GO
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (20, N'ATULAUTO', N'123456710', N'PSL', N'NA', 0, 2500, 100, 2500, 100, NULL, N'Sole', N'NA', NULL, NULL, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+GO
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (21, N'MARUTI', N'123456711', N'Term Loan', N'NA', 0, 90000, 86000, 90000, 86000, NULL, N'Consortium', N'HDFC Bank', CAST(N'2001-01-01T00:00:00.000' AS DateTime), 7.95, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+GO
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (22, N'PATANJALI', N'123456712', N'Term Loan', N'NA', 0, 75000, 75000, 75000, 75000, NULL, N'Sole', N'NA', NULL, 8.25, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+GO
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (23, N'HUL', N'123456713', N'PCA', N'NA', 0, 30000, 200, 30000, 200, NULL, N'Consortium', N'ICICI Bank', NULL, NULL, N'', N'', NULL, CAST(N'2018-12-01T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+GO
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (24, N'HUL', N'123456714', N'PSL', N'NA', 0, 90000, 80000, 90000, 80000, NULL, N'Consortium', N'ICICI Bank', NULL, NULL, N'', N'', NULL, CAST(N'2018-12-01T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+GO
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (25, N'JAYPEE', N'123456715', N'Term Loan', N'SMA2', 2, 10000, 9700, 9700, 9700, NULL, N'Multiple', N'NA', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 8.99, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+GO
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (26, N'JAYPEE', N'123456716', N'FITL', N'SMA1', 1, 1875, 1776, 1776, 1776, NULL, N'Multiple', N'NA', NULL, 8.99, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+GO
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (27, N'HCC', N'123456717', N'Term Loan', N'SMA2', 2, 4500, 4099, 4099, 4099, NULL, N'Multiple', N'NA', CAST(N'2003-04-06T00:00:00.000' AS DateTime), 8.79, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+GO
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (28, N'HCC', N'123456718', N'Term Loan', N'SMA2', 2, 5500, 5598, 5598, 5598, NULL, N'Consortium', N'SBI', CAST(N'2005-12-12T00:00:00.000' AS DateTime), 8.79, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+GO
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (29, N'HCC', N'123456719', N'CC', N'SMA2', 2, 2000, 2007, 2007, 2007, NULL, N'Consortium', N'SBI', CAST(N'2005-12-12T00:00:00.000' AS DateTime), 8.79, N'', N'', NULL, CAST(N'2014-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+GO
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (30, N'HCC', N'123456720', N'FITL', N'SMA1', 1, 2200, 2008, 2008, 2008, NULL, N'Consortium', N'SBI', NULL, 8.79, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
 GO
 SET IDENTITY_INSERT [dbo].[AccountDetails] OFF
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'AtulAuto', N'Atul Auto', N'EFGHI4567E', 10000, CAST(N'2010-01-01' AS Date), N'Public', N'Auto', N'Auto', N'Mfg of Motor Vehicles', N'Hyerabad Lakdi Ka Pul', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=531795&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/auto-2-3-wheelers/atulauto/AA08')
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'ATULAUTO', N'Atul Auto', N'EFGHI4567E', 500, CAST(N'2018-06-23' AS Date), N'Public', N'Auto', N'Auto', N'Mfg of Motor Vehicles', N'Hyerabad Lakdi Ka Pul', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=531795&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/auto-2-3-wheelers/atulauto/AA08')
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'dbs', N'development bank of spore', N'PANSPORE', 3334, CAST(N'2009-09-04' AS Date), N'pubic limited', NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'HCC', N'HCC', N'JKLMN9012J', 4099, CAST(N'2018-06-23' AS Date), N'Public', N'Infrastructure', N'Infra', N'Construction/Maintenance of Roads', N'Hyerabad Lakdi Ka Pul', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=500185&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/construction-contracting-civil/hindustanconstructioncompany/HCC')
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'HCC', N'HCC', N'JKLMN9012J', 10000, CAST(N'2010-01-01' AS Date), N'Public', N'Infrastructure', N'Infra', N'Construction/Maintenance of Roads', N'Hyerabad Lakdi Ka Pul', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=500185&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/construction-contracting-civil/hindustanconstructioncompany/HCC')
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'HUL', N'HUL', N'HIJKL7890H', 30000, CAST(N'2018-06-23' AS Date), N'Public', N'Consumables', N'FMCG', N'SOAPS,COSMETICS, TOILETRIES, ETC.', N'Bangalore Indira Nagar', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=500696&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/personal-care/hindustanunilever/HU')
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'HUL', N'HUL', N'HIJKL7890H', 10000, CAST(N'2010-01-01' AS Date), N'Public', N'Consumables', N'FMCG', N'SOAPS,COSMETICS, TOILETRIES, ETC.', N'Bangalore Indira Nagar', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=500696&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/personal-care/hindustanunilever/HU')
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'ICICIHF', N'ICICI HFC', N'CDEFG2345C', 2250, CAST(N'2018-06-23' AS Date), N'Public', N'NBFC-HFC', N'FI', N'NBFCs- in the housing sector', N'Bangalore Indira Nagar', N'', N'')
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'ICICIHFC', N'ICICI HFC', N'CDEFG2345C', 10000, CAST(N'2010-01-01' AS Date), N'Public', N'FI', N'NBFC-HFC', N'NBFCs- in the housing sector', N'Bangalore Indira Nagar', NULL, NULL)
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'JAYPEE', N'Jaypee Infratech Limited', N'IJKLM8901I', 9700, CAST(N'2018-06-23' AS Date), N'Public', N'Infrastructure', N'Infra', N'Construction/Maintenance of Roads', N'Delhi Karol Baug', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=533207&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/infrastructure-general/jaypeeinfratech/JI09')
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'JaypeeInfra', N'Jaypee Infratech Limited', N'IJKLM8901I', 10000, CAST(N'2010-01-01' AS Date), N'Public', N'Infrastructure', N'Infra', N'Construction/Maintenance of Roads', N'Delhi Karol Baug', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=533207&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/infrastructure-general/jaypeeinfratech/JI09')
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'LICHF', N'LIC Housing Finance', N'DEFGH3456D', 3000, CAST(N'2018-06-23' AS Date), N'Public', N'NBFC-HFC', N'FI', N'NBFCs- in the housing sector', N'Delhi Karol Baug', N'', N'')
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'LICHFL', N'LIC Housing Finance', N'DEFGH3456D', 10000, CAST(N'2010-01-01' AS Date), N'Public', N'FI', N'NBFC-HFC', N'NBFCs- in the housing sector', N'Delhi Karol Baug', NULL, NULL)
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'MARUTI', N'Maruti Suzuki', N'FGHIJ5678F', 90000, CAST(N'2018-06-23' AS Date), N'Public', N'Auto', N'Auto', N'Mfg of Motor Vehicles', N'Mumbai Fort', N'', N'')
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'Maruti', N'Maruti Suzuki', N'FGHIJ5678F', 10000, CAST(N'2010-01-01' AS Date), N'Public', N'Auto', N'Auto', N'Mfg of Motor Vehicles', N'Mumbai Fort', NULL, NULL)
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'PATANJALI', N'Patanjali Agro India P Ltd', N'GHIJK6789G', 75000, CAST(N'2018-06-23' AS Date), N'Private', N'Consumables', N'FMCG', N'SOAPS,COSMETICS, TOILETRIES, ETC.', N'Chennai Mount Road', N'', N'')
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'PatanjaliAgro', N'Patanjali Agro India P Ltd', N'GHIJK6789G', 10000, CAST(N'2010-01-01' AS Date), N'Private', N'Consumables', N'FMCG', N'SOAPS,COSMETICS, TOILETRIES, ETC.', N'Chennai Mount Road', NULL, NULL)
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'RIL', N'Reliance Industries Limited', N'BCDEF0123B', 10010, CAST(N'2018-06-23' AS Date), N'Public', N'Oil', N'Energy', N'Manufacture of refined petroleum products', N'Chennai Mount Road', N'', N'')
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'RIL', N'Reliance Industries Limited', N'BCDEF0123B', 10000, CAST(N'2010-01-01' AS Date), N'Public', N'Oil', N'Energy', N'Manufacture of refined petroleum products', N'Chennai Mount Road', NULL, NULL)
-GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'TataPower', N'Tata Power', N'ABCDE1234A', 10000, CAST(N'2010-01-01' AS Date), N'Public', N'Power', N'Energy', N'Collection and Distn of Electricity', N'Mumbai Fort', NULL, NULL)
-GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'TataSons', N'Tata Sons', N'ABCDE1234A', 10000, CAST(N'2010-01-01' AS Date), N'Public', N'Power', N'Energy', N'Collection and Distn of Electricity', N'Mumbai Fort', NULL, NULL)
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'TATAPOWER', N'Tata Power', N'ABCDE1234A', 1000, CAST(N'2018-06-23' AS Date), N'Public', N'Power', N'Energy', N'Collection and Distn of Electricity', N'Mumbai Fort', N'', N'')
 GO
 SET IDENTITY_INSERT [dbo].[FinancialResultDetails] ON 
 GO
@@ -1203,51 +1246,807 @@ INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter],
 GO
 INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (455, 62, NULL, N'2018', NULL, 1, N'JaypeeInfra', N'Annual')
 GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (458, 133, CAST(4.9500 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (459, 133, CAST(4.9500 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (460, 133, CAST(4.9500 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (461, 133, CAST(4.9500 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (462, 133, CAST(4.9500 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (463, 124, CAST(0.1500 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (464, 124, CAST(0.0900 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (465, 124, CAST(0.3600 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (466, 124, CAST(0.0000 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (467, 124, CAST(0.0000 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (468, 101, CAST(3.1600 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (469, 101, CAST(2.8600 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (470, 101, CAST(0.4800 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (471, 101, CAST(0.6300 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (472, 101, CAST(5.0000 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (473, 112, CAST(57.1000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (474, 112, CAST(12.8200 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (475, 112, CAST(27.3600 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (476, 112, CAST(45.1500 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (477, 112, CAST(38.0700 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (478, 119, CAST(66.9300 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (479, 119, CAST(17.5500 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (480, 119, CAST(4.3500 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (481, 119, CAST(14.3000 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (482, 119, CAST(15.4300 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (483, 138, NULL, N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (484, 138, NULL, N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (485, 138, NULL, N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (486, 138, NULL, N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (487, 138, NULL, N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (488, 139, NULL, N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (489, 139, NULL, N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (490, 139, NULL, N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (491, 139, NULL, N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (492, 139, NULL, N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (493, 87, CAST(5.3900 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (494, 87, CAST(4.9700 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (495, 87, CAST(5.1900 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (496, 87, CAST(6.1200 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (497, 87, CAST(4.4900 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (498, 128, NULL, N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (499, 128, NULL, N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (500, 128, NULL, N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (501, 128, NULL, N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (502, 128, CAST(0.0200 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (503, 80, CAST(11.2000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (504, 80, CAST(11.2000 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (505, 80, CAST(11.2000 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (506, 80, CAST(11.2000 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (507, 80, CAST(11.2000 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (508, 126, CAST(0.3300 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (509, 126, CAST(0.0700 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (510, 126, CAST(0.2500 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (511, 126, CAST(0.1000 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (512, 126, CAST(0.2700 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (513, 102, CAST(90.3100 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (514, 102, CAST(87.4600 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (515, 102, CAST(79.9200 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (516, 102, CAST(53.3300 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (517, 102, CAST(48.0700 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (518, 130, CAST(25.6300 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (519, 130, CAST(18.2700 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (520, 130, CAST(16.8100 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (521, 130, CAST(7.2200 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (522, 130, CAST(3.0500 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (523, 100, CAST(0.0000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (524, 100, CAST(0.3700 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (525, 100, CAST(0.6200 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (526, 100, CAST(0.9400 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (527, 100, CAST(1.0100 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (528, 110, CAST(36.2300 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (529, 110, CAST(34.7200 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (530, 110, CAST(26.0000 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (531, 110, CAST(23.3700 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (532, 110, CAST(22.9500 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (533, 105, CAST(2.5900 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (534, 105, CAST(3.8100 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (535, 105, CAST(7.3500 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (536, 105, CAST(4.9700 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (537, 105, CAST(3.8500 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (538, 89, CAST(1.1800 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (539, 89, CAST(0.5100 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (540, 89, CAST(0.5100 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (541, 89, CAST(0.2600 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (542, 89, CAST(0.1900 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (543, 103, CAST(7.8100 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (544, 134, CAST(7.8100 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (545, 103, CAST(0.9900 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (546, 134, CAST(0.9900 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (547, 103, CAST(0.9900 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (548, 134, CAST(0.9900 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (549, 103, CAST(1.2300 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (550, 134, CAST(1.2300 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (551, 103, CAST(1.2300 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (552, 134, CAST(1.2300 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (553, 135, CAST(0.0000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (554, 135, CAST(0.0000 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (555, 135, CAST(0.0000 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (556, 135, NULL, N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (557, 135, NULL, N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (558, 94, CAST(16.1300 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (559, 94, CAST(13.9200 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (560, 94, CAST(10.4600 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (561, 94, CAST(8.7800 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (562, 94, CAST(4.8400 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (563, 131, CAST(0.7100 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (564, 131, CAST(0.7000 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (565, 131, CAST(1.5200 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (566, 131, CAST(0.1200 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (567, 131, CAST(0.3300 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (568, 88, CAST(0.0000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (569, 88, CAST(0.0000 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (570, 88, CAST(0.0000 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (571, 88, CAST(0.0000 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (572, 88, CAST(2.5800 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (573, 106, CAST(1.3800 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (574, 106, CAST(0.9000 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (575, 106, CAST(0.0000 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (576, 106, CAST(0.0000 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (577, 106, CAST(0.0000 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (578, 114, CAST(0.3200 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (579, 114, CAST(0.5300 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (580, 114, CAST(0.3100 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (581, 114, CAST(0.5600 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (582, 114, CAST(0.0800 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (583, 121, CAST(7.1900 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (584, 121, CAST(6.5600 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (585, 121, CAST(2.8700 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (586, 121, CAST(0.3900 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (587, 121, CAST(0.0100 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (588, 82, CAST(169.4900 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (589, 82, CAST(143.4000 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (590, 82, CAST(109.8600 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (591, 82, CAST(83.2700 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (592, 82, CAST(63.1000 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (593, 113, CAST(1.9800 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (594, 113, CAST(3.9200 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (595, 113, CAST(3.2500 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (596, 113, CAST(2.9300 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (597, 113, CAST(1.5600 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (598, 95, CAST(6.1300 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (599, 95, CAST(11.5100 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (600, 95, CAST(13.4400 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (601, 95, CAST(7.8100 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (602, 95, CAST(12.8000 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (603, 99, CAST(87.1500 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (604, 99, CAST(84.2300 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (605, 99, CAST(78.8200 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (606, 99, CAST(51.7600 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (607, 99, CAST(42.0500 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (608, 116, CAST(245.4900 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (609, 116, CAST(221.5000 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (610, 116, CAST(177.4200 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (611, 116, CAST(144.6000 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (612, 116, CAST(122.9500 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (613, 97, CAST(245.4900 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (614, 97, CAST(221.5000 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (615, 97, CAST(177.4200 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (616, 97, CAST(144.6000 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (617, 97, CAST(122.9500 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (618, 115, CAST(143.4000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (619, 115, CAST(128.3500 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (620, 115, CAST(89.1700 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (621, 115, CAST(85.0800 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (622, 115, CAST(69.8100 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (623, 96, CAST(58.2300 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (624, 96, CAST(61.4200 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (625, 96, CAST(50.6500 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (626, 96, CAST(43.7500 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (627, 96, CAST(41.3900 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (628, 107, CAST(102.0900 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (629, 107, CAST(93.1600 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (630, 107, CAST(88.2600 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (631, 107, CAST(59.5300 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (632, 107, CAST(53.1400 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (633, 90, CAST(6.5700 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (634, 90, CAST(5.4800 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (635, 90, CAST(5.7000 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (636, 90, CAST(6.3800 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (637, 90, CAST(7.2600 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (638, 83, CAST(169.4900 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (639, 83, CAST(143.4000 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (640, 83, CAST(109.8600 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (641, 83, CAST(83.2700 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (642, 83, CAST(63.1000 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (643, 81, CAST(11.2000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (644, 81, CAST(11.2000 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (645, 81, CAST(11.2000 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (646, 81, CAST(11.2000 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (647, 81, CAST(11.2000 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (648, 84, CAST(180.7000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (649, 84, CAST(154.6000 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (650, 84, CAST(121.0700 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (651, 84, CAST(94.4700 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (652, 84, CAST(74.3000 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (653, 93, CAST(35.9600 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (654, 93, CAST(36.0000 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (655, 93, CAST(26.7500 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (656, 93, CAST(27.1600 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (657, 93, CAST(23.7400 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (658, 111, CAST(47.7700 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (659, 111, CAST(76.3500 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (660, 111, CAST(32.2500 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (661, 111, CAST(13.0700 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (662, 111, CAST(7.1500 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (663, 123, CAST(0.0100 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (664, 123, CAST(0.0000 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (665, 123, CAST(0.0000 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (666, 123, CAST(0.0000 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (667, 123, CAST(0.0000 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+GO
 SET IDENTITY_INSERT [dbo].[FinancialResultDetails] OFF
 GO
 SET IDENTITY_INSERT [dbo].[FinancialResultHeader] ON 
 GO
-INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive]) VALUES (49, N'Revenue', 1, 1)
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (49, N'Revenue', 2, 1, NULL, NULL)
 GO
-INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive]) VALUES (50, N'Other Income', 1, 1)
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (50, N'Other Income', 2, 1, NULL, NULL)
 GO
-INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive]) VALUES (51, N'Total Income', 1, 1)
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (51, N'Total Income', 2, 1, NULL, NULL)
 GO
-INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive]) VALUES (52, N'Expenditure', 1, 1)
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (52, N'Expenditure', 2, 1, NULL, NULL)
 GO
-INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive]) VALUES (53, N'Interest', 1, 1)
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (53, N'Interest', 2, 1, NULL, NULL)
 GO
-INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive]) VALUES (54, N'PBDT', 1, 1)
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (54, N'PBDT', 2, 1, NULL, NULL)
 GO
-INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive]) VALUES (55, N'Depreciation', 1, 1)
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (55, N'Depreciation', 2, 1, NULL, NULL)
 GO
-INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive]) VALUES (56, N'PBT', 1, 1)
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (56, N'PBT', 2, 1, NULL, NULL)
 GO
-INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive]) VALUES (57, N'Tax', 1, 1)
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (57, N'Tax', 2, 1, NULL, NULL)
 GO
-INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive]) VALUES (58, N'Net Profit', 1, 1)
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (58, N'Net Profit', 2, 1, NULL, NULL)
 GO
-INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive]) VALUES (59, N'Equity', 1, 1)
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (59, N'Equity', 2, 1, NULL, NULL)
 GO
-INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive]) VALUES (60, N'EPS', 1, 1)
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (60, N'EPS', 2, 1, NULL, NULL)
 GO
-INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive]) VALUES (61, N'CEPS', 1, 1)
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (61, N'CEPS', 2, 1, NULL, NULL)
 GO
-INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive]) VALUES (62, N'OPM %', 1, 1)
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (62, N'OPM %', 2, 1, NULL, NULL)
 GO
-INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive]) VALUES (63, N'NPM %', 1, 1)
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (63, N'NPM %', 2, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (64, N'Revenue', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (65, N'Other Income', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (66, N'Total Income', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (67, N'Expenditure', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (68, N'Interest', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (69, N'PBDT', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (70, N'Depreciation', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (71, N'PBT', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (72, N'Tax', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (73, N'Net Profit', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (74, N'Equity', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (75, N'EPS', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (76, N'CEPS', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (77, N'OPM %', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (78, N'NPM %', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (79, N'SHAREHOLDER''S FUNDS', 3, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (80, N'Equity Share Capital', 3, 1, 79, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (81, N'Total Share Capital', 3, 1, 79, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (82, N'Reserves and Surplus', 3, 1, 79, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (83, N'Total Reserves and Surplus', 3, 1, 79, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (84, N'Total Shareholders Funds', 3, 1, 79, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (85, N'NON-CURRENT LIABILITIES', 3, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (86, N'Long Term Borrowings ', 3, 1, 85, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (87, N'Deferred Tax Liabilities [Net]', 3, 1, 85, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (88, N'Other Long Term Liabilities', 3, 1, 85, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (89, N'Long Term Provisions ', 3, 1, 85, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (90, N'Total Non-Current Liabilities', 3, 1, 85, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (91, N'CURRENT LIABILITIES', 3, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (92, N'Short Term Borrowings', 3, 1, 91, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (93, N'Trade Payables', 3, 1, 91, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (94, N'Other Current Liabilities', 3, 1, 91, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (95, N'Short Term Provisions ', 3, 1, 91, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (96, N'Total Current Liabilities', 3, 1, 91, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (97, N'Total Capital And Liabilities', 3, 1, 91, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (98, N'NON-CURRENT ASSETS', 3, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (99, N'Tangible Assets', 3, 1, 98, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (100, N'Intangible Assets', 3, 1, 98, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (101, N'Capital Work-In-Progress', 3, 1, 98, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (102, N'Fixed Assets', 3, 1, 98, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (103, N'Non-Current Investments', 3, 1, 98, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (104, N'Deferred Tax Assets [Net]', 3, 1, 98, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (105, N'Long Term Loans And Advances', 3, 1, 98, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (106, N'Other Non-Current Assets', 3, 1, 98, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (107, N'Total Non-Current Assets', 3, 1, 98, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (108, N'CURRENT ASSETS', 3, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (109, N'Current Investments', 3, 1, 108, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (110, N'Inventories', 3, 1, 108, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (111, N'Trade Receivables', 3, 1, 108, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (112, N'Cash And Cash Equivalents', 3, 1, 108, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (113, N'Short Term Loans And Advances', 3, 1, 108, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (114, N'OtherCurrentAssets', 3, 1, 108, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (115, N'Total Current Assets', 3, 1, 108, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (116, N'Total Assets', 3, 1, 108, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (117, N'OTHER ADDITIONAL INFORMATION', 3, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (118, N'CONTINGENT LIABILITIES, COMMITMENTS', 3, 1, 108, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (119, N'Contingent Liabilities', 3, 1, 108, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (120, N'CIF VALUE OF IMPORTS', 3, 1, 108, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (121, N'Raw Materials', 3, 1, 108, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (122, N'Stores, Spares And Loose Tools', 3, 1, 108, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (123, N'Trade/Other Goods', 3, 1, 108, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (124, N'Capital Goods', 3, 1, 108, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (125, N'EXPENDITURE IN FOREIGN EXCHANGE', 3, 1, 108, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (126, N'Expenditure In Foreign Currency', 3, 1, 108, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (127, N'REMITTANCES IN FOREIGN CURRENCIES FOR DIVIDENDS', 3, 1, 108, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (128, N'Dividend Remittance In Foreign Currency', 3, 1, 108, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (129, N'EARNINGS IN FOREIGN EXCHANGE', 3, 1, 108, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (130, N'FOB Value Of Goods', 3, 1, 108, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (131, N'Other Earnings', 3, 1, 108, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (132, N'BONUS DETAILS', 3, 1, 108, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (133, N'Bonus Equity Share Capital', 3, 1, 108, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (134, N'NON-CURRENT INVESTMENTS', 3, 1, 108, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (135, N'Non-Current Investments Quoted Market Value', 3, 1, 108, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (136, N' Non-Current Investments Unquoted Book Value ', 3, 1, 108, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (137, N'CURRENT INVESTMENTS', 3, 1, 108, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (138, N'Current Investments Quoted Market Value', 3, 1, 108, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (139, N'Current Investments Unquoted Book Value', 3, 1, 108, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (140, N'INCOME', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (141, N'Revenue From Operations [Gross]', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (142, N'Less: Excise/Sevice Tax/Other Levies', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (143, N'Revenue From Operations [Net]', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (144, N'Total Operating Revenues', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (145, N'Other Income', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (146, N'Total Revenue', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (147, N'EXPENSES', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (148, N'Cost Of Materials Consumed', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (149, N'Operating And Direct Expenses', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (150, N'Changes In Inventories Of FG,WIP And Stock-In Trade', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (151, N'Employee Benefit Expenses', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (152, N'Finance Costs', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (153, N'Depreciation And Amortisation Expenses', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (154, N'Other Expenses', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (155, N'Total Expenses', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (156, N'Profit/Loss Before Exceptional, ExtraOrdinary Items And Tax', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (157, N'Exceptional Items', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (158, N'Profit/Loss Before Tax', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (159, N'Tax Expenses-Continued Operations', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (160, N'Current Tax', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (161, N'Less: MAT Credit Entitlement', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (162, N'Deferred Tax', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (163, N'Tax For Earlier Years', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (164, N'Total Tax Expenses', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (165, N'Profit/Loss After Tax And Before ExtraOrdinary Items ', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (166, N'Profit/Loss From Continuing Operations', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (167, N'Profit/Loss For The Period', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (168, N'EARNINGS PER SHARE', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (169, N'Basic EPS (Rs.)', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (170, N'Diluted EPS (Rs.)', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (171, N'VALUE OF IMPORTED AND INDIGENIOUS RAW MATERIALS', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (172, N'Imported Raw Materials', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (173, N'Indigenous Raw Materials', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (174, N'STORES, SPARES AND LOOSE TOOLS', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (175, N'Imported Stores And Spares', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (176, N'Indigenous Stores And Spares', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (177, N'DIVIDEND AND DIVIDEND PERCENTAGE', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (178, N'Equity Share Dividend', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (179, N'Preference Share Dividend', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (180, N'Tax On Dividend', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (181, N'Equity Dividend Rate (%)', 1, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (182, N'Net Profit/Loss Before Extraordinary Items And Tax', 4, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (183, N'Net CashFlow From Operating Activities', 4, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (184, N'Net Cash Used In Investing Activities', 4, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (185, N'Net Cash Used From Financing Activities', 4, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (186, N'Foreign Exchange Gains / Losses', 4, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (187, N'Adjustments on Amalgamation / Merger / Demerger / Others', 4, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (188, N'Net Inc/Dec In Cash And Cash Equivalents', 4, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (189, N'Cash And Cash Equivalents Begin of Year', 4, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (190, N'Cash And Cash Equivalents End Of Year', 4, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (191, N'Per Share Ratios', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (192, N'Basic EPS (Rs.)', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (193, N'Diluted EPS (Rs.)', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (194, N'Cash EPS (Rs.)', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (195, N'Book Value [ExclRevalReserve]/Share (Rs.)', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (196, N'Book Value [InclRevalReserve]/Share (Rs.)', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (197, N'Dividend / Share(Rs.)', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (198, N'Revenue from Operations/Share (Rs.)', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (199, N'PBDIT/Share (Rs.)', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (200, N'PBIT/Share (Rs.)', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (201, N'PBT/Share (Rs.)', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (202, N'Net Profit/Share (Rs.)', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (203, N'Profitability Ratios', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (204, N'PBDIT Margin (%)', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (205, N'PBIT Margin (%)', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (206, N'PBT Margin (%)', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (207, N'Net Profit Margin (%)', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (208, N'Return on Networth / Equity (%)', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (209, N'Return on Capital Employed (%)', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (210, N'Return on Assets (%)', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (211, N'Total Debt/Equity (X)', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (212, N'Asset Turnover Ratio (%)', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (213, N'Liquidity Ratios', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (214, N'Current Ratio (X)', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (215, N'Quick Ratio (X)', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (216, N'Inventory Turnover Ratio (X)', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (217, N'Dividend Payout Ratio (NP) (%)', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (218, N'Dividend Payout Ratio (CP) (%)', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (219, N'Earnings Retention Ratio (%)', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (220, N'Cash Earnings Retention Ratio (%)', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (221, N'Valuation Ratios', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (222, N'Enterprise Value (Cr.)', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (223, N'EV/Net Operating Revenue (X)', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (224, N'EV/EBITDA (X)', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (225, N'MarketCap/Net Operating Revenue (X)', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (226, N'Retention Ratios (%)', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (227, N'Price/Net Operating Revenue', 6, 1, NULL, NULL)
+GO
+INSERT [dbo].[FinancialResultHeader] ([HeaderID], [HeaderName], [TypeId], [IsActive], [parentID], [SortOrder]) VALUES (228, N'Earnings Yield', 6, 1, NULL, NULL)
 GO
 SET IDENTITY_INSERT [dbo].[FinancialResultHeader] OFF
 GO
 SET IDENTITY_INSERT [dbo].[FinancialResultType] ON 
 GO
-INSERT [dbo].[FinancialResultType] ([TypeID], [TypeName], [IsActive]) VALUES (1, N'PROFIT & LOSS', 1)
+INSERT [dbo].[FinancialResultType] ([TypeID], [TypeName], [IsActive], [IsFinancialData]) VALUES (1, N'PROFIT & LOSS', 1, NULL)
 GO
-INSERT [dbo].[FinancialResultType] ([TypeID], [TypeName], [IsActive]) VALUES (2, N'Quarters', 1)
+INSERT [dbo].[FinancialResultType] ([TypeID], [TypeName], [IsActive], [IsFinancialData]) VALUES (2, N'Quarters', 1, NULL)
 GO
-INSERT [dbo].[FinancialResultType] ([TypeID], [TypeName], [IsActive]) VALUES (3, N'Balance Sheet', 1)
+INSERT [dbo].[FinancialResultType] ([TypeID], [TypeName], [IsActive], [IsFinancialData]) VALUES (3, N'Balance Sheet', 1, NULL)
 GO
-INSERT [dbo].[FinancialResultType] ([TypeID], [TypeName], [IsActive]) VALUES (4, N'Cashflow', 1)
+INSERT [dbo].[FinancialResultType] ([TypeID], [TypeName], [IsActive], [IsFinancialData]) VALUES (4, N'Cashflow', 1, NULL)
+GO
+INSERT [dbo].[FinancialResultType] ([TypeID], [TypeName], [IsActive], [IsFinancialData]) VALUES (5, N'Ratios', 1, NULL)
+GO
+INSERT [dbo].[FinancialResultType] ([TypeID], [TypeName], [IsActive], [IsFinancialData]) VALUES (6, N'Yearly', 1, NULL)
+GO
+INSERT [dbo].[FinancialResultType] ([TypeID], [TypeName], [IsActive], [IsFinancialData]) VALUES (7, N'News', 1, NULL)
 GO
 SET IDENTITY_INSERT [dbo].[FinancialResultType] OFF
 GO
@@ -1277,11 +2076,65 @@ INSERT [dbo].[General] ([Cust_id], [Activity], [Sector_SubSector], [Priority_Non
 GO
 SET IDENTITY_INSERT [dbo].[GeneralExposure] ON 
 GO
-INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (1, N'maruti', N'Working Capital', 434, 4343, 43)
+INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (1, N'TATAPOWER', N'CC', 1000, 750, 1000)
 GO
-INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (2, N'maruti', N'term load', 3223, 34234, 4334)
+INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (2, N'TATAPOWER', N'Term Loan', 5000, 4850, 4900)
 GO
-INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (3, N'maruti', N'Bank Gurantee', 32423, 23423, 343)
+INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (3, N'TATAPOWER', N'BG/LC', 500, 400, 500)
+GO
+INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (4, N'RIL', N'WCDL', 10000, 10010, 10010)
+GO
+INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (5, N'RIL', N'WCDL', 7500, 2500, 2500)
+GO
+INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (6, N'RIL', N'WCDL', 3000, 3003, 3000)
+GO
+INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (7, N'RIL', N'WCDL', 2500, 2000, 2000)
+GO
+INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (8, N'ICICIHF', N'Term Loan', 10000, 2250, 2250)
+GO
+INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (9, N'ICICIHF', N'Term Loan', 2000, 1000, 1000)
+GO
+INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (10, N'ICICIHF', N'Term Loan', 6000, 4500, 4500)
+GO
+INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (11, N'ICICIHF', N'Term Loan', 2200, 1400, 1400)
+GO
+INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (12, N'LICHF', N'Term Loan', 4000, 3000, 3000)
+GO
+INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (13, N'LICHF', N'Term Loan', 6000, 5000, 5000)
+GO
+INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (14, N'LICHF', N'Term Loan', 9000, 7500, 7500)
+GO
+INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (15, N'LICHF', N'Term Loan', 6600, 2000, 2000)
+GO
+INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (16, N'LICHF', N'Term Loan', 2400, 600, 600)
+GO
+INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (17, N'ATULAUTO', N'Term Loan', 1000, 500, 500)
+GO
+INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (18, N'ATULAUTO', N'CC', 4400, 4395, 4400)
+GO
+INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (19, N'ATULAUTO', N'PCA', 2500, 2500, 2500)
+GO
+INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (20, N'ATULAUTO', N'PSL', 2500, 100, 2500)
+GO
+INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (21, N'MARUTI', N'Term Loan', 90000, 80000, 90000)
+GO
+INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (22, N'PATANJALI', N'Term Loan', 75000, 75000, 75000)
+GO
+INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (23, N'HUL', N'PCA', 30000, 200, 30000)
+GO
+INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (24, N'HUL', N'PSL', 90000, 80000, 90000)
+GO
+INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (25, N'JAYPEE', N'Term Loan', 10000, 9700, 9700)
+GO
+INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (26, N'JAYPEE', N'FITL', 1875, 1776, 1776)
+GO
+INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (27, N'HCC', N'Term Loan', 4500, 4099, 4099)
+GO
+INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (28, N'HCC', N'Term Loan', 5500, 5598, 5598)
+GO
+INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (29, N'HCC', N'CC', 2000, 2007, 2007)
+GO
+INSERT [dbo].[GeneralExposure] ([id], [Cust_Id], [Nature], [Limit], [Balance], [Exposure]) VALUES (30, N'HCC', N'FITL', 2200, 2008, 2008)
 GO
 SET IDENTITY_INSERT [dbo].[GeneralExposure] OFF
 GO
@@ -1297,29 +2150,65 @@ SET IDENTITY_INSERT [dbo].[GeneralGurantor] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Interest] ON 
 GO
-INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (1, N'jpmc', N'3456789', N'cash-credit', N'as per finacle', 9.9, CAST(N'2009-01-05T00:00:00.000' AS DateTime), NULL, CAST(N'2020-09-10T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'finacle')
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (1, N'TATAPOWER', N'123456780', N'CC', N'8.75', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2018-03-18T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
 GO
-INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (2, N'jpmc', N'3456785', N'cash-credit', N'as per finacle', 9.9, CAST(N'2009-01-05T00:00:00.000' AS DateTime), NULL, CAST(N'2020-09-10T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'finacle')
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (2, N'TATAPOWER', N'123456781', N'Term Loan', N'8.2', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
 GO
-INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (3, N'jpmc', N'34567867', N'Term-Loan', N'CBS', 10, CAST(N'2009-01-05T00:00:00.000' AS DateTime), NULL, CAST(N'2020-09-10T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (3, N'TATAPOWER', N'123456782', N'BG/LC', N'0.25', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
 GO
-INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (4, N'jpmc', N'3456782', N'Term-Loan', N'CBS', 10, CAST(N'2009-01-05T00:00:00.000' AS DateTime), NULL, CAST(N'2020-09-10T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (4, N'RIL', N'123456783', N'WCDL', N'8.75', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
 GO
-INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (5, N'jpmc', N'3456781', N'PCL', N'CBS', 10, CAST(N'2009-01-05T00:00:00.000' AS DateTime), NULL, CAST(N'2020-09-10T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (5, N'RIL', N'123456784', N'WCDL', N'8.2', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
 GO
-INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (6, N'jpmc', N'3456788', N'PCL', N'CBS', 11, CAST(N'2009-01-05T00:00:00.000' AS DateTime), NULL, CAST(N'2020-09-10T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (6, N'RIL', N'123456785', N'WCDL', N'8.2', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
 GO
-INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (7, N'jpmc', N'3456789', N'cash-credit', N'as per finacle', 9.9, CAST(N'2009-01-05T00:00:00.000' AS DateTime), NULL, CAST(N'2020-09-10T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'finacle')
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (7, N'RIL', N'123456786', N'WCDL', N'8.2', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
 GO
-INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (8, N'maruti', N'3456785', N'cash-credit', N'as per finacle', 9.9, CAST(N'2009-01-05T00:00:00.000' AS DateTime), NULL, CAST(N'2020-09-10T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'finacle')
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (8, N'ICICIHF', N'123456787', N'Term Loan', N'9.03', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
 GO
-INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (9, N'maruti', N'34567867', N'Term-Loan', N'CBS', 10, CAST(N'2009-01-05T00:00:00.000' AS DateTime), NULL, CAST(N'2020-09-10T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (9, N'ICICIHF', N'123456788', N'Term Loan', N'9.03', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
 GO
-INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (10, N'maruti', N'3456782', N'Term-Loan', N'CBS', 10, CAST(N'2009-01-05T00:00:00.000' AS DateTime), NULL, CAST(N'2020-09-10T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (10, N'ICICIHF', N'123456789', N'Term Loan', N'9.03', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
 GO
-INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (11, N'hcc', N'3456781', N'PCL', N'CBS', 10, CAST(N'2009-01-05T00:00:00.000' AS DateTime), NULL, CAST(N'2020-09-10T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (11, N'ICICIHF', N'123456701', N'Term Loan', N'9.1', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
 GO
-INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (12, N'hcc', N'3456788', N'PCL', N'CBS', 11, CAST(N'2009-01-05T00:00:00.000' AS DateTime), NULL, CAST(N'2020-09-10T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (12, N'LICHF', N'123456702', N'Term Loan', N'9.1', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
+GO
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (13, N'LICHF', N'123456703', N'Term Loan', N'9.1', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
+GO
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (14, N'LICHF', N'123456704', N'Term Loan', N'9.1', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
+GO
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (15, N'LICHF', N'123456705', N'Term Loan', N'9.1', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
+GO
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (16, N'LICHF', N'123456706', N'Term Loan', N'9.1', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
+GO
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (17, N'ATULAUTO', N'123456707', N'Term Loan', N'9.76', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
+GO
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (18, N'ATULAUTO', N'123456708', N'CC', N'9.76', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2016-03-15T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
+GO
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (19, N'ATULAUTO', N'123456709', N'PCA', N'9.76', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
+GO
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (20, N'ATULAUTO', N'123456710', N'PSL', N'', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
+GO
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (21, N'MARUTI', N'123456711', N'Term Loan', N'7.95', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
+GO
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (22, N'PATANJALI', N'123456712', N'Term Loan', N'8.25', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
+GO
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (23, N'HUL', N'123456713', N'PCA', N'', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2018-12-01T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
+GO
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (24, N'HUL', N'123456714', N'PSL', N'', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2018-12-01T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
+GO
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (25, N'JAYPEE', N'123456715', N'Term Loan', N'8.99', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
+GO
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (26, N'JAYPEE', N'123456716', N'FITL', N'8.99', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
+GO
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (27, N'HCC', N'123456717', N'Term Loan', N'8.79', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
+GO
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (28, N'HCC', N'123456718', N'Term Loan', N'8.79', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
+GO
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (29, N'HCC', N'123456719', N'CC', N'8.79', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2014-01-01T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
+GO
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (30, N'HCC', N'123456720', N'FITL', N'8.79', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
 GO
 SET IDENTITY_INSERT [dbo].[Interest] OFF
 GO
@@ -1437,125 +2326,203 @@ SET IDENTITY_INSERT [dbo].[News] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Rating] ON 
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (1, N'tatapower', N'as per SO', CAST(N'2016-05-07T00:00:00.000' AS DateTime), CAST(N'2017-05-07T00:00:00.000' AS DateTime), NULL, 2018, N'AA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (2, N'TATAPOWER', N'internal', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), NULL, 2018, N'CBR4', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (2, N'tatapower', N'as per SO', CAST(N'2015-05-07T00:00:00.000' AS DateTime), CAST(N'2014-05-07T00:00:00.000' AS DateTime), NULL, 2017, N'A', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (3, N'TATAPOWER', N'internal', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), NULL, 2017, N'CBR3', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (3, N'tatapower', N'as per SO', CAST(N'2014-05-07T00:00:00.000' AS DateTime), CAST(N'2013-05-07T00:00:00.000' AS DateTime), NULL, 2016, N'A', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (4, N'TATAPOWER', N'internal', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), NULL, 2016, N'CBR3', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (4, N'tatapower', N'as per SO', CAST(N'2013-05-07T00:00:00.000' AS DateTime), CAST(N'2012-05-07T00:00:00.000' AS DateTime), NULL, 2015, N'A', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (5, N'TATAPOWER', N'internal', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), NULL, 2015, N'CBR4', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (5, N'tatapower', N'as per SO', CAST(N'2016-05-07T00:00:00.000' AS DateTime), CAST(N'2017-05-07T00:00:00.000' AS DateTime), NULL, 2014, N'A', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (6, N'TATAPOWER', N'internal', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), NULL, 2014, N'CBR3', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (6, N'RIL', N'as per SO', CAST(N'2015-05-07T00:00:00.000' AS DateTime), CAST(N'2014-05-07T00:00:00.000' AS DateTime), NULL, 2018, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (7, N'TATAPOWER', N'external', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), NULL, 2018, N'AA', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (7, N'RIL', N'as per SO', CAST(N'2014-05-07T00:00:00.000' AS DateTime), CAST(N'2013-05-07T00:00:00.000' AS DateTime), NULL, 2017, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (8, N'TATAPOWER', N'external', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), NULL, 2017, N'A', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (8, N'RIL', N'as per SO', CAST(N'2013-05-07T00:00:00.000' AS DateTime), CAST(N'2012-05-07T00:00:00.000' AS DateTime), NULL, 2016, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (9, N'TATAPOWER', N'external', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), NULL, 2016, N'A', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (9, N'RIL', N'as per SO', CAST(N'2016-05-07T00:00:00.000' AS DateTime), CAST(N'2017-05-07T00:00:00.000' AS DateTime), NULL, 2015, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (10, N'TATAPOWER', N'external', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), NULL, 2015, N'A', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (10, N'RIL', N'as per SO', CAST(N'2015-05-07T00:00:00.000' AS DateTime), CAST(N'2014-05-07T00:00:00.000' AS DateTime), NULL, 2014, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (11, N'TATAPOWER', N'external', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), NULL, 2014, N'A', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (11, N'ICICIHFC', N'as per SO', CAST(N'2014-05-07T00:00:00.000' AS DateTime), CAST(N'2013-05-07T00:00:00.000' AS DateTime), NULL, 2018, N'AA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (12, N'RIL', N'internal', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), NULL, 2018, N'CBR2', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (12, N'ICICIHFC', N'as per SO', CAST(N'2013-05-07T00:00:00.000' AS DateTime), CAST(N'2012-05-07T00:00:00.000' AS DateTime), NULL, 2017, N'AA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (13, N'RIL', N'internal', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), NULL, 2017, N'CBR1', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (13, N'ICICIHFC', N'as per SO', CAST(N'2016-05-07T00:00:00.000' AS DateTime), CAST(N'2017-05-07T00:00:00.000' AS DateTime), NULL, 2016, N'AA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (14, N'RIL', N'internal', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), NULL, 2016, N'NA', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (14, N'ICICIHFC', N'as per SO', CAST(N'2015-05-07T00:00:00.000' AS DateTime), CAST(N'2014-05-07T00:00:00.000' AS DateTime), NULL, 2015, N'AA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (15, N'RIL', N'internal', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), NULL, 2015, N'NA', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (15, N'ICICIHFC', N'as per SO', CAST(N'2014-05-07T00:00:00.000' AS DateTime), CAST(N'2013-05-07T00:00:00.000' AS DateTime), NULL, 2014, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (16, N'RIL', N'internal', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), NULL, 2014, N'NA', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (16, N'LICHFL', N'as per SO', CAST(N'2013-05-07T00:00:00.000' AS DateTime), CAST(N'2012-05-07T00:00:00.000' AS DateTime), NULL, 2018, N'AA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (17, N'RIL', N'external', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), NULL, 2018, N'AAA', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (17, N'LICHFL', N'as per SO', CAST(N'2016-05-07T00:00:00.000' AS DateTime), CAST(N'2017-05-07T00:00:00.000' AS DateTime), NULL, 2017, N'AA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (18, N'RIL', N'external', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), NULL, 2017, N'AAA', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (18, N'LICHFL', N'as per SO', CAST(N'2015-05-07T00:00:00.000' AS DateTime), CAST(N'2014-05-07T00:00:00.000' AS DateTime), NULL, 2016, N'AA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (19, N'RIL', N'external', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), NULL, 2016, N'AAA', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (19, N'LICHFL', N'as per SO', CAST(N'2014-05-07T00:00:00.000' AS DateTime), CAST(N'2013-05-07T00:00:00.000' AS DateTime), NULL, 2015, N'AA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (20, N'RIL', N'external', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), NULL, 2015, N'AAA', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (20, N'LICHFL', N'as per SO', CAST(N'2013-05-07T00:00:00.000' AS DateTime), CAST(N'2012-05-07T00:00:00.000' AS DateTime), NULL, 2014, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (21, N'RIL', N'external', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), NULL, 2014, N'AAA', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (21, N'maruti', N'as per SO', CAST(N'2013-05-07T00:00:00.000' AS DateTime), CAST(N'2012-05-07T00:00:00.000' AS DateTime), N'INTERNAL', 2018, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (22, N'ICICIHF', N'internal', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), NULL, 2018, N'CBR3', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (22, N'maruti', N'as per SO', CAST(N'2016-05-07T00:00:00.000' AS DateTime), CAST(N'2017-05-07T00:00:00.000' AS DateTime), N'INTERNAL', 2017, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (23, N'ICICIHF', N'internal', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), NULL, 2017, N'CBR2', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (23, N'maruti', N'as per SO', CAST(N'2015-05-07T00:00:00.000' AS DateTime), CAST(N'2014-05-07T00:00:00.000' AS DateTime), N'INTERNAL', 2016, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (24, N'ICICIHF', N'internal', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), NULL, 2016, N'CBR3', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (24, N'maruti', N'as per SO', CAST(N'2014-05-07T00:00:00.000' AS DateTime), CAST(N'2013-05-07T00:00:00.000' AS DateTime), N'INTERNAL', 2015, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (25, N'ICICIHF', N'internal', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), NULL, 2015, N'CBR2', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (25, N'maruti', N'as per SO', CAST(N'2013-05-07T00:00:00.000' AS DateTime), CAST(N'2012-05-07T00:00:00.000' AS DateTime), N'EXTERNAL', 2014, N'AAA', N'testid', N'Web')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (26, N'ICICIHF', N'internal', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), NULL, 2014, N'CBR3', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (26, N'maruti', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), N'EXTERNAL', 2018, N'CBR4', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (27, N'ICICIHF', N'external', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), NULL, 2018, N'AA', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (27, N'maruti', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), N'EXTERNAL', 2017, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (28, N'ICICIHF', N'external', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), NULL, 2017, N'AA', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (28, N'maruti', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), N'EXTERNAL', 2016, N'CBR4', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (29, N'ICICIHF', N'external', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), NULL, 2016, N'AAA', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (29, N'maruti', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2015, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (30, N'ICICIHF', N'external', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), NULL, 2015, N'AA', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (30, N'tatapower', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2014, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (31, N'ICICIHF', N'external', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), NULL, 2014, N'AAA', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (31, N'RIL', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2018, N'CBR2', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (32, N'LICHF', N'internal', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), NULL, 2018, N'CBR3', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (32, N'RIL', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2017, N'CBR2', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (33, N'LICHF', N'internal', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), NULL, 2017, N'CBR3', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (33, N'RIL', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2016, N'CBR2', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (34, N'LICHF', N'internal', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), NULL, 2016, N'NA', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (34, N'RIL', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2015, N'NA', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (35, N'LICHF', N'internal', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), NULL, 2015, N'NA', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (35, N'RIL', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2014, N'NA', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (36, N'LICHF', N'internal', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), NULL, 2014, N'NA', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (36, N'ICICIHFC', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2018, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (37, N'LICHF', N'external', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), NULL, 2018, N'AA', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (37, N'ICICIHFC', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2017, N'CBR2', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (38, N'LICHF', N'external', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), NULL, 2017, N'AA', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (38, N'ICICIHFC', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2016, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (39, N'LICHF', N'external', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), NULL, 2016, N'AAA', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (39, N'ICICIHFC', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2015, N'CBR2', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (40, N'LICHF', N'external', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), NULL, 2015, N'AA', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (40, N'ICICIHFC', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2014, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (41, N'LICHF', N'external', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), NULL, 2014, N'AAA', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (41, N'LICHFL', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2018, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (42, N'ATULAUTO', N'internal', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), NULL, 2018, N'CBR5', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (42, N'LICHFL', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2017, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (43, N'ATULAUTO', N'internal', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), NULL, 2017, N'CBR7', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (43, N'LICHFL', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2016, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (44, N'ATULAUTO', N'internal', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), NULL, 2016, N'CBR7', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (44, N'LICHFL', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2015, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (45, N'ATULAUTO', N'internal', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), NULL, 2015, N'CBR6', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (45, N'LICHFL', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2014, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (46, N'ATULAUTO', N'internal', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), NULL, 2014, N'CBR7', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (46, N'Atul Auto', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2018, N'CBR5', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (47, N'ATULAUTO', N'external', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), NULL, 2018, N'A', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (47, N'Atul Auto', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2017, N'CBR7', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (48, N'ATULAUTO', N'external', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), NULL, 2017, N'A2', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (48, N'Atul Auto', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2016, N'CBR7', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (49, N'ATULAUTO', N'external', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), NULL, 2016, N'A3', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (49, N'Atul Auto', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2015, N'CBR6', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (50, N'ATULAUTO', N'external', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), NULL, 2015, N'A2', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (50, N'Atul Auto', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2014, N'CBR7', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (51, N'ATULAUTO', N'external', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), NULL, 2014, N'A3', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (51, N'Maruti Suzuki', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2018, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (52, N'MARUTI', N'internal', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), NULL, 2018, N'CBR3', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (52, N'Maruti Suzuki', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2017, N'CBR4', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (53, N'MARUTI', N'internal', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), NULL, 2017, N'CBR4', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (53, N'Maruti Suzuki', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2016, N'CBR4', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (54, N'MARUTI', N'internal', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), NULL, 2016, N'CBR4', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (54, N'Maruti Suzuki', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2015, N'CBR3', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (55, N'MARUTI', N'internal', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), NULL, 2015, N'CBR3', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (55, N'Maruti Suzuki', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2014, N'CBR4', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (56, N'MARUTI', N'internal', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), NULL, 2014, N'CBR4', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (56, N'jpmc', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2018, N'CBR5', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (57, N'MARUTI', N'external', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), NULL, 2018, N'AAA', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (57, N'jpmc', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2017, N'CBR7', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (58, N'MARUTI', N'external', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), NULL, 2017, N'AAA', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (58, N'jpmc', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2016, N'CBR7', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (59, N'MARUTI', N'external', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), NULL, 2016, N'AA', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (59, N'jpmc', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2015, N'CBR6', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (60, N'MARUTI', N'external', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), NULL, 2015, N'AAA', N'Praveen', N'CRISIL')
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (60, N'jpmc', N'as per SO', CAST(N'2016-11-30T00:00:00.000' AS DateTime), CAST(N'2017-07-17T00:00:00.000' AS DateTime), NULL, 2014, N'CBR7', N'tesid', N'internal')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (61, N'MARUTI', N'external', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), NULL, 2014, N'AA', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (62, N'PATANJALI', N'internal', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), NULL, 2018, N'CBR2', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (63, N'PATANJALI', N'internal', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), NULL, 2017, N'CBR3', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (64, N'PATANJALI', N'internal', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), NULL, 2016, N'CBR3', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (65, N'PATANJALI', N'internal', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), NULL, 2015, N'CBR4', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (66, N'PATANJALI', N'internal', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), NULL, 2014, N'CBR3', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (67, N'PATANJALI', N'external', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), NULL, 2018, N'AA', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (68, N'PATANJALI', N'external', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), NULL, 2017, N'A2', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (69, N'PATANJALI', N'external', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), NULL, 2016, N'A2', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (70, N'PATANJALI', N'external', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), NULL, 2015, N'A3', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (71, N'PATANJALI', N'external', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), NULL, 2014, N'A4', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (72, N'HUL', N'internal', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), NULL, 2018, N'CBR1', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (73, N'HUL', N'internal', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), NULL, 2017, N'CBR2', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (74, N'HUL', N'internal', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), NULL, 2016, N'CBR2', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (75, N'HUL', N'internal', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), NULL, 2015, N'CBR2', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (76, N'HUL', N'internal', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), NULL, 2014, N'CBR2', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (77, N'HUL', N'external', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), NULL, 2018, N'AAA', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (78, N'HUL', N'external', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), NULL, 2017, N'AAA', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (79, N'HUL', N'external', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), NULL, 2016, N'AA', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (80, N'HUL', N'external', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), NULL, 2015, N'AAA', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (81, N'HUL', N'external', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), NULL, 2014, N'AA', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (82, N'JAYPEE', N'internal', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), NULL, 2018, N'CBR8', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (83, N'JAYPEE', N'internal', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), NULL, 2017, N'CBR6', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (84, N'JAYPEE', N'internal', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), NULL, 2016, N'CBR5', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (85, N'JAYPEE', N'internal', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), NULL, 2015, N'CBR4', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (86, N'JAYPEE', N'internal', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), NULL, 2014, N'CBR5', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (87, N'JAYPEE', N'external', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), NULL, 2018, N'D', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (88, N'JAYPEE', N'external', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), NULL, 2017, N'D', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (89, N'JAYPEE', N'external', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), NULL, 2016, N'C', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (90, N'JAYPEE', N'external', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), NULL, 2015, N'D', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (91, N'JAYPEE', N'external', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), NULL, 2014, N'C', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (92, N'HCC', N'internal', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), NULL, 2018, N'CBR7', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (93, N'HCC', N'internal', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), NULL, 2017, N'CBR5', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (94, N'HCC', N'internal', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), NULL, 2015, N'CBR4', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (95, N'HCC', N'internal', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), NULL, 2014, N'CBR5', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (96, N'HCC', N'external', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), NULL, 2018, N'BB', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (97, N'HCC', N'external', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), NULL, 2017, N'BB', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (98, N'HCC', N'external', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), NULL, 2016, N'BBB', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (99, N'HCC', N'external', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), NULL, 2015, N'D', N'Praveen', N'CRISIL')
+GO
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (100, N'HCC', N'external', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), NULL, 2014, N'BBB', N'Praveen', N'CRISIL')
 GO
 SET IDENTITY_INSERT [dbo].[Rating] OFF
 GO
@@ -1798,6 +2765,8 @@ GO
 INSERT [dbo].[WarningIndicator] ([Id], [Cust_Id], [fromDate], [toDate], [asOnDate], [WarningSignal], [irregularities], [observedOn], [observationRemarks], [actionFor], [lastUpdatedOn], [lastUpdatedBy]) VALUES (90, N'HCC', CAST(N'2017-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'Under insured or over insured inventory', N'Yes', CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'user ramarks', N'Owners with Risk Association', CAST(N'2018-06-23T05:38:24.133' AS DateTime), N'praveen')
 GO
 SET IDENTITY_INSERT [dbo].[WarningIndicator] OFF
+GO
+ALTER TABLE [dbo].[FinancialResultType] ADD  DEFAULT ((0)) FOR [IsFinancialData]
 GO
 ALTER TABLE [dbo].[FinancialResultDetails]  WITH CHECK ADD  CONSTRAINT [FK_FinancialResultDetails_FinancialResultHeader] FOREIGN KEY([HeaderID])
 REFERENCES [dbo].[FinancialResultHeader] ([HeaderID])
