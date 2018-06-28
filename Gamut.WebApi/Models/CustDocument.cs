@@ -12,7 +12,7 @@ namespace Gamut.WebAPI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Document
+    public partial class CustDocument
     {
         public int Id { get; set; }
         public string Cust_id { get; set; }
@@ -22,6 +22,7 @@ namespace Gamut.WebAPI.Models
         public Nullable<System.DateTime> SubmittedDate { get; set; }
         public string DeviationNoted { get; set; }
         public Nullable<System.DateTime> CompiledDate { get; set; }
+        public Nullable<int> IsChecked { get; set; }
         public string MonitorId { get; set; }
         public string LastUpdatedBy { get; set; }
         public string LastUpdatedOn { get; set; }

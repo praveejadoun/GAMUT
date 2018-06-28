@@ -55,7 +55,7 @@ namespace Gamut.WebAPI.Controllers
             }
 
             int? latestInternalRatingYear = db.Ratings.Where(j=>j.ratingType=="INTERNAL" && j.Cust_Id==Id).Select(p=>p.ratingYear).DefaultIfEmpty(0).Max();
-            Rating internalRating = db.Ratings.Where(i => i.ratingType == "INTERNAL" && i.ratingYear == latestInternalRatingYear).SingleOrDefault();
+            Rating internalRating = db.Ratings.Where(i => i.ratingType == "INTERNAL" && i.Cust_Id == Id  && i.ratingYear == latestInternalRatingYear).SingleOrDefault();
             if (internalRating != null)
             {
                 general.Internal_Rating = internalRating.ratingValue;
@@ -64,7 +64,7 @@ namespace Gamut.WebAPI.Controllers
             }
 
             int? latestExternalRatingYear = db.Ratings.Where(j => j.ratingType == "EXTERNAL" && j.Cust_Id == Id).Select(p => p.ratingYear).DefaultIfEmpty(0).Max();
-            Rating externalRating = db.Ratings.Where(i => i.ratingType == "EXTERNAL" && i.ratingYear == latestExternalRatingYear).SingleOrDefault();
+            Rating externalRating = db.Ratings.Where(i => i.ratingType == "EXTERNAL" && i.Cust_Id == Id && i.ratingYear == latestExternalRatingYear).SingleOrDefault();
             if (externalRating != null)
             {
                 general.External_Rating = externalRating.ratingValue;

@@ -165,6 +165,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountDetailsController.cs" />
+    <Compile Include="Controllers\CustDocumentController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\FinancialResultAPIController.cs" />
     <Compile Include="Controllers\GeneralAPIController.cs" />
@@ -184,13 +185,13 @@
     <Compile Include="Models\AccountDetail.cs">
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CustDocument.cs">
+      <DependentUpon>GamutEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Customer.cs">
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CustomerDataMapping.cs">
-      <DependentUpon>GamutEntity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Document.cs">
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FinancialResultDetail.cs">
