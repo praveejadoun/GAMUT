@@ -171,12 +171,14 @@
     <Compile Include="Controllers\GeneralAPIController.cs" />
     <Compile Include="Controllers\GeneralGurantorsAPIController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InspectionController.cs" />
     <Compile Include="Controllers\InterestController.cs" />
     <Compile Include="Controllers\LookUpAPIController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\RatingAPIController.cs" />
     <Compile Include="Controllers\RestucturingController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
+    <Compile Include="Controllers\SMACompilationController.cs" />
     <Compile Include="Controllers\Soc124APIController.cs" />
     <Compile Include="Controllers\WarningIndicatorsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -227,6 +229,9 @@
     <Compile Include="Models\GeneralGurantor.cs">
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Inspection.cs">
+      <DependentUpon>GamutEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Interest.cs">
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
@@ -246,6 +251,15 @@
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Security.cs">
+      <DependentUpon>GamutEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMABucket.cs">
+      <DependentUpon>GamutEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMACompilation.cs">
+      <DependentUpon>GamutEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMAHistory.cs">
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SOC124.cs">

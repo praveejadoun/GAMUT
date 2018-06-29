@@ -184,6 +184,21 @@
           <Property Name="gurType" Type="varchar" MaxLength="50" />
           <Property Name="netWorth" Type="float" />
         </EntityType>
+        <EntityType Name="Inspection">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cust_Id" Type="varchar" MaxLength="50" />
+          <Property Name="AuditType" Type="varchar" MaxLength="50" />
+          <Property Name="Code" Type="varchar" MaxLength="50" />
+          <Property Name="Comments" Type="varchar" MaxLength="500" />
+          <Property Name="InspectionStatus" Type="varchar" MaxLength="50" />
+          <Property Name="FollowUpDate" Type="datetime" />
+          <Property Name="CompiledDate" Type="datetime" />
+          <Property Name="LastUpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastUpdatedOn" Type="datetime" />
+        </EntityType>
         <EntityType Name="Interest">
           <Key>
             <PropertyRef Name="Id" />
@@ -287,6 +302,53 @@
           <Property Name="guarantorId" Type="varchar" MaxLength="50" />
           <Property Name="guarantorNetWorth" Type="float" />
         </EntityType>
+        <EntityType Name="SMABucket">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cust_Id" Type="varchar" MaxLength="50" />
+          <Property Name="bucket" Type="varchar" MaxLength="50" />
+          <Property Name="banksFICounts" Type="varchar" MaxLength="50" />
+          <Property Name="numberFIBanks" Type="varchar" MaxLength="50" />
+          <Property Name="unregularisedDays" Type="varchar" MaxLength="50" />
+          <Property Name="noOfFI" Type="varchar" MaxLength="50" />
+          <Property Name="regularised" Type="varchar" MaxLength="250" />
+          <Property Name="reportDate" Type="datetime" />
+          <Property Name="lastupdatedOn" Type="datetime" />
+          <Property Name="lastupdatedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SMACompilation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cust_id" Type="varchar" MaxLength="50" />
+          <Property Name="JLF" Type="varchar" MaxLength="50" />
+          <Property Name="smaDate" Type="datetime" />
+          <Property Name="calledBy" Type="nchar" MaxLength="10" />
+          <Property Name="meeetingSummary" Type="varchar" MaxLength="500" />
+          <Property Name="branchReply" Type="varchar" MaxLength="500" />
+          <Property Name="nextFollowupDate" Type="datetime" />
+          <Property Name="LastUpdateBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastUpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SMAHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cust_Id" Type="varchar" MaxLength="50" />
+          <Property Name="smaClass" Type="varchar" MaxLength="50" />
+          <Property Name="accountNumber" Type="varchar" MaxLength="50" />
+          <Property Name="reason" Type="varchar" MaxLength="250" />
+          <Property Name="noOfDays" Type="int" />
+          <Property Name="nextStatus" Type="varchar" MaxLength="50" />
+          <Property Name="smaDate" Type="datetime" />
+          <Property Name="CompiledDate" Type="datetime" />
+          <Property Name="LastUpdatedOn" Type="datetime" />
+          <Property Name="LastUpdateBy" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="SOC124">
           <Key>
             <PropertyRef Name="Id" />
@@ -365,6 +427,7 @@
           <EntitySet Name="General" EntityType="Self.General" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GeneralExposure" EntityType="Self.GeneralExposure" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GeneralGurantor" EntityType="Self.GeneralGurantor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inspection" EntityType="Self.Inspection" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Interest" EntityType="Self.Interest" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LookUp" EntityType="Self.LookUp" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
@@ -372,6 +435,9 @@
           <EntitySet Name="RestucturingDetail" EntityType="Self.RestucturingDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RestucturingHeader" EntityType="Self.RestucturingHeader" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Security" EntityType="Self.Security" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SMABucket" EntityType="Self.SMABucket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SMACompilation" EntityType="Self.SMACompilation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SMAHistory" EntityType="Self.SMAHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SOC124" EntityType="Self.SOC124" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WarningIndicator" EntityType="Self.WarningIndicator" Schema="dbo" store:Type="Tables" />
@@ -429,6 +495,10 @@
           <EntitySet Name="AccountDetails" EntityType="gamutdatabaseModel.AccountDetail" />
           <EntitySet Name="CustomerDataMappings" EntityType="gamutdatabaseModel.CustomerDataMapping" />
           <EntitySet Name="CustDocuments" EntityType="gamutdatabaseModel.CustDocument" />
+          <EntitySet Name="Inspections" EntityType="gamutdatabaseModel.Inspection" />
+          <EntitySet Name="SMABuckets" EntityType="gamutdatabaseModel.SMABucket" />
+          <EntitySet Name="SMACompilations" EntityType="gamutdatabaseModel.SMACompilation" />
+          <EntitySet Name="SMAHistories" EntityType="gamutdatabaseModel.SMAHistory" />
         </EntityContainer>
         <EntityType Name="Customer">
           <Key>
@@ -770,6 +840,68 @@
           <Property Name="MonitorId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="LastUpdatedOn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Inspection">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AuditType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="InspectionStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FollowUpDate" Type="DateTime" Precision="3" />
+          <Property Name="CompiledDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="Cust_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SMABucket">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cust_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bucket" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="banksFICounts" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="numberFIBanks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="unregularisedDays" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="noOfFI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="regularised" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="reportDate" Type="DateTime" Precision="3" />
+          <Property Name="lastupdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="lastupdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SMACompilation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cust_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="JLF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="smaDate" Type="DateTime" Precision="3" />
+          <Property Name="calledBy" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="meeetingSummary" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="branchReply" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="nextFollowupDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="SMAHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cust_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="smaClass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="accountNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="reason" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="noOfDays" Type="Int32" />
+          <Property Name="nextStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="smaDate" Type="DateTime" Precision="3" />
+          <Property Name="CompiledDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1118,6 +1250,72 @@
                 <ScalarProperty Name="DocumentType" ColumnName="DocumentType" />
                 <ScalarProperty Name="Periodicity" ColumnName="Periodicity" />
                 <ScalarProperty Name="Cust_id" ColumnName="Cust_id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inspections">
+            <EntityTypeMapping TypeName="gamutdatabaseModel.Inspection">
+              <MappingFragment StoreEntitySet="Inspection">
+                <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
+                <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="CompiledDate" ColumnName="CompiledDate" />
+                <ScalarProperty Name="FollowUpDate" ColumnName="FollowUpDate" />
+                <ScalarProperty Name="InspectionStatus" ColumnName="InspectionStatus" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="AuditType" ColumnName="AuditType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SMABuckets">
+            <EntityTypeMapping TypeName="gamutdatabaseModel.SMABucket">
+              <MappingFragment StoreEntitySet="SMABucket">
+                <ScalarProperty Name="lastupdatedBy" ColumnName="lastupdatedBy" />
+                <ScalarProperty Name="lastupdatedOn" ColumnName="lastupdatedOn" />
+                <ScalarProperty Name="reportDate" ColumnName="reportDate" />
+                <ScalarProperty Name="regularised" ColumnName="regularised" />
+                <ScalarProperty Name="noOfFI" ColumnName="noOfFI" />
+                <ScalarProperty Name="unregularisedDays" ColumnName="unregularisedDays" />
+                <ScalarProperty Name="numberFIBanks" ColumnName="numberFIBanks" />
+                <ScalarProperty Name="banksFICounts" ColumnName="banksFICounts" />
+                <ScalarProperty Name="bucket" ColumnName="bucket" />
+                <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SMACompilations">
+            <EntityTypeMapping TypeName="gamutdatabaseModel.SMACompilation">
+              <MappingFragment StoreEntitySet="SMACompilation">
+                <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+                <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
+                <ScalarProperty Name="nextFollowupDate" ColumnName="nextFollowupDate" />
+                <ScalarProperty Name="branchReply" ColumnName="branchReply" />
+                <ScalarProperty Name="meeetingSummary" ColumnName="meeetingSummary" />
+                <ScalarProperty Name="calledBy" ColumnName="calledBy" />
+                <ScalarProperty Name="smaDate" ColumnName="smaDate" />
+                <ScalarProperty Name="JLF" ColumnName="JLF" />
+                <ScalarProperty Name="Cust_id" ColumnName="Cust_id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SMAHistories">
+            <EntityTypeMapping TypeName="gamutdatabaseModel.SMAHistory">
+              <MappingFragment StoreEntitySet="SMAHistory">
+                <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
+                <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+                <ScalarProperty Name="CompiledDate" ColumnName="CompiledDate" />
+                <ScalarProperty Name="smaDate" ColumnName="smaDate" />
+                <ScalarProperty Name="nextStatus" ColumnName="nextStatus" />
+                <ScalarProperty Name="noOfDays" ColumnName="noOfDays" />
+                <ScalarProperty Name="reason" ColumnName="reason" />
+                <ScalarProperty Name="accountNumber" ColumnName="accountNumber" />
+                <ScalarProperty Name="smaClass" ColumnName="smaClass" />
+                <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

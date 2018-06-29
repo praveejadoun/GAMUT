@@ -1,6 +1,6 @@
 ﻿USE [gamutdatabase]
 GO
-/****** Object:  Table [dbo].[AccountDetails]    Script Date: 29-06-2018 00:13:48 ******/
+/****** Object:  Table [dbo].[AccountDetails]    Script Date: 30-06-2018 02:49:39 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -35,7 +35,7 @@ CREATE TABLE [dbo].[AccountDetails](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CustDocument]    Script Date: 29-06-2018 00:13:50 ******/
+/****** Object:  Table [dbo].[CustDocument]    Script Date: 30-06-2018 02:49:41 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -59,7 +59,7 @@ CREATE TABLE [dbo].[CustDocument](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Customer]    Script Date: 29-06-2018 00:13:51 ******/
+/****** Object:  Table [dbo].[Customer]    Script Date: 30-06-2018 02:49:42 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -83,7 +83,7 @@ CREATE TABLE [dbo].[Customer](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CustomerDataMapping]    Script Date: 29-06-2018 00:13:52 ******/
+/****** Object:  Table [dbo].[CustomerDataMapping]    Script Date: 30-06-2018 02:49:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -99,7 +99,7 @@ CREATE TABLE [dbo].[CustomerDataMapping](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[FinancialResultDetails]    Script Date: 29-06-2018 00:13:54 ******/
+/****** Object:  Table [dbo].[FinancialResultDetails]    Script Date: 30-06-2018 02:49:44 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -119,7 +119,7 @@ CREATE TABLE [dbo].[FinancialResultDetails](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[FinancialResultHeader]    Script Date: 29-06-2018 00:13:54 ******/
+/****** Object:  Table [dbo].[FinancialResultHeader]    Script Date: 30-06-2018 02:49:45 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -137,7 +137,7 @@ CREATE TABLE [dbo].[FinancialResultHeader](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[FinancialResultType]    Script Date: 29-06-2018 00:13:55 ******/
+/****** Object:  Table [dbo].[FinancialResultType]    Script Date: 30-06-2018 02:49:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -153,7 +153,7 @@ CREATE TABLE [dbo].[FinancialResultType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[General]    Script Date: 29-06-2018 00:13:56 ******/
+/****** Object:  Table [dbo].[General]    Script Date: 30-06-2018 02:49:47 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -213,7 +213,7 @@ CREATE TABLE [dbo].[General](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[GeneralExposure]    Script Date: 29-06-2018 00:13:57 ******/
+/****** Object:  Table [dbo].[GeneralExposure]    Script Date: 30-06-2018 02:49:47 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -231,7 +231,7 @@ CREATE TABLE [dbo].[GeneralExposure](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[GeneralGurantor]    Script Date: 29-06-2018 00:13:58 ******/
+/****** Object:  Table [dbo].[GeneralGurantor]    Script Date: 30-06-2018 02:49:48 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -249,7 +249,29 @@ CREATE TABLE [dbo].[GeneralGurantor](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Interest]    Script Date: 29-06-2018 00:13:59 ******/
+/****** Object:  Table [dbo].[Inspection]    Script Date: 30-06-2018 02:49:49 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Inspection](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Cust_Id] [varchar](50) NULL,
+	[AuditType] [varchar](50) NULL,
+	[Code] [varchar](50) NULL,
+	[Comments] [varchar](500) NULL,
+	[InspectionStatus] [varchar](50) NULL,
+	[FollowUpDate] [datetime] NULL,
+	[CompiledDate] [datetime] NULL,
+	[LastUpdatedBy] [varchar](50) NULL,
+	[LastUpdatedOn] [datetime] NULL,
+ CONSTRAINT [PK_Inspection] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Interest]    Script Date: 30-06-2018 02:49:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -272,7 +294,7 @@ CREATE TABLE [dbo].[Interest](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[LookUp]    Script Date: 29-06-2018 00:14:00 ******/
+/****** Object:  Table [dbo].[LookUp]    Script Date: 30-06-2018 02:49:51 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -288,7 +310,7 @@ CREATE TABLE [dbo].[LookUp](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[News]    Script Date: 29-06-2018 00:14:00 ******/
+/****** Object:  Table [dbo].[News]    Script Date: 30-06-2018 02:49:51 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -308,7 +330,7 @@ CREATE TABLE [dbo].[News](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Rating]    Script Date: 29-06-2018 00:14:01 ******/
+/****** Object:  Table [dbo].[Rating]    Script Date: 30-06-2018 02:49:52 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -330,7 +352,7 @@ CREATE TABLE [dbo].[Rating](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[RestucturingDetail]    Script Date: 29-06-2018 00:14:02 ******/
+/****** Object:  Table [dbo].[RestucturingDetail]    Script Date: 30-06-2018 02:49:53 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -351,7 +373,7 @@ CREATE TABLE [dbo].[RestucturingDetail](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[RestucturingHeader]    Script Date: 29-06-2018 00:14:03 ******/
+/****** Object:  Table [dbo].[RestucturingHeader]    Script Date: 30-06-2018 02:49:54 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -377,7 +399,7 @@ CREATE TABLE [dbo].[RestucturingHeader](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Security]    Script Date: 29-06-2018 00:14:04 ******/
+/****** Object:  Table [dbo].[Security]    Script Date: 30-06-2018 02:49:55 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -401,7 +423,75 @@ CREATE TABLE [dbo].[Security](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SOC124]    Script Date: 29-06-2018 00:14:04 ******/
+/****** Object:  Table [dbo].[SMABucket]    Script Date: 30-06-2018 02:49:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SMABucket](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Cust_Id] [varchar](50) NULL,
+	[bucket] [varchar](50) NULL,
+	[banksFICounts] [varchar](50) NULL,
+	[numberFIBanks] [varchar](50) NULL,
+	[unregularisedDays] [varchar](50) NULL,
+	[noOfFI] [varchar](50) NULL,
+	[regularised] [varchar](250) NULL,
+	[reportDate] [datetime] NULL,
+	[lastupdatedOn] [datetime] NULL,
+	[lastupdatedBy] [varchar](50) NULL,
+ CONSTRAINT [PK_SMABucket] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[SMACompilation]    Script Date: 30-06-2018 02:49:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SMACompilation](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Cust_id] [varchar](50) NULL,
+	[JLF] [varchar](50) NULL,
+	[smaDate] [datetime] NULL,
+	[calledBy] [nchar](10) NULL,
+	[meeetingSummary] [varchar](500) NULL,
+	[branchReply] [varchar](500) NULL,
+	[nextFollowupDate] [datetime] NULL,
+	[LastUpdateBy] [varchar](50) NULL,
+	[LastUpdatedOn] [datetime] NULL,
+ CONSTRAINT [PK_SMACompilation] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[SMAHistory]    Script Date: 30-06-2018 02:49:57 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SMAHistory](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Cust_Id] [varchar](50) NULL,
+	[smaClass] [varchar](50) NULL,
+	[accountNumber] [varchar](50) NULL,
+	[reason] [varchar](250) NULL,
+	[noOfDays] [int] NULL,
+	[nextStatus] [varchar](50) NULL,
+	[smaDate] [datetime] NULL,
+	[CompiledDate] [datetime] NULL,
+	[LastUpdatedOn] [datetime] NULL,
+	[LastUpdateBy] [varchar](50) NULL,
+ CONSTRAINT [PK_SMAHistory] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[SOC124]    Script Date: 30-06-2018 02:49:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -422,7 +512,7 @@ CREATE TABLE [dbo].[SOC124](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Student]    Script Date: 29-06-2018 00:14:05 ******/
+/****** Object:  Table [dbo].[Student]    Script Date: 30-06-2018 02:49:59 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -441,7 +531,7 @@ CREATE TABLE [dbo].[Student](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[WarningIndicator]    Script Date: 29-06-2018 00:14:06 ******/
+/****** Object:  Table [dbo].[WarningIndicator]    Script Date: 30-06-2018 02:49:59 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -528,6 +618,152 @@ GO
 INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (30, N'HCC', N'123456720', N'FITL', N'SMA1', 1, 2200, 2008, 2008, 2008, NULL, N'Consortium', N'SBI', NULL, 8.79, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
 GO
 SET IDENTITY_INSERT [dbo].[AccountDetails] OFF
+GO
+SET IDENTITY_INSERT [dbo].[CustDocument] ON 
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (1, N'Cust_id', N'Periodicity', N'Type', N'Submitted Y/N or NA', NULL, N'Dev Notes', NULL, NULL, N'MonitorId', N'Lastupdateby', N'Lastupdteom')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (2, N'Maruti', N'Annual', N'Audited FS', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (3, N'Maruti', N'Annual', N'Stock Audit', N'YEs', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (4, N'Maruti', N'Annual', N'ECGC/CGTMS', N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (5, N'Maruti', N'Annual', N'Insurance', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (6, N'Maruti', N'Quarterly', N'FFR / QIS', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (7, N'Maruti', N'Quarterly', N'Exgn. Of Info', N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (8, N'Maruti', N'Quarterly', N'UHFCE', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (9, N'Maruti', N'General', N'Cersai Charge', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (10, N'Maruti', N'General', N'EM Creation', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (11, N'Maruti', N'General', N'ROC Charge', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (12, N'HUL', N'Annual', N'Audited FS', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (13, N'HUL', N'Annual', N'Stock Audit', N'YEs', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (14, N'HUL', N'Annual', N'ECGC/CGTMS', N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (15, N'HUL', N'Annual', N'Insurance', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (16, N'HUL', N'Quarterly', N'FFR / QIS', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (17, N'HUL', N'Quarterly', N'Exgn. Of Info', N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (18, N'HUL', N'Quarterly', N'UHFCE', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (19, N'HUL', N'General', N'Cersai Charge', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (20, N'HUL', N'General', N'EM Creation', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (21, N'HUL', N'General', N'ROC Charge', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (22, N'HCC', N'Annual', N'Audited FS', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (23, N'HCC', N'Annual', N'Stock Audit', N'YEs', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (24, N'HCC', N'Annual', N'ECGC/CGTMS', N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (25, N'HCC', N'Annual', N'Insurance', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (26, N'HCC', N'Quarterly', N'FFR / QIS', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (27, N'HCC', N'Quarterly', N'Exgn. Of Info', N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (28, N'HCC', N'Quarterly', N'UHFCE', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (29, N'HCC', N'General', N'Cersai Charge', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (30, N'HCC', N'General', N'EM Creation', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (31, N'HCC', N'General', N'ROC Charge', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (32, N'TATAPOWER', N'Annual', N'Audited FS', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (33, N'TATAPOWER', N'Annual', N'Stock Audit', N'YEs', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (34, N'TATAPOWER', N'Annual', N'ECGC/CGTMS', N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (35, N'TATAPOWER', N'Annual', N'Insurance', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (36, N'TATAPOWER', N'Quarterly', N'FFR / QIS', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (37, N'TATAPOWER', N'Quarterly', N'Exgn. Of Info', N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (38, N'TATAPOWER', N'Quarterly', N'UHFCE', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (39, N'TATAPOWER', N'General', N'Cersai Charge', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (40, N'TATAPOWER', N'General', N'EM Creation', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (41, N'TATAPOWER', N'General', N'ROC Charge', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (42, N'HUL', N'Annual', N'Audited FS', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (43, N'HUL', N'Annual', N'Stock Audit', N'YEs', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (44, N'HUL', N'Annual', N'ECGC/CGTMS', N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (45, N'HUL', N'Annual', N'Insurance', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (46, N'HUL', N'Quarterly', N'FFR / QIS', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (47, N'HUL', N'Quarterly', N'Exgn. Of Info', N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (48, N'HUL', N'Quarterly', N'UHFCE', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (49, N'HUL', N'General', N'Cersai Charge', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (50, N'HUL', N'General', N'EM Creation', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (51, N'HUL', N'General', N'ROC Charge', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (52, N'RIL', N'Annual', N'Audited FS', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (53, N'RIL', N'Annual', N'Stock Audit', N'YEs', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (54, N'RIL', N'Annual', N'ECGC/CGTMS', N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (55, N'RIL', N'Annual', N'Insurance', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (56, N'RIL', N'Quarterly', N'FFR / QIS', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (57, N'RIL', N'Quarterly', N'Exgn. Of Info', N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (58, N'RIL', N'Quarterly', N'UHFCE', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (59, N'RIL', N'General', N'Cersai Charge', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (60, N'RIL', N'General', N'EM Creation', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (61, N'RIL', N'General', N'ROC Charge', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (62, N'ICICIHF', N'Annual', N'Audited FS', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (63, N'ICICIHF', N'Annual', N'Stock Audit', N'YEs', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (64, N'ICICIHF', N'Annual', N'ECGC/CGTMS', N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (65, N'ICICIHF', N'Annual', N'Insurance', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (66, N'ICICIHF', N'Quarterly', N'FFR / QIS', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (67, N'ICICIHF', N'Quarterly', N'Exgn. Of Info', N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (68, N'ICICIHF', N'Quarterly', N'UHFCE', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (69, N'ICICIHF', N'General', N'Cersai Charge', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (70, N'ICICIHF', N'General', N'EM Creation', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', N'Praveen', N'29-06-2018')
+GO
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (71, N'ICICIHF', N'General', N'ROC Charge', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', N'Praveen', N'29-06-2018')
+GO
+SET IDENTITY_INSERT [dbo].[CustDocument] OFF
 GO
 INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'ATULAUTO', N'Atul Auto', N'EFGHI4567E', 500, CAST(N'2018-06-23' AS Date), N'Public', N'Auto', N'Auto', N'Mfg of Motor Vehicles', N'Hyerabad Lakdi Ka Pul', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=531795&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/auto-2-3-wheelers/atulauto/AA08')
 GO
@@ -2413,6 +2649,34 @@ INSERT [dbo].[GeneralGurantor] ([id], [Cust_Id], [accountNo], [gurCust_Id], [gur
 GO
 SET IDENTITY_INSERT [dbo].[GeneralGurantor] OFF
 GO
+SET IDENTITY_INSERT [dbo].[Inspection] ON 
+GO
+INSERT [dbo].[Inspection] ([Id], [Cust_Id], [AuditType], [Code], [Comments], [InspectionStatus], [FollowUpDate], [CompiledDate], [LastUpdatedBy], [LastUpdatedOn]) VALUES (1, N'Maruti', N'RBIA', N'Minor', N'test', N'Deleted', CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2019-01-01T00:00:00.000' AS DateTime), N'praveen', CAST(N'2018-06-29T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[Inspection] ([Id], [Cust_Id], [AuditType], [Code], [Comments], [InspectionStatus], [FollowUpDate], [CompiledDate], [LastUpdatedBy], [LastUpdatedOn]) VALUES (2, N'Maruti', N'Credit', N'Major', N'test', N'Isolated', CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2019-01-01T00:00:00.000' AS DateTime), N'praveen', CAST(N'2018-06-29T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[Inspection] ([Id], [Cust_Id], [AuditType], [Code], [Comments], [InspectionStatus], [FollowUpDate], [CompiledDate], [LastUpdatedBy], [LastUpdatedOn]) VALUES (3, N'Maruti', N'Forex', N'Minor', N'test', N'Rectified', CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2019-01-01T00:00:00.000' AS DateTime), N'praveen', CAST(N'2018-06-29T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[Inspection] ([Id], [Cust_Id], [AuditType], [Code], [Comments], [InspectionStatus], [FollowUpDate], [CompiledDate], [LastUpdatedBy], [LastUpdatedOn]) VALUES (4, N'Maruti', N'Management', N'Serious', N'test', N'UnRectified', CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2019-01-01T00:00:00.000' AS DateTime), N'praveen', CAST(N'2018-06-29T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[Inspection] ([Id], [Cust_Id], [AuditType], [Code], [Comments], [InspectionStatus], [FollowUpDate], [CompiledDate], [LastUpdatedBy], [LastUpdatedOn]) VALUES (5, N'HCC', N'RBIA', N'Minor', N'test', N'Deleted', CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2019-01-01T00:00:00.000' AS DateTime), N'praveen', CAST(N'2018-06-29T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[Inspection] ([Id], [Cust_Id], [AuditType], [Code], [Comments], [InspectionStatus], [FollowUpDate], [CompiledDate], [LastUpdatedBy], [LastUpdatedOn]) VALUES (6, N'HCC', N'Credit', N'Major', N'test', N'Isolated', CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2019-01-01T00:00:00.000' AS DateTime), N'praveen', CAST(N'2018-06-29T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[Inspection] ([Id], [Cust_Id], [AuditType], [Code], [Comments], [InspectionStatus], [FollowUpDate], [CompiledDate], [LastUpdatedBy], [LastUpdatedOn]) VALUES (7, N'HCC', N'Forex', N'Minor', N'test', N'Rectified', CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2019-01-01T00:00:00.000' AS DateTime), N'praveen', CAST(N'2018-06-29T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[Inspection] ([Id], [Cust_Id], [AuditType], [Code], [Comments], [InspectionStatus], [FollowUpDate], [CompiledDate], [LastUpdatedBy], [LastUpdatedOn]) VALUES (8, N'HCC', N'Management', N'Serious', N'test', N'UnRectified', CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2019-01-01T00:00:00.000' AS DateTime), N'praveen', CAST(N'2018-06-29T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[Inspection] ([Id], [Cust_Id], [AuditType], [Code], [Comments], [InspectionStatus], [FollowUpDate], [CompiledDate], [LastUpdatedBy], [LastUpdatedOn]) VALUES (9, N'HUL', N'RBIA', N'Minor', N'test', N'Deleted', CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2019-01-01T00:00:00.000' AS DateTime), N'praveen', CAST(N'2018-06-29T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[Inspection] ([Id], [Cust_Id], [AuditType], [Code], [Comments], [InspectionStatus], [FollowUpDate], [CompiledDate], [LastUpdatedBy], [LastUpdatedOn]) VALUES (10, N'HUL', N'Credit', N'Major', N'test', N'Isolated', CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2019-01-01T00:00:00.000' AS DateTime), N'praveen', CAST(N'2018-06-29T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[Inspection] ([Id], [Cust_Id], [AuditType], [Code], [Comments], [InspectionStatus], [FollowUpDate], [CompiledDate], [LastUpdatedBy], [LastUpdatedOn]) VALUES (11, N'HUL', N'Forex', N'Minor', N'test', N'Rectified', CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2019-01-01T00:00:00.000' AS DateTime), N'praveen', CAST(N'2018-06-29T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[Inspection] ([Id], [Cust_Id], [AuditType], [Code], [Comments], [InspectionStatus], [FollowUpDate], [CompiledDate], [LastUpdatedBy], [LastUpdatedOn]) VALUES (12, N'HUL', N'Management', N'Serious', N'test', N'UnRectified', CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2019-01-01T00:00:00.000' AS DateTime), N'praveen', CAST(N'2018-06-29T00:00:00.000' AS DateTime))
+GO
+SET IDENTITY_INSERT [dbo].[Inspection] OFF
+GO
 SET IDENTITY_INSERT [dbo].[Interest] ON 
 GO
 INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (1, N'TATAPOWER', N'123456780', N'CC', N'8.75', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2018-03-18T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
@@ -2509,6 +2773,14 @@ INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALU
 GO
 INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (15, N'SOC124', N'Via', N'Mails')
 GO
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (16, N'INSPECTION', N'INSPECTIONSTATUS', N'Rectified')
+GO
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (17, N'INSPECTION', N'INSPECTIONSTATUS', N'UnRectified')
+GO
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (18, N'INSPECTION', N'INSPECTIONSTATUS', N'Isolated')
+GO
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (19, N'INSPECTION', N'INSPECTIONSTATUS', N'Deleted')
+GO
 SET IDENTITY_INSERT [dbo].[LookUp] OFF
 GO
 SET IDENTITY_INSERT [dbo].[News] ON 
@@ -2533,7 +2805,7 @@ INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_i
 GO
 INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (10, CAST(N'2018-05-16T00:00:00.000' AS DateTime), N'MoneyControl', N'Atul Auto Q4 PAT seen up 146.4% YoY to Rs. 20 cr: HDFC Securities', N'https://www.moneycontrol.com/news/result-poll/atul-auto-q4-pat-seen1464-yoy-to-rs-20-cr-hdfc-securities_10803261.html', N'AtulAuto', NULL, NULL)
 GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (11, CAST(N'2018-06-06T00:00:00.000' AS DateTime), N'MoneyControl', N'HCC bags Rs 737 cr contract for Bangladesh nuclear power plant', N'https://www.moneycontrol.com/news/business/hcc-bags-rs-737-cr-contract-for-bangladesh-nuclear-power-plant_10983281.html', N'HCC', N'hello', N'hello')
+INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (11, CAST(N'2018-06-06T00:00:00.000' AS DateTime), N'MoneyControl', N'HCC bags Rs 737 cr contract for Bangladesh nuclear power plant', N'https://www.moneycontrol.com/news/business/hcc-bags-rs-737-cr-contract-for-bangladesh-nuclear-power-plant_10983281.html', N'HCC', N'test', N'test')
 GO
 INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (12, CAST(N'2018-06-06T00:00:00.000' AS DateTime), N'MoneyControl', N'HCC bags Rs 737 cr contract for Bangladesh nuclear power plant', N'https://www.moneycontrol.com/news/business/hcc-bags-rs-737-cr-contract-for-bangladesh-nuclear-power-plant_10983281.html', N'HCC', NULL, NULL)
 GO
@@ -2827,6 +3099,34 @@ INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceA
 GO
 SET IDENTITY_INSERT [dbo].[Security] OFF
 GO
+SET IDENTITY_INSERT [dbo].[SMABucket] ON 
+GO
+INSERT [dbo].[SMABucket] ([Id], [Cust_Id], [bucket], [banksFICounts], [numberFIBanks], [unregularisedDays], [noOfFI], [regularised], [reportDate], [lastupdatedOn], [lastupdatedBy]) VALUES (1, N'MAruti', N'0-7 days', N'5', N'6', N'5', N'5', N'5', CAST(N'2015-05-01T00:00:00.000' AS DateTime), CAST(N'2019-01-01T00:00:00.000' AS DateTime), N'praveen')
+GO
+INSERT [dbo].[SMABucket] ([Id], [Cust_Id], [bucket], [banksFICounts], [numberFIBanks], [unregularisedDays], [noOfFI], [regularised], [reportDate], [lastupdatedOn], [lastupdatedBy]) VALUES (2, N'MAruti', N'8-14 days', N'54', N'65', N'54', N'54', N'65', CAST(N'2015-05-01T00:00:00.000' AS DateTime), CAST(N'2019-01-01T00:00:00.000' AS DateTime), N'praveen')
+GO
+INSERT [dbo].[SMABucket] ([Id], [Cust_Id], [bucket], [banksFICounts], [numberFIBanks], [unregularisedDays], [noOfFI], [regularised], [reportDate], [lastupdatedOn], [lastupdatedBy]) VALUES (3, N'MAruti', N'15-21 days', N'54', N'65', N'54', N'54', N'65', CAST(N'2015-05-01T00:00:00.000' AS DateTime), CAST(N'2019-01-01T00:00:00.000' AS DateTime), N'praveen')
+GO
+INSERT [dbo].[SMABucket] ([Id], [Cust_Id], [bucket], [banksFICounts], [numberFIBanks], [unregularisedDays], [noOfFI], [regularised], [reportDate], [lastupdatedOn], [lastupdatedBy]) VALUES (4, N'MAruti', N'22-28 days', N'54', N'65', N'54', N'54', N'65', CAST(N'2015-05-01T00:00:00.000' AS DateTime), CAST(N'2019-01-01T00:00:00.000' AS DateTime), N'praveen')
+GO
+SET IDENTITY_INSERT [dbo].[SMABucket] OFF
+GO
+SET IDENTITY_INSERT [dbo].[SMACompilation] ON 
+GO
+INSERT [dbo].[SMACompilation] ([Id], [Cust_id], [JLF], [smaDate], [calledBy], [meeetingSummary], [branchReply], [nextFollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (1, N'Maruti', N'Y', CAST(N'2017-05-05T00:00:00.000' AS DateTime), N'HDFC      ', N'Meeeting Summary', N'branch response', CAST(N'2019-05-01T00:00:00.000' AS DateTime), N'praveen', CAST(N'2019-02-05T00:00:00.000' AS DateTime))
+GO
+SET IDENTITY_INSERT [dbo].[SMACompilation] OFF
+GO
+SET IDENTITY_INSERT [dbo].[SMAHistory] ON 
+GO
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (1, N'Maruti', N'SMA1', N'123456711', N'reason', 12, N'Upgrade', CAST(N'2015-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'Praveen')
+GO
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (2, N'Maruti', N'SMA2', N'123456711', N'reason', 12, N'DownGrade', CAST(N'2015-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'Praveen')
+GO
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (3, N'Maruti', N'SMA3', N'123456711', N'reason', 15, N'Regularised', CAST(N'2015-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'Praveen')
+GO
+SET IDENTITY_INSERT [dbo].[SMAHistory] OFF
+GO
 SET IDENTITY_INSERT [dbo].[SOC124] ON 
 GO
 INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate]) VALUES (1, N'HCC', N'soourcesystem', CAST(N'2018-01-10T00:00:00.000' AS DateTime), N'via', N'appprovalfor', N'yes', CAST(N'2018-01-11T00:00:00.000' AS DateTime), CAST(N'2018-01-12T00:00:00.000' AS DateTime))
@@ -3042,4 +3342,52 @@ ALTER TABLE [dbo].[FinancialResultHeader]  WITH CHECK ADD  CONSTRAINT [FK_Financ
 REFERENCES [dbo].[FinancialResultType] ([TypeID])
 GO
 ALTER TABLE [dbo].[FinancialResultHeader] CHECK CONSTRAINT [FK_FinancialResultHeader_FinancialResultType]
+GO
+/****** Object:  StoredProcedure [dbo].[spUpdateFinancialInfo]    Script Date: 30-06-2018 02:50:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+  
+CREATE PROCEDURE [dbo].[spUpdateFinancialInfo]  
+@financialData [dbo].[FinancialData] readonly  
+AS  
+BEGIN  
+  
+  
+INSERT INTO [dbo].[FinancialResultDetails] ([HeaderID],[Amount],[ResQuarter],[IsActive],[Cust_id],Trends,UpdateDate)   
+(  
+SELECT FRD.HeaderID,FD.Amount,FD.QuarterInfo,1,ClientID,FD.Trends,CASE WHEN Trends IN (1,2,3) THEN CASE  
+ WHEN QuarterInfo LIKE 'MAR%' OR QuarterInfo  LIKE 'DEC%' THEN CAST(convert(varchar(10),'31-'+QuarterInfo,121) AS DATE)   
+ ELSE  CAST(convert(varchar(10),'30-'+QuarterInfo,121) AS DATE) END  
+  ELSE  CAST(convert(varchar(10),'31-12-'+QuarterInfo,121) AS DATE) END  
+FROM @financialData FD   
+INNER JOIN [dbo].[FinancialResultHeader] FRD ON FRD.HeaderName=FD.Heading  AND FD.Trends=FRD.TypeId
+WHERE NOT EXISTS(SELECT FDet.HeaderID,Fdet.[ResQuarter],FDet.Cust_id FROM [FinancialResultDetails] FDet WHERE FRD.HeaderID =FDet.HeaderID AND FDet.ResQuarter=FD.QuarterInfo AND FDet.Cust_id=FD.ClientID AND Fdet.Trends=FD.Trends)  
+  
+)  
+  
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spUpdateNewsInfo]    Script Date: 30-06-2018 02:50:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[spUpdateNewsInfo]
+@newsData [dbo].[FinancialNews] readonly
+AS
+BEGIN
+
+
+INSERT INTO [dbo].[News] ([Url],[Heading],[Source],[UpdateDate],[Cust_id]) 
+(
+SELECT FD.NewsURL,FD.Title,'MoneyControl',FD.UpdateTime,ClientID
+FROM @newsData FD 
+
+
+)
+
+END
 GO
