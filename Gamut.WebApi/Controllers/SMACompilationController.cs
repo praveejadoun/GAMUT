@@ -32,9 +32,9 @@ namespace Gamut.WebAPI.Controllers
             DateTime dtTo = Convert.ToDateTime(DateTime.ParseExact(toDate, "dd-MM-yyyy", CultureInfo.InvariantCulture));
 
             List<SMAHistory> sMAHistories = db.SMAHistories.Where(i => i.Cust_Id == id && (i.CompiledDate >= dtFrom && i.CompiledDate <= dtTo)).ToList();
-            if (sMAHistories == null && sMAHistories.Count() <= 0)
+            if (sMAHistories == null || sMAHistories.Count() <= 0)
             {
-                return null;
+                return NotFound();
             }
             Customer customer = db.Customers.Find(sMAHistories[0].Cust_Id);
             SMACompilation sMACompilation = new SMACompilation();

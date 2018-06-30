@@ -53,9 +53,9 @@ namespace Gamut.WebAPI.Controllers
             
 
             List<Rating> rating = db.Ratings.Where(i => i.Cust_Id == id).ToList();
-            if (rating == null)
+            if (rating == null || rating.Count()<=0)
             {
-                return null;
+                return NotFound();
             }
             Customer customer = db.Customers.Find(rating[0].Cust_Id);
             RatingDecorator ratingDecorator = new RatingDecorator(rating, customer);

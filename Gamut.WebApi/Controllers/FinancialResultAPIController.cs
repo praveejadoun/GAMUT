@@ -23,9 +23,9 @@ namespace Gamut.WebAPI.Controllers
         {
 
             List<FinancialResultType> fianDataType = db.FinancialResultTypes.ToList();
-            if (fianDataType == null)
+            if (fianDataType == null || fianDataType.Count()<=0)
             {
-                return null;
+                return NotFound();
             }
            
             return Ok(fianDataType);

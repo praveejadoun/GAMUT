@@ -32,9 +32,9 @@ namespace Gamut.WebAPI.Controllers
             DateTime dtTo = Convert.ToDateTime(DateTime.ParseExact(toDate, "dd-MM-yyyy", CultureInfo.InvariantCulture));
 
             List<Inspection> inspections = db.Inspections.Where(i => i.Cust_Id == id && (i.CompiledDate >= dtFrom && i.CompiledDate <= dtTo)).ToList();
-            if (inspections == null && inspections.Count() <= 0)
+            if (inspections == null || inspections.Count() <= 0)
             {
-                return null;
+                return NotFound();
             }
 
             Customer customer = db.Customers.Find(inspections[0].Cust_Id);

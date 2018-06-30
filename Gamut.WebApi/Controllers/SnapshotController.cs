@@ -31,9 +31,10 @@ namespace Gamut.WebAPI.Controllers
             DateTime dtTo = Convert.ToDateTime(DateTime.ParseExact(toDate, "dd-MM-yyyy", CultureInfo.InvariantCulture));
 
             List<Snapshot> snapshots = db.Snapshots.Where(i => i.Cust_Id == id && (i.compiledDate >= dtFrom && i.compiledDate <= dtTo)).ToList();
-            if (snapshots == null && snapshots.Count() <= 0)
+            if (snapshots == null || snapshots.Count() <= 0)
             {
-                return null;
+                //  return Ok(new SnapshotDecorator(new List<Snapshot>(), new Customer()));
+                return NotFound();
             }
 
             Customer customer = db.Customers.Find(snapshots[0].Cust_Id);

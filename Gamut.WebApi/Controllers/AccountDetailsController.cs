@@ -28,7 +28,7 @@ namespace Gamut.WebAPI.Controllers
         {
             List<AccountDetail> accountDetail = db.AccountDetails.Where(i => i.Cust_Id == id).ToList();
 
-            if (accountDetail == null)
+            if (accountDetail == null || accountDetail.Count <=0)
             {
                 return NotFound();
             }

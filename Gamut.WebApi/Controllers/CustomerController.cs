@@ -16,11 +16,11 @@ namespace Gamut.WebAPI.Controllers
     {
         private gamutdatabaseEntities db = new gamutdatabaseEntities();
 
-        // GET: api/Customer
-        public IQueryable<Customer> GetCustomers()
-        {
-            return db.Customers;
-        }
+        //// GET: api/Customer
+        //public IQueryable<Customer> GetCustomers()
+        //{
+        //    return db.Customers;
+        //}
 
         // GET: api/Customer/5
         [ResponseType(typeof(Customer))]

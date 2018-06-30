@@ -19,9 +19,9 @@ namespace Gamut.WebAPI.Controllers
         {
 
             List<News> news = db.News.Where(i => i.Cust_id == id).ToList();
-            if (news == null)
+            if (news == null || news.Count<=0)
             {
-                return null;
+                return NotFound(); 
             }
             Customer customer = db.Customers.Find(id);
             NewsDecorator interestDecorator = new NewsDecorator(news, customer);

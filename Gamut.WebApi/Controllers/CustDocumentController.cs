@@ -27,9 +27,9 @@ namespace Gamut.WebAPI.Controllers
             DateTime dtTo = Convert.ToDateTime(DateTime.ParseExact(toDate, "dd-MM-yyyy", CultureInfo.InvariantCulture));
 
             List<CustDocument> documents = db.CustDocuments.Where(i => i.Cust_id == id && (i.CompiledDate >= dtFrom && i.CompiledDate <= dtTo)).ToList();
-            if (documents == null && documents.Count() <=0)
+            if (documents == null || documents.Count() <=0)
             {
-                return null;
+                return NotFound();
             }
             Customer customer = db.Customers.Find(documents[0].Cust_id);
 

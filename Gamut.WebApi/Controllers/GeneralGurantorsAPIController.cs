@@ -16,11 +16,11 @@ namespace Gamut.WebAPI.Controllers
     {
         private gamutdatabaseEntities db = new gamutdatabaseEntities();
 
-        // GET: api/GeneralGurantorsAPI
-        public IQueryable<GeneralGurantor> GetGeneralGurantors()
-        {
-            return db.GeneralGurantors;
-        }
+        //// GET: api/GeneralGurantorsAPI
+        //public IQueryable<GeneralGurantor> GetGeneralGurantors()
+        //{
+        //    return db.GeneralGurantors;
+        //}
 
         // GET: api/GeneralGurantorsAPI/5
         [ResponseType(typeof(GeneralGurantor))]

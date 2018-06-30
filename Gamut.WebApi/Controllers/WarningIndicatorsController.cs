@@ -28,7 +28,7 @@ namespace Gamut.WebAPI.Controllers
         public IHttpActionResult GetWarningIndicator(string id)
         {
             List<WarningIndicator> warningIndicator = db.WarningIndicators.Where(i=>i.Cust_Id==id).ToList();
-            if (warningIndicator == null)
+            if (warningIndicator == null || warningIndicator.Count()<=0)
             {
                 return NotFound();
             }

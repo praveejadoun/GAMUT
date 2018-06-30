@@ -32,11 +32,12 @@ namespace Gamut.WebAPI.Controllers
             DateTime dtTo = Convert.ToDateTime(DateTime.ParseExact(toDate, "dd-MM-yyyy", CultureInfo.InvariantCulture));
 
             List<ActivityLog> activityLogs = db.ActivityLogs.Where(i => i.Cust_Id == id && i.logType == logType && (i.compiledDate >= dtFrom && i.compiledDate <= dtTo)).ToList();
-            if (activityLogs == null && activityLogs.Count() <= 0)
-            {
-                return null;
-            }
 
+            if (activityLogs == null  || activityLogs.Count() <= 0)
+            {
+                //return Ok(new ActivityLogDecorator(new List<ActivityLog>(), new Customer(), new List<LookUp>()));
+                return NotFound();
+            }
             List<LookUp> logTypes = db.LookUps.Where(i => i.LookUp_Table == "ActivityLog" && i.LookUp_Name == "LogTypes").ToList();
 
             Customer customer = db.Customers.Find(activityLogs[0].Cust_Id);
