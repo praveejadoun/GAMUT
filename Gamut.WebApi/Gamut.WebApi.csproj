@@ -177,6 +177,7 @@
     <Compile Include="Controllers\LookUpAPIController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\RatingAPIController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\RestucturingController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\SMACompilationController.cs" />
@@ -288,18 +289,8 @@
     <Content Include="App_Data\DBScript.SQL" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Login.css" />
-    <Content Include="Content\Main.css" />
-    <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="GamutSPA\Script\Controllers\AuthController.js" />
-    <Content Include="GamutSPA\Script\Controllers\GeneralController.js" />
     <Content Include="Global.asax" />
-    <Content Include="GamutSPA\Script\App.js" />
-    <Content Include="GamutSPA\Script\Services.js" />
     <Content Include="Models\GamutEntity.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>GamutEntity.edmx</DependentUpon>
@@ -310,12 +301,6 @@
       <DependentUpon>GamutEntity.edmx</DependentUpon>
       <LastGenOutput>GamutEntity.cs</LastGenOutput>
     </Content>
-    <Content Include="Scripts\angular-route.js" />
-    <Content Include="Scripts\angular-route.min.js" />
-    <Content Include="Scripts\angular.js" />
-    <Content Include="Scripts\angular.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
     <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
@@ -335,8 +320,6 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <Content Include="Scripts\angular-route.min.js.map" />
-    <Content Include="Scripts\angular.min.js.map" />
     <EntityDeploy Include="Models\GamutEntity.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>GamutEntity.Designer.cs</LastGenOutput>
@@ -345,15 +328,7 @@
       <DependentUpon>GamutEntity.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -366,16 +341,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Scripts\version.json" />
-    <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\ManageData\General.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
