@@ -1,6 +1,6 @@
 ﻿USE [gamutdatabase]
 GO
-/****** Object:  Table [dbo].[AccountDetails]    Script Date: 30-06-2018 02:49:39 ******/
+/****** Object:  Table [dbo].[AccountDetails]    Script Date: 01-07-2018 02:57:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -35,7 +35,31 @@ CREATE TABLE [dbo].[AccountDetails](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CustDocument]    Script Date: 30-06-2018 02:49:41 ******/
+/****** Object:  Table [dbo].[ActivityLog]    Script Date: 01-07-2018 02:57:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ActivityLog](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Cust_Id] [varchar](50) NULL,
+	[activityType] [varchar](100) NULL,
+	[logType] [varchar](50) NULL,
+	[informationDate] [datetime] NULL,
+	[stepsTaken] [varchar](500) NULL,
+	[attachment] [varchar](200) NULL,
+	[nextFollowupDate] [datetime] NULL,
+	[ractificationDate] [datetime] NULL,
+	[compiledDate] [datetime] NULL,
+	[lastUpdatedBy] [varchar](50) NULL,
+	[lastUpdatedOn] [datetime] NULL,
+ CONSTRAINT [PK_ActivityLog] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[CustDocument]    Script Date: 01-07-2018 02:57:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -59,7 +83,7 @@ CREATE TABLE [dbo].[CustDocument](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Customer]    Script Date: 30-06-2018 02:49:42 ******/
+/****** Object:  Table [dbo].[Customer]    Script Date: 01-07-2018 02:57:08 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -83,7 +107,7 @@ CREATE TABLE [dbo].[Customer](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CustomerDataMapping]    Script Date: 30-06-2018 02:49:43 ******/
+/****** Object:  Table [dbo].[CustomerDataMapping]    Script Date: 01-07-2018 02:57:09 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -92,14 +116,14 @@ CREATE TABLE [dbo].[CustomerDataMapping](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
 	[CustID] [varchar](50) NULL,
 	[MAppingURl] [varchar](500) NULL,
-	[MappingType] [varchar](100) NULL,
+	[TypeId] [int] NULL,
  CONSTRAINT [PK_CustomerDataMapping] PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[FinancialResultDetails]    Script Date: 30-06-2018 02:49:44 ******/
+/****** Object:  Table [dbo].[FinancialResultDetails]    Script Date: 01-07-2018 02:57:10 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -119,7 +143,7 @@ CREATE TABLE [dbo].[FinancialResultDetails](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[FinancialResultHeader]    Script Date: 30-06-2018 02:49:45 ******/
+/****** Object:  Table [dbo].[FinancialResultHeader]    Script Date: 01-07-2018 02:57:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -137,7 +161,7 @@ CREATE TABLE [dbo].[FinancialResultHeader](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[FinancialResultType]    Script Date: 30-06-2018 02:49:46 ******/
+/****** Object:  Table [dbo].[FinancialResultType]    Script Date: 01-07-2018 02:57:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -153,7 +177,7 @@ CREATE TABLE [dbo].[FinancialResultType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[General]    Script Date: 30-06-2018 02:49:47 ******/
+/****** Object:  Table [dbo].[General]    Script Date: 01-07-2018 02:57:12 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -213,7 +237,7 @@ CREATE TABLE [dbo].[General](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[GeneralExposure]    Script Date: 30-06-2018 02:49:47 ******/
+/****** Object:  Table [dbo].[GeneralExposure]    Script Date: 01-07-2018 02:57:13 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -231,7 +255,7 @@ CREATE TABLE [dbo].[GeneralExposure](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[GeneralGurantor]    Script Date: 30-06-2018 02:49:48 ******/
+/****** Object:  Table [dbo].[GeneralGurantor]    Script Date: 01-07-2018 02:57:14 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -249,7 +273,7 @@ CREATE TABLE [dbo].[GeneralGurantor](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Inspection]    Script Date: 30-06-2018 02:49:49 ******/
+/****** Object:  Table [dbo].[Inspection]    Script Date: 01-07-2018 02:57:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -271,7 +295,7 @@ CREATE TABLE [dbo].[Inspection](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Interest]    Script Date: 30-06-2018 02:49:50 ******/
+/****** Object:  Table [dbo].[Interest]    Script Date: 01-07-2018 02:57:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -294,7 +318,7 @@ CREATE TABLE [dbo].[Interest](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[LookUp]    Script Date: 30-06-2018 02:49:51 ******/
+/****** Object:  Table [dbo].[LookUp]    Script Date: 01-07-2018 02:57:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -310,7 +334,7 @@ CREATE TABLE [dbo].[LookUp](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[News]    Script Date: 30-06-2018 02:49:51 ******/
+/****** Object:  Table [dbo].[News]    Script Date: 01-07-2018 02:57:17 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -330,7 +354,7 @@ CREATE TABLE [dbo].[News](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Rating]    Script Date: 30-06-2018 02:49:52 ******/
+/****** Object:  Table [dbo].[Rating]    Script Date: 01-07-2018 02:57:18 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -352,7 +376,7 @@ CREATE TABLE [dbo].[Rating](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[RestucturingDetail]    Script Date: 30-06-2018 02:49:53 ******/
+/****** Object:  Table [dbo].[RestucturingDetail]    Script Date: 01-07-2018 02:57:19 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -373,7 +397,7 @@ CREATE TABLE [dbo].[RestucturingDetail](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[RestucturingHeader]    Script Date: 30-06-2018 02:49:54 ******/
+/****** Object:  Table [dbo].[RestucturingHeader]    Script Date: 01-07-2018 02:57:19 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -399,7 +423,7 @@ CREATE TABLE [dbo].[RestucturingHeader](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Security]    Script Date: 30-06-2018 02:49:55 ******/
+/****** Object:  Table [dbo].[Security]    Script Date: 01-07-2018 02:57:20 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -423,7 +447,7 @@ CREATE TABLE [dbo].[Security](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SMABucket]    Script Date: 30-06-2018 02:49:55 ******/
+/****** Object:  Table [dbo].[SMABucket]    Script Date: 01-07-2018 02:57:21 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -446,7 +470,7 @@ CREATE TABLE [dbo].[SMABucket](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SMACompilation]    Script Date: 30-06-2018 02:49:56 ******/
+/****** Object:  Table [dbo].[SMACompilation]    Script Date: 01-07-2018 02:57:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -468,7 +492,7 @@ CREATE TABLE [dbo].[SMACompilation](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SMAHistory]    Script Date: 30-06-2018 02:49:57 ******/
+/****** Object:  Table [dbo].[SMAHistory]    Script Date: 01-07-2018 02:57:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -491,7 +515,37 @@ CREATE TABLE [dbo].[SMAHistory](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SOC124]    Script Date: 30-06-2018 02:49:58 ******/
+/****** Object:  Table [dbo].[Snapshot]    Script Date: 01-07-2018 02:57:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Snapshot](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Cust_Id] [varchar](50) NULL,
+	[snapshotType] [varchar](50) NULL,
+	[snapshotDescription] [varchar](100) NULL,
+	[data1Description] [varchar](50) NULL,
+	[data1Value] [varchar](50) NULL,
+	[data2Description] [varchar](50) NULL,
+	[data2Value] [varchar](50) NULL,
+	[data3Description] [varchar](50) NULL,
+	[data3Value] [varchar](50) NULL,
+	[data4Description] [varchar](50) NULL,
+	[data4Value] [varchar](50) NULL,
+	[data5Description] [varchar](50) NULL,
+	[data5Value] [varchar](50) NULL,
+	[compiledDate] [datetime] NULL,
+	[SortOrder] [int] NULL,
+	[lastUpdatedOn] [datetime] NULL,
+	[lastUpdatedBy] [varchar](50) NULL,
+ CONSTRAINT [PK_Snapshot] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[SOC124]    Script Date: 01-07-2018 02:57:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -512,7 +566,7 @@ CREATE TABLE [dbo].[SOC124](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Student]    Script Date: 30-06-2018 02:49:59 ******/
+/****** Object:  Table [dbo].[Student]    Script Date: 01-07-2018 02:57:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -531,7 +585,7 @@ CREATE TABLE [dbo].[Student](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[WarningIndicator]    Script Date: 30-06-2018 02:49:59 ******/
+/****** Object:  Table [dbo].[WarningIndicator]    Script Date: 01-07-2018 02:57:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -618,6 +672,22 @@ GO
 INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (30, N'HCC', N'123456720', N'FITL', N'SMA1', 1, 2200, 2008, 2008, 2008, NULL, N'Consortium', N'SBI', NULL, 8.79, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
 GO
 SET IDENTITY_INSERT [dbo].[AccountDetails] OFF
+GO
+SET IDENTITY_INSERT [dbo].[ActivityLog] ON 
+GO
+INSERT [dbo].[ActivityLog] ([Id], [Cust_Id], [activityType], [logType], [informationDate], [stepsTaken], [attachment], [nextFollowupDate], [ractificationDate], [compiledDate], [lastUpdatedBy], [lastUpdatedOn]) VALUES (1, N'Maruti', N'Documents', N'Communication', CAST(N'2010-04-01T00:00:00.000' AS DateTime), N'', N'N/A', CAST(N'2010-05-01T00:00:00.000' AS DateTime), CAST(N'2010-06-01T00:00:00.000' AS DateTime), CAST(N'2015-08-05T00:00:00.000' AS DateTime), N'praveen', CAST(N'2018-06-30T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ActivityLog] ([Id], [Cust_Id], [activityType], [logType], [informationDate], [stepsTaken], [attachment], [nextFollowupDate], [ractificationDate], [compiledDate], [lastUpdatedBy], [lastUpdatedOn]) VALUES (2, N'Maruti', N'Documents', N'Communication', CAST(N'2010-04-01T00:00:00.000' AS DateTime), N'', N'N/A', CAST(N'2010-05-01T00:00:00.000' AS DateTime), CAST(N'2010-06-01T00:00:00.000' AS DateTime), CAST(N'2015-08-05T00:00:00.000' AS DateTime), N'praveen', CAST(N'2018-06-30T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ActivityLog] ([Id], [Cust_Id], [activityType], [logType], [informationDate], [stepsTaken], [attachment], [nextFollowupDate], [ractificationDate], [compiledDate], [lastUpdatedBy], [lastUpdatedOn]) VALUES (3, N'Maruti', N'Documents', N'Communication', CAST(N'2010-04-01T00:00:00.000' AS DateTime), N'', N'N/A', CAST(N'2010-05-01T00:00:00.000' AS DateTime), CAST(N'2010-06-01T00:00:00.000' AS DateTime), CAST(N'2015-08-05T00:00:00.000' AS DateTime), N'praveen', CAST(N'2018-06-30T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ActivityLog] ([Id], [Cust_Id], [activityType], [logType], [informationDate], [stepsTaken], [attachment], [nextFollowupDate], [ractificationDate], [compiledDate], [lastUpdatedBy], [lastUpdatedOn]) VALUES (4, N'Maruti', N'SMA', N'Ist Reminder', CAST(N'2010-04-01T00:00:00.000' AS DateTime), N'', N'N/A', CAST(N'2010-05-01T00:00:00.000' AS DateTime), CAST(N'2010-06-01T00:00:00.000' AS DateTime), CAST(N'2015-08-05T00:00:00.000' AS DateTime), N'praveen', CAST(N'2018-06-30T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ActivityLog] ([Id], [Cust_Id], [activityType], [logType], [informationDate], [stepsTaken], [attachment], [nextFollowupDate], [ractificationDate], [compiledDate], [lastUpdatedBy], [lastUpdatedOn]) VALUES (5, N'Maruti', N'SMA', N'Ist Reminder', CAST(N'2010-04-01T00:00:00.000' AS DateTime), N'', N'N/A', CAST(N'2010-05-01T00:00:00.000' AS DateTime), CAST(N'2010-06-01T00:00:00.000' AS DateTime), CAST(N'2015-08-05T00:00:00.000' AS DateTime), N'praveen', CAST(N'2018-06-30T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ActivityLog] ([Id], [Cust_Id], [activityType], [logType], [informationDate], [stepsTaken], [attachment], [nextFollowupDate], [ractificationDate], [compiledDate], [lastUpdatedBy], [lastUpdatedOn]) VALUES (6, N'Maruti', N'SMA', N'Ist Reminder', CAST(N'2010-04-01T00:00:00.000' AS DateTime), N'', N'N/A', CAST(N'2010-05-01T00:00:00.000' AS DateTime), CAST(N'2010-06-01T00:00:00.000' AS DateTime), CAST(N'2015-08-05T00:00:00.000' AS DateTime), N'praveen', CAST(N'2018-06-30T00:00:00.000' AS DateTime))
+GO
+SET IDENTITY_INSERT [dbo].[ActivityLog] OFF
 GO
 SET IDENTITY_INSERT [dbo].[CustDocument] ON 
 GO
@@ -785,1387 +855,1397 @@ INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure
 GO
 INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'TATAPOWER', N'Tata Power', N'ABCDE1234A', 1000, CAST(N'2018-06-23' AS Date), N'Public', N'Power', N'Energy', N'Collection and Distn of Electricity', N'Mumbai Fort', N'', N'')
 GO
+SET IDENTITY_INSERT [dbo].[CustomerDataMapping] ON 
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (1, N'ATULAUTO', N'https://www.moneycontrol.com/financials/atulauto/balance-sheetVI/AA08#AA08', 3)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (2, N'HCC', N'https://www.moneycontrol.com/financials/hindustanconstructioncompany/balance-sheetVI/HCC#HCC', 3)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (3, N'HUL', N'https://www.moneycontrol.com/financials/hindustanunilever/balance-sheetVI/HU#HU', 3)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (4, N'ICICIHF', N'https://www.moneycontrol.com/financials/icicibank/balance-sheetVI/ICI02#ICI02', 3)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (5, N'JAYPEE', N'https://www.moneycontrol.com/financials/jaypeeinfratech/balance-sheetVI/JI09#JI09', 3)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (6, N'LICHF', N'https://www.moneycontrol.com/financials/lichousingfinance/balance-sheetVI/LIC#LIC', 3)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (7, N'MARUTI', N'https://www.moneycontrol.com/financials/marutisuzukiindia/balance-sheetVI/MS24#MS24', 3)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (8, N'RIL', N'https://www.moneycontrol.com/financials/relianceindustries/balance-sheetVI/RI#RI', 3)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (9, N'TATAPOWER', N'https://www.moneycontrol.com/india/stockpricequote/power-generation-distribution/tatapowercompany/TPC', 3)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (10, N'ATULAUTO', N'https://www.moneycontrol.com/financials/atulauto/profit-lossVI/AA08#AA08', 1)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (11, N'HCC', N'https://www.moneycontrol.com/financials/hindustanconstructioncompany/profit-lossVI/HCC#HCC', 1)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (12, N'HUL', N'https://www.moneycontrol.com/financials/hindustanunilever/profit-lossVI/HU#HU', 1)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (13, N'ICICIHF', N'https://www.moneycontrol.com/financials/icicibank/profit-lossVI/ICI02#ICI02', 1)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (14, N'JAYPEE', N'https://www.moneycontrol.com/financials/jaypeeinfratech/profit-lossVI/JI09#JI09', 1)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (15, N'LICHF', N'https://www.moneycontrol.com/financials/lichousingfinance/profit-lossVI/LIC#LIC', 1)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (16, N'MARUTI', N'https://www.moneycontrol.com/financials/marutisuzukiindia/profit-lossVI/MS24#MS24', 1)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (17, N'RIL', N'https://www.moneycontrol.com/financials/relianceindustries/profit-lossVI/RI#RI', 1)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (18, N'TATAPOWER', N'https://www.moneycontrol.com/financials/tatapowercompany/profit-lossVI/TPC#TPC', 1)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (19, N'ATULAUTO', N'https://www.moneycontrol.com/financials/atulauto/cash-flowVI/AA08#AA08', 4)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (20, N'HCC', N'https://www.moneycontrol.com/financials/hindustanconstructioncompany/cash-flowVI/HCC#HCC', 4)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (21, N'HUL', N'https://www.moneycontrol.com/financials/hindustanunilever/cash-flowVI/HU#HU', 4)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (22, N'ICICIHF', N'https://www.moneycontrol.com/financials/icicibank/cash-flowVI/ICI02#ICI02', 4)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (23, N'JAYPEE', N'https://www.moneycontrol.com/financials/jaypeeinfratech/cash-flowVI/JI09#JI09', 4)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (24, N'LICHF', N'https://www.moneycontrol.com/financials/lichousingfinance/cash-flowVI/LIC#LIC', 4)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (25, N'MARUTI', N'https://www.moneycontrol.com/financials/marutisuzukiindia/cash-flowVI/MS24#MS24', 4)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (26, N'RIL', N'https://www.moneycontrol.com/financials/relianceindustries/cash-flowVI/RI#RI', 4)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (27, N'TATAPOWER', N'https://www.moneycontrol.com/financials/tatapowercompany/cash-flowVI/TPC#TPC', 4)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (28, N'ATULAUTO', N'https://www.moneycontrol.com/financials/atulauto/ratiosVI/AA08#AA08', 5)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (29, N'HCC', N'https://www.moneycontrol.com/financials/hindustanconstructioncompany/ratiosVI/HCC#HCC', 5)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (30, N'HUL', N'https://www.moneycontrol.com/financials/hindustanunilever/ratiosVI/HU#HU', 5)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (31, N'ICICIHF', N'https://www.moneycontrol.com/financials/icicibank/ratiosVI/ICI02#ICI02', 5)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (32, N'JAYPEE', N'https://www.moneycontrol.com/financials/jaypeeinfratech/ratiosVI/JI09#JI09', 5)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (33, N'LICHF', N'https://www.moneycontrol.com/financials/lichousingfinance/ratiosVI/LIC#LIC', 5)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (34, N'MARUTI', N'https://www.moneycontrol.com/financials/marutisuzukiindia/ratiosVI/MS24#MS24', 5)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (35, N'RIL', N'https://www.moneycontrol.com/financials/relianceindustries/ratiosVI/RI#RI', 5)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (36, N'TATAPOWER', N'https://www.moneycontrol.com/financials/tatapowercompany/ratiosVI/TPC#TPC', 5)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (37, N'ATULAUTO', N'https://www.moneycontrol.com/india/stockpricequote/auto-2-3-wheelers/atulauto/AA08', 7)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (38, N'HCC', N'https://www.moneycontrol.com/india/stockpricequote/construction-contracting-civil/hindustanconstructioncompany/HCC', 7)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (39, N'HUL', N'https://www.moneycontrol.com/india/stockpricequote/personal-care/hindustanunilever/HU', 7)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (40, N'ICICIHF', N'https://www.moneycontrol.com/india/stockpricequote/banks-private-sector/icicibank/ICI02', 7)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (41, N'JAYPEE', N'https://www.moneycontrol.com/india/stockpricequote/infrastructure-general/jaypeeinfratech/JI09', 7)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (42, N'LICHF', N'https://www.moneycontrol.com/india/stockpricequote/finance-housing/lichousingfinance/LIC', 7)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (43, N'MARUTI', N'https://www.moneycontrol.com/india/stockpricequote/auto-cars-jeeps/marutisuzukiindia/MS24', 7)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (44, N'RIL', N'https://www.moneycontrol.com/india/stockpricequote/refineries/relianceindustries/RI', 7)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (45, N'TATAPOWER', N'https://www.moneycontrol.com/india/stockpricequote/power-generation-distribution/tatapowercompany/TPC', 7)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (46, N'ATULAUTO', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=531795&expandable=0', 2)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (47, N'HCC', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=500185&expandable=0', 2)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (48, N'HUL', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=500696&expandable=0', 2)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (49, N'ICICIHF', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=532174&expandable=0', 2)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (50, N'JAYPEE', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=533207&expandable=0', 2)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (51, N'LICHF', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=500253&expandable=0', 2)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (52, N'MARUTI', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=532500&expandable=0', 2)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (53, N'RIL', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=500325&expandable=0', 2)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (54, N'TATAPOWER', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=500400&expandable=0', 2)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (55, N'ATULAUTO', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=531795&expandable=0', 6)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (56, N'HCC', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=500185&expandable=0', 6)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (57, N'HUL', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=500696&expandable=0', 6)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (58, N'ICICIHF', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=532174&expandable=0', 6)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (59, N'JAYPEE', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=533207&expandable=0', 6)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (60, N'LICHF', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=500253&expandable=0', 6)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (61, N'MARUTI', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=532500&expandable=0', 6)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (62, N'RIL', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=500325&expandable=0', 6)
+GO
+INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (63, N'TATAPOWER', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=500400&expandable=0', 6)
+GO
+SET IDENTITY_INSERT [dbo].[CustomerDataMapping] OFF
+GO
 SET IDENTITY_INSERT [dbo].[FinancialResultDetails] ON 
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (106, 49, CAST(150.5800 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (818, 61, CAST(5.9300 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (107, 49, CAST(129.0100 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (819, 61, CAST(5.0300 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (108, 49, CAST(159.8500 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (820, 61, CAST(8.3300 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (109, 49, CAST(129.8800 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (821, 61, CAST(4.0600 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (110, 49, CAST(104.0600 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (822, 61, CAST(3.4100 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (111, 50, CAST(0.9800 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (823, 55, CAST(-1.3200 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (112, 50, CAST(0.4300 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (824, 55, CAST(-1.3400 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (113, 50, CAST(0.5200 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (825, 55, CAST(-1.3100 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (114, 50, CAST(0.5200 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (826, 55, CAST(-1.2900 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (115, 50, CAST(0.1000 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (827, 55, CAST(-1.4300 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (116, 51, CAST(151.5600 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (828, 60, CAST(5.3300 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (117, 51, CAST(129.4400 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (829, 60, CAST(4.4200 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (118, 51, CAST(160.3700 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (830, 60, CAST(7.7400 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (119, 51, CAST(130.4000 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (831, 60, CAST(3.5600 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (120, 51, CAST(104.1600 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (832, 60, CAST(2.8300 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (121, 52, CAST(-132.6500 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (833, 59, CAST(10.9700 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (122, 52, CAST(-113.5500 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (834, 59, CAST(10.9700 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (123, 52, CAST(-132.9900 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (835, 59, CAST(10.9700 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (124, 52, CAST(-117.8900 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (836, 59, CAST(11.2000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (125, 52, CAST(-93.8600 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (837, 59, CAST(11.2000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (126, 53, CAST(-0.1200 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (838, 52, CAST(-132.6500 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (127, 53, CAST(-0.1300 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (839, 52, CAST(-113.5500 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (128, 53, CAST(-0.0700 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (840, 52, CAST(-132.9900 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (129, 53, CAST(-0.1000 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (841, 52, CAST(-117.8900 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (130, 53, CAST(-0.0900 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (842, 52, CAST(-93.8600 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (131, 54, CAST(18.9100 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (843, 53, CAST(-0.1200 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (132, 54, CAST(15.8900 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (844, 53, CAST(-0.1300 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (133, 54, CAST(27.3800 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (845, 53, CAST(-0.0700 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (134, 54, CAST(12.5100 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (846, 53, CAST(-0.1000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (135, 54, CAST(10.3000 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (847, 53, CAST(-0.0900 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (136, 55, CAST(-1.3200 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (848, 58, CAST(11.6900 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (137, 55, CAST(-1.3400 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (849, 58, CAST(9.7000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (138, 55, CAST(-1.3100 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (850, 58, CAST(16.9700 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (139, 55, CAST(-1.2900 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (851, 58, CAST(7.8100 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (140, 55, CAST(-1.4300 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (852, 58, CAST(6.2000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (141, 56, CAST(17.5900 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (853, 62, CAST(12.5600 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (142, 56, CAST(14.5500 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (854, 62, CAST(12.3200 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (143, 56, CAST(26.0700 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (855, 62, CAST(17.1300 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (144, 56, CAST(11.2200 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (856, 62, CAST(9.6300 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (145, 56, CAST(8.8700 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (857, 62, CAST(9.9000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (146, 57, CAST(-5.9000 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (858, 50, CAST(0.9800 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (147, 57, CAST(-4.8500 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (859, 50, CAST(0.4300 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (148, 57, CAST(-9.1000 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (860, 50, CAST(0.5200 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (149, 57, CAST(-3.4100 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (861, 50, CAST(0.5200 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (150, 57, CAST(-2.6700 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (862, 50, CAST(0.1000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (151, 58, CAST(11.6900 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (863, 54, CAST(18.9100 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (152, 58, CAST(9.7000 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (864, 54, CAST(15.8900 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (153, 58, CAST(16.9700 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (865, 54, CAST(27.3800 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (154, 58, CAST(7.8100 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (866, 54, CAST(12.5100 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (155, 58, CAST(6.2000 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (867, 54, CAST(10.3000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (156, 59, CAST(10.9700 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (868, 56, CAST(17.5900 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (157, 59, CAST(10.9700 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (869, 56, CAST(14.5500 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (158, 59, CAST(10.9700 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (870, 56, CAST(26.0700 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (159, 59, CAST(11.2000 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (871, 56, CAST(11.2200 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (160, 59, CAST(11.2000 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (872, 56, CAST(8.8700 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (161, 60, CAST(5.3300 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (873, 49, CAST(150.5800 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (162, 60, CAST(4.4200 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (874, 49, CAST(129.0100 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (163, 60, CAST(7.7400 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (875, 49, CAST(159.8500 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (164, 60, CAST(3.5600 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (876, 49, CAST(129.8800 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (165, 60, CAST(2.8300 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (877, 49, CAST(104.0600 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (166, 61, CAST(5.9300 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (878, 57, CAST(-5.9000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (167, 61, CAST(5.0300 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (879, 57, CAST(-4.8500 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (168, 61, CAST(8.3300 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (880, 57, CAST(-9.1000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (169, 61, CAST(4.0600 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (881, 57, CAST(-3.4100 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (170, 61, CAST(3.4100 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (882, 57, CAST(-2.6700 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (171, 62, CAST(12.5600 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (883, 51, CAST(151.5600 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (172, 62, CAST(12.3200 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (884, 51, CAST(129.4400 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (173, 62, CAST(17.1300 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (885, 51, CAST(160.3700 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (174, 62, CAST(9.6300 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (886, 51, CAST(130.4000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (175, 62, CAST(9.9000 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'AtulAuto', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (887, 51, CAST(104.1600 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'ATULAUTO', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (176, 49, CAST(1442.7400 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (888, 61, CAST(0.5400 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (177, 49, CAST(1230.9300 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (889, 61, CAST(0.6000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (178, 49, CAST(970.7500 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (890, 61, CAST(0.4100 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (179, 49, CAST(930.6600 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (891, 61, CAST(0.4300 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (180, 49, CAST(1358.2700 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (892, 61, CAST(0.4900 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (181, 50, CAST(68.7300 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (893, 55, CAST(-35.1900 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (182, 50, CAST(62.0800 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (894, 55, CAST(-29.3600 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (183, 50, CAST(61.1800 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (895, 55, CAST(-29.5500 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (184, 50, CAST(60.4600 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (896, 55, CAST(-28.8400 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (185, 50, CAST(70.5900 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (897, 55, CAST(-28.3300 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (186, 51, CAST(1511.4700 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (898, 60, CAST(0.2000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (187, 51, CAST(1293.0100 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (899, 60, CAST(0.3100 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (188, 51, CAST(1031.9300 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (900, 60, CAST(0.1100 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (189, 51, CAST(991.1200 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (901, 60, CAST(0.1400 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (190, 51, CAST(1428.8600 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (902, 60, CAST(0.2500 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (191, 52, CAST(-1447.2500 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (903, 59, CAST(101.5500 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (192, 52, CAST(-1217.7000 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (904, 59, CAST(101.5500 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (193, 52, CAST(-984.8800 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (905, 59, CAST(101.5500 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (194, 52, CAST(-942.7900 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (906, 59, CAST(101.0800 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (195, 52, CAST(-1363.3600 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (907, 59, CAST(101.0800 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (196, 53, CAST(-164.0000 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (908, 52, CAST(-1447.2500 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (197, 53, CAST(-150.7900 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (909, 52, CAST(-1217.7000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (198, 53, CAST(-163.0600 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (910, 52, CAST(-984.8800 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (199, 53, CAST(-182.1300 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (911, 52, CAST(-942.7900 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (200, 53, CAST(-207.9800 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (912, 52, CAST(-1363.3600 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (201, 54, CAST(64.2200 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (913, 53, CAST(-164.0000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (202, 54, CAST(75.3100 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (914, 53, CAST(-150.7900 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (203, 54, CAST(47.0500 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (915, 53, CAST(-163.0600 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (204, 54, CAST(48.3300 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (916, 53, CAST(-182.1300 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (205, 54, CAST(65.5000 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (917, 53, CAST(-207.9800 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (206, 55, CAST(-35.1900 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (918, 58, CAST(20.0900 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (207, 55, CAST(-29.3600 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (919, 58, CAST(31.3100 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (208, 55, CAST(-29.5500 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (920, 58, CAST(11.6000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (209, 55, CAST(-28.8400 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (921, 58, CAST(14.5200 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (210, 55, CAST(-28.3300 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (922, 58, CAST(20.9100 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (211, 56, CAST(29.0300 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (923, 62, CAST(4.4500 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (212, 56, CAST(45.9500 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (924, 62, CAST(6.1200 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (213, 56, CAST(17.5000 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (925, 62, CAST(4.8500 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (214, 56, CAST(19.4900 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (926, 62, CAST(5.1900 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (215, 56, CAST(37.1700 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (927, 62, CAST(4.8200 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (216, 57, CAST(-8.9400 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (928, 50, CAST(68.7300 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (217, 57, CAST(-14.6400 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (929, 50, CAST(62.0800 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (218, 57, CAST(-5.9000 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (930, 50, CAST(61.1800 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (219, 57, CAST(-4.9700 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (931, 50, CAST(60.4600 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (220, 57, CAST(-16.2600 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (932, 50, CAST(70.5900 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (221, 58, CAST(20.0900 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (933, 54, CAST(64.2200 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (222, 58, CAST(31.3100 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (934, 54, CAST(75.3100 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (223, 58, CAST(11.6000 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (935, 54, CAST(47.0500 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (224, 58, CAST(14.5200 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (936, 54, CAST(48.3300 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (225, 58, CAST(20.9100 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (937, 54, CAST(65.5000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (226, 59, CAST(101.5500 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (938, 56, CAST(29.0300 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (227, 59, CAST(101.5500 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (939, 56, CAST(45.9500 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (228, 59, CAST(101.5500 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (940, 56, CAST(17.5000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (229, 59, CAST(101.0800 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (941, 56, CAST(19.4900 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (230, 59, CAST(101.0800 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (942, 56, CAST(37.1700 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (231, 60, CAST(0.2000 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (943, 49, CAST(1442.7400 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (232, 60, CAST(0.3100 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (944, 49, CAST(1230.9300 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (233, 60, CAST(0.1100 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (945, 49, CAST(970.7500 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (234, 60, CAST(0.1400 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (946, 49, CAST(930.6600 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (235, 60, CAST(0.2500 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (947, 49, CAST(1358.2700 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (236, 61, CAST(0.5400 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (948, 57, CAST(-8.9400 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (237, 61, CAST(0.6000 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (949, 57, CAST(-14.6400 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (238, 61, CAST(0.4100 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (950, 57, CAST(-5.9000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (239, 61, CAST(0.4300 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (951, 57, CAST(-4.9700 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (240, 61, CAST(0.4900 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (952, 57, CAST(-16.2600 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (241, 62, CAST(4.4500 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (953, 51, CAST(1511.4700 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (242, 62, CAST(6.1200 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (954, 51, CAST(1293.0100 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (243, 62, CAST(4.8500 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (955, 51, CAST(1031.9300 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (244, 62, CAST(5.1900 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (956, 51, CAST(991.1200 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (245, 62, CAST(4.8200 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'HCC', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (957, 51, CAST(1428.8600 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'HCC', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (246, 49, CAST(9097.0000 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (958, 61, NULL, N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (247, 49, CAST(8590.0000 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (959, 61, CAST(6.7000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (248, 49, CAST(8309.0000 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (960, 61, CAST(6.4400 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (249, 49, CAST(9222.0000 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (961, 61, CAST(6.4700 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (250, 49, CAST(8886.0000 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (962, 61, NULL, N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (251, 50, CAST(100.0000 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (963, 55, CAST(-128.0000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (252, 50, CAST(152.0000 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (964, 55, CAST(-121.0000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (253, 50, CAST(204.0000 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (965, 55, CAST(-115.0000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (254, 50, CAST(113.0000 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (966, 55, CAST(-114.0000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (255, 50, CAST(83.0000 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (967, 55, CAST(-108.0000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (256, 51, CAST(9197.0000 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (968, 60, CAST(6.2400 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (257, 51, CAST(8742.0000 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (969, 60, CAST(6.1300 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (258, 51, CAST(8513.0000 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (970, 60, CAST(5.9000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (259, 51, CAST(9335.0000 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (971, 60, CAST(5.9300 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (260, 51, CAST(8969.0000 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (972, 60, CAST(5.4700 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (261, 52, CAST(-7117.0000 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (973, 59, NULL, N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (262, 52, CAST(-6936.0000 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (974, 59, CAST(216.0000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (263, 52, CAST(-6597.0000 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (975, 59, CAST(216.0000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (264, 52, CAST(-7375.0000 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (976, 59, CAST(216.0000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (265, 52, CAST(-7242.0000 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (977, 59, NULL, N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (266, 53, CAST(-4.0000 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (978, 52, CAST(-7117.0000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (267, 53, CAST(-5.0000 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (979, 52, CAST(-6936.0000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (268, 53, CAST(-6.0000 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (980, 52, CAST(-6597.0000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (269, 53, CAST(-6.0000 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (981, 52, CAST(-7375.0000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (270, 53, CAST(-6.0000 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (982, 52, CAST(-7242.0000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (271, 54, CAST(2080.0000 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (983, 53, CAST(-4.0000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (272, 54, CAST(1806.0000 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (984, 53, CAST(-5.0000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (273, 54, CAST(1916.0000 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (985, 53, CAST(-6.0000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (274, 54, CAST(1960.0000 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (986, 53, CAST(-6.0000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (275, 54, CAST(1727.0000 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (987, 53, CAST(-6.0000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (276, 55, CAST(-128.0000 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (988, 58, CAST(1351.0000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (277, 55, CAST(-121.0000 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (989, 58, CAST(1326.0000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (278, 55, CAST(-115.0000 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (990, 58, CAST(1276.0000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (279, 55, CAST(-114.0000 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (991, 58, CAST(1283.0000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (280, 55, CAST(-108.0000 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (992, 58, CAST(1183.0000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (281, 56, CAST(1952.0000 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (993, 62, CAST(22.8600 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (282, 56, CAST(1685.0000 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (994, 62, CAST(21.0200 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (283, 56, CAST(1801.0000 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (995, 62, CAST(23.0600 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (284, 56, CAST(1846.0000 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (996, 62, CAST(21.2500 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (285, 56, CAST(1619.0000 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (997, 62, CAST(19.4400 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (286, 57, CAST(-601.0000 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (998, 50, CAST(100.0000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (287, 57, CAST(-359.0000 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (999, 50, CAST(152.0000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (288, 57, CAST(-525.0000 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1000, 50, CAST(204.0000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (289, 57, CAST(-563.0000 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1001, 50, CAST(113.0000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (290, 57, CAST(-436.0000 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1002, 50, CAST(83.0000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (291, 58, CAST(1351.0000 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1003, 54, CAST(2080.0000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (292, 58, CAST(1326.0000 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1004, 54, CAST(1806.0000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (293, 58, CAST(1276.0000 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1005, 54, CAST(1916.0000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (294, 58, CAST(1283.0000 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1006, 54, CAST(1960.0000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (295, 58, CAST(1183.0000 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1007, 54, CAST(1727.0000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (296, 59, NULL, N'Mar-18', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1008, 56, CAST(1952.0000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (297, 59, CAST(216.0000 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1009, 56, CAST(1685.0000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (298, 59, CAST(216.0000 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1010, 56, CAST(1801.0000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (299, 59, CAST(216.0000 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1011, 56, CAST(1846.0000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (300, 59, NULL, N'Mar-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1012, 56, CAST(1619.0000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (301, 60, CAST(6.2400 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1013, 49, CAST(9097.0000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (302, 60, CAST(6.1300 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1014, 49, CAST(8590.0000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (303, 60, CAST(5.9000 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1015, 49, CAST(8309.0000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (304, 60, CAST(5.9300 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1016, 49, CAST(9222.0000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (305, 60, CAST(5.4700 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1017, 49, CAST(8886.0000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (306, 61, NULL, N'Mar-18', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1018, 57, CAST(-601.0000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (307, 61, CAST(6.7000 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1019, 57, CAST(-359.0000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (308, 61, CAST(6.4400 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1020, 57, CAST(-525.0000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (309, 61, CAST(6.4700 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1021, 57, CAST(-563.0000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (310, 61, NULL, N'Mar-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1022, 57, CAST(-436.0000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (311, 62, CAST(22.8600 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1023, 51, CAST(9197.0000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (312, 62, CAST(21.0200 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1024, 51, CAST(8742.0000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (313, 62, CAST(23.0600 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1025, 51, CAST(8513.0000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (314, 62, CAST(21.2500 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1026, 51, CAST(9335.0000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (315, 62, CAST(19.4400 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'HUL', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1027, 51, CAST(8969.0000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'HUL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (316, 49, CAST(59.9000 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1028, 61, CAST(1.5900 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (317, 49, CAST(312.3000 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1029, 61, CAST(2.5700 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (318, 49, CAST(-640.7500 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1030, 61, CAST(3.2100 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (319, 49, CAST(254.2400 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1031, 61, CAST(3.1900 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (320, 49, CAST(-700.4000 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1032, 61, CAST(3.4800 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (321, 50, CAST(0.0100 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1033, 55, NULL, N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (322, 50, CAST(7.8000 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1034, 55, NULL, N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (323, 50, CAST(2.1800 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1035, 55, NULL, N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (324, 50, CAST(3.7800 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1036, 55, NULL, N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (325, 50, CAST(0.1200 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1037, 55, NULL, N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (326, 51, CAST(59.9100 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1038, 60, CAST(1.5900 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (327, 51, CAST(320.1000 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1039, 60, CAST(2.5700 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (328, 51, CAST(-638.5700 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1040, 60, CAST(3.2100 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (329, 51, CAST(258.0200 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1041, 60, CAST(3.2000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (330, 51, CAST(-700.2800 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1042, 60, CAST(3.4800 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (331, 52, CAST(-409.3400 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1043, 59, CAST(1285.8100 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (332, 52, CAST(-387.6200 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1044, 59, CAST(1284.6700 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (333, 52, CAST(-291.6100 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1045, 59, CAST(1283.5800 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (334, 52, CAST(-731.1200 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1046, 59, CAST(1282.7800 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (335, 52, CAST(-187.5000 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1047, 59, CAST(1165.1100 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (336, 53, CAST(-223.0600 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1048, 52, NULL, N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (337, 53, CAST(-208.4400 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1049, 52, NULL, N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (338, 53, CAST(-271.6400 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1050, 52, NULL, N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (339, 53, CAST(-433.7400 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1051, 52, NULL, N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (340, 53, CAST(-253.9700 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1052, 52, NULL, N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (341, 54, CAST(-349.4300 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1053, 53, NULL, N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (342, 54, CAST(-67.5200 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1054, 53, NULL, N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (343, 54, CAST(-930.1800 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1055, 53, NULL, N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (344, 54, CAST(-473.1000 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1056, 53, NULL, N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (345, 54, CAST(-887.7800 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1057, 53, NULL, N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (346, 55, CAST(-11.8500 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1058, 58, CAST(1020.0000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (347, 55, CAST(-11.4800 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1059, 58, CAST(1650.2400 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (348, 55, CAST(-10.3300 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1060, 58, CAST(2058.1900 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (349, 55, CAST(-7.3500 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1061, 58, CAST(2049.0000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (350, 55, CAST(-9.8600 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1062, 58, CAST(2024.6400 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (351, 56, CAST(-361.2800 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1063, 62, NULL, N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (352, 56, CAST(-79.0000 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1064, 62, NULL, N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (353, 56, CAST(-940.5100 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1065, 62, NULL, N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (354, 56, CAST(-480.4500 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1066, 62, NULL, N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (355, 56, CAST(-897.6400 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1067, 62, NULL, N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (356, 57, NULL, N'Dec-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1068, 50, CAST(5678.6100 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (357, 57, CAST(34.2200 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1069, 50, CAST(3166.8700 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (358, 57, CAST(272.9400 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1070, 50, CAST(5186.2400 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (359, 57, NULL, N'Mar-18', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1071, 50, CAST(3387.9100 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (360, 57, CAST(-34.2200 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1072, 50, CAST(3017.2300 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (361, 58, CAST(-361.2800 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1073, 54, CAST(7513.9800 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (362, 58, CAST(-44.7800 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1074, 54, CAST(5057.7500 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (363, 58, CAST(-667.5700 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1075, 54, CAST(6986.5000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (364, 58, CAST(-480.4500 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1076, 54, CAST(5183.3100 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (365, 58, CAST(-931.8600 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1077, 54, CAST(5112.0200 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (366, 59, CAST(1388.9300 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1078, 56, CAST(7513.9800 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (367, 59, CAST(1388.9300 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1079, 56, CAST(5057.7500 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (368, 59, CAST(1388.9300 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1080, 56, CAST(6986.5000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (369, 59, CAST(1388.9300 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1081, 56, CAST(5183.3100 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (370, 59, CAST(1388.9300 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1082, 56, CAST(5112.0200 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (371, 60, CAST(-2.6000 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1083, 49, CAST(14264.3600 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (372, 60, CAST(-0.3200 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1084, 49, CAST(13665.3500 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (373, 60, CAST(-4.8100 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1085, 49, CAST(13577.0500 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (374, 60, CAST(-3.4600 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1086, 49, CAST(13459.1300 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (375, 60, CAST(-6.7100 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1087, 49, CAST(13568.5300 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (376, 61, CAST(-2.5200 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1088, 57, CAST(131.7700 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (377, 61, CAST(-0.2400 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1089, 57, CAST(162.0500 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (378, 61, CAST(-4.7300 AS Decimal(19, 4)), N'Mar-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1090, 57, CAST(-425.3800 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (379, 61, CAST(-3.4100 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1091, 57, CAST(-525.5700 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (380, 61, CAST(-6.6400 AS Decimal(19, 4)), N'Sep-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1092, 57, CAST(-189.1600 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (381, 62, CAST(-583.3600 AS Decimal(19, 4)), N'Dec-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1093, 51, CAST(19942.9700 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (382, 62, CAST(-21.6200 AS Decimal(19, 4)), N'Jun-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1094, 51, CAST(16832.2200 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (383, 62, NULL, N'Mar-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1095, 51, CAST(18763.2900 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (384, 62, CAST(-186.0800 AS Decimal(19, 4)), N'Mar-18', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1096, 51, CAST(16847.0400 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (385, 62, NULL, N'Sep-17', NULL, 1, N'JaypeeInfra', N'Quarterly')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1097, 51, CAST(16585.7600 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'ICICIHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (386, 49, CAST(3318.6900 AS Decimal(19, 4)), N'2014', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1098, 61, CAST(-3.4100 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (387, 49, CAST(3247.8300 AS Decimal(19, 4)), N'2015', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1099, 61, CAST(-2.5200 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (388, 49, CAST(2799.7800 AS Decimal(19, 4)), N'2016', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1100, 61, CAST(-6.6400 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (389, 49, CAST(962.1400 AS Decimal(19, 4)), N'2017', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1101, 61, CAST(-0.2400 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (390, 49, CAST(-73.9600 AS Decimal(19, 4)), N'2018', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1102, 61, CAST(-4.7300 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (391, 50, CAST(13.4400 AS Decimal(19, 4)), N'2014', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1103, 55, CAST(-7.3500 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (392, 50, CAST(9.9500 AS Decimal(19, 4)), N'2015', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1104, 55, CAST(-11.8500 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (393, 50, CAST(7.8600 AS Decimal(19, 4)), N'2016', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1105, 55, CAST(-9.8600 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (394, 50, CAST(3.7400 AS Decimal(19, 4)), N'2017', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1106, 55, CAST(-11.4800 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (395, 50, CAST(11.7100 AS Decimal(19, 4)), N'2018', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1107, 55, CAST(-10.3300 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (396, 51, CAST(3332.1300 AS Decimal(19, 4)), N'2014', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1108, 60, CAST(-3.4600 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (397, 51, CAST(3257.7800 AS Decimal(19, 4)), N'2015', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1109, 60, CAST(-2.6000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (398, 51, CAST(2807.6400 AS Decimal(19, 4)), N'2016', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1110, 60, CAST(-6.7100 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (399, 51, CAST(965.8800 AS Decimal(19, 4)), N'2017', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1111, 60, CAST(-0.3200 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (400, 51, CAST(-62.2500 AS Decimal(19, 4)), N'2018', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1112, 60, CAST(-4.8100 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (401, 52, CAST(-2016.2300 AS Decimal(19, 4)), N'2014', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1113, 59, CAST(1388.9300 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (402, 52, CAST(-1907.0900 AS Decimal(19, 4)), N'2015', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1114, 59, CAST(1388.9300 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (403, 52, CAST(-2201.6300 AS Decimal(19, 4)), N'2016', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1115, 59, CAST(1388.9300 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (404, 52, CAST(-2167.0800 AS Decimal(19, 4)), N'2017', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1116, 59, CAST(1388.9300 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (405, 52, CAST(-1715.5800 AS Decimal(19, 4)), N'2018', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1117, 59, CAST(1388.9300 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (406, 53, CAST(-894.0200 AS Decimal(19, 4)), N'2014', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1118, 52, CAST(-731.1200 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (407, 53, CAST(-893.5600 AS Decimal(19, 4)), N'2015', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1119, 52, CAST(-409.3400 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (408, 53, CAST(-918.4600 AS Decimal(19, 4)), N'2016', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1120, 52, CAST(-187.5000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (409, 53, CAST(-841.3900 AS Decimal(19, 4)), N'2017', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1121, 52, CAST(-387.6200 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (410, 53, CAST(-1119.2100 AS Decimal(19, 4)), N'2018', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1122, 52, CAST(-291.6100 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (411, 54, CAST(421.8800 AS Decimal(19, 4)), N'2014', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1123, 53, CAST(-433.7400 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (412, 54, CAST(457.1300 AS Decimal(19, 4)), N'2015', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1124, 53, CAST(-223.0600 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (413, 54, CAST(-312.4500 AS Decimal(19, 4)), N'2016', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1125, 53, CAST(-253.9700 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (414, 54, CAST(-1201.2000 AS Decimal(19, 4)), N'2017', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1126, 53, CAST(-208.4400 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (415, 54, CAST(-1777.8300 AS Decimal(19, 4)), N'2018', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1127, 53, CAST(-271.6400 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (416, 55, CAST(-21.4300 AS Decimal(19, 4)), N'2014', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1128, 58, CAST(-480.4500 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (417, 55, CAST(-28.2800 AS Decimal(19, 4)), N'2015', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1129, 58, CAST(-361.2800 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (418, 55, CAST(-34.0600 AS Decimal(19, 4)), N'2016', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1130, 58, CAST(-931.8600 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (419, 55, CAST(-41.2700 AS Decimal(19, 4)), N'2017', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1131, 58, CAST(-44.7800 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (420, 55, CAST(-40.5400 AS Decimal(19, 4)), N'2018', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1132, 58, CAST(-667.5700 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (421, 56, CAST(400.4500 AS Decimal(19, 4)), N'2014', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1133, 62, CAST(-186.0800 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (422, 56, CAST(428.8500 AS Decimal(19, 4)), N'2015', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1134, 62, CAST(-583.3600 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (423, 56, CAST(-346.5100 AS Decimal(19, 4)), N'2016', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1135, 62, NULL, N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (424, 56, CAST(-1242.4700 AS Decimal(19, 4)), N'2017', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1136, 62, CAST(-21.6200 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (425, 56, CAST(-1818.3700 AS Decimal(19, 4)), N'2018', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1137, 62, NULL, N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (426, 57, CAST(-101.2900 AS Decimal(19, 4)), N'2014', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1138, 50, CAST(3.7800 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (427, 57, CAST(-73.8500 AS Decimal(19, 4)), N'2015', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1139, 50, CAST(0.0100 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (428, 57, CAST(103.5800 AS Decimal(19, 4)), N'2016', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1140, 50, CAST(0.1200 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (429, 57, CAST(366.0900 AS Decimal(19, 4)), N'2017', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1141, 50, CAST(7.8000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (430, 57, NULL, N'2018', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1142, 50, CAST(2.1800 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (431, 58, CAST(299.1600 AS Decimal(19, 4)), N'2014', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1143, 54, CAST(-473.1000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (432, 58, CAST(355.0000 AS Decimal(19, 4)), N'2015', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1144, 54, CAST(-349.4300 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (433, 58, CAST(-242.9300 AS Decimal(19, 4)), N'2016', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1145, 54, CAST(-887.7800 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (434, 58, CAST(-876.3800 AS Decimal(19, 4)), N'2017', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1146, 54, CAST(-67.5200 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (435, 58, CAST(-1818.3700 AS Decimal(19, 4)), N'2018', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1147, 54, CAST(-930.1800 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (436, 59, CAST(1388.9300 AS Decimal(19, 4)), N'2014', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1148, 56, CAST(-480.4500 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (437, 59, CAST(1388.9300 AS Decimal(19, 4)), N'2015', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1149, 56, CAST(-361.2800 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (438, 59, CAST(1388.9300 AS Decimal(19, 4)), N'2016', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1150, 56, CAST(-897.6400 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (439, 59, CAST(1388.9300 AS Decimal(19, 4)), N'2017', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1151, 56, CAST(-79.0000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (440, 59, CAST(1388.9300 AS Decimal(19, 4)), N'2018', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1152, 56, CAST(-940.5100 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (441, 60, CAST(2.1500 AS Decimal(19, 4)), N'2014', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1153, 49, CAST(254.2400 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (442, 60, CAST(2.5600 AS Decimal(19, 4)), N'2015', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1154, 49, CAST(59.9000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (443, 60, CAST(-1.7500 AS Decimal(19, 4)), N'2016', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1155, 49, CAST(-700.4000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (444, 60, CAST(-6.3100 AS Decimal(19, 4)), N'2017', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1156, 49, CAST(312.3000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (445, 60, CAST(-13.0900 AS Decimal(19, 4)), N'2018', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1157, 49, CAST(-640.7500 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (446, 61, CAST(2.3100 AS Decimal(19, 4)), N'2014', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1158, 57, NULL, N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (447, 61, CAST(2.7600 AS Decimal(19, 4)), N'2015', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1159, 57, NULL, N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (448, 61, CAST(-1.5000 AS Decimal(19, 4)), N'2016', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1160, 57, CAST(-34.2200 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (449, 61, CAST(-6.0100 AS Decimal(19, 4)), N'2017', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1161, 57, CAST(34.2200 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (450, 61, CAST(-12.8000 AS Decimal(19, 4)), N'2018', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1162, 57, CAST(272.9400 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (451, 62, CAST(39.6500 AS Decimal(19, 4)), N'2014', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1163, 51, CAST(258.0200 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (452, 62, CAST(41.5900 AS Decimal(19, 4)), N'2015', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1164, 51, CAST(59.9100 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (453, 62, CAST(21.6400 AS Decimal(19, 4)), N'2016', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1165, 51, CAST(-700.2800 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (454, 62, CAST(-124.8500 AS Decimal(19, 4)), N'2017', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1166, 51, CAST(320.1000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (455, 62, NULL, N'2018', NULL, 1, N'JaypeeInfra', N'Annual')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1167, 51, CAST(-638.5700 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'JAYPEE', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (458, 133, CAST(4.9500 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1168, 61, CAST(10.7400 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (459, 133, CAST(4.9500 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1169, 61, CAST(9.7800 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (460, 133, CAST(4.9500 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1170, 61, CAST(9.7400 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (461, 133, CAST(4.9500 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1171, 61, CAST(9.3600 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (462, 133, CAST(4.9500 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1172, 61, CAST(10.5400 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (463, 124, CAST(0.1500 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1173, 55, CAST(-2.6500 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (464, 124, CAST(0.0900 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1174, 55, CAST(-2.4600 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (465, 124, CAST(0.3600 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1175, 55, CAST(-2.4200 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (466, 124, CAST(0.0000 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1176, 55, CAST(-2.4500 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (467, 124, CAST(0.0000 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1177, 55, CAST(-2.4800 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (468, 101, CAST(3.1600 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1178, 60, CAST(10.6900 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (469, 101, CAST(2.8600 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1179, 60, CAST(9.7300 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (470, 101, CAST(0.4800 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1180, 60, CAST(9.6900 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (471, 101, CAST(0.6300 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1181, 60, CAST(9.3100 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (472, 101, CAST(5.0000 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1182, 60, CAST(10.4900 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (473, 112, CAST(57.1000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1183, 59, CAST(100.9300 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (474, 112, CAST(12.8200 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1184, 59, CAST(100.9300 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (475, 112, CAST(27.3600 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1185, 59, CAST(100.9300 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (476, 112, CAST(45.1500 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1186, 59, CAST(100.9300 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (477, 112, CAST(38.0700 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1187, 59, CAST(100.9300 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (478, 119, CAST(66.9300 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1188, 52, CAST(-3092.7200 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (479, 119, CAST(17.5500 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1189, 52, CAST(-3008.5400 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (480, 119, CAST(4.3500 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1190, 52, CAST(-2966.1500 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (481, 119, CAST(14.3000 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1191, 52, CAST(-2933.6500 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (482, 119, CAST(15.4300 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1192, 52, CAST(-2853.2800 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (483, 138, NULL, N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1193, 53, CAST(-2843.0500 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (484, 138, NULL, N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1194, 53, CAST(-2814.8100 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (485, 138, NULL, N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1195, 53, CAST(-2770.5400 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (486, 138, NULL, N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1196, 53, CAST(-2696.2500 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (487, 138, NULL, N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1197, 53, CAST(-2569.9300 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (488, 139, NULL, N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1198, 58, CAST(539.3300 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (489, 139, NULL, N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1199, 58, CAST(491.0700 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (490, 139, NULL, N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1200, 58, CAST(489.1300 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (491, 139, NULL, N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1201, 58, CAST(470.0600 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (492, 139, NULL, N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1202, 58, CAST(529.1900 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (493, 87, CAST(5.3900 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1203, 62, CAST(21.5700 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (494, 87, CAST(4.9700 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1204, 62, CAST(20.3100 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (495, 87, CAST(5.1900 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1205, 62, CAST(20.3500 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (496, 87, CAST(6.1200 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1206, 62, CAST(19.8400 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (497, 87, CAST(4.4900 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1207, 62, CAST(22.2000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (498, 128, NULL, N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1208, 50, CAST(33.1600 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (499, 128, NULL, N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1209, 50, CAST(29.4900 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (500, 128, NULL, N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1210, 50, CAST(29.2100 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (501, 128, NULL, N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1211, 50, CAST(21.3900 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (502, 128, CAST(0.0200 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1212, 50, CAST(18.9900 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (503, 80, CAST(11.2000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1213, 54, CAST(841.3900 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (504, 80, CAST(11.2000 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1214, 54, CAST(759.0400 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (505, 80, CAST(11.2000 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1215, 54, CAST(750.4800 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (506, 80, CAST(11.2000 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1216, 54, CAST(720.9400 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (507, 80, CAST(11.2000 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1217, 54, CAST(808.5800 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (508, 126, CAST(0.3300 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1218, 56, CAST(838.7400 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (509, 126, CAST(0.0700 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1219, 56, CAST(756.5900 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (510, 126, CAST(0.2500 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1220, 56, CAST(748.0600 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (511, 126, CAST(0.1000 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1221, 56, CAST(718.4800 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (512, 126, CAST(0.2700 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1222, 56, CAST(806.1000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (513, 102, CAST(90.3100 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1223, 49, CAST(3900.9500 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (514, 102, CAST(87.4600 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1224, 49, CAST(3738.1000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (515, 102, CAST(79.9200 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1225, 49, CAST(3687.4200 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (516, 102, CAST(53.3300 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1226, 49, CAST(3633.2000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (517, 102, CAST(48.0700 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1227, 49, CAST(3642.8700 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (518, 130, CAST(25.6300 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1228, 57, CAST(-299.4100 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (519, 130, CAST(18.2700 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1229, 57, CAST(-265.5100 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (520, 130, CAST(16.8100 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1230, 57, CAST(-258.9400 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (521, 130, CAST(7.2200 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1231, 57, CAST(-248.4200 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (522, 130, CAST(3.0500 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1232, 57, CAST(-276.9100 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (523, 100, CAST(0.0000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1233, 51, CAST(3934.1100 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (524, 100, CAST(0.3700 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1234, 51, CAST(3767.5800 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (525, 100, CAST(0.6200 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1235, 51, CAST(3716.6300 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (526, 100, CAST(0.9400 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1236, 51, CAST(3654.5800 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (527, 100, CAST(1.0100 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1237, 51, CAST(3661.8600 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'LICHF', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (528, 110, CAST(36.2300 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1238, 49, CAST(19283.2000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (529, 110, CAST(34.7200 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1239, 49, CAST(19777.4000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (530, 110, CAST(26.0000 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1240, 49, CAST(20751.2000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (531, 110, CAST(23.3700 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1241, 49, CAST(21165.6000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (532, 110, CAST(22.9500 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1242, 49, CAST(21768.2000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (533, 105, CAST(2.5900 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1243, 50, CAST(244.9000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (534, 105, CAST(3.8100 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1244, 50, CAST(682.7000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (535, 105, CAST(7.3500 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1245, 50, CAST(444.9000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (536, 105, CAST(4.9700 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1246, 50, CAST(595.0000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (537, 105, CAST(3.8500 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1247, 50, CAST(522.9000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (538, 89, CAST(1.1800 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1248, 51, CAST(19528.1000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (539, 89, CAST(0.5100 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1249, 51, CAST(20460.1000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (540, 89, CAST(0.5100 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1250, 51, CAST(21196.1000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (541, 89, CAST(0.2600 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1251, 51, CAST(21760.6000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (542, 89, CAST(0.1900 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1252, 51, CAST(22291.1000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (543, 103, CAST(7.8100 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1253, 52, CAST(-16271.7000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (544, 134, CAST(7.8100 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1254, 52, CAST(-17477.5000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (545, 103, CAST(0.9900 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1255, 52, CAST(-18213.1000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (546, 134, CAST(0.9900 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1256, 52, CAST(-18423.7000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (547, 103, CAST(0.9900 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1257, 52, CAST(-18105.7000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (548, 134, CAST(0.9900 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1258, 53, CAST(-26.3000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (549, 103, CAST(1.2300 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1259, 53, CAST(-31.3000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (550, 134, CAST(1.2300 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1260, 53, CAST(-22.6000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (551, 103, CAST(1.2300 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1261, 53, CAST(-273.1000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (552, 134, CAST(1.2300 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1262, 53, CAST(-15.0000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (553, 135, CAST(0.0000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1263, 54, CAST(3256.4000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (554, 135, CAST(0.0000 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1264, 54, CAST(2982.6000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (555, 135, CAST(0.0000 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1265, 54, CAST(2983.0000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (556, 135, NULL, N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1266, 54, CAST(3336.9000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (557, 135, NULL, N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1267, 54, CAST(4185.4000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (558, 94, CAST(16.1300 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1268, 55, CAST(-689.0000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (559, 94, CAST(13.9200 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1269, 55, CAST(-683.9000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (560, 94, CAST(10.4600 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1270, 55, CAST(-701.0000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (561, 94, CAST(8.7800 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1271, 55, CAST(-702.5000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (562, 94, CAST(4.8400 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1272, 55, CAST(-682.5000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (563, 131, CAST(0.7100 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1273, 56, CAST(2567.4000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (564, 131, CAST(0.7000 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1274, 56, CAST(2298.7000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (565, 131, CAST(1.5200 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1275, 56, CAST(2282.0000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (566, 131, CAST(0.1200 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1276, 56, CAST(2634.4000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (567, 131, CAST(0.3300 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1277, 56, CAST(3502.9000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (568, 88, CAST(0.0000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1278, 57, CAST(-768.4000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (569, 88, CAST(0.0000 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1279, 57, CAST(-742.3000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (570, 88, CAST(0.0000 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1280, 57, CAST(-573.0000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (571, 88, CAST(0.0000 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1281, 57, CAST(-752.3000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (572, 88, CAST(2.5800 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1282, 57, CAST(-1018.6000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (573, 106, CAST(1.3800 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1283, 58, CAST(1799.0000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (574, 106, CAST(0.9000 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1284, 58, CAST(1556.4000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (575, 106, CAST(0.0000 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1285, 58, CAST(1709.0000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (576, 106, CAST(0.0000 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1286, 58, CAST(1882.1000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (577, 106, CAST(0.0000 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1287, 58, CAST(2484.3000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (578, 114, CAST(0.3200 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1288, 59, CAST(151.0000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (579, 114, CAST(0.5300 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1289, 59, CAST(151.0000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (580, 114, CAST(0.3100 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1290, 59, NULL, N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (581, 114, CAST(0.5600 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1291, 59, CAST(151.0000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (582, 114, CAST(0.0800 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1292, 59, CAST(151.0000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (583, 121, CAST(7.1900 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1293, 60, CAST(59.5600 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (584, 121, CAST(6.5600 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1294, 60, CAST(51.5200 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (585, 121, CAST(2.8700 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1295, 60, CAST(56.5700 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (586, 121, CAST(0.3900 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1296, 60, CAST(62.3000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (587, 121, CAST(0.0100 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1297, 60, CAST(82.2400 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (588, 82, CAST(169.4900 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1298, 61, CAST(82.3800 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (589, 82, CAST(143.4000 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1299, 61, CAST(74.1800 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (590, 82, CAST(109.8600 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1300, 61, NULL, N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (591, 82, CAST(83.2700 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1301, 61, CAST(85.5800 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (592, 82, CAST(63.1000 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1302, 61, CAST(104.8600 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (593, 113, CAST(1.9800 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1303, 62, CAST(16.8900 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (594, 113, CAST(3.9200 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1304, 62, CAST(15.0800 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (595, 113, CAST(3.2500 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1305, 62, CAST(14.3800 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (596, 113, CAST(2.9300 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1306, 62, CAST(15.7700 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (597, 113, CAST(1.5600 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1307, 62, CAST(19.2300 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'MARUTI', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (598, 95, CAST(6.1300 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1308, 49, CAST(75913.0000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (599, 95, CAST(11.5100 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1309, 49, CAST(70434.0000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (600, 95, CAST(13.4400 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1310, 49, CAST(74597.6500 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (601, 95, CAST(7.8100 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1311, 49, CAST(87227.0000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (602, 95, CAST(12.8000 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1312, 49, CAST(71761.0000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (603, 99, CAST(87.1500 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1313, 50, CAST(1624.0000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (604, 99, CAST(84.2300 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1314, 50, CAST(1918.0000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (605, 99, CAST(78.8200 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1315, 50, CAST(1370.8800 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (606, 99, CAST(51.7600 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1316, 50, CAST(2621.0000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (607, 99, CAST(42.0500 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1317, 50, CAST(2057.0000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (608, 116, CAST(245.4900 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1318, 51, CAST(77537.0000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (609, 116, CAST(221.5000 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1319, 51, CAST(72352.0000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (610, 116, CAST(177.4200 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1320, 51, CAST(75968.5300 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (611, 116, CAST(144.6000 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1321, 51, CAST(89848.0000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (612, 116, CAST(122.9500 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1322, 51, CAST(73818.0000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (613, 97, CAST(245.4900 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1323, 52, CAST(-63263.0000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (614, 97, CAST(221.5000 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1324, 52, CAST(-59633.0000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (615, 97, CAST(177.4200 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1325, 52, CAST(-65961.5200 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (616, 97, CAST(144.6000 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1326, 52, CAST(-75262.0000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (617, 97, CAST(122.9500 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1327, 52, CAST(-60092.0000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (618, 115, CAST(143.4000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1328, 53, CAST(-1094.0000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (619, 115, CAST(128.3500 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1329, 53, CAST(-788.0000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (620, 115, CAST(89.1700 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1330, 53, NULL, N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (621, 115, CAST(85.0800 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1331, 53, CAST(-1460.0000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (622, 115, CAST(69.8100 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1332, 53, CAST(-1314.0000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (623, 96, CAST(58.2300 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1333, 54, CAST(14274.0000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (624, 96, CAST(61.4200 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1334, 54, CAST(12719.0000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (625, 96, CAST(50.6500 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1335, 54, CAST(10007.0100 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (626, 96, CAST(43.7500 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1336, 54, CAST(14586.0000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (627, 96, CAST(41.3900 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1337, 54, CAST(13726.0000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (628, 107, CAST(102.0900 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1338, 55, CAST(-2475.0000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (629, 107, CAST(93.1600 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1339, 55, CAST(-2158.0000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (630, 107, CAST(88.2600 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1340, 55, NULL, N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (631, 107, CAST(59.5300 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1341, 55, CAST(-2679.0000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (632, 107, CAST(53.1400 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1342, 55, CAST(-2268.0000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (633, 90, CAST(6.5700 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1343, 56, CAST(11799.0000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (634, 90, CAST(5.4800 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1344, 56, CAST(10561.0000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (635, 90, CAST(5.7000 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1345, 56, CAST(10007.0100 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (636, 90, CAST(6.3800 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1346, 56, CAST(11907.0000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (637, 90, CAST(7.2600 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1347, 56, CAST(11458.0000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (638, 83, CAST(169.4900 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1348, 57, CAST(-3345.0000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (639, 83, CAST(143.4000 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1349, 57, CAST(-2365.0000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (640, 83, CAST(109.8600 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1350, 57, CAST(-1856.3100 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (641, 83, CAST(83.2700 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1351, 57, CAST(-3210.0000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (642, 83, CAST(63.1000 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1352, 57, CAST(-3193.0000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (643, 81, CAST(11.2000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1353, 58, CAST(8454.0000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (644, 81, CAST(11.2000 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1354, 58, CAST(8196.0000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (645, 81, CAST(11.2000 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1355, 58, CAST(8150.7000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (646, 81, CAST(11.2000 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1356, 58, CAST(8697.0000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (647, 81, CAST(11.2000 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1357, 58, CAST(8265.0000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (648, 84, CAST(180.7000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1358, 59, CAST(6334.0000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (649, 84, CAST(154.6000 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1359, 59, CAST(3252.0000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (650, 84, CAST(121.0700 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1360, 59, NULL, N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (651, 84, CAST(94.4700 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1361, 59, CAST(6335.0000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (652, 84, CAST(74.3000 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1362, 59, CAST(6333.0000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (653, 93, CAST(35.9600 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1363, 60, CAST(13.4000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (654, 93, CAST(36.0000 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1364, 60, CAST(25.2100 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (655, 93, CAST(26.7500 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1365, 60, CAST(25.1300 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (656, 93, CAST(27.1600 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1366, 60, CAST(13.7300 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (657, 93, CAST(23.7400 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1367, 60, CAST(13.0300 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (658, 111, CAST(47.7700 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1368, 61, CAST(17.2500 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (659, 111, CAST(76.3500 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1369, 61, CAST(31.8400 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (660, 111, CAST(32.2500 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1370, 61, NULL, N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (661, 111, CAST(13.0700 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1371, 61, CAST(17.9600 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (662, 111, CAST(7.1500 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1372, 61, CAST(16.6300 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (663, 123, CAST(0.0100 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1373, 62, CAST(18.8000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (664, 123, CAST(0.0000 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1374, 62, CAST(18.0600 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (665, 123, CAST(0.0000 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1375, 62, CAST(13.4100 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (666, 123, CAST(0.0000 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1376, 62, CAST(16.7200 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (667, 123, CAST(0.0000 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'3')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1377, 62, CAST(19.1300 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'RIL', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (668, 169, CAST(17.0100 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1378, 49, CAST(1958.7700 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (669, 169, CAST(21.6000 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1379, 49, CAST(1926.5900 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (670, 169, CAST(18.4900 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1380, 49, CAST(1890.4900 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (671, 169, CAST(27.1600 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1381, 49, CAST(1841.5900 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (672, 169, CAST(23.6200 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1382, 49, CAST(1936.1000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (673, 150, CAST(-0.8600 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1383, 50, CAST(260.7200 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (674, 150, CAST(-3.2100 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1384, 50, CAST(191.1800 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (675, 150, CAST(-1.3800 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1385, 50, CAST(155.1600 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (676, 150, CAST(1.2600 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1386, 50, CAST(271.2100 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (677, 150, CAST(0.7400 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1387, 50, CAST(181.0200 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (678, 148, CAST(346.1500 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1388, 51, CAST(2219.4900 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (679, 148, CAST(388.0800 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1389, 51, CAST(2117.7700 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (680, 148, CAST(373.5900 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1390, 51, CAST(2045.6500 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (681, 148, CAST(330.3900 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1391, 51, CAST(2112.8000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (682, 148, CAST(283.1500 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1392, 51, CAST(2117.1200 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (683, 160, CAST(18.8900 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1393, 52, CAST(-1772.4300 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (684, 160, CAST(24.5100 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1394, 52, CAST(-1677.2800 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (685, 160, CAST(19.2000 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1395, 52, CAST(-2382.9000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (686, 160, CAST(11.3200 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1396, 52, CAST(-5917.9500 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (687, 160, CAST(11.4700 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1397, 52, CAST(-1701.6100 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (688, 162, CAST(0.4100 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1398, 53, CAST(-351.9700 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (689, 162, CAST(-0.2200 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1399, 53, CAST(-342.6500 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (690, 162, CAST(-0.5200 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1400, 53, CAST(-362.4100 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (691, 162, CAST(1.6300 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1401, 53, CAST(-332.6600 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (692, 162, CAST(-0.1700 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1402, 53, CAST(-396.6400 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (693, 153, CAST(5.2800 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1403, 54, CAST(447.0600 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (694, 153, CAST(5.2900 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1404, 54, CAST(440.4900 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (695, 153, CAST(5.5800 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1405, 54, CAST(-337.2500 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (696, 153, CAST(5.2100 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1406, 54, CAST(-3805.1500 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (697, 153, CAST(4.4400 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1407, 54, CAST(415.5100 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (698, 170, CAST(17.0100 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1408, 55, CAST(-161.9100 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (699, 170, CAST(21.6000 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1409, 55, CAST(-163.1900 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (700, 170, CAST(18.4900 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1410, 55, CAST(-159.9800 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (701, 170, CAST(27.1600 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1411, 55, CAST(-188.7400 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (702, 170, CAST(23.6200 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1412, 55, CAST(-168.3500 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (703, 151, CAST(39.0400 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1413, 56, CAST(285.1500 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (704, 151, CAST(37.3400 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1414, 56, CAST(277.3000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (705, 151, CAST(32.3600 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1415, 56, CAST(-497.2300 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (706, 151, CAST(27.3600 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1416, 56, CAST(-3993.8900 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (707, 151, CAST(21.0100 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1417, 56, CAST(247.1600 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (708, 157, CAST(0.0000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1418, 57, CAST(223.2200 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (709, 157, CAST(0.0000 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1419, 57, CAST(-89.0600 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (710, 157, CAST(1.6500 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1420, 57, CAST(-96.1900 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (711, 157, CAST(0.0000 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1421, 57, CAST(167.6900 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (712, 157, CAST(0.0000 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1422, 57, CAST(-81.3400 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (713, 152, CAST(0.5800 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1423, 58, CAST(524.2800 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (714, 152, CAST(0.7800 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1424, 58, CAST(188.2400 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (715, 152, CAST(0.5900 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1425, 58, CAST(-593.4200 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (716, 152, CAST(0.3500 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1426, 58, CAST(-3939.1200 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (717, 152, CAST(0.4000 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1427, 58, CAST(50.3200 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (718, 172, CAST(6.7600 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1428, 59, CAST(270.5000 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (719, 172, CAST(5.0400 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1429, 59, CAST(270.5000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (720, 172, CAST(1.3700 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1430, 59, CAST(270.5000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (721, 172, CAST(0.3900 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1431, 59, CAST(270.5000 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (722, 172, CAST(0.0100 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1432, 59, CAST(270.5000 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (723, 142, CAST(56.5900 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1433, 60, CAST(1.8300 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (724, 142, CAST(64.5400 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1434, 60, CAST(0.5900 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (725, 142, CAST(45.0200 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1435, 60, CAST(-2.3000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (726, 142, CAST(50.3000 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1436, 60, CAST(-14.6500 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (727, 142, CAST(44.6000 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1437, 60, CAST(0.0800 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (728, 154, CAST(30.7400 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1438, 61, CAST(2.5400 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (729, 154, CAST(32.5500 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1439, 61, CAST(1.3000 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (730, 154, CAST(30.3100 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1440, 61, CAST(-1.6000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (731, 154, CAST(25.7400 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1441, 61, CAST(-13.8600 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (732, 154, CAST(18.8500 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1442, 61, CAST(0.8100 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (733, 145, CAST(2.5200 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1443, 62, CAST(22.8200 AS Decimal(19, 4)), N'Dec-17', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (734, 145, CAST(1.3100 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1444, 62, CAST(22.8600 AS Decimal(19, 4)), N'Jun-17', CAST(N'2017-06-30T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (735, 145, CAST(5.8600 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1445, 62, CAST(-17.8400 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (736, 145, CAST(2.9200 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1446, 62, CAST(-206.6200 AS Decimal(19, 4)), N'Mar-18', CAST(N'2018-03-31T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (737, 145, CAST(1.9800 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (738, 165, CAST(37.3200 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (739, 165, CAST(47.4000 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (740, 165, CAST(40.5700 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (741, 165, CAST(29.7900 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (742, 165, CAST(25.9200 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (743, 156, CAST(56.5200 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (744, 156, CAST(71.5300 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (745, 156, CAST(57.6100 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (746, 156, CAST(42.7500 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (747, 156, CAST(37.2200 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (748, 158, CAST(56.5200 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (749, 158, CAST(71.5300 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (750, 158, CAST(59.2500 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (751, 158, CAST(42.7500 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (752, 158, CAST(37.2200 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (753, 167, CAST(37.3200 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (754, 167, CAST(47.4000 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (755, 167, CAST(40.5700 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (756, 167, CAST(29.7900 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (757, 167, CAST(25.9200 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (758, 166, CAST(37.3200 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (759, 166, CAST(47.4000 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (760, 166, CAST(40.5700 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (761, 166, CAST(29.7900 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (762, 166, CAST(25.9200 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (763, 141, CAST(528.7900 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (764, 141, CAST(592.5500 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (765, 141, CAST(535.0900 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (766, 141, CAST(479.5500 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (767, 141, CAST(407.4600 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (768, 143, CAST(472.2000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (769, 143, CAST(528.0100 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (770, 143, CAST(490.0700 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (771, 143, CAST(429.2600 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (772, 143, CAST(362.8600 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (773, 163, CAST(-0.1100 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (774, 163, CAST(-0.1700 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (775, 163, CAST(0.0000 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (776, 163, CAST(0.0000 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (777, 163, CAST(0.0000 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (778, 155, CAST(421.3300 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (779, 155, CAST(460.8300 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (780, 155, CAST(441.0500 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (781, 155, CAST(390.3100 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (782, 155, CAST(328.6000 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (783, 144, CAST(475.3300 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (784, 144, CAST(531.0400 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (785, 144, CAST(492.8000 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (786, 144, CAST(430.1300 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (787, 144, CAST(363.8400 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (788, 146, CAST(477.8400 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (789, 146, CAST(532.3600 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (790, 146, CAST(498.6600 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (791, 146, CAST(433.0600 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (792, 146, CAST(365.8200 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (793, 164, CAST(19.2000 AS Decimal(19, 4)), N'Mar-17', CAST(N'2017-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (794, 164, CAST(24.1300 AS Decimal(19, 4)), N'Mar-16', CAST(N'2016-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (795, 164, CAST(18.6800 AS Decimal(19, 4)), N'Mar-15', CAST(N'2015-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (796, 164, CAST(12.9500 AS Decimal(19, 4)), N'Mar-14', CAST(N'2014-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
-GO
-INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (797, 164, CAST(11.3000 AS Decimal(19, 4)), N'Mar-13', CAST(N'2013-03-31T00:00:00.000' AS DateTime), 1, N'AtulAuto', N'1')
+INSERT [dbo].[FinancialResultDetails] ([ID], [HeaderID], [Amount], [ResQuarter], [UpdateDate], [IsActive], [Cust_id], [Trends]) VALUES (1447, 62, CAST(21.4600 AS Decimal(19, 4)), N'Sep-17', CAST(N'2017-09-30T00:00:00.000' AS DateTime), 1, N'TATAPOWER', N'2')
 GO
 SET IDENTITY_INSERT [dbo].[FinancialResultDetails] OFF
 GO
@@ -2781,85 +2861,17 @@ INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALU
 GO
 INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (19, N'INSPECTION', N'INSPECTIONSTATUS', N'Deleted')
 GO
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (20, N'ActivityLog', N'LogTypes', N'Communication')
+GO
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (21, N'ActivityLog', N'LogTypes', N'Ist Reminder')
+GO
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (22, N'ActivityLog', N'LogTypes', N'IInd Reminder')
+GO
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (23, N'ActivityLog', N'LogTypes', N'Further Followup')
+GO
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (24, N'ActivityLog', N'LogTypes', N'Rectified')
+GO
 SET IDENTITY_INSERT [dbo].[LookUp] OFF
-GO
-SET IDENTITY_INSERT [dbo].[News] ON 
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (1, CAST(N'2018-04-19T00:00:00.000' AS DateTime), N'MoneyControl', N'Atul Auto Q4 PAT seen up 146.4% YoY to Rs. 20 cr: HDFC Securities', N'https://www.moneycontrol.com/news/result-poll/atul-auto-q4-pat-seen1464-yoy-to-rs-20-cr-hdfc-securities_10803261.html', N'AtulAuto', N'Test', N'Test')
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (2, CAST(N'2018-03-01T00:00:00.000' AS DateTime), N'MoneyControl', N'Atul Auto Q4 PAT seen up 146.4% YoY to Rs. 20 cr: HDFC Securities', N'https://www.moneycontrol.com/news/result-poll/atul-auto-q4-pat-seen1464-yoy-to-rs-20-cr-hdfc-securities_10803261.html', N'AtulAuto', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (3, CAST(N'2018-03-01T00:00:00.000' AS DateTime), N'MoneyControl', N'Atul Auto Q4 PAT seen up 146.4% YoY to Rs. 20 cr: HDFC Securities', N'https://www.moneycontrol.com/news/result-poll/atul-auto-q4-pat-seen1464-yoy-to-rs-20-cr-hdfc-securities_10803261.html', N'AtulAuto', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (4, CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'MoneyControl', N'Atul Auto Q4 PAT seen up 146.4% YoY to Rs. 20 cr: HDFC Securities', N'https://www.moneycontrol.com/news/result-poll/atul-auto-q4-pat-seen1464-yoy-to-rs-20-cr-hdfc-securities_10803261.html', N'AtulAuto', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (5, CAST(N'2017-10-03T00:00:00.000' AS DateTime), N'MoneyControl', N'Atul Auto Q4 PAT seen up 146.4% YoY to Rs. 20 cr: HDFC Securities', N'https://www.moneycontrol.com/news/result-poll/atul-auto-q4-pat-seen1464-yoy-to-rs-20-cr-hdfc-securities_10803261.html', N'AtulAuto', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (6, CAST(N'2018-06-05T00:00:00.000' AS DateTime), N'MoneyControl', N'Atul Auto Q4 PAT seen up 146.4% YoY to Rs. 20 cr: HDFC Securities', N'https://www.moneycontrol.com/news/result-poll/atul-auto-q4-pat-seen1464-yoy-to-rs-20-cr-hdfc-securities_10803261.html', N'AtulAuto', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (7, CAST(N'2018-06-01T00:00:00.000' AS DateTime), N'MoneyControl', N'Atul Auto Q4 PAT seen up 146.4% YoY to Rs. 20 cr: HDFC Securities', N'https://www.moneycontrol.com/news/result-poll/atul-auto-q4-pat-seen1464-yoy-to-rs-20-cr-hdfc-securities_10803261.html', N'AtulAuto', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (8, CAST(N'2018-05-19T00:00:00.000' AS DateTime), N'MoneyControl', N'Atul Auto Q4 PAT seen up 146.4% YoY to Rs. 20 cr: HDFC Securities', N'https://www.moneycontrol.com/news/result-poll/atul-auto-q4-pat-seen1464-yoy-to-rs-20-cr-hdfc-securities_10803261.html', N'AtulAuto', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (9, CAST(N'2018-05-19T00:00:00.000' AS DateTime), N'MoneyControl', N'Atul Auto Q4 PAT seen up 146.4% YoY to Rs. 20 cr: HDFC Securities', N'https://www.moneycontrol.com/news/result-poll/atul-auto-q4-pat-seen1464-yoy-to-rs-20-cr-hdfc-securities_10803261.html', N'AtulAuto', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (10, CAST(N'2018-05-16T00:00:00.000' AS DateTime), N'MoneyControl', N'Atul Auto Q4 PAT seen up 146.4% YoY to Rs. 20 cr: HDFC Securities', N'https://www.moneycontrol.com/news/result-poll/atul-auto-q4-pat-seen1464-yoy-to-rs-20-cr-hdfc-securities_10803261.html', N'AtulAuto', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (11, CAST(N'2018-06-06T00:00:00.000' AS DateTime), N'MoneyControl', N'HCC bags Rs 737 cr contract for Bangladesh nuclear power plant', N'https://www.moneycontrol.com/news/business/hcc-bags-rs-737-cr-contract-for-bangladesh-nuclear-power-plant_10983281.html', N'HCC', N'test', N'test')
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (12, CAST(N'2018-06-06T00:00:00.000' AS DateTime), N'MoneyControl', N'HCC bags Rs 737 cr contract for Bangladesh nuclear power plant', N'https://www.moneycontrol.com/news/business/hcc-bags-rs-737-cr-contract-for-bangladesh-nuclear-power-plant_10983281.html', N'HCC', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (13, CAST(N'2018-05-03T00:00:00.000' AS DateTime), N'MoneyControl', N'HCC bags Rs 737 cr contract for Bangladesh nuclear power plant', N'https://www.moneycontrol.com/news/business/hcc-bags-rs-737-cr-contract-for-bangladesh-nuclear-power-plant_10983281.html', N'HCC', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (14, CAST(N'2018-03-22T00:00:00.000' AS DateTime), N'MoneyControl', N'HCC bags Rs 737 cr contract for Bangladesh nuclear power plant', N'https://www.moneycontrol.com/news/business/hcc-bags-rs-737-cr-contract-for-bangladesh-nuclear-power-plant_10983281.html', N'HCC', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (15, CAST(N'2018-06-06T00:00:00.000' AS DateTime), N'MoneyControl', N'HCC bags Rs 737 cr contract for Bangladesh nuclear power plant', N'https://www.moneycontrol.com/news/business/hcc-bags-rs-737-cr-contract-for-bangladesh-nuclear-power-plant_10983281.html', N'HCC', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (16, CAST(N'2018-05-17T00:00:00.000' AS DateTime), N'MoneyControl', N'HCC bags Rs 737 cr contract for Bangladesh nuclear power plant', N'https://www.moneycontrol.com/news/business/hcc-bags-rs-737-cr-contract-for-bangladesh-nuclear-power-plant_10983281.html', N'HCC', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (17, CAST(N'2018-05-04T00:00:00.000' AS DateTime), N'MoneyControl', N'HCC bags Rs 737 cr contract for Bangladesh nuclear power plant', N'https://www.moneycontrol.com/news/business/hcc-bags-rs-737-cr-contract-for-bangladesh-nuclear-power-plant_10983281.html', N'HCC', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (18, CAST(N'2018-05-04T00:00:00.000' AS DateTime), N'MoneyControl', N'HCC bags Rs 737 cr contract for Bangladesh nuclear power plant', N'https://www.moneycontrol.com/news/business/hcc-bags-rs-737-cr-contract-for-bangladesh-nuclear-power-plant_10983281.html', N'HCC', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (19, CAST(N'2018-05-03T00:00:00.000' AS DateTime), N'MoneyControl', N'HCC bags Rs 737 cr contract for Bangladesh nuclear power plant', N'https://www.moneycontrol.com/news/business/hcc-bags-rs-737-cr-contract-for-bangladesh-nuclear-power-plant_10983281.html', N'HCC', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (20, CAST(N'2018-06-17T00:00:00.000' AS DateTime), N'MoneyControl', N'Seven of top 10 valued companies add Rs 73,872 crore in MCap', N'https://www.moneycontrol.com/news/business/seventop-10-valued-companies-add-rs-73872-croremcap_11020341.html', N'HUL', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (21, CAST(N'2018-06-04T00:00:00.000' AS DateTime), N'MoneyControl', N'Seven of top 10 valued companies add Rs 73,872 crore in MCap', N'https://www.moneycontrol.com/news/business/seventop-10-valued-companies-add-rs-73872-croremcap_11020341.html', N'HUL', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (22, CAST(N'2018-06-01T00:00:00.000' AS DateTime), N'MoneyControl', N'Seven of top 10 valued companies add Rs 73,872 crore in MCap', N'https://www.moneycontrol.com/news/business/seventop-10-valued-companies-add-rs-73872-croremcap_11020341.html', N'HUL', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (23, CAST(N'2018-06-07T00:00:00.000' AS DateTime), N'MoneyControl', N'Seven of top 10 valued companies add Rs 73,872 crore in MCap', N'https://www.moneycontrol.com/news/business/seventop-10-valued-companies-add-rs-73872-croremcap_11020341.html', N'HUL', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (24, CAST(N'2018-06-06T00:00:00.000' AS DateTime), N'MoneyControl', N'Seven of top 10 valued companies add Rs 73,872 crore in MCap', N'https://www.moneycontrol.com/news/business/seventop-10-valued-companies-add-rs-73872-croremcap_11020341.html', N'HUL', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (25, CAST(N'2018-06-05T00:00:00.000' AS DateTime), N'MoneyControl', N'Seven of top 10 valued companies add Rs 73,872 crore in MCap', N'https://www.moneycontrol.com/news/business/seventop-10-valued-companies-add-rs-73872-croremcap_11020341.html', N'HUL', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (26, CAST(N'2018-06-05T00:00:00.000' AS DateTime), N'MoneyControl', N'Seven of top 10 valued companies add Rs 73,872 crore in MCap', N'https://www.moneycontrol.com/news/business/seventop-10-valued-companies-add-rs-73872-croremcap_11020341.html', N'HUL', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (27, CAST(N'2018-05-30T00:00:00.000' AS DateTime), N'MoneyControl', N'Seven of top 10 valued companies add Rs 73,872 crore in MCap', N'https://www.moneycontrol.com/news/business/seventop-10-valued-companies-add-rs-73872-croremcap_11020341.html', N'HUL', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (28, CAST(N'2018-06-15T00:00:00.000' AS DateTime), N'MoneyControl', N'Jaypee fails to pay up at SC, talking to YES Bank, Deutsche under alternative plan', N'https://www.moneycontrol.com/news/real-estate/jaypee-fails-to-payat-sc-talking-to-yes-bank-deutsche-under-alternative-plan_11017681.html', N'JaypeeInfra', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (29, CAST(N'2018-05-24T00:00:00.000' AS DateTime), N'MoneyControl', N'Jaypee fails to pay up at SC, talking to YES Bank, Deutsche under alternative plan', N'https://www.moneycontrol.com/news/real-estate/jaypee-fails-to-payat-sc-talking-to-yes-bank-deutsche-under-alternative-plan_11017681.html', N'JaypeeInfra', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (30, CAST(N'2018-05-18T00:00:00.000' AS DateTime), N'MoneyControl', N'Jaypee fails to pay up at SC, talking to YES Bank, Deutsche under alternative plan', N'https://www.moneycontrol.com/news/real-estate/jaypee-fails-to-payat-sc-talking-to-yes-bank-deutsche-under-alternative-plan_11017681.html', N'JaypeeInfra', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (31, CAST(N'2018-05-14T00:00:00.000' AS DateTime), N'MoneyControl', N'Jaypee fails to pay up at SC, talking to YES Bank, Deutsche under alternative plan', N'https://www.moneycontrol.com/news/real-estate/jaypee-fails-to-payat-sc-talking-to-yes-bank-deutsche-under-alternative-plan_11017681.html', N'JaypeeInfra', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (32, CAST(N'2018-05-10T00:00:00.000' AS DateTime), N'MoneyControl', N'Jaypee fails to pay up at SC, talking to YES Bank, Deutsche under alternative plan', N'https://www.moneycontrol.com/news/real-estate/jaypee-fails-to-payat-sc-talking-to-yes-bank-deutsche-under-alternative-plan_11017681.html', N'JaypeeInfra', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (33, CAST(N'2018-05-17T00:00:00.000' AS DateTime), N'MoneyControl', N'Jaypee fails to pay up at SC, talking to YES Bank, Deutsche under alternative plan', N'https://www.moneycontrol.com/news/real-estate/jaypee-fails-to-payat-sc-talking-to-yes-bank-deutsche-under-alternative-plan_11017681.html', N'JaypeeInfra', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (34, CAST(N'2018-05-17T00:00:00.000' AS DateTime), N'MoneyControl', N'Jaypee fails to pay up at SC, talking to YES Bank, Deutsche under alternative plan', N'https://www.moneycontrol.com/news/real-estate/jaypee-fails-to-payat-sc-talking-to-yes-bank-deutsche-under-alternative-plan_11017681.html', N'JaypeeInfra', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (35, CAST(N'2018-05-15T00:00:00.000' AS DateTime), N'MoneyControl', N'Jaypee fails to pay up at SC, talking to YES Bank, Deutsche under alternative plan', N'https://www.moneycontrol.com/news/real-estate/jaypee-fails-to-payat-sc-talking-to-yes-bank-deutsche-under-alternative-plan_11017681.html', N'JaypeeInfra', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (36, CAST(N'2018-05-14T00:00:00.000' AS DateTime), N'MoneyControl', N'Jaypee fails to pay up at SC, talking to YES Bank, Deutsche under alternative plan', N'https://www.moneycontrol.com/news/real-estate/jaypee-fails-to-payat-sc-talking-to-yes-bank-deutsche-under-alternative-plan_11017681.html', N'JaypeeInfra', NULL, NULL)
-GO
-INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_id], [Comments], [InformedTo]) VALUES (37, CAST(N'2018-05-11T00:00:00.000' AS DateTime), N'MoneyControl', N'Jaypee fails to pay up at SC, talking to YES Bank, Deutsche under alternative plan', N'https://www.moneycontrol.com/news/real-estate/jaypee-fails-to-payat-sc-talking-to-yes-bank-deutsche-under-alternative-plan_11017681.html', N'JaypeeInfra', NULL, NULL)
-GO
-SET IDENTITY_INSERT [dbo].[News] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Rating] ON 
 GO
@@ -3127,6 +3139,68 @@ INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason
 GO
 SET IDENTITY_INSERT [dbo].[SMAHistory] OFF
 GO
+SET IDENTITY_INSERT [dbo].[Snapshot] ON 
+GO
+INSERT [dbo].[Snapshot] ([Id], [Cust_Id], [snapshotType], [snapshotDescription], [data1Description], [data1Value], [data2Description], [data2Value], [data3Description], [data3Value], [data4Description], [data4Value], [data5Description], [data5Value], [compiledDate], [SortOrder], [lastUpdatedOn], [lastUpdatedBy]) VALUES (1, N'Maruti', N'Account Renewed', N'Account Renewed', N'From', N'01-04-2017', N'To', N'01-04-2018', N'Past days', N'40', N'', N'', N'10', NULL, CAST(N'2015-08-05T00:00:00.000' AS DateTime), NULL, CAST(N'2018-06-30T00:00:00.000' AS DateTime), N'praveen')
+GO
+INSERT [dbo].[Snapshot] ([Id], [Cust_Id], [snapshotType], [snapshotDescription], [data1Description], [data1Value], [data2Description], [data2Value], [data3Description], [data3Value], [data4Description], [data4Value], [data5Description], [data5Value], [compiledDate], [SortOrder], [lastUpdatedOn], [lastUpdatedBy]) VALUES (2, N'Maruti', N'Account Reviewed', N'Account Reviewed', N'I / II', N'I', N'Upto', N'01-04-2018', N'Past days', N'30', N'', N'', N'20', NULL, CAST(N'2015-08-05T00:00:00.000' AS DateTime), NULL, CAST(N'2018-06-30T00:00:00.000' AS DateTime), N'praveen')
+GO
+INSERT [dbo].[Snapshot] ([Id], [Cust_Id], [snapshotType], [snapshotDescription], [data1Description], [data1Value], [data2Description], [data2Value], [data3Description], [data3Value], [data4Description], [data4Value], [data5Description], [data5Value], [compiledDate], [SortOrder], [lastUpdatedOn], [lastUpdatedBy]) VALUES (3, N'Maruti', N'Cheque Returns (Inward)', N'Cheque Returns (Inward)', N'Count', N'40', N'Amount', N'32432', N'Avg Amt', N'', N'', N'', N'30', NULL, CAST(N'2015-08-05T00:00:00.000' AS DateTime), NULL, CAST(N'2018-06-30T00:00:00.000' AS DateTime), N'praveen')
+GO
+INSERT [dbo].[Snapshot] ([Id], [Cust_Id], [snapshotType], [snapshotDescription], [data1Description], [data1Value], [data2Description], [data2Value], [data3Description], [data3Value], [data4Description], [data4Value], [data5Description], [data5Value], [compiledDate], [SortOrder], [lastUpdatedOn], [lastUpdatedBy]) VALUES (4, N'Maruti', N'Cheque Returns (Outward)', N'Cheque Returns (Outward)', N'Count', N'30', N'Amount', N'342432', N'Avg Amt', N'', N'', N'', N'40', NULL, CAST(N'2015-08-05T00:00:00.000' AS DateTime), NULL, CAST(N'2018-06-30T00:00:00.000' AS DateTime), N'praveen')
+GO
+INSERT [dbo].[Snapshot] ([Id], [Cust_Id], [snapshotType], [snapshotDescription], [data1Description], [data1Value], [data2Description], [data2Value], [data3Description], [data3Value], [data4Description], [data4Value], [data5Description], [data5Value], [compiledDate], [SortOrder], [lastUpdatedOn], [lastUpdatedBy]) VALUES (5, N'Maruti', N'LC Issued', N'LC Issued', N'Count', N'30', N'Amount', N'34343', N'Avg Amt', N'', N'', N'', N'50', NULL, CAST(N'2015-08-05T00:00:00.000' AS DateTime), NULL, CAST(N'2018-06-30T00:00:00.000' AS DateTime), N'praveen')
+GO
+INSERT [dbo].[Snapshot] ([Id], [Cust_Id], [snapshotType], [snapshotDescription], [data1Description], [data1Value], [data2Description], [data2Value], [data3Description], [data3Value], [data4Description], [data4Value], [data5Description], [data5Value], [compiledDate], [SortOrder], [lastUpdatedOn], [lastUpdatedBy]) VALUES (6, N'Maruti', N'LC Devolved', N'LC Devolved', N'Count', N'10', N'Amount', N'243', N'Amt %', N'', N'', N'', N'60', NULL, CAST(N'2015-08-05T00:00:00.000' AS DateTime), NULL, CAST(N'2018-06-30T00:00:00.000' AS DateTime), N'praveen')
+GO
+INSERT [dbo].[Snapshot] ([Id], [Cust_Id], [snapshotType], [snapshotDescription], [data1Description], [data1Value], [data2Description], [data2Value], [data3Description], [data3Value], [data4Description], [data4Value], [data5Description], [data5Value], [compiledDate], [SortOrder], [lastUpdatedOn], [lastUpdatedBy]) VALUES (7, N'Maruti', N'BG Issued', N'BG Issued', N'Count', N'34', N'Amount', N'3224', N'Avg Amt', N'', N'', N'', N'70', NULL, CAST(N'2015-08-05T00:00:00.000' AS DateTime), NULL, CAST(N'2018-06-30T00:00:00.000' AS DateTime), N'praveen')
+GO
+INSERT [dbo].[Snapshot] ([Id], [Cust_Id], [snapshotType], [snapshotDescription], [data1Description], [data1Value], [data2Description], [data2Value], [data3Description], [data3Value], [data4Description], [data4Value], [data5Description], [data5Value], [compiledDate], [SortOrder], [lastUpdatedOn], [lastUpdatedBy]) VALUES (8, N'Maruti', N'BG Invoked', N'BG Invoked', N'Count', N'33', N'Amount', N'43434', N'Amt %', N'', N'', N'', N'80', NULL, CAST(N'2015-08-05T00:00:00.000' AS DateTime), NULL, CAST(N'2018-06-30T00:00:00.000' AS DateTime), N'praveen')
+GO
+INSERT [dbo].[Snapshot] ([Id], [Cust_Id], [snapshotType], [snapshotDescription], [data1Description], [data1Value], [data2Description], [data2Value], [data3Description], [data3Value], [data4Description], [data4Value], [data5Description], [data5Value], [compiledDate], [SortOrder], [lastUpdatedOn], [lastUpdatedBy]) VALUES (9, N'Maruti', N'Exceeding in Operative A/c', N'Exceeding in Operative A/c', N'Occassions', N'23', N'Amount', N'3442', N'No. of Days', N'', N'', N'', N'90', NULL, CAST(N'2015-08-05T00:00:00.000' AS DateTime), NULL, CAST(N'2018-06-30T00:00:00.000' AS DateTime), N'praveen')
+GO
+INSERT [dbo].[Snapshot] ([Id], [Cust_Id], [snapshotType], [snapshotDescription], [data1Description], [data1Value], [data2Description], [data2Value], [data3Description], [data3Value], [data4Description], [data4Value], [data5Description], [data5Value], [compiledDate], [SortOrder], [lastUpdatedOn], [lastUpdatedBy]) VALUES (10, N'Maruti', N'Intraday TOD', N'Intraday TOD', N'Occassions', N'343', N'Amount', N'23432', N'Avg Amt', N'', N'', N'', N'100', NULL, CAST(N'2015-08-05T00:00:00.000' AS DateTime), NULL, CAST(N'2018-06-30T00:00:00.000' AS DateTime), N'praveen')
+GO
+INSERT [dbo].[Snapshot] ([Id], [Cust_Id], [snapshotType], [snapshotDescription], [data1Description], [data1Value], [data2Description], [data2Value], [data3Description], [data3Value], [data4Description], [data4Value], [data5Description], [data5Value], [compiledDate], [SortOrder], [lastUpdatedOn], [lastUpdatedBy]) VALUES (11, N'Maruti', N'Export Bills O/s as on date', N'Export Bills O/s as on date', N'Count', N'23', N'Amount', N'23432', N'Avg Days', N'', N'', N'', N'110', NULL, CAST(N'2015-08-05T00:00:00.000' AS DateTime), NULL, CAST(N'2018-06-30T00:00:00.000' AS DateTime), N'praveen')
+GO
+INSERT [dbo].[Snapshot] ([Id], [Cust_Id], [snapshotType], [snapshotDescription], [data1Description], [data1Value], [data2Description], [data2Value], [data3Description], [data3Value], [data4Description], [data4Value], [data5Description], [data5Value], [compiledDate], [SortOrder], [lastUpdatedOn], [lastUpdatedBy]) VALUES (12, N'Maruti', N'Individual Bill Details Closure', N'', N'count', N'4', N'Amount', N'310158', N'Avg delay', N'115', N'Avg Amount', N'62031', N'120', NULL, CAST(N'2015-08-05T00:00:00.000' AS DateTime), NULL, CAST(N'2018-06-30T00:00:00.000' AS DateTime), N'praveen')
+GO
+INSERT [dbo].[Snapshot] ([Id], [Cust_Id], [snapshotType], [snapshotDescription], [data1Description], [data1Value], [data2Description], [data2Value], [data3Description], [data3Value], [data4Description], [data4Value], [data5Description], [data5Value], [compiledDate], [SortOrder], [lastUpdatedOn], [lastUpdatedBy]) VALUES (13, N'Maruti', N'Individual Bill Details Closure', N'Individual Bill Details', N'Bill No', N'LC2', N'O/s Amount', N'24', N'Delay Days', N'43', N'', N'', N'130', NULL, CAST(N'2015-08-05T00:00:00.000' AS DateTime), NULL, CAST(N'2018-06-30T00:00:00.000' AS DateTime), N'praveen')
+GO
+INSERT [dbo].[Snapshot] ([Id], [Cust_Id], [snapshotType], [snapshotDescription], [data1Description], [data1Value], [data2Description], [data2Value], [data3Description], [data3Value], [data4Description], [data4Value], [data5Description], [data5Value], [compiledDate], [SortOrder], [lastUpdatedOn], [lastUpdatedBy]) VALUES (14, N'Maruti', N'Individual Bill Details Closure', N'Individual Bill Details', N'Bill No', N'LC3', N'O/s Amount', N'234', N'Delay Days', N'53', N'', N'', N'140', NULL, CAST(N'2015-08-05T00:00:00.000' AS DateTime), NULL, CAST(N'2018-06-30T00:00:00.000' AS DateTime), N'praveen')
+GO
+INSERT [dbo].[Snapshot] ([Id], [Cust_Id], [snapshotType], [snapshotDescription], [data1Description], [data1Value], [data2Description], [data2Value], [data3Description], [data3Value], [data4Description], [data4Value], [data5Description], [data5Value], [compiledDate], [SortOrder], [lastUpdatedOn], [lastUpdatedBy]) VALUES (15, N'Maruti', N'Individual Bill Details Closure', N'Individual Bill Details', N'Bill No', N'LC4', N'O/s Amount', N'234234', N'Delay Days', N'22', N'', N'', N'150', NULL, CAST(N'2015-08-05T00:00:00.000' AS DateTime), NULL, CAST(N'2018-06-30T00:00:00.000' AS DateTime), N'praveen')
+GO
+INSERT [dbo].[Snapshot] ([Id], [Cust_Id], [snapshotType], [snapshotDescription], [data1Description], [data1Value], [data2Description], [data2Value], [data3Description], [data3Value], [data4Description], [data4Value], [data5Description], [data5Value], [compiledDate], [SortOrder], [lastUpdatedOn], [lastUpdatedBy]) VALUES (16, N'Maruti', N'Individual Bill Details Closure', N'Individual Bill Details', N'Bill No', N'LC5', N'O/s Amount', N'32432', N'Delay Days', N'343', N'', N'', N'160', NULL, CAST(N'2015-08-05T00:00:00.000' AS DateTime), NULL, CAST(N'2018-06-30T00:00:00.000' AS DateTime), N'praveen')
+GO
+INSERT [dbo].[Snapshot] ([Id], [Cust_Id], [snapshotType], [snapshotDescription], [data1Description], [data1Value], [data2Description], [data2Value], [data3Description], [data3Value], [data4Description], [data4Value], [data5Description], [data5Value], [compiledDate], [SortOrder], [lastUpdatedOn], [lastUpdatedBy]) VALUES (17, N'Maruti', N'PCL Due for Closure', N'', N'Count', N'4', N'O/s Amount', N'58422', N'Avg Days', N'34', N'Avg Amount', N'14605', N'180', NULL, CAST(N'2015-08-05T00:00:00.000' AS DateTime), NULL, CAST(N'2018-06-30T00:00:00.000' AS DateTime), N'praveen')
+GO
+INSERT [dbo].[Snapshot] ([Id], [Cust_Id], [snapshotType], [snapshotDescription], [data1Description], [data1Value], [data2Description], [data2Value], [data3Description], [data3Value], [data4Description], [data4Value], [data5Description], [data5Value], [compiledDate], [SortOrder], [lastUpdatedOn], [lastUpdatedBy]) VALUES (18, N'Maruti', N'PCL Due for Closure', N'Individual PCL Details', N'PFC2', N'PC1', N'O/s Amount', N'234', N'Delay Days', N'34', N'', N'', N'190', NULL, CAST(N'2015-08-05T00:00:00.000' AS DateTime), NULL, CAST(N'2018-06-30T00:00:00.000' AS DateTime), N'praveen')
+GO
+INSERT [dbo].[Snapshot] ([Id], [Cust_Id], [snapshotType], [snapshotDescription], [data1Description], [data1Value], [data2Description], [data2Value], [data3Description], [data3Value], [data4Description], [data4Value], [data5Description], [data5Value], [compiledDate], [SortOrder], [lastUpdatedOn], [lastUpdatedBy]) VALUES (19, N'Maruti', N'PCL Due for Closure', N'Individual PCL Details', N'PFC3', N'PC2', N'O/s Amount', N'23423', N'Delay Days', N'34', N'', N'', N'200', NULL, CAST(N'2015-08-05T00:00:00.000' AS DateTime), NULL, CAST(N'2018-06-30T00:00:00.000' AS DateTime), N'praveen')
+GO
+INSERT [dbo].[Snapshot] ([Id], [Cust_Id], [snapshotType], [snapshotDescription], [data1Description], [data1Value], [data2Description], [data2Value], [data3Description], [data3Value], [data4Description], [data4Value], [data5Description], [data5Value], [compiledDate], [SortOrder], [lastUpdatedOn], [lastUpdatedBy]) VALUES (20, N'Maruti', N'PCL Due for Closure', N'Individual PCL Details', N'PFC4', N'PC3', N'O/s Amount', N'32423', N'Delay Days', N'34', N'', N'', N'210', NULL, CAST(N'2015-08-05T00:00:00.000' AS DateTime), NULL, CAST(N'2018-06-30T00:00:00.000' AS DateTime), N'praveen')
+GO
+INSERT [dbo].[Snapshot] ([Id], [Cust_Id], [snapshotType], [snapshotDescription], [data1Description], [data1Value], [data2Description], [data2Value], [data3Description], [data3Value], [data4Description], [data4Value], [data5Description], [data5Value], [compiledDate], [SortOrder], [lastUpdatedOn], [lastUpdatedBy]) VALUES (21, N'Maruti', N'PCL Due for Closure', N'Individual PCL Details', N'PFC5', N'PC4', N'O/s Amount', N'2342', N'Delay Days', N'34', N'', N'', N'220', NULL, CAST(N'2015-08-05T00:00:00.000' AS DateTime), NULL, CAST(N'2018-06-30T00:00:00.000' AS DateTime), N'praveen')
+GO
+INSERT [dbo].[Snapshot] ([Id], [Cust_Id], [snapshotType], [snapshotDescription], [data1Description], [data1Value], [data2Description], [data2Value], [data3Description], [data3Value], [data4Description], [data4Value], [data5Description], [data5Value], [compiledDate], [SortOrder], [lastUpdatedOn], [lastUpdatedBy]) VALUES (22, N'Maruti', N'Bills Under LC Due for payment', N'', N'Count', N'5', N'Amout', N'31594', N'Avg Days', N'34', N'Avg Amount', N'6318', N'240', NULL, CAST(N'2015-08-05T00:00:00.000' AS DateTime), NULL, CAST(N'2018-06-30T00:00:00.000' AS DateTime), N'praveen')
+GO
+INSERT [dbo].[Snapshot] ([Id], [Cust_Id], [snapshotType], [snapshotDescription], [data1Description], [data1Value], [data2Description], [data2Value], [data3Description], [data3Value], [data4Description], [data4Value], [data5Description], [data5Value], [compiledDate], [SortOrder], [lastUpdatedOn], [lastUpdatedBy]) VALUES (23, N'Maruti', N'Bills Under LC Due for payment', N'Individual LG Details', N'BG1', N'3', N'O/s Amount', N'3243', N'Delay Days', N'3', N'', N'', N'250', NULL, CAST(N'2015-08-05T00:00:00.000' AS DateTime), NULL, CAST(N'2018-06-30T00:00:00.000' AS DateTime), N'praveen')
+GO
+INSERT [dbo].[Snapshot] ([Id], [Cust_Id], [snapshotType], [snapshotDescription], [data1Description], [data1Value], [data2Description], [data2Value], [data3Description], [data3Value], [data4Description], [data4Value], [data5Description], [data5Value], [compiledDate], [SortOrder], [lastUpdatedOn], [lastUpdatedBy]) VALUES (24, N'Maruti', N'Bills Under LC Due for payment', N'Individual LG Details', N'BG2', N'34', N'O/s Amount', N'2343', N'Delay Days', N'3', N'', N'', N'260', NULL, CAST(N'2015-08-05T00:00:00.000' AS DateTime), NULL, CAST(N'2018-06-30T00:00:00.000' AS DateTime), N'praveen')
+GO
+INSERT [dbo].[Snapshot] ([Id], [Cust_Id], [snapshotType], [snapshotDescription], [data1Description], [data1Value], [data2Description], [data2Value], [data3Description], [data3Value], [data4Description], [data4Value], [data5Description], [data5Value], [compiledDate], [SortOrder], [lastUpdatedOn], [lastUpdatedBy]) VALUES (25, N'Maruti', N'Bills Under LC Due for payment', N'Individual LG Details', N'BG3', N'342', N'O/s Amount', N'234', N'Delay Days', N'43', N'', N'', N'270', NULL, CAST(N'2015-08-05T00:00:00.000' AS DateTime), NULL, CAST(N'2018-06-30T00:00:00.000' AS DateTime), N'praveen')
+GO
+INSERT [dbo].[Snapshot] ([Id], [Cust_Id], [snapshotType], [snapshotDescription], [data1Description], [data1Value], [data2Description], [data2Value], [data3Description], [data3Value], [data4Description], [data4Value], [data5Description], [data5Value], [compiledDate], [SortOrder], [lastUpdatedOn], [lastUpdatedBy]) VALUES (26, N'Maruti', N'Bills Under LC Due for payment', N'Individual LG Details', N'BG4', N'343', N'O/s Amount', N'2342', N'Delay Days', N'34', N'', N'', N'280', NULL, CAST(N'2015-08-05T00:00:00.000' AS DateTime), NULL, CAST(N'2018-06-30T00:00:00.000' AS DateTime), N'praveen')
+GO
+INSERT [dbo].[Snapshot] ([Id], [Cust_Id], [snapshotType], [snapshotDescription], [data1Description], [data1Value], [data2Description], [data2Value], [data3Description], [data3Value], [data4Description], [data4Value], [data5Description], [data5Value], [compiledDate], [SortOrder], [lastUpdatedOn], [lastUpdatedBy]) VALUES (27, N'Maruti', N'Bills Under LC Due for payment', N'Individual LG Details', N'BG5', N'453', N'O/s Amount', N'23432', N'Delay Days', N'34', N'', N'', N'290', NULL, CAST(N'2015-08-05T00:00:00.000' AS DateTime), NULL, CAST(N'2018-06-30T00:00:00.000' AS DateTime), N'praveen')
+GO
+INSERT [dbo].[Snapshot] ([Id], [Cust_Id], [snapshotType], [snapshotDescription], [data1Description], [data1Value], [data2Description], [data2Value], [data3Description], [data3Value], [data4Description], [data4Value], [data5Description], [data5Value], [compiledDate], [SortOrder], [lastUpdatedOn], [lastUpdatedBy]) VALUES (28, N'Maruti', N'Working Capital', N'Working Capital', N'Lowest Balance', N'3243', N'Highest Balance', N'', N'Avg Balance', N'', N'Utilisation %', N'50', N'300', NULL, CAST(N'2015-08-05T00:00:00.000' AS DateTime), NULL, CAST(N'2018-06-30T00:00:00.000' AS DateTime), N'praveen')
+GO
+INSERT [dbo].[Snapshot] ([Id], [Cust_Id], [snapshotType], [snapshotDescription], [data1Description], [data1Value], [data2Description], [data2Value], [data3Description], [data3Value], [data4Description], [data4Value], [data5Description], [data5Value], [compiledDate], [SortOrder], [lastUpdatedOn], [lastUpdatedBy]) VALUES (29, N'Maruti', N'Revenue Earned', N'Revenue Earned', N'From', N'01-04-2009', N'To', N'01-04-2010', N'Amount', N'342', N'Previous Period ', N'343', N'310', NULL, CAST(N'2015-08-05T00:00:00.000' AS DateTime), NULL, CAST(N'2018-06-30T00:00:00.000' AS DateTime), N'praveen')
+GO
+SET IDENTITY_INSERT [dbo].[Snapshot] OFF
+GO
 SET IDENTITY_INSERT [dbo].[SOC124] ON 
 GO
 INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate]) VALUES (1, N'HCC', N'soourcesystem', CAST(N'2018-01-10T00:00:00.000' AS DateTime), N'via', N'appprovalfor', N'yes', CAST(N'2018-01-11T00:00:00.000' AS DateTime), CAST(N'2018-01-12T00:00:00.000' AS DateTime))
@@ -3343,7 +3417,7 @@ REFERENCES [dbo].[FinancialResultType] ([TypeID])
 GO
 ALTER TABLE [dbo].[FinancialResultHeader] CHECK CONSTRAINT [FK_FinancialResultHeader_FinancialResultType]
 GO
-/****** Object:  StoredProcedure [dbo].[spUpdateFinancialInfo]    Script Date: 30-06-2018 02:50:14 ******/
+/****** Object:  StoredProcedure [dbo].[spUpdateFinancialInfo]    Script Date: 01-07-2018 02:57:41 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -3357,7 +3431,7 @@ BEGIN
   
 INSERT INTO [dbo].[FinancialResultDetails] ([HeaderID],[Amount],[ResQuarter],[IsActive],[Cust_id],Trends,UpdateDate)   
 (  
-SELECT FRD.HeaderID,FD.Amount,FD.QuarterInfo,1,ClientID,FD.Trends,CASE WHEN Trends IN (1,2,3) THEN CASE  
+SELECT FRD.HeaderID,FD.Amount,FD.QuarterInfo,1,ClientID,FD.Trends,CASE WHEN Trends IN (1,2,3,4,5) THEN CASE  
  WHEN QuarterInfo LIKE 'MAR%' OR QuarterInfo  LIKE 'DEC%' THEN CAST(convert(varchar(10),'31-'+QuarterInfo,121) AS DATE)   
  ELSE  CAST(convert(varchar(10),'30-'+QuarterInfo,121) AS DATE) END  
   ELSE  CAST(convert(varchar(10),'31-12-'+QuarterInfo,121) AS DATE) END  
@@ -3369,7 +3443,7 @@ WHERE NOT EXISTS(SELECT FDet.HeaderID,Fdet.[ResQuarter],FDet.Cust_id FROM [Finan
   
 END
 GO
-/****** Object:  StoredProcedure [dbo].[spUpdateNewsInfo]    Script Date: 30-06-2018 02:50:14 ******/
+/****** Object:  StoredProcedure [dbo].[spUpdateNewsInfo]    Script Date: 01-07-2018 02:57:41 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -3385,7 +3459,7 @@ INSERT INTO [dbo].[News] ([Url],[Heading],[Source],[UpdateDate],[Cust_id])
 (
 SELECT FD.NewsURL,FD.Title,'MoneyControl',FD.UpdateTime,ClientID
 FROM @newsData FD 
-
+WHERE NOT EXISTS (SELECT 1 FROM News n WHERE n.Url=FD.NewsURL AND n.Cust_id=FD.ClientID)
 
 )
 

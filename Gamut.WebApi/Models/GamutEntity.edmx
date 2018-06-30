@@ -33,6 +33,23 @@
           <Property Name="lastUpdateOn" Type="datetime" />
           <Property Name="lastUpdateBy" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="ActivityLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cust_Id" Type="varchar" MaxLength="50" />
+          <Property Name="activityType" Type="varchar" MaxLength="100" />
+          <Property Name="logType" Type="varchar" MaxLength="50" />
+          <Property Name="informationDate" Type="datetime" />
+          <Property Name="stepsTaken" Type="varchar" MaxLength="500" />
+          <Property Name="attachment" Type="varchar" MaxLength="200" />
+          <Property Name="nextFollowupDate" Type="datetime" />
+          <Property Name="ractificationDate" Type="datetime" />
+          <Property Name="compiledDate" Type="datetime" />
+          <Property Name="lastUpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="lastUpdatedOn" Type="datetime" />
+        </EntityType>
         <EntityType Name="CustDocument">
           <Key>
             <PropertyRef Name="Id" />
@@ -74,7 +91,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CustID" Type="varchar" MaxLength="50" />
           <Property Name="MAppingURl" Type="varchar" MaxLength="500" />
-          <Property Name="MappingType" Type="varchar" MaxLength="100" />
+          <Property Name="TypeId" Type="int" />
         </EntityType>
         <EntityType Name="FinancialResultDetails">
           <Key>
@@ -349,6 +366,29 @@
           <Property Name="LastUpdatedOn" Type="datetime" />
           <Property Name="LastUpdateBy" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Snapshot">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cust_Id" Type="varchar" MaxLength="50" />
+          <Property Name="snapshotType" Type="varchar" MaxLength="50" />
+          <Property Name="snapshotDescription" Type="varchar" MaxLength="100" />
+          <Property Name="data1Description" Type="varchar" MaxLength="50" />
+          <Property Name="data1Value" Type="varchar" MaxLength="50" />
+          <Property Name="data2Description" Type="varchar" MaxLength="50" />
+          <Property Name="data2Value" Type="varchar" MaxLength="50" />
+          <Property Name="data3Description" Type="varchar" MaxLength="50" />
+          <Property Name="data3Value" Type="varchar" MaxLength="50" />
+          <Property Name="data4Description" Type="varchar" MaxLength="50" />
+          <Property Name="data4Value" Type="varchar" MaxLength="50" />
+          <Property Name="data5Description" Type="varchar" MaxLength="50" />
+          <Property Name="data5Value" Type="varchar" MaxLength="50" />
+          <Property Name="compiledDate" Type="datetime" />
+          <Property Name="SortOrder" Type="int" />
+          <Property Name="lastUpdatedOn" Type="datetime" />
+          <Property Name="lastUpdatedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="SOC124">
           <Key>
             <PropertyRef Name="Id" />
@@ -418,6 +458,7 @@
         </Association>
         <EntityContainer Name="gamutdatabaseModelStoreContainer">
           <EntitySet Name="AccountDetails" EntityType="Self.AccountDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ActivityLog" EntityType="Self.ActivityLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CustDocument" EntityType="Self.CustDocument" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CustomerDataMapping" EntityType="Self.CustomerDataMapping" Schema="dbo" store:Type="Tables" />
@@ -438,6 +479,7 @@
           <EntitySet Name="SMABucket" EntityType="Self.SMABucket" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SMACompilation" EntityType="Self.SMACompilation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SMAHistory" EntityType="Self.SMAHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Snapshot" EntityType="Self.Snapshot" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SOC124" EntityType="Self.SOC124" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WarningIndicator" EntityType="Self.WarningIndicator" Schema="dbo" store:Type="Tables" />
@@ -499,6 +541,8 @@
           <EntitySet Name="SMABuckets" EntityType="gamutdatabaseModel.SMABucket" />
           <EntitySet Name="SMACompilations" EntityType="gamutdatabaseModel.SMACompilation" />
           <EntitySet Name="SMAHistories" EntityType="gamutdatabaseModel.SMAHistory" />
+          <EntitySet Name="Snapshots" EntityType="gamutdatabaseModel.Snapshot" />
+          <EntitySet Name="ActivityLogs" EntityType="gamutdatabaseModel.ActivityLog" />
         </EntityContainer>
         <EntityType Name="Customer">
           <Key>
@@ -822,7 +866,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CustID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="MAppingURl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="MappingType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TypeId" Type="Int32" />
         </EntityType>
         <EntityType Name="CustDocument">
           <Key>
@@ -902,6 +946,46 @@
           <Property Name="CompiledDate" Type="DateTime" Precision="3" />
           <Property Name="LastUpdatedOn" Type="DateTime" Precision="3" />
           <Property Name="LastUpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Snapshot">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cust_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="snapshotType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="data1Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="data1Value" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="data2Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="data2Value" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="data3Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="data3Value" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="data4Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="data4Value" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="data5Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="data5Value" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastUpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="lastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="compiledDate" Type="DateTime" Precision="3" />
+          <Property Name="snapshotDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SortOrder" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ActivityLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cust_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="activityType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="informationDate" Type="DateTime" Precision="3" />
+          <Property Name="stepsTaken" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="attachment" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="nextFollowupDate" Type="DateTime" Precision="3" />
+          <Property Name="ractificationDate" Type="DateTime" Precision="3" />
+          <Property Name="compiledDate" Type="DateTime" Precision="3" />
+          <Property Name="lastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastUpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="logType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1229,7 +1313,7 @@
           <EntitySetMapping Name="CustomerDataMappings">
             <EntityTypeMapping TypeName="gamutdatabaseModel.CustomerDataMapping">
               <MappingFragment StoreEntitySet="CustomerDataMapping">
-                <ScalarProperty Name="MappingType" ColumnName="MappingType" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
                 <ScalarProperty Name="MAppingURl" ColumnName="MAppingURl" />
                 <ScalarProperty Name="CustID" ColumnName="CustID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -1315,6 +1399,48 @@
                 <ScalarProperty Name="reason" ColumnName="reason" />
                 <ScalarProperty Name="accountNumber" ColumnName="accountNumber" />
                 <ScalarProperty Name="smaClass" ColumnName="smaClass" />
+                <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Snapshots">
+            <EntityTypeMapping TypeName="gamutdatabaseModel.Snapshot">
+              <MappingFragment StoreEntitySet="Snapshot">
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="snapshotDescription" ColumnName="snapshotDescription" />
+                <ScalarProperty Name="compiledDate" ColumnName="compiledDate" />
+                <ScalarProperty Name="lastUpdatedBy" ColumnName="lastUpdatedBy" />
+                <ScalarProperty Name="lastUpdatedOn" ColumnName="lastUpdatedOn" />
+                <ScalarProperty Name="data5Value" ColumnName="data5Value" />
+                <ScalarProperty Name="data5Description" ColumnName="data5Description" />
+                <ScalarProperty Name="data4Value" ColumnName="data4Value" />
+                <ScalarProperty Name="data4Description" ColumnName="data4Description" />
+                <ScalarProperty Name="data3Value" ColumnName="data3Value" />
+                <ScalarProperty Name="data3Description" ColumnName="data3Description" />
+                <ScalarProperty Name="data2Value" ColumnName="data2Value" />
+                <ScalarProperty Name="data2Description" ColumnName="data2Description" />
+                <ScalarProperty Name="data1Value" ColumnName="data1Value" />
+                <ScalarProperty Name="data1Description" ColumnName="data1Description" />
+                <ScalarProperty Name="snapshotType" ColumnName="snapshotType" />
+                <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActivityLogs">
+            <EntityTypeMapping TypeName="gamutdatabaseModel.ActivityLog">
+              <MappingFragment StoreEntitySet="ActivityLog">
+                <ScalarProperty Name="logType" ColumnName="logType" />
+                <ScalarProperty Name="lastUpdatedOn" ColumnName="lastUpdatedOn" />
+                <ScalarProperty Name="lastUpdatedBy" ColumnName="lastUpdatedBy" />
+                <ScalarProperty Name="compiledDate" ColumnName="compiledDate" />
+                <ScalarProperty Name="ractificationDate" ColumnName="ractificationDate" />
+                <ScalarProperty Name="nextFollowupDate" ColumnName="nextFollowupDate" />
+                <ScalarProperty Name="attachment" ColumnName="attachment" />
+                <ScalarProperty Name="stepsTaken" ColumnName="stepsTaken" />
+                <ScalarProperty Name="informationDate" ColumnName="informationDate" />
+                <ScalarProperty Name="activityType" ColumnName="activityType" />
                 <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

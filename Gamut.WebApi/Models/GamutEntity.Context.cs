@@ -49,5 +49,7 @@ namespace Gamut.WebAPI.Models
         public virtual DbSet<SMABucket> SMABuckets { get; set; }
         public virtual DbSet<SMACompilation> SMACompilations { get; set; }
         public virtual DbSet<SMAHistory> SMAHistories { get; set; }
+        public virtual DbSet<Snapshot> Snapshots { get; set; }
+        public virtual DbSet<ActivityLog> ActivityLogs { get; set; }
     }
 }

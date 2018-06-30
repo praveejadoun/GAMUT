@@ -17,6 +17,6 @@ namespace Gamut.WebAPI.Models
         public int ID { get; set; }
         public string CustID { get; set; }
         public string MAppingURl { get; set; }
-        public string MappingType { get; set; }
+        public Nullable<int> TypeId { get; set; }
     }
 }
