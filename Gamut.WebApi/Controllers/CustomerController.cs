@@ -101,20 +101,20 @@ namespace Gamut.WebAPI.Controllers
         }
 
         // DELETE: api/Customer/5
-        [ResponseType(typeof(Customer))]
-        public IHttpActionResult DeleteCustomer(string id)
-        {
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
-            {
-                return NotFound();
-            }
+        //[ResponseType(typeof(Customer))]
+        //public IHttpActionResult DeleteCustomer(string id)
+        //{
+        //    Customer customer = db.Customers.Find(id);
+        //    if (customer == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            db.Customers.Remove(customer);
-            db.SaveChanges();
+        //    db.Customers.Remove(customer);
+        //    db.SaveChanges();
 
-            return Ok(customer);
-        }
+        //    return Ok(customer);
+        //}
 
         protected override void Dispose(bool disposing)
         {

@@ -12,107 +12,107 @@ using Gamut.WebAPI.Models;
 
 namespace Gamut.WebAPI.Controllers
 {
-    public class LookUpAPIController : ApiController
+    public class LookUpAPIController// : ApiController
     {
-        private gamutdatabaseEntities db = new gamutdatabaseEntities();
+        //private gamutdatabaseEntities db = new gamutdatabaseEntities();
 
-        // GET: api/LookUp
-        public IQueryable<LookUp> GetLookUps()
-        {
-            return db.LookUps;
-        }
+        //// GET: api/LookUp
+        //public IQueryable<LookUp> GetLookUps()
+        //{
+        //    return db.LookUps;
+        //}
 
-        // GET: api/LookUp/5
-        [ResponseType(typeof(LookUp))]
-        public IHttpActionResult GetLookUp(int id)
-        {
-            LookUp lookUp = db.LookUps.Find(id);
-            if (lookUp == null)
-            {
-                return NotFound();
-            }
+        //// GET: api/LookUp/5
+        //[ResponseType(typeof(LookUp))]
+        //public IHttpActionResult GetLookUp(int id)
+        //{
+        //    LookUp lookUp = db.LookUps.Find(id);
+        //    if (lookUp == null)
+        //    {
+        //        //return NotFound();
+        //    }
 
-            return Ok(lookUp);
-        }
+        //    return Ok(lookUp);
+        //}
 
-        // PUT: api/LookUp/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutLookUp(int id, LookUp lookUp)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //// PUT: api/LookUp/5
+        //[ResponseType(typeof(void))]
+        //public IHttpActionResult PutLookUp(int id, LookUp lookUp)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            if (id != lookUp.Id)
-            {
-                return BadRequest();
-            }
+        //    if (id != lookUp.Id)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            db.Entry(lookUp).State = EntityState.Modified;
+        //    db.Entry(lookUp).State = EntityState.Modified;
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!LookUpExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        db.SaveChanges();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!LookUpExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return StatusCode(HttpStatusCode.NoContent);
-        }
+        //    return StatusCode(HttpStatusCode.NoContent);
+        //}
 
-        // POST: api/LookUp
-        [ResponseType(typeof(LookUp))]
-        public IHttpActionResult PostLookUp(LookUp lookUp)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //// POST: api/LookUp
+        //[ResponseType(typeof(LookUp))]
+        //public IHttpActionResult PostLookUp(LookUp lookUp)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            db.LookUps.Add(lookUp);
-            db.SaveChanges();
+        //    db.LookUps.Add(lookUp);
+        //    db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = lookUp.Id }, lookUp);
-        }
+        //    return CreatedAtRoute("DefaultApi", new { id = lookUp.Id }, lookUp);
+        //}
 
-        // DELETE: api/LookUp/5
-        [ResponseType(typeof(LookUp))]
-        public IHttpActionResult DeleteLookUp(int id)
-        {
-            LookUp lookUp = db.LookUps.Find(id);
-            if (lookUp == null)
-            {
-                return NotFound();
-            }
+        //// DELETE: api/LookUp/5
+        //[ResponseType(typeof(LookUp))]
+        //public IHttpActionResult DeleteLookUp(int id)
+        //{
+        //    LookUp lookUp = db.LookUps.Find(id);
+        //    if (lookUp == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            db.LookUps.Remove(lookUp);
-            db.SaveChanges();
+        //    db.LookUps.Remove(lookUp);
+        //    db.SaveChanges();
 
-            return Ok(lookUp);
-        }
+        //    return Ok(lookUp);
+        //}
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
 
-        private bool LookUpExists(int id)
-        {
-            return db.LookUps.Count(e => e.Id == id) > 0;
-        }
+        //private bool LookUpExists(int id)
+        //{
+        //    return db.LookUps.Count(e => e.Id == id) > 0;
+        //}
     }
 }
