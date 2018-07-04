@@ -43,7 +43,13 @@ namespace Gamut.WebAPI.Models
         public virtual DbSet<RestucturingHeader> RestucturingHeaders { get; set; }
         public virtual DbSet<WarningIndicator> WarningIndicators { get; set; }
         public virtual DbSet<AccountDetail> AccountDetails { get; set; }
-        public virtual DbSet<Document> Documents { get; set; }
         public virtual DbSet<CustomerDataMapping> CustomerDataMappings { get; set; }
+        public virtual DbSet<ActivityLog> ActivityLogs { get; set; }
+        public virtual DbSet<CustDocument> CustDocuments { get; set; }
+        public virtual DbSet<Inspection> Inspections { get; set; }
+        public virtual DbSet<SMABucket> SMABuckets { get; set; }
+        public virtual DbSet<SMACompilation> SMACompilations { get; set; }
+        public virtual DbSet<SMAHistory> SMAHistories { get; set; }
+        public virtual DbSet<Snapshot> Snapshots { get; set; }
     }
 }

@@ -12,18 +12,18 @@ namespace Gamut.WebAPI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Document
+    public partial class SMAHistory
     {
         public int Id { get; set; }
-        public string Cust_id { get; set; }
-        public string Periodicity { get; set; }
-        public string DocumentType { get; set; }
-        public string Submitted { get; set; }
-        public Nullable<System.DateTime> SubmittedDate { get; set; }
-        public string DeviationNoted { get; set; }
+        public string Cust_Id { get; set; }
+        public string smaClass { get; set; }
+        public string accountNumber { get; set; }
+        public string reason { get; set; }
+        public Nullable<int> noOfDays { get; set; }
+        public string nextStatus { get; set; }
+        public Nullable<System.DateTime> smaDate { get; set; }
         public Nullable<System.DateTime> CompiledDate { get; set; }
-        public string MonitorId { get; set; }
-        public string LastUpdatedBy { get; set; }
-        public string LastUpdatedOn { get; set; }
+        public Nullable<System.DateTime> LastUpdatedOn { get; set; }
+        public string LastUpdateBy { get; set; }
     }
 }

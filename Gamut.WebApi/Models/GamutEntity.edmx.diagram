@@ -25,8 +25,14 @@
         <EntityTypeShape EntityType="gamutdatabaseModel.RestucturingHeader" Width="1.5" PointX="11.375" PointY="4.75" />
         <EntityTypeShape EntityType="gamutdatabaseModel.WarningIndicator" Width="1.5" PointX="11.375" PointY="9.75" />
         <EntityTypeShape EntityType="gamutdatabaseModel.AccountDetail" Width="1.5" PointX="5.375" PointY="11.75" />
-        <EntityTypeShape EntityType="gamutdatabaseModel.Document" Width="1.5" PointX="7.375" PointY="12.75" />
         <EntityTypeShape EntityType="gamutdatabaseModel.CustomerDataMapping" Width="1.5" PointX="13.375" PointY="4.75" />
+        <EntityTypeShape EntityType="gamutdatabaseModel.ActivityLog" Width="1.5" PointX="13.75" PointY="7.75" />
+        <EntityTypeShape EntityType="gamutdatabaseModel.CustDocument" Width="1.5" PointX="13.75" PointY="12.75" />
+        <EntityTypeShape EntityType="gamutdatabaseModel.Inspection" Width="1.5" PointX="0.75" PointY="14.75" />
+        <EntityTypeShape EntityType="gamutdatabaseModel.SMABucket" Width="1.5" PointX="9.75" PointY="14.75" />
+        <EntityTypeShape EntityType="gamutdatabaseModel.SMACompilation" Width="1.5" PointX="2.75" PointY="15.75" />
+        <EntityTypeShape EntityType="gamutdatabaseModel.SMAHistory" Width="1.5" PointX="15.75" PointY="4.75" />
+        <EntityTypeShape EntityType="gamutdatabaseModel.Snapshot" Width="1.5" PointX="15.75" PointY="8.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

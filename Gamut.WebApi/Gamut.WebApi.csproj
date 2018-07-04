@@ -165,17 +165,23 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountDetailsController.cs" />
+    <Compile Include="Controllers\ActivityLogController.cs" />
+    <Compile Include="Controllers\CustDocumentController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\FinancialResultAPIController.cs" />
     <Compile Include="Controllers\GeneralAPIController.cs" />
     <Compile Include="Controllers\GeneralGurantorsAPIController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InspectionController.cs" />
     <Compile Include="Controllers\InterestController.cs" />
     <Compile Include="Controllers\LookUpAPIController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\RatingAPIController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\RestucturingController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
+    <Compile Include="Controllers\SMACompilationController.cs" />
+    <Compile Include="Controllers\SnapshotController.cs" />
     <Compile Include="Controllers\Soc124APIController.cs" />
     <Compile Include="Controllers\WarningIndicatorsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -184,13 +190,16 @@
     <Compile Include="Models\AccountDetail.cs">
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ActivityLog.cs">
+      <DependentUpon>GamutEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustDocument.cs">
+      <DependentUpon>GamutEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Customer.cs">
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CustomerDataMapping.cs">
-      <DependentUpon>GamutEntity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Document.cs">
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FinancialResultDetail.cs">
@@ -226,6 +235,9 @@
     <Compile Include="Models\GeneralGurantor.cs">
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Inspection.cs">
+      <DependentUpon>GamutEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Interest.cs">
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
@@ -245,6 +257,18 @@
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Security.cs">
+      <DependentUpon>GamutEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMABucket.cs">
+      <DependentUpon>GamutEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMACompilation.cs">
+      <DependentUpon>GamutEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMAHistory.cs">
+      <DependentUpon>GamutEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Snapshot.cs">
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SOC124.cs">
