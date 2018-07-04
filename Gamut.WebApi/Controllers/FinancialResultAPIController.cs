@@ -22,7 +22,7 @@ namespace Gamut.WebAPI.Controllers
         public IHttpActionResult GetFinancialResultType()
         {
 
-            List<FinancialResultType> fianDataType = db.FinancialResultTypes.ToList();
+            List<FinancialResultType> fianDataType = db.FinancialResultTypes.Where(c=>c.IsFinancialData==true).OrderBy(c=>c.TypeName).ToList();
             if (fianDataType == null)
             {
                 return null;
@@ -35,7 +35,7 @@ namespace Gamut.WebAPI.Controllers
         public IHttpActionResult GetFiancialResultParentHeader(int resType)
         {
 
-            List<FinancialResultHeader> financeHeader = db.FinancialResultHeaders.Where(i => i.TypeId == resType).Where(i=> i.parentID==null).ToList();
+            List<FinancialResultHeader> financeHeader = db.FinancialResultHeaders.Where(i => i.TypeId == resType).Where(i=> i.parentID==null).OrderBy(i=>i.HeaderName).ToList();
             if (financeHeader == null)
             {
                 return null;
@@ -51,6 +51,7 @@ namespace Gamut.WebAPI.Controllers
             
             var financiaResult = (from frd in db.FinancialResultDetails
                                                           join fh in db.FinancialResultHeaders on frd.HeaderID equals fh.HeaderID
+
                                                           where frd.Cust_id == id && frd.Trends=="Quarterly"
                                                           select new { CustID = frd.Cust_id, FinanceHeader = fh.HeaderName, QuarterInfo = frd.ResQuarter, QuarterDate = frd.UpdateDate, Amount = frd.Amount }).ToList();
             if (financiaResult == null)
@@ -68,10 +69,10 @@ namespace Gamut.WebAPI.Controllers
             var financiaResult = (from frd in db.FinancialResultDetails
                                   join fh in db.FinancialResultHeaders on frd.HeaderID equals fh.HeaderID
                                   where frd.Cust_id == id && fh.TypeId == resTypeId && (parentHeaderID== null || fh.parentID==parentHeaderID )
-                                  select new { CustID = frd.Cust_id, FinanceHeader = fh.HeaderName, QuarterInfo = frd.ResQuarter, QuarterDate = frd.UpdateDate, Amount = frd.Amount }).ToList();
+                                  select new { CustID = frd.Cust_id, FinanceHeader = fh.HeaderName, QuarterInfo = frd.ResQuarter, QuarterDate = frd.UpdateDate, Amount = frd.Amount ,SortOrder=fh.SortOrder}).ToList();
 
 
-            var quarterlyTrendz = (from f in financiaResult
+          /*  var quarterlyTrendz = (from f in financiaResult
                                    orderby f.QuarterDate descending
                                    group f by new { f.CustID, f.FinanceHeader }
               into myGroup
@@ -85,7 +86,7 @@ namespace Gamut.WebAPI.Controllers
                                        Amount = myGroup.Select(v => v.Amount)
                                    }).ToList();
 
-
+            */
           
             // By Using GetAllSubject() Method we will Get the list of all subjects
            
@@ -94,7 +95,7 @@ namespace Gamut.WebAPI.Controllers
 
 
             var financialData = (from f in financiaResult
-                     orderby f.QuarterDate descending
+                     orderby f.QuarterDate descending, f.SortOrder  ascending
                      group f by new { f.CustID, f.FinanceHeader }
                             into myGroup
                      where myGroup.Count() > 0
