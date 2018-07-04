@@ -15,7 +15,7 @@ namespace Gamut.WebAPI.Controllers
         //private SchoolManagementEntities db = new SchoolManagementEntities();
 
         // GET: api/GeneralAPI
-        
+
         private gamutdatabaseEntities db = new gamutdatabaseEntities();
         public IQueryable<General> GetGeneral()
         {
@@ -40,7 +40,7 @@ namespace Gamut.WebAPI.Controllers
             List<GeneralGurantor> gurantors = db.GeneralGurantors.Where(i => i.Cust_Id == customer.Cust_id).ToList();
             List<AccountDetail> exposures = db.AccountDetails.Where(i => i.Cust_Id == customer.Cust_id).ToList();
             general.SMA = exposures.Max(i => i.smaRiskType);
-            
+
             foreach (AccountDetail accountDetil in exposures)
             {
                 if (accountDetil.bankingArr != null && !general.Banking_Argmt.ToUpper().Contains(accountDetil.bankingArr.ToUpper()))
@@ -54,30 +54,30 @@ namespace Gamut.WebAPI.Controllers
                 }
             }
 
-            int? latestInternalRatingYear = db.Ratings.Where(j=>j.ratingType=="INTERNAL" && j.Cust_Id==Id).Select(p=>p.ratingYear).DefaultIfEmpty(0).Max();
-            Rating internalRating = db.Ratings.Where(i => i.ratingType == "INTERNAL" && i.ratingYear == latestInternalRatingYear).SingleOrDefault();
+            int? latestInternalRatingYear = db.Ratings.Where(j => j.ratingType == "INTERNAL" && j.Cust_Id == Id).Select(p => p.ratingYear).DefaultIfEmpty(0).Max();
+            Rating internalRating = db.Ratings.Where(i => i.ratingType == "INTERNAL" && i.Cust_Id == Id && i.ratingYear == latestInternalRatingYear).SingleOrDefault();
             if (internalRating != null)
             {
                 general.Internal_Rating = internalRating.ratingValue;
-                general.Internal_Rating_AsOn = internalRating.dateTo; 
+                general.Internal_Rating_AsOn = internalRating.dateTo;
 
             }
 
             int? latestExternalRatingYear = db.Ratings.Where(j => j.ratingType == "EXTERNAL" && j.Cust_Id == Id).Select(p => p.ratingYear).DefaultIfEmpty(0).Max();
-            Rating externalRating = db.Ratings.Where(i => i.ratingType == "EXTERNAL" && i.ratingYear == latestExternalRatingYear).SingleOrDefault();
+            Rating externalRating = db.Ratings.Where(i => i.ratingType == "EXTERNAL" && i.Cust_Id == Id && i.ratingYear == latestExternalRatingYear).SingleOrDefault();
             if (externalRating != null)
             {
                 general.External_Rating = externalRating.ratingValue;
                 general.External_Rating_AsOn = externalRating.dateTo;
             }
 
-            double totalLimit =0;
-            double totalBalance=0;
-            double totalExposure=0;
-            
+            double totalLimit = 0;
+            double totalBalance = 0;
+            double totalExposure = 0;
+
             foreach (AccountDetail gen in exposures)
             {
-                if (gen.limit != null)  totalLimit = totalLimit +    gen.limit.Value;
+                if (gen.limit != null) totalLimit = totalLimit + gen.limit.Value;
                 if (gen.balance != null) totalBalance = totalBalance + gen.balance.Value;
                 if (gen.exposure != null) totalExposure = totalExposure + gen.exposure.Value;
             }
@@ -89,9 +89,9 @@ namespace Gamut.WebAPI.Controllers
                 GeneralGurantorDecorator gurantorDecorator = new GeneralGurantorDecorator(gur, cust.Cust_Name);
                 gurantorsDecorator.Add(gurantorDecorator);
             }
-            
-            GeneralDecorator generalDecorator = new GeneralDecorator (general, govtSponsored, dCCO, customer, bankingArgmt,takeover,gurantorsDecorator,exposures,totalLimit,totalBalance,totalExposure);
-            
+
+            GeneralDecorator generalDecorator = new GeneralDecorator(general, govtSponsored, dCCO, customer, bankingArgmt, takeover, gurantorsDecorator, exposures, totalLimit, totalBalance, totalExposure);
+
             return Ok(generalDecorator);
         }
 
@@ -192,7 +192,7 @@ namespace Gamut.WebAPI.Controllers
 
             db.Generals.Remove(general);
             db.SaveChanges();
-            
+
             return Ok(general);
         }
 
@@ -207,14 +207,14 @@ namespace Gamut.WebAPI.Controllers
 
         private bool CustomerExists(string id)
         {
-            return db.Generals.Count(e => e.Cust_id== id) > 0;
+            return db.Generals.Count(e => e.Cust_id == id) > 0;
         }
 
     }
-    
+
     public class GeneralDecorator
     {
-        public GeneralDecorator(General _data, List<LookUp> _lookupGovtSponsored, List<LookUp> _lookupDCCO,Customer _customer,List<LookUp> _bankingArgmt,List<LookUp> _takeover,List<GeneralGurantorDecorator> _gurantors, List<AccountDetail> _exposures,double _totalLimit,double _totalBalance,double _totalExposure) 
+        public GeneralDecorator(General _data, List<LookUp> _lookupGovtSponsored, List<LookUp> _lookupDCCO, Customer _customer, List<LookUp> _bankingArgmt, List<LookUp> _takeover, List<GeneralGurantorDecorator> _gurantors, List<AccountDetail> _exposures, double _totalLimit, double _totalBalance, double _totalExposure)
         {
             entData = _data;
             lookupGovtSponsored = _lookupGovtSponsored;
@@ -242,5 +242,5 @@ namespace Gamut.WebAPI.Controllers
         public double totalExposure;
     }
 
-   
+
 }
