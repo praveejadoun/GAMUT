@@ -19,15 +19,16 @@ namespace Gamut.WebAPI.Controllers
 
 
         [ResponseType(typeof(FinancialResultType))]
+        
         public IHttpActionResult GetFinancialResultType()
         {
 
-            List<FinancialResultType> fianDataType = db.FinancialResultTypes.Where(c=>c.IsFinancialData==true).OrderBy(c=>c.TypeName).ToList();
+            List<FinancialResultType> fianDataType = db.FinancialResultTypes.Where(c => c.IsFinancialData == true).OrderBy(c => c.TypeName).ToList();
             if (fianDataType == null)
             {
                 return null;
             }
-           
+
             return Ok(fianDataType);
         }
 
