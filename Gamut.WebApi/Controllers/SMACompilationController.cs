@@ -38,16 +38,16 @@ namespace Gamut.WebAPI.Controllers
             }
             Customer customer = db.Customers.Find(sMAHistories[0].Cust_Id);
             SMACompilation sMACompilation = new SMACompilation();
-            SMABucket sMABucket = new SMABucket();
+            List<SMABucket> sMABuckets = new List<SMABucket>();
 
             try
             {
                 sMACompilation = db.SMACompilations.Where(i => i.Cust_id == id).FirstOrDefault();
-                sMABucket = db.SMABuckets.Where(i => i.Cust_Id == id).FirstOrDefault();
+                sMABuckets = db.SMABuckets.Where(i => i.Cust_Id == id).ToList();
             }
             catch { }
 
-            SMACompilationDecorator sMACompilationDecorator  = new SMACompilationDecorator( sMACompilation,sMAHistories, customer,sMABucket);
+            SMACompilationDecorator sMACompilationDecorator  = new SMACompilationDecorator( sMACompilation,sMAHistories, customer,sMABuckets);
                         
             return Ok(sMACompilationDecorator);
         }
@@ -135,14 +135,17 @@ namespace Gamut.WebAPI.Controllers
 
     public class SMACompilationDecorator
     {
-        public SMACompilationDecorator(SMACompilation _data, List<SMAHistory>  _sMAHistories, Customer _customer, SMABucket _sMABucket)
+        public SMACompilationDecorator(SMACompilation _data, List<SMAHistory>  _sMAHistories, Customer _customer, List<SMABucket> _sMABuckets)
         {
             entData = _data;
             customer = _customer;
             sMAHistories = _sMAHistories;
+            sMABuckets = _sMABuckets;
         }
         public SMACompilation entData { get; set; }
         public List<SMAHistory> sMAHistories { get; set; }
+        public List<SMABucket> sMABuckets { get; set; }
+
         public Customer customer { get; set; }
     }
 }
