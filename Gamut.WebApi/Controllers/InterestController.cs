@@ -41,11 +41,11 @@ namespace Gamut.WebAPI.Controllers
         [Route("api/InterestCust/{id}")]
         public IHttpActionResult GetInterestBy(string id)
         {
-            
+
             List<Interest> interest = db.Interests.Where(i => i.Cust_Id == id).ToList();
-            if (interest == null)
+            if (interest == null || interest.Count() <= 0)
             {
-                return null;
+                return NotFound();
             }
             Customer customer = db.Customers.Find(interest[0].Cust_Id);
             InterestDecorator interestDecorator = new InterestDecorator(interest, customer);
@@ -133,10 +133,10 @@ namespace Gamut.WebAPI.Controllers
     }
     public class InterestDecorator
     {
-        public InterestDecorator(List<Interest> _data,  Customer _customer )
+        public InterestDecorator(List<Interest> _data, Customer _customer)
         {
             entData = _data;
-            customer = _customer;   
+            customer = _customer;
         }
         public List<Interest> entData { get; set; }
         public Customer customer { get; set; }

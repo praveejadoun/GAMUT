@@ -27,8 +27,8 @@ namespace Gamut.WebAPI.Controllers
         [ResponseType(typeof(WarningIndicatorDecorator))]
         public IHttpActionResult GetWarningIndicator(string id)
         {
-            List<WarningIndicator> warningIndicator = db.WarningIndicators.Where(i=>i.Cust_Id==id).ToList();
-            if (warningIndicator == null)
+            List<WarningIndicator> warningIndicator = db.WarningIndicators.Where(i => i.Cust_Id == id).ToList();
+            if (warningIndicator == null || warningIndicator.Count() <= 0)
             {
                 return NotFound();
             }
@@ -45,12 +45,12 @@ namespace Gamut.WebAPI.Controllers
 
         public IHttpActionResult GetWarningIndicatorsByDate(string id, string fromDate, string toDate)
         {
-           // DateTime dtFrom = Convert.ToDateTime(fromDate,"DD-MMM-YYYY");
-            DateTime dtFrom =Convert.ToDateTime(DateTime.ParseExact(fromDate, "dd-MM-yyyy", CultureInfo.InvariantCulture));
+            // DateTime dtFrom = Convert.ToDateTime(fromDate,"DD-MMM-YYYY");
+            DateTime dtFrom = Convert.ToDateTime(DateTime.ParseExact(fromDate, "dd-MM-yyyy", CultureInfo.InvariantCulture));
             DateTime dtTo = Convert.ToDateTime(DateTime.ParseExact(toDate, "dd-MM-yyyy", CultureInfo.InvariantCulture));
 
             List<WarningIndicator> warningIndicator = db.WarningIndicators.Where(i => i.Cust_Id == id && (i.observedOn >= dtFrom && i.observedOn <= dtTo)).ToList();
-            if (warningIndicator == null || warningIndicator.Count() <=0)
+            if (warningIndicator == null || warningIndicator.Count() <= 0)
             {
                 return NotFound();
             }

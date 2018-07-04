@@ -41,9 +41,9 @@ namespace Gamut.WebAPI.Controllers
         {
 
             List<Security> securities = db.Securities.Where(i => i.Cust_Id == id).ToList();
-            if (securities == null)
+            if (securities == null || securities.Count <= 0)
             {
-                return null;
+                return NotFound();
             }
             Customer customer = db.Customers.Find(id);
             SecurityDecorator interestDecorator = new SecurityDecorator(securities, customer);
