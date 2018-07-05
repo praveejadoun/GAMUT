@@ -18,16 +18,22 @@ namespace Gamut.WebAPI.Controllers
         private gamutdatabaseEntities db = new gamutdatabaseEntities();
 
 
-        [ResponseType(typeof(FinancialResultType))]
         
+
+        [HttpGet]
         public IHttpActionResult GetFinancialResultType()
         {
 
-            List<FinancialResultType> fianDataType = db.FinancialResultTypes.Where(c => c.IsFinancialData == true).OrderBy(c => c.TypeName).ToList();
+            var fianDataType = (from frt in db.FinancialResultTypes
+                                orderby frt.TypeName ascending
+                                where frt.IsFinancialData == true
+                                select new { TypeID = frt.TypeID, TypeName = frt.TypeName });
+                
+           /*     db.FinancialResultTypes.Where(c => c.IsFinancialData == true).OrderBy(c => c.TypeName).ToList();
             if (fianDataType == null)
             {
                 return null;
-            }
+            }*/
 
             return Ok(fianDataType);
         }
@@ -46,23 +52,7 @@ namespace Gamut.WebAPI.Controllers
         }
 
 
-        [HttpGet]
-        public IHttpActionResult GetFinancialResultByQuarter(string id)
-        {
-            
-            var financiaResult = (from frd in db.FinancialResultDetails
-                                                          join fh in db.FinancialResultHeaders on frd.HeaderID equals fh.HeaderID
-
-                                                          where frd.Cust_id == id && frd.Trends=="Quarterly"
-                                                          select new { CustID = frd.Cust_id, FinanceHeader = fh.HeaderName, QuarterInfo = frd.ResQuarter, QuarterDate = frd.UpdateDate, Amount = frd.Amount }).ToList();
-            if (financiaResult == null)
-            {
-                return null;
-            }
-            
-
-            return Ok(financiaResult);
-        }
+      
         [HttpGet]
         public IHttpActionResult GetFinancialResultQuarterlyTrendz(string id,int resTypeId)
         {
