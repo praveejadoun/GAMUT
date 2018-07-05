@@ -64,13 +64,13 @@ namespace Gamut.WebAPI.Controllers
             return Ok(financiaResult);
         }
         [HttpGet]
-        public IHttpActionResult GetFinancialResultQuarterlyTrendz(string id,int resTypeId, int? parentHeaderID)
+        public IHttpActionResult GetFinancialResultQuarterlyTrendz(string id,int resTypeId)
         {
 
             var financiaResult = (from frd in db.FinancialResultDetails
                                   join fh in db.FinancialResultHeaders on frd.HeaderID equals fh.HeaderID
-                                  where frd.Cust_id == id && fh.TypeId == resTypeId && (parentHeaderID== null || fh.parentID==parentHeaderID )
-                                  select new { CustID = frd.Cust_id, FinanceHeader = fh.HeaderName, QuarterInfo = frd.ResQuarter, QuarterDate = frd.UpdateDate, Amount = frd.Amount ,SortOrder=fh.SortOrder}).ToList();
+                                  where frd.Cust_id == id && fh.TypeId == resTypeId 
+                                  select new { CustID = frd.Cust_id, FinanceHeader = fh.HeaderName, QuarterInfo = frd.ResQuarter, QuarterDate = frd.UpdateDate, Amount = frd.Amount ,SortOrder=fh.SortOrder, parentId=fh.parentID}).ToList();
 
 
           /*  var quarterlyTrendz = (from f in financiaResult
@@ -92,12 +92,13 @@ namespace Gamut.WebAPI.Controllers
             // By Using GetAllSubject() Method we will Get the list of all subjects
            
             var quarter = (from f in financiaResult
-                                select f.QuarterInfo).Distinct().ToList().Take(5);
+                           orderby f.QuarterDate descending
+                                select f.QuarterInfo ).Distinct().ToList().Take(5);
 
 
             var financialData = (from f in financiaResult
                      orderby f.QuarterDate descending, f.SortOrder  ascending
-                     group f by new { f.CustID, f.FinanceHeader }
+                     group f by new { f.CustID, f.FinanceHeader,f.parentId }
                             into myGroup
                      where myGroup.Count() > 0
                      
@@ -105,6 +106,7 @@ namespace Gamut.WebAPI.Controllers
                      {
                          myGroup.Key.CustID,
                          myGroup.Key.FinanceHeader,
+                         myGroup.Key.parentId,
                          FR1= myGroup.Where(c => (quarter.Count() >= 1 && (c.QuarterInfo == quarter.ElementAt(0) || c.QuarterInfo == ""))).Select(c => c.Amount).FirstOrDefault(),
                          FR2 = myGroup.Where(c => (quarter.Count() >= 2 && (c.QuarterInfo == quarter.ElementAt(1) || c.QuarterInfo == ""))).Select(c => c.Amount).FirstOrDefault(),
                          FR3 = myGroup.Where(c => (quarter.Count() >= 3 && (c.QuarterInfo == quarter.ElementAt(2) || c.QuarterInfo == ""))).Select(c => c.Amount).FirstOrDefault(),
