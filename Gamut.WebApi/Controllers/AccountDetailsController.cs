@@ -28,7 +28,7 @@ namespace Gamut.WebAPI.Controllers
         {
             List<AccountDetail> accountDetail = db.AccountDetails.Where(i => i.Cust_Id == id).ToList();
 
-            if (accountDetail == null)
+            if (accountDetail == null || accountDetail.Count <= 0)
             {
                 return NotFound();
             }
@@ -52,7 +52,7 @@ namespace Gamut.WebAPI.Controllers
                 return BadRequest();
             }
             accountDetail.lastUpdateOn = DateTime.Now;
-            accountDetail.lastUpdateBy = "system"; 
+            accountDetail.lastUpdateBy = "system";
 
             db.Entry(accountDetail).State = EntityState.Modified;
 
@@ -128,7 +128,7 @@ namespace Gamut.WebAPI.Controllers
             customer = _customer;
             detailData = _detaildata;
         }
-        
+
         public List<AccountDetail> detailData { get; set; }
         public Customer customer { get; set; }
     }

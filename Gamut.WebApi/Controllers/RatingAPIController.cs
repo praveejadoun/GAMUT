@@ -38,7 +38,7 @@ namespace Gamut.WebAPI.Controllers
         //    return Ok(rating);
         //}
 
-      
+
         [ResponseType(typeof(RatingDecorator))]
         [Route("api/RatingCust/{id}")]
         public IHttpActionResult GetRatingBy(string id)
@@ -50,16 +50,16 @@ namespace Gamut.WebAPI.Controllers
             //}
 
             ////return Ok(rating);
-            
+
 
             List<Rating> rating = db.Ratings.Where(i => i.Cust_Id == id).ToList();
-            if (rating == null)
+            if (rating == null || rating.Count() <= 0)
             {
-                return null;
+                return NotFound();
             }
             Customer customer = db.Customers.Find(rating[0].Cust_Id);
             RatingDecorator ratingDecorator = new RatingDecorator(rating, customer);
-            return  Ok(ratingDecorator);
+            return Ok(ratingDecorator);
         }
 
         // PUT: api/RatingAPI/5
