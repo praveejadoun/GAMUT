@@ -26,14 +26,16 @@ namespace Gamut.WebAPI.Controllers
 
             List<string> relatedTo = db.ActivityLogs.Select(m => m.activityType).Distinct().ToList();// .Distinct .Where(i => i.LookUp_Table == "Report" && i.LookUp_Name == "RelatedTo").ToList();
             List<LookUp> status = db.LookUps.Where(i => i.LookUp_Table == "Report" && i.LookUp_Name == "Status").ToList();
+            Customer customer = db.Customers.Find(id);
+            if (customer == null) customer = new Customer();
 
             if (relatedTo == null || relatedTo.Count <=0)
             {
-                //return Ok(new ActivityLogDecorator(new List<ActivityLog>(), new Customer(), new List<LookUp>()));
-                return NotFound();
+                return Ok(new ReportDecorator(new List<string>(), status,customer));
+                //return NotFound();
             }
            
-            Customer customer = db.Customers.Find(id);
+            
             ReportDecorator  reportDecorator = new ReportDecorator(relatedTo,  status, customer);
             return Ok(reportDecorator);
         }
