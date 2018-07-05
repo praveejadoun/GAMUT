@@ -32,15 +32,16 @@ namespace Gamut.WebAPI.Controllers
             DateTime dtTo = Convert.ToDateTime(DateTime.ParseExact(toDate, "dd-MM-yyyy", CultureInfo.InvariantCulture));
 
             List<ActivityLog> activityLogs = db.ActivityLogs.Where(i => i.Cust_Id == id && i.logType == logType && (i.compiledDate >= dtFrom && i.compiledDate <= dtTo)).ToList();
+            List<LookUp> logTypes = db.LookUps.Where(i => i.LookUp_Table == "ActivityLog" && i.LookUp_Name == "LogTypes").ToList();
+            Customer customer = db.Customers.Find(id);
+            if (customer == null) customer = new Customer();
 
             if (activityLogs == null  || activityLogs.Count() <= 0)
             {
-                //return Ok(new ActivityLogDecorator(new List<ActivityLog>(), new Customer(), new List<LookUp>()));
-                return NotFound();
+                return Ok(new ActivityLogDecorator(new List<ActivityLog>(), customer, logTypes));
+           
             }
-            List<LookUp> logTypes = db.LookUps.Where(i => i.LookUp_Table == "ActivityLog" && i.LookUp_Name == "LogTypes").ToList();
-
-            Customer customer = db.Customers.Find(activityLogs[0].Cust_Id);
+            
             ActivityLogDecorator activityLogDecorator = new ActivityLogDecorator(activityLogs, customer, logTypes);
             return Ok(activityLogDecorator);
         }
@@ -132,8 +133,10 @@ namespace Gamut.WebAPI.Controllers
         {
             entData = _data;
             customer = _customer;
+            logType = _logType;
         }
         public List<ActivityLog> entData { get; set; }
+        public List<LookUp> logType;
         public Customer customer
         {
             get; set;
