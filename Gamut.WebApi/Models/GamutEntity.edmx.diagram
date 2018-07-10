@@ -14,7 +14,6 @@
         <EntityTypeShape EntityType="gamutdatabaseModel.GeneralGurantor" Width="1.5" PointX="7.75" PointY="4.75" />
         <EntityTypeShape EntityType="gamutdatabaseModel.Rating" Width="1.5" PointX="7.375" PointY="7.75" />
         <EntityTypeShape EntityType="gamutdatabaseModel.Interest" Width="1.5" PointX="9.375" PointY="0.75" />
-        <EntityTypeShape EntityType="gamutdatabaseModel.Security" Width="1.5" PointX="9.375" PointY="7.75" />
         <EntityTypeShape EntityType="gamutdatabaseModel.FinancialResultDetail" Width="1.5" PointX="16.25" PointY="1" />
         <EntityTypeShape EntityType="gamutdatabaseModel.FinancialResultHeader" Width="1.5" PointX="14" PointY="1.25" />
         <EntityTypeShape EntityType="gamutdatabaseModel.FinancialResultType" Width="1.5" PointX="11.75" PointY="1.5" />
@@ -33,6 +32,8 @@
         <EntityTypeShape EntityType="gamutdatabaseModel.SMACompilation" Width="1.5" PointX="2.75" PointY="15.75" />
         <EntityTypeShape EntityType="gamutdatabaseModel.SMAHistory" Width="1.5" PointX="15.75" PointY="4.75" />
         <EntityTypeShape EntityType="gamutdatabaseModel.Snapshot" Width="1.5" PointX="15.75" PointY="8.75" />
+        <EntityTypeShape EntityType="gamutdatabaseModel.FileUpload" Width="1.5" PointX="16.375" PointY="14.75" />
+        <EntityTypeShape EntityType="gamutdatabaseModel.Security" Width="1.5" PointX="12.375" PointY="17.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -86,8 +86,11 @@ namespace Gamut.WebAPI.Controllers
             foreach (GeneralGurantor gur in gurantors)
             {
                 Customer cust = db.Customers.Find(gur.gurCust_Id);
-                GeneralGurantorDecorator gurantorDecorator = new GeneralGurantorDecorator(gur, cust.Cust_Name);
-                gurantorsDecorator.Add(gurantorDecorator);
+                if (cust != null && cust.Cust_Name != null)
+                {
+                    GeneralGurantorDecorator gurantorDecorator = new GeneralGurantorDecorator(gur, cust.Cust_Name);
+                    gurantorsDecorator.Add(gurantorDecorator);
+                }
             }
 
             GeneralDecorator generalDecorator = new GeneralDecorator(general, govtSponsored, dCCO, customer, bankingArgmt, takeover, gurantorsDecorator, exposures, totalLimit, totalBalance, totalExposure);

@@ -93,6 +93,19 @@
           <Property Name="MAppingURl" Type="varchar" MaxLength="500" />
           <Property Name="TypeId" Type="int" />
         </EntityType>
+        <EntityType Name="FileUpload">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileName" Type="varchar" MaxLength="150" />
+          <Property Name="Comments" Type="varchar" MaxLength="500" />
+          <Property Name="RelatedTo" Type="varchar" MaxLength="100" />
+          <Property Name="Module" Type="varchar" MaxLength="100" />
+          <Property Name="URL" Type="varchar" MaxLength="500" />
+          <Property Name="UploadBy" Type="varchar" MaxLength="50" />
+          <Property Name="UploadOn" Type="datetime" />
+        </EntityType>
         <EntityType Name="FinancialResultDetails">
           <Key>
             <PropertyRef Name="ID" />
@@ -314,10 +327,14 @@
           <Property Name="securityDetails" Type="varchar" MaxLength="250" />
           <Property Name="apportionValue" Type="float" />
           <Property Name="correctFlag" Type="varchar" MaxLength="50" />
+          <Property Name="insuranceValue" Type="float" />
+          <Property Name="ìnsuranceExpiryDate" Type="datetime" />
           <Property Name="followUpDate" Type="datetime" />
           <Property Name="coverage" Type="varchar" MaxLength="50" />
           <Property Name="guarantorId" Type="varchar" MaxLength="50" />
           <Property Name="guarantorNetWorth" Type="float" />
+          <Property Name="LastUpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastUpdatedOn" Type="datetime" />
         </EntityType>
         <EntityType Name="SMABucket">
           <Key>
@@ -462,6 +479,7 @@
           <EntitySet Name="CustDocument" EntityType="Self.CustDocument" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CustomerDataMapping" EntityType="Self.CustomerDataMapping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FileUpload" EntityType="Self.FileUpload" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FinancialResultDetails" EntityType="Self.FinancialResultDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FinancialResultHeader" EntityType="Self.FinancialResultHeader" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FinancialResultType" EntityType="Self.FinancialResultType" Schema="dbo" store:Type="Tables" />
@@ -518,7 +536,6 @@
           <EntitySet Name="GeneralGurantors" EntityType="gamutdatabaseModel.GeneralGurantor" />
           <EntitySet Name="Ratings" EntityType="gamutdatabaseModel.Rating" />
           <EntitySet Name="Interests" EntityType="gamutdatabaseModel.Interest" />
-          <EntitySet Name="Securities" EntityType="gamutdatabaseModel.Security" />
           <EntitySet Name="FinancialResultDetails" EntityType="gamutdatabaseModel.FinancialResultDetail" />
           <EntitySet Name="FinancialResultHeaders" EntityType="gamutdatabaseModel.FinancialResultHeader" />
           <EntitySet Name="FinancialResultTypes" EntityType="gamutdatabaseModel.FinancialResultType" />
@@ -543,6 +560,8 @@
           <EntitySet Name="SMACompilations" EntityType="gamutdatabaseModel.SMACompilation" />
           <EntitySet Name="SMAHistories" EntityType="gamutdatabaseModel.SMAHistory" />
           <EntitySet Name="Snapshots" EntityType="gamutdatabaseModel.Snapshot" />
+          <EntitySet Name="FileUploads" EntityType="gamutdatabaseModel.FileUpload" />
+          <EntitySet Name="Securities" EntityType="gamutdatabaseModel.Security" />
         </EntityContainer>
         <EntityType Name="Customer">
           <Key>
@@ -689,23 +708,6 @@
           <Property Name="followUpDate" Type="DateTime" Precision="3" />
           <Property Name="compiledDate" Type="DateTime" Precision="3" />
           <Property Name="source" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Security">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Cust_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="accountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="securityType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="balanceAsOn" Type="Double" />
-          <Property Name="securityDetails" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="apportionValue" Type="Double" />
-          <Property Name="correctFlag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="followUpDate" Type="DateTime" Precision="3" />
-          <Property Name="coverage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="guarantorId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="guarantorNetWorth" Type="Double" />
         </EntityType>
         <EntityType Name="FinancialResultDetail">
           <Key>
@@ -987,6 +989,40 @@
           <Property Name="lastUpdatedOn" Type="DateTime" Precision="3" />
           <Property Name="lastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="FileUpload">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="RelatedTo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Module" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="URL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="UploadBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UploadOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Security">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cust_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="accountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="securityType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="balanceAsOn" Type="Double" />
+          <Property Name="securityDetails" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="apportionValue" Type="Double" />
+          <Property Name="correctFlag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="insuranceValue" Type="Double" />
+          <Property Name="ìnsuranceExpiryDate" Type="DateTime" Precision="3" />
+          <Property Name="followUpDate" Type="DateTime" Precision="3" />
+          <Property Name="coverage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="guarantorId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="guarantorNetWorth" Type="Double" />
+          <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1154,24 +1190,6 @@
                 <ScalarProperty Name="asperID" ColumnName="asperID" />
                 <ScalarProperty Name="roi" ColumnName="roi" />
                 <ScalarProperty Name="accountType" ColumnName="accountType" />
-                <ScalarProperty Name="accountNo" ColumnName="accountNo" />
-                <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Securities">
-            <EntityTypeMapping TypeName="gamutdatabaseModel.Security">
-              <MappingFragment StoreEntitySet="Security">
-                <ScalarProperty Name="guarantorNetWorth" ColumnName="guarantorNetWorth" />
-                <ScalarProperty Name="guarantorId" ColumnName="guarantorId" />
-                <ScalarProperty Name="coverage" ColumnName="coverage" />
-                <ScalarProperty Name="followUpDate" ColumnName="followUpDate" />
-                <ScalarProperty Name="correctFlag" ColumnName="correctFlag" />
-                <ScalarProperty Name="apportionValue" ColumnName="apportionValue" />
-                <ScalarProperty Name="securityDetails" ColumnName="securityDetails" />
-                <ScalarProperty Name="balanceAsOn" ColumnName="balanceAsOn" />
-                <ScalarProperty Name="securityType" ColumnName="securityType" />
                 <ScalarProperty Name="accountNo" ColumnName="accountNo" />
                 <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1441,6 +1459,42 @@
                 <ScalarProperty Name="data1Description" ColumnName="data1Description" />
                 <ScalarProperty Name="snapshotDescription" ColumnName="snapshotDescription" />
                 <ScalarProperty Name="snapshotType" ColumnName="snapshotType" />
+                <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FileUploads">
+            <EntityTypeMapping TypeName="gamutdatabaseModel.FileUpload">
+              <MappingFragment StoreEntitySet="FileUpload">
+                <ScalarProperty Name="UploadOn" ColumnName="UploadOn" />
+                <ScalarProperty Name="UploadBy" ColumnName="UploadBy" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="Module" ColumnName="Module" />
+                <ScalarProperty Name="RelatedTo" ColumnName="RelatedTo" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Securities">
+            <EntityTypeMapping TypeName="gamutdatabaseModel.Security">
+              <MappingFragment StoreEntitySet="Security">
+                <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="guarantorNetWorth" ColumnName="guarantorNetWorth" />
+                <ScalarProperty Name="guarantorId" ColumnName="guarantorId" />
+                <ScalarProperty Name="coverage" ColumnName="coverage" />
+                <ScalarProperty Name="followUpDate" ColumnName="followUpDate" />
+                <ScalarProperty Name="ìnsuranceExpiryDate" ColumnName="ìnsuranceExpiryDate" />
+                <ScalarProperty Name="insuranceValue" ColumnName="insuranceValue" />
+                <ScalarProperty Name="correctFlag" ColumnName="correctFlag" />
+                <ScalarProperty Name="apportionValue" ColumnName="apportionValue" />
+                <ScalarProperty Name="securityDetails" ColumnName="securityDetails" />
+                <ScalarProperty Name="balanceAsOn" ColumnName="balanceAsOn" />
+                <ScalarProperty Name="securityType" ColumnName="securityType" />
+                <ScalarProperty Name="accountNo" ColumnName="accountNo" />
                 <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

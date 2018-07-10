@@ -34,7 +34,6 @@ namespace Gamut.WebAPI.Models
         public virtual DbSet<GeneralGurantor> GeneralGurantors { get; set; }
         public virtual DbSet<Rating> Ratings { get; set; }
         public virtual DbSet<Interest> Interests { get; set; }
-        public virtual DbSet<Security> Securities { get; set; }
         public virtual DbSet<FinancialResultDetail> FinancialResultDetails { get; set; }
         public virtual DbSet<FinancialResultHeader> FinancialResultHeaders { get; set; }
         public virtual DbSet<FinancialResultType> FinancialResultTypes { get; set; }
@@ -51,5 +50,7 @@ namespace Gamut.WebAPI.Models
         public virtual DbSet<SMACompilation> SMACompilations { get; set; }
         public virtual DbSet<SMAHistory> SMAHistories { get; set; }
         public virtual DbSet<Snapshot> Snapshots { get; set; }
+        public virtual DbSet<FileUpload> FileUploads { get; set; }
+        public virtual DbSet<Security> Securities { get; set; }
     }
 }

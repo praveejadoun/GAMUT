@@ -22,9 +22,13 @@ namespace Gamut.WebAPI.Models
         public string securityDetails { get; set; }
         public Nullable<double> apportionValue { get; set; }
         public string correctFlag { get; set; }
+        public Nullable<double> insuranceValue { get; set; }
+        public Nullable<System.DateTime> ìnsuranceExpiryDate { get; set; }
         public Nullable<System.DateTime> followUpDate { get; set; }
         public string coverage { get; set; }
         public string guarantorId { get; set; }
         public Nullable<double> guarantorNetWorth { get; set; }
+        public string LastUpdatedBy { get; set; }
+        public Nullable<System.DateTime> LastUpdatedOn { get; set; }
     }
 }

@@ -168,6 +168,7 @@
     <Compile Include="Controllers\ActivityLogController.cs" />
     <Compile Include="Controllers\CustDocumentController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\FinancialResultAPIController.cs" />
     <Compile Include="Controllers\GeneralAPIController.cs" />
     <Compile Include="Controllers\GeneralGurantorsAPIController.cs" />
@@ -200,6 +201,9 @@
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CustomerDataMapping.cs">
+      <DependentUpon>GamutEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FileUpload.cs">
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FinancialResultDetail.cs">
@@ -347,7 +351,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="UploadFiles\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
       <SubType>Designer</SubType>

@@ -1,6 +1,6 @@
 ﻿USE [gamutdatabase]
 GO
-/****** Object:  Table [dbo].[AccountDetails]    Script Date: 07-07-2018 02:52:27 ******/
+/****** Object:  Table [dbo].[AccountDetails]    Script Date: 10-07-2018 10:35:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -35,7 +35,7 @@ CREATE TABLE [dbo].[AccountDetails](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ActivityLog]    Script Date: 07-07-2018 02:52:29 ******/
+/****** Object:  Table [dbo].[ActivityLog]    Script Date: 10-07-2018 10:35:34 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -59,7 +59,7 @@ CREATE TABLE [dbo].[ActivityLog](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CustDocument]    Script Date: 07-07-2018 02:52:30 ******/
+/****** Object:  Table [dbo].[CustDocument]    Script Date: 10-07-2018 10:35:35 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -83,7 +83,7 @@ CREATE TABLE [dbo].[CustDocument](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Customer]    Script Date: 07-07-2018 02:52:31 ******/
+/****** Object:  Table [dbo].[Customer]    Script Date: 10-07-2018 10:35:35 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -107,7 +107,7 @@ CREATE TABLE [dbo].[Customer](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CustomerDataMapping]    Script Date: 07-07-2018 02:52:32 ******/
+/****** Object:  Table [dbo].[CustomerDataMapping]    Script Date: 10-07-2018 10:35:36 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -123,7 +123,27 @@ CREATE TABLE [dbo].[CustomerDataMapping](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[FinancialResultDetails]    Script Date: 07-07-2018 02:52:33 ******/
+/****** Object:  Table [dbo].[FileUpload]    Script Date: 10-07-2018 10:35:37 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[FileUpload](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[FileName] [varchar](150) NULL,
+	[Comments] [varchar](500) NULL,
+	[RelatedTo] [varchar](100) NULL,
+	[Module] [varchar](100) NULL,
+	[URL] [varchar](500) NULL,
+	[UploadBy] [varchar](50) NULL,
+	[UploadOn] [datetime] NULL,
+ CONSTRAINT [PK_FileUpload] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[FinancialResultDetails]    Script Date: 10-07-2018 10:35:38 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -143,7 +163,7 @@ CREATE TABLE [dbo].[FinancialResultDetails](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[FinancialResultHeader]    Script Date: 07-07-2018 02:52:34 ******/
+/****** Object:  Table [dbo].[FinancialResultHeader]    Script Date: 10-07-2018 10:35:39 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -161,7 +181,7 @@ CREATE TABLE [dbo].[FinancialResultHeader](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[FinancialResultType]    Script Date: 07-07-2018 02:52:34 ******/
+/****** Object:  Table [dbo].[FinancialResultType]    Script Date: 10-07-2018 10:35:40 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -177,7 +197,7 @@ CREATE TABLE [dbo].[FinancialResultType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[General]    Script Date: 07-07-2018 02:52:35 ******/
+/****** Object:  Table [dbo].[General]    Script Date: 10-07-2018 10:35:41 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -237,7 +257,7 @@ CREATE TABLE [dbo].[General](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[GeneralExposure]    Script Date: 07-07-2018 02:52:36 ******/
+/****** Object:  Table [dbo].[GeneralExposure]    Script Date: 10-07-2018 10:35:42 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -255,7 +275,7 @@ CREATE TABLE [dbo].[GeneralExposure](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[GeneralGurantor]    Script Date: 07-07-2018 02:52:37 ******/
+/****** Object:  Table [dbo].[GeneralGurantor]    Script Date: 10-07-2018 10:35:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -273,7 +293,7 @@ CREATE TABLE [dbo].[GeneralGurantor](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Inspection]    Script Date: 07-07-2018 02:52:38 ******/
+/****** Object:  Table [dbo].[Inspection]    Script Date: 10-07-2018 10:35:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -295,7 +315,7 @@ CREATE TABLE [dbo].[Inspection](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Interest]    Script Date: 07-07-2018 02:52:39 ******/
+/****** Object:  Table [dbo].[Interest]    Script Date: 10-07-2018 10:35:44 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -318,7 +338,7 @@ CREATE TABLE [dbo].[Interest](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[LookUp]    Script Date: 07-07-2018 02:52:40 ******/
+/****** Object:  Table [dbo].[LookUp]    Script Date: 10-07-2018 10:35:45 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -334,7 +354,7 @@ CREATE TABLE [dbo].[LookUp](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[News]    Script Date: 07-07-2018 02:52:40 ******/
+/****** Object:  Table [dbo].[News]    Script Date: 10-07-2018 10:35:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -354,7 +374,7 @@ CREATE TABLE [dbo].[News](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Rating]    Script Date: 07-07-2018 02:52:41 ******/
+/****** Object:  Table [dbo].[Rating]    Script Date: 10-07-2018 10:35:47 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -376,7 +396,7 @@ CREATE TABLE [dbo].[Rating](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[RestucturingDetail]    Script Date: 07-07-2018 02:52:42 ******/
+/****** Object:  Table [dbo].[RestucturingDetail]    Script Date: 10-07-2018 10:35:48 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -397,7 +417,7 @@ CREATE TABLE [dbo].[RestucturingDetail](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[RestucturingHeader]    Script Date: 07-07-2018 02:52:43 ******/
+/****** Object:  Table [dbo].[RestucturingHeader]    Script Date: 10-07-2018 10:35:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -423,7 +443,7 @@ CREATE TABLE [dbo].[RestucturingHeader](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Security]    Script Date: 07-07-2018 02:52:44 ******/
+/****** Object:  Table [dbo].[Security]    Script Date: 10-07-2018 10:35:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -437,17 +457,21 @@ CREATE TABLE [dbo].[Security](
 	[securityDetails] [varchar](250) NULL,
 	[apportionValue] [float] NULL,
 	[correctFlag] [varchar](50) NULL,
+	[insuranceValue] [float] NULL,
+	[ìnsuranceExpiryDate] [datetime] NULL,
 	[followUpDate] [datetime] NULL,
 	[coverage] [varchar](50) NULL,
 	[guarantorId] [varchar](50) NULL,
 	[guarantorNetWorth] [float] NULL,
+	[LastUpdatedBy] [varchar](50) NULL,
+	[LastUpdatedOn] [datetime] NULL,
  CONSTRAINT [PK_SecurityDetail] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SMABucket]    Script Date: 07-07-2018 02:52:45 ******/
+/****** Object:  Table [dbo].[SMABucket]    Script Date: 10-07-2018 10:35:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -470,7 +494,7 @@ CREATE TABLE [dbo].[SMABucket](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SMACompilation]    Script Date: 07-07-2018 02:52:46 ******/
+/****** Object:  Table [dbo].[SMACompilation]    Script Date: 10-07-2018 10:35:51 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -492,7 +516,7 @@ CREATE TABLE [dbo].[SMACompilation](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SMAHistory]    Script Date: 07-07-2018 02:52:47 ******/
+/****** Object:  Table [dbo].[SMAHistory]    Script Date: 10-07-2018 10:35:52 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -515,7 +539,7 @@ CREATE TABLE [dbo].[SMAHistory](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Snapshot]    Script Date: 07-07-2018 02:52:47 ******/
+/****** Object:  Table [dbo].[Snapshot]    Script Date: 10-07-2018 10:35:53 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -545,7 +569,7 @@ CREATE TABLE [dbo].[Snapshot](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SOC124]    Script Date: 07-07-2018 02:52:48 ******/
+/****** Object:  Table [dbo].[SOC124]    Script Date: 10-07-2018 10:35:54 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -566,7 +590,7 @@ CREATE TABLE [dbo].[SOC124](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Student]    Script Date: 07-07-2018 02:52:49 ******/
+/****** Object:  Table [dbo].[Student]    Script Date: 10-07-2018 10:35:55 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -585,7 +609,7 @@ CREATE TABLE [dbo].[Student](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[WarningIndicator]    Script Date: 07-07-2018 02:52:50 ******/
+/****** Object:  Table [dbo].[WarningIndicator]    Script Date: 10-07-2018 10:35:56 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -611,65 +635,65 @@ CREATE TABLE [dbo].[WarningIndicator](
 GO
 SET IDENTITY_INSERT [dbo].[AccountDetails] ON 
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (1, N'TATAPOWER', N'123456780', N'CC', N'SMA0', 1, 1000, 750, 1000, 750, NULL, N'Consortium', N'SBI', NULL, 8.75, N'', N'', NULL, CAST(N'2018-03-18T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (1, N'123456789', N'7771001', N'CC', N'SMA0', 1, 1000, 750, 1000, 750, NULL, N'Consortium', N'SBI', NULL, 8.75, N'', N'860.00', NULL, NULL, NULL, N'1', NULL, N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (2, N'TATAPOWER', N'123456781', N'Term Loan', N'SMA1', 2, 5000, 4850, 4900, 4850, NULL, N'Multiple', N'NA', CAST(N'2012-04-05T00:00:00.000' AS DateTime), 8.2, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (2, N'123456789', N'7772001', N'Term Loan', N'SMA1', 2, 5000, 4850, 4900, 4850, NULL, N'Multiple', N'NA', NULL, 8.2, N'', N'6000.00', NULL, NULL, NULL, N'1', NULL, N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (3, N'TATAPOWER', N'123456782', N'BG/LC', N'NA', 0, 500, 400, 500, 400, NULL, N'Consortium', N'SBI', NULL, 0.25, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (3, N'123456789', N'BG123', N'BG/LC', N'NA', 0, 500, 400, 500, 400, NULL, N'Consortium', N'SBI', NULL, 0.25, N'', N'450.00', NULL, NULL, NULL, N'1', NULL, N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (4, N'RIL', N'123456783', N'WCDL', N'NA', 0, 10000, 10010, 10010, 10010, NULL, N'Multiple', N'NA', NULL, 8.75, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (4, N'234567891', N'7773001', N'WCDL', N'NA', 0, 10000, 10010, 10010, 10010, NULL, N'Multiple', N'NA', NULL, 8.75, N'', N'0.00', NULL, NULL, NULL, N'1', NULL, N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (5, N'RIL', N'123456784', N'WCDL', N'NA', 0, 7500, 2500, 7500, 2500, NULL, N'Multiple', N'NA', NULL, 8.2, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (5, N'234567891', N'7773002', N'WCDL', N'NA', 0, 7500, 2500, 2500, 2500, NULL, N'Multiple', N'NA', NULL, 8.2, N'', N'8200.00', NULL, NULL, NULL, N'1', NULL, N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (6, N'RIL', N'123456785', N'WCDL', N'NA', 0, 3000, 3003, 3003, 3003, NULL, N'Multiple', N'NA', NULL, 8.2, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (6, N'234567891', N'7773003', N'WCDL', N'NA', 0, 3000, 3003, 3003, 3003, NULL, N'Multiple', N'NA', NULL, 8.2, N'', N'3300.00', NULL, NULL, NULL, N'1', NULL, N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (7, N'RIL', N'123456786', N'WCDL', N'NA', 0, 2500, 2000, 2000, 2000, NULL, N'Multiple', N'NA', NULL, 8.2, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (7, N'234567891', N'7773004', N'WCDL', N'NA', 0, 2500, 2000, 2000, 2000, NULL, N'Multiple', N'NA', NULL, 8.2, N'', N'2750.00', NULL, NULL, NULL, N'1', NULL, N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (8, N'ICICIHF', N'123456787', N'Term Loan', N'NA', 0, 10000, 2250, 2250, 2250, NULL, N'Consortium', N'ICICI Bank', NULL, 9.03, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (8, N'345678912', N'7772002', N'Term Loan', N'NA', 0, 10000, 2250, 2250, 2250, NULL, N'Consortium', N'ICICI Bank', NULL, 9.03, N'', N'2300.00', NULL, NULL, NULL, N'1', NULL, N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (9, N'ICICIHF', N'123456788', N'Term Loan', N'NA', 0, 2000, 1000, 1000, 1000, NULL, N'Consortium', N'ICICI Bank', NULL, 9.03, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (9, N'345678912', N'7772003', N'Term Loan', N'NA', 0, 2000, 1000, 1000, 1000, NULL, N'Consortium', N'ICICI Bank', NULL, 9.03, N'', N'1100.00', NULL, NULL, NULL, N'1', NULL, N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (10, N'ICICIHF', N'123456789', N'Term Loan', N'NA', 0, 6000, 4500, 4500, 4500, NULL, N'Consortium', N'ICICI Bank', NULL, 9.03, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (10, N'345678912', N'7772004', N'Term Loan', N'NA', 0, 6000, 4500, 4500, 4500, NULL, N'Consortium', N'ICICI Bank', NULL, 9.03, N'', N'4950.00', NULL, NULL, NULL, N'1', NULL, N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (11, N'ICICIHF', N'123456701', N'Term Loan', N'NA', 0, 2200, 1400, 1400, 1400, NULL, N'Consortium', N'ICICI Bank', NULL, 9.1, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (11, N'345678912', N'7772005', N'Term Loan', N'NA', 0, 2200, 1400, 1400, 1400, NULL, N'Consortium', N'ICICI Bank', NULL, 9.1, N'', N'1450.00', NULL, NULL, NULL, N'1', NULL, N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (12, N'LICHF', N'123456702', N'Term Loan', N'NA', 0, 4000, 3000, 3000, 3000, NULL, N'Multiple', N'NA', NULL, 9.1, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (12, N'456789123', N'7772006', N'Term Loan', N'NA', 0, 4000, 3000, 3000, 3000, NULL, N'Multiple', N'NA', NULL, 9.1, N'', N'3000.00', NULL, NULL, NULL, N'1', NULL, N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (13, N'LICHF', N'123456703', N'Term Loan', N'NA', 0, 6000, 5000, 5000, 5000, NULL, N'Multiple', N'NA', NULL, 9.1, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (13, N'456789123', N'7772007', N'Term Loan', N'NA', 0, 6000, 5000, 5000, 5000, NULL, N'Multiple', N'NA', NULL, 9.1, N'', N'5000.00', NULL, NULL, NULL, N'1', NULL, N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (14, N'LICHF', N'123456704', N'Term Loan', N'NA', 0, 9000, 7500, 7500, 7500, NULL, N'Multiple', N'NA', NULL, 9.1, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (14, N'456789123', N'7772008', N'Term Loan', N'NA', 0, 9000, 7500, 7500, 7500, NULL, N'Multiple', N'NA', NULL, 9.1, N'', N'7500.00', NULL, NULL, NULL, N'1', NULL, N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (15, N'LICHF', N'123456705', N'Term Loan', N'NA', 0, 6600, 2000, 2000, 2000, NULL, N'Multiple', N'NA', NULL, 9.1, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (15, N'456789123', N'7772009', N'Term Loan', N'NA', 0, 6600, 2000, 2000, 2000, NULL, N'Multiple', N'NA', NULL, 9.1, N'', N'2000.00', NULL, NULL, NULL, N'1', NULL, N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (16, N'LICHF', N'123456706', N'Term Loan', N'NA', 0, 2400, 600, 600, 600, NULL, N'Multiple', N'NA', NULL, 9.1, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (16, N'456789123', N'7772010', N'Term Loan', N'NA', 0, 2400, 600, 600, 600, NULL, N'Multiple', N'NA', NULL, 9.1, N'', N'0.00', NULL, NULL, NULL, N'1', NULL, N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (17, N'ATULAUTO', N'123456707', N'Term Loan', N'NA', 0, 1000, 500, 500, 500, NULL, N'Sole', N'NA', NULL, 9.76, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (17, N'567891234', N'7772011', N'Term Loan', N'NA', 0, 1000, 500, 500, 500, NULL, N'Sole', N'NA', NULL, 9.76, N'', N'1100.00', NULL, NULL, NULL, N'1', NULL, N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (18, N'ATULAUTO', N'123456708', N'CC', N'NA', 0, 4400, 4395, 4395, 4395, NULL, N'Sole', N'NA', NULL, 9.76, N'', N'', NULL, CAST(N'2016-03-15T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'2', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (18, N'567891234', N'7771002', N'CC', N'NA', 0, 4400, 4395, 4400, 4395, NULL, N'Sole', N'NA', NULL, 9.76, N'', N'5000.00', NULL, NULL, NULL, N'2', NULL, N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (19, N'ATULAUTO', N'123456709', N'PCA', N'SMA0', 1, 2500, 2500, 2500, 2500, NULL, N'Sole', N'NA', NULL, 9.76, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (19, N'567891234', N'7774001', N'PCA', N'SMA0', 1, 2500, 2500, 2500, 2500, NULL, N'Sole', N'NA', NULL, 9.76, N'', N'2500.00', NULL, NULL, NULL, N'1', NULL, N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (20, N'ATULAUTO', N'123456710', N'PSL', N'NA', 0, 2500, 100, 2500, 100, NULL, N'Sole', N'NA', NULL, NULL, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (20, N'567891234', N'7775001', N'PSL', N'NA', 0, 2500, 100, 2500, 100, NULL, N'Sole', N'NA', NULL, NULL, N'', N'100.00', NULL, NULL, NULL, N'1', NULL, N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (21, N'MARUTI', N'123456711', N'Term Loan', N'NA', 0, 90000, 86000, 90000, 86000, NULL, N'Consortium', N'HDFC Bank', CAST(N'2001-01-01T00:00:00.000' AS DateTime), 7.95, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (21, N'678912345', N'7772012', N'Term Loan', N'NA', 0, 90000, 86000, 90000, 86000, NULL, N'Consortium', N'HDFC Bank', NULL, 7.95, N'', N'0.00', NULL, NULL, NULL, N'1', NULL, N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (22, N'PATANJALI', N'123456712', N'Term Loan', N'NA', 0, 75000, 75000, 75000, 75000, NULL, N'Sole', N'NA', NULL, 8.25, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (22, N'789123456', N'7772014', N'Term Loan', N'NA', 0, 75000, 75000, 75000, 75000, NULL, N'Sole', N'NA', NULL, 8.25, N'', N'80000.00', NULL, NULL, NULL, N'1', NULL, N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (23, N'HUL', N'123456713', N'PCA', N'NA', 0, 30000, 200, 30000, 200, NULL, N'Consortium', N'ICICI Bank', NULL, NULL, N'', N'', NULL, CAST(N'2018-12-01T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (23, N'891234567', N'7774002', N'PCA', N'NA', 0, 30000, 200, 30000, 200, NULL, N'Consortium', N'ICICI Bank', NULL, NULL, N'', N'0.00', NULL, NULL, NULL, N'1', NULL, N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (24, N'HUL', N'123456714', N'PSL', N'NA', 0, 90000, 80000, 90000, 80000, NULL, N'Consortium', N'ICICI Bank', NULL, NULL, N'', N'', NULL, CAST(N'2018-12-01T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (24, N'891234567', N'7775002', N'PSL', N'NA', 0, 90000, 80000, 90000, 80000, NULL, N'Consortium', N'ICICI Bank', NULL, NULL, N'', N'0.00', NULL, NULL, NULL, N'1', NULL, N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (25, N'JAYPEE', N'123456715', N'Term Loan', N'SMA2', 2, 10000, 9700, 9700, 9700, NULL, N'Multiple', N'NA', CAST(N'2017-12-31T00:00:00.000' AS DateTime), 8.99, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (25, N'912345678', N'7772015', N'Term Loan', N'SMA2', 2, 10000, 9700, 9700, 9700, NULL, N'Multiple', N'NA', NULL, 8.99, N'', N'11000.00', NULL, NULL, NULL, N'1', NULL, N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (26, N'JAYPEE', N'123456716', N'FITL', N'SMA1', 1, 1875, 1776, 1776, 1776, NULL, N'Multiple', N'NA', NULL, 8.99, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (26, N'912345678', N'7776001', N'FITL', N'SMA1', 1, 1875, 1776, 1776, 1776, NULL, N'Multiple', N'NA', NULL, 8.99, N'', N'2000.00', NULL, NULL, NULL, N'1', NULL, N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (27, N'HCC', N'123456717', N'Term Loan', N'SMA2', 2, 4500, 4099, 4099, 4099, NULL, N'Multiple', N'NA', CAST(N'2003-04-06T00:00:00.000' AS DateTime), 8.79, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (27, N'123456780', N'7772016', N'Term Loan', N'SMA2', 2, 4500, 4099, 4099, 4099, NULL, N'Multiple', N'NA', NULL, 8.79, N'', N'5000.00', NULL, NULL, NULL, N'1', NULL, N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (28, N'HCC', N'123456718', N'Term Loan', N'SMA2', 2, 5500, 5598, 5598, 5598, NULL, N'Consortium', N'SBI', CAST(N'2005-12-12T00:00:00.000' AS DateTime), 8.79, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (28, N'123456780', N'7772017', N'Term Loan', N'SMA2', 2, 5500, 5598, 5598, 5598, NULL, N'Consortium', N'SBI', NULL, 8.79, N'', N'6250.00', NULL, NULL, NULL, N'1', NULL, N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (29, N'HCC', N'123456719', N'CC', N'SMA2', 2, 2000, 2007, 2007, 2007, NULL, N'Consortium', N'SBI', CAST(N'2005-12-12T00:00:00.000' AS DateTime), 8.79, N'', N'', NULL, CAST(N'2014-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (29, N'123456780', N'7771003', N'CC', N'SMA2', 2, 2000, 2007, 2007, 2007, NULL, N'Consortium', N'SBI', NULL, 8.79, N'', N'2200.00', NULL, NULL, NULL, N'1', NULL, N'sunil')
 GO
-INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (30, N'HCC', N'123456720', N'FITL', N'SMA1', 1, 2200, 2008, 2008, 2008, NULL, N'Consortium', N'SBI', NULL, 8.79, N'', N'', NULL, CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'1', CAST(N'2018-06-26T00:00:00.000' AS DateTime), N'sunil')
+INSERT [dbo].[AccountDetails] ([Id], [Cust_Id], [accountNumber], [nature], [smaRiskType], [smaRiskLevel], [limit], [balance], [exposure], [undisbursed], [arrears], [bankingArr], [leadBank], [dcco], [roi], [period], [security], [cashMargin], [lastRenewalDate], [lastReviewDate], [lastReviewDate1or2], [lastUpdateOn], [lastUpdateBy]) VALUES (30, N'123456780', N'7776002', N'FITL', N'SMA1', 1, 2200, 2008, 2008, 2008, NULL, N'Consortium', N'SBI', NULL, 8.79, N'', N'2500.00', NULL, NULL, NULL, N'1', NULL, N'sunil')
 GO
 SET IDENTITY_INSERT [dbo].[AccountDetails] OFF
 GO
@@ -707,7 +731,7 @@ INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Su
 GO
 INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (8, N'Maruti', N'Quarterly', N'UHFCE', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', N'Praveen', N'29-06-2018')
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (9, N'Maruti', N'General', N'Cersai Charge', N'1', CAST(N'2018-01-04T00:00:00.000' AS DateTime), N'', CAST(N'2018-01-04T00:00:00.000' AS DateTime), 0, N'praveen test', N'Praveen', N'06-07-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (9, N'Maruti', N'General', N'Cersai Charge', N'1', CAST(N'2018-01-04T00:00:00.000' AS DateTime), N'', CAST(N'2018-01-04T00:00:00.000' AS DateTime), 1, N'praveen test', N'Praveen', N'08-07-2018')
 GO
 INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (10, N'Maruti', N'General', N'EM Creation', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', N'Praveen', N'29-06-2018')
 GO
@@ -835,25 +859,25 @@ INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Su
 GO
 SET IDENTITY_INSERT [dbo].[CustDocument] OFF
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'ATULAUTO', N'Atul Auto', N'EFGHI4567E', 500, CAST(N'2018-06-23' AS Date), N'Public', N'Auto', N'Auto', N'Mfg of Motor Vehicles', N'Hyerabad Lakdi Ka Pul', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=531795&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/auto-2-3-wheelers/atulauto/AA08')
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'123456780', N'HCC', N'JKLMN9012J', 13712, CAST(N'2018-06-23' AS Date), N'Public', N'Infrastructure', N'Infra', N'Construction/Maintenance of Roads', N'Hyerabad Lakdi Ka Pul', N'', N'')
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'HCC', N'HCC', N'JKLMN9012J', 4099, CAST(N'2018-06-23' AS Date), N'Public', N'Infrastructure', N'Infra', N'Construction/Maintenance of Roads', N'Hyerabad Lakdi Ka Pul', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=500185&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/construction-contracting-civil/hindustanconstructioncompany/HCC')
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'123456789', N'Tata Power', N'ABCDE1234A', 6400, CAST(N'2018-06-23' AS Date), N'Public', N'Power', N'Energy', N'Collection and Distn of Electricity', N'Mumbai Fort', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=531795&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/auto-2-3-wheelers/atulauto/AA08')
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'HUL', N'HUL', N'HIJKL7890H', 30000, CAST(N'2018-06-23' AS Date), N'Public', N'Consumables', N'FMCG', N'SOAPS,COSMETICS, TOILETRIES, ETC.', N'Bangalore Indira Nagar', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=500696&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/personal-care/hindustanunilever/HU')
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'234567891', N'Reliance Industries Limited', N'BCDEF0123B', 17513, CAST(N'2018-06-23' AS Date), N'Public', N'Oil', N'Energy', N'Manufacture of refined petroleum products', N'Chennai Mount Road', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=500185&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/construction-contracting-civil/hindustanconstructioncompany/HCC')
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'ICICIHF', N'ICICI HFC', N'CDEFG2345C', 2250, CAST(N'2018-06-23' AS Date), N'Public', N'NBFC-HFC', N'FI', N'NBFCs- in the housing sector', N'Bangalore Indira Nagar', N'', N'')
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'345678912', N'ICICI HFC', N'CDEFG2345C', 9150, CAST(N'2018-06-23' AS Date), N'Public', N'FI', N'NBFC-HFC', N'NBFCs- in the housing sector', N'Bangalore Indira Nagar', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=500696&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/personal-care/hindustanunilever/HU')
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'JAYPEE', N'Jaypee Infratech Limited', N'IJKLM8901I', 9700, CAST(N'2018-06-23' AS Date), N'Public', N'Infrastructure', N'Infra', N'Construction/Maintenance of Roads', N'Delhi Karol Baug', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=533207&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/infrastructure-general/jaypeeinfratech/JI09')
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'456789123', N'LIC Housing Finance', N'DEFGH3456D', 18100, CAST(N'2018-06-23' AS Date), N'Public', N'FI', N'NBFC-HFC', N'NBFCs- in the housing sector', N'Delhi Karol Baug', N'', N'')
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'LICHF', N'LIC Housing Finance', N'DEFGH3456D', 3000, CAST(N'2018-06-23' AS Date), N'Public', N'NBFC-HFC', N'FI', N'NBFCs- in the housing sector', N'Delhi Karol Baug', N'', N'')
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'567891234', N'Atul Auto', N'EFGHI4567E', 90000, CAST(N'2018-06-23' AS Date), N'Public', N'Auto', N'Auto', N'Mfg of Motor Vehicles', N'Hyerabad Lakdi Ka Pul', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=533207&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/infrastructure-general/jaypeeinfratech/JI09')
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'MARUTI', N'Maruti Suzuki', N'FGHIJ5678F', 90000, CAST(N'2018-06-23' AS Date), N'Public', N'Auto', N'Auto', N'Mfg of Motor Vehicles', N'Mumbai Fort', N'', N'')
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'678912345', N'Maruti Suzuki', N'FGHIJ5678F', 90000, CAST(N'2018-06-23' AS Date), N'Public', N'Auto', N'Auto', N'Mfg of Motor Vehicles', N'Mumbai Fort', N'', N'')
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'PATANJALI', N'Patanjali Agro India P Ltd', N'GHIJK6789G', 75000, CAST(N'2018-06-23' AS Date), N'Private', N'Consumables', N'FMCG', N'SOAPS,COSMETICS, TOILETRIES, ETC.', N'Chennai Mount Road', N'', N'')
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'789123456', N'Patanjali Agro India P Ltd', N'GHIJK6789G', 75000, CAST(N'2018-06-23' AS Date), N'Private', N'Consumables', N'FMCG', N'SOAPS,COSMETICS, TOILETRIES, ETC.', N'Chennai Mount Road', N'', N'')
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'RIL', N'Reliance Industries Limited', N'BCDEF0123B', 10010, CAST(N'2018-06-23' AS Date), N'Public', N'Oil', N'Energy', N'Manufacture of refined petroleum products', N'Chennai Mount Road', N'', N'')
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'891234567', N'HUL', N'HIJKL7890H', 120000, CAST(N'2018-06-23' AS Date), N'Public', N'Consumables', N'FMCG', N'SOAPS,COSMETICS, TOILETRIES, ETC.', N'Bangalore Indira Nagar', N'', N'')
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'TATAPOWER', N'Tata Power', N'ABCDE1234A', 1000, CAST(N'2018-06-23' AS Date), N'Public', N'Power', N'Energy', N'Collection and Distn of Electricity', N'Mumbai Fort', N'', N'')
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'912345678', N'Jaypee Infratech Limited', N'IJKLM8901I', 11476, CAST(N'2018-06-23' AS Date), N'Public', N'Infrastructure', N'Infra', N'Construction/Maintenance of Roads', N'Delhi Karol Baug', N'', N'')
 GO
 SET IDENTITY_INSERT [dbo].[CustomerDataMapping] ON 
 GO
@@ -12801,11 +12825,11 @@ SET IDENTITY_INSERT [dbo].[GeneralExposure] OFF
 GO
 SET IDENTITY_INSERT [dbo].[GeneralGurantor] ON 
 GO
-INSERT [dbo].[GeneralGurantor] ([id], [Cust_Id], [accountNo], [gurCust_Id], [gurType], [netWorth]) VALUES (1, N'jpmc', NULL, N'jpmc', N'gur', NULL)
+INSERT [dbo].[GeneralGurantor] ([id], [Cust_Id], [accountNo], [gurCust_Id], [gurType], [netWorth]) VALUES (1, N'maruti', NULL, N'jpmc', N'gur', NULL)
 GO
-INSERT [dbo].[GeneralGurantor] ([id], [Cust_Id], [accountNo], [gurCust_Id], [gurType], [netWorth]) VALUES (2, N'jpmc', NULL, N'boa', N'gur', NULL)
+INSERT [dbo].[GeneralGurantor] ([id], [Cust_Id], [accountNo], [gurCust_Id], [gurType], [netWorth]) VALUES (2, N'maruti', NULL, N'boa', N'gur', NULL)
 GO
-INSERT [dbo].[GeneralGurantor] ([id], [Cust_Id], [accountNo], [gurCust_Id], [gurType], [netWorth]) VALUES (3, N'jpmc', NULL, N'dbs', N'gur', NULL)
+INSERT [dbo].[GeneralGurantor] ([id], [Cust_Id], [accountNo], [gurCust_Id], [gurType], [netWorth]) VALUES (3, N'maruti', NULL, N'dbs', N'gur', NULL)
 GO
 SET IDENTITY_INSERT [dbo].[GeneralGurantor] OFF
 GO
@@ -12879,7 +12903,7 @@ INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [as
 GO
 INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (20, N'ATULAUTO', N'123456710', N'PSL', N'', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
 GO
-INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (21, N'MARUTI', N'123456711', N'Term Loan', N'7.95', NULL, NULL, N'Loan', CAST(N'2018-07-11T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
+INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (21, N'MARUTI', N'123456711', N'Term Loan', N'7.95', NULL, NULL, N'Loan', CAST(N'2018-04-02T18:30:00.000' AS DateTime), CAST(N'2009-10-16T18:30:00.000' AS DateTime), N'CBS')
 GO
 INSERT [dbo].[Interest] ([Id], [Cust_Id], [accountNo], [accountType], [roi], [asperID], [dated], [schemeType], [followUpDate], [compiledDate], [source]) VALUES (22, N'PATANJALI', N'123456712', N'Term Loan', N'8.25', NULL, CAST(N'2018-03-31T00:00:00.000' AS DateTime), N'Loan', CAST(N'2018-06-26T00:00:00.000' AS DateTime), CAST(N'2009-10-10T00:00:00.000' AS DateTime), N'CBS')
 GO
@@ -12950,6 +12974,30 @@ GO
 INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (23, N'ActivityLog', N'LogTypes', N'Further Followup')
 GO
 INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (24, N'ActivityLog', N'LogTypes', N'Rectified')
+GO
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (26, N'Home', N'References', N'Internal Circular')
+GO
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (27, N'Home', N'References', N'RBI curcular')
+GO
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (28, N'Home', N'References', N'Loan Policy')
+GO
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (29, N'Home', N'References', N'Deligation Chart')
+GO
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (30, N'Home', N'References', N'Interest reference')
+GO
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (31, N'Home', N'communication', N'Recent Order')
+GO
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (32, N'Home', N'communication', N'Internal chatting')
+GO
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (33, N'Home', N'communication', N'Employee Search')
+GO
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (34, N'Home', N'Peer Comparison', N'Peer Comparison')
+GO
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (35, N'Home', N'Reminders', N'For month')
+GO
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (36, N'Home', N'Reminders', N'For week')
+GO
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (37, N'Home', N'My repository', N'Attachments')
 GO
 SET IDENTITY_INSERT [dbo].[LookUp] OFF
 GO
@@ -13345,17 +13393,65 @@ SET IDENTITY_INSERT [dbo].[RestucturingHeader] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Security] ON 
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth]) VALUES (1, N'tatapower', N'34343432', N'Primary', 540400, N'Receivables and Inventory', 860, N'Yes', CAST(N'2017-03-31T00:00:00.000' AS DateTime), N'70%', N'TataSons', 500)
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (1, N'7771001', N'primary', N'750', NULL, N'860.00', NULL, N'473.00', NULL, CAST(N'2018-12-01T00:00:00.000' AS DateTime), NULL, N'Tata & Sons', N'500', NULL, N'11-Jul-18', NULL)
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth]) VALUES (2, N'tatapower', N'2456335', N'Primary', 4044, N'Land and Building', 6000, N'Yes', CAST(N'2017-03-31T00:00:00.000' AS DateTime), N'30%', N'TataSons', 500)
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (2, N'7772001', N'primary', N'4850', NULL, N'6000.00', NULL, N'5100.00', NULL, CAST(N'2018-12-01T00:00:00.000' AS DateTime), NULL, N'Tata & Sons', N'500', NULL, N'11-Jul-18', NULL)
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth]) VALUES (3, N'tatapower', N'3455234', N'Primary', 4044, N'CC', 6000, N'Yes', CAST(N'2017-03-31T00:00:00.000' AS DateTime), N'30%', N'TataSons', 500)
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (3, N'BG123', N'primary', N'400', NULL, N'450.00', NULL, N'247.50', NULL, CAST(N'2018-12-01T00:00:00.000' AS DateTime), NULL, N'Tata & Sons', N'500', NULL, N'11-Jul-18', NULL)
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth]) VALUES (4, N'maruti', N'34343432', N'Primary', 540400, N'Receivables and Inventory', 860, N'Yes', CAST(N'2017-03-31T00:00:00.000' AS DateTime), N'70%', N'TataSons', 500)
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (4, N'7773001', N'primary', N'10010', NULL, N'0.00', NULL, N'0.00', NULL, NULL, NULL, N'', N'500', NULL, N'11-Jul-18', NULL)
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth]) VALUES (5, N'maruti', N'2456335', N'Primary', 4044, N'Land and Building', 6000, N'Yes', CAST(N'2017-03-31T00:00:00.000' AS DateTime), N'30%', N'TataSons', 500)
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (5, N'7773002', N'primary', N'2500', NULL, N'8200.00', NULL, N'4510.00', NULL, CAST(N'2018-12-01T00:00:00.000' AS DateTime), NULL, N'', N'500', NULL, N'11-Jul-18', NULL)
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth]) VALUES (6, N'maruti', N'3455234', N'Primary', 4044, N'CC', 6000, N'Yes', CAST(N'2017-03-31T00:00:00.000' AS DateTime), N'30%', N'TataSons', 500)
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (6, N'7773003', N'primary', N'3003', NULL, N'3300.00', NULL, N'1815.00', NULL, CAST(N'2018-12-01T00:00:00.000' AS DateTime), NULL, N'', N'500', NULL, N'11-Jul-18', NULL)
+GO
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (7, N'7773004', N'primary', N'2000', NULL, N'2750.00', NULL, N'1512.50', NULL, CAST(N'2018-12-01T00:00:00.000' AS DateTime), NULL, N'', N'500', NULL, N'11-Jul-18', NULL)
+GO
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (8, N'7772002', N'primary', N'2250', NULL, N'2300.00', NULL, N'0.00', NULL, NULL, NULL, N'', N'500', NULL, N'11-Jul-18', NULL)
+GO
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (9, N'7772003', N'primary', N'1000', NULL, N'1100.00', NULL, N'0.00', NULL, NULL, NULL, N'', N'500', NULL, N'11-Jul-18', NULL)
+GO
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (10, N'7772004', N'primary', N'4500', NULL, N'4950.00', NULL, N'0.00', NULL, NULL, NULL, N'', N'500', NULL, N'11-Jul-18', NULL)
+GO
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (11, N'7772005', N'primary', N'1400', NULL, N'1450.00', NULL, N'0.00', NULL, NULL, NULL, N'', N'500', NULL, N'11-Jul-18', NULL)
+GO
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (12, N'7772006', N'primary', N'3000', NULL, N'3000.00', NULL, N'0.00', NULL, NULL, NULL, N'', N'500', NULL, N'11-Jul-18', NULL)
+GO
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (13, N'7772007', N'primary', N'5000', NULL, N'5000.00', NULL, N'0.00', NULL, NULL, NULL, N'', N'500', NULL, N'11-Jul-18', NULL)
+GO
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (14, N'7772008', N'primary', N'7500', NULL, N'7500.00', NULL, N'0.00', NULL, NULL, NULL, N'', N'500', NULL, N'11-Jul-18', NULL)
+GO
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (15, N'7772009', N'primary', N'2000', NULL, N'2000.00', NULL, N'0.00', NULL, NULL, NULL, N'', N'500', NULL, N'11-Jul-18', NULL)
+GO
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (16, N'7772010', N'primary', N'600', NULL, N'0.00', NULL, N'0.00', NULL, NULL, NULL, N'', N'500', NULL, N'11-Jul-18', NULL)
+GO
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (17, N'7772011', N'primary', N'500', NULL, N'1100.00', NULL, N'935.00', NULL, CAST(N'2018-12-01T00:00:00.000' AS DateTime), NULL, N'', N'500', NULL, N'11-Jul-18', NULL)
+GO
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (18, N'7771002', N'primary', N'4395', NULL, N'5000.00', NULL, N'4250.00', NULL, CAST(N'2018-12-01T00:00:00.000' AS DateTime), NULL, N'', N'500', NULL, N'11-Jul-18', NULL)
+GO
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (19, N'7774001', N'primary', N'2500', NULL, N'2500.00', NULL, N'2125.00', NULL, CAST(N'2018-12-01T00:00:00.000' AS DateTime), NULL, N'Mr. Atul (NW122Cr)', N'500', NULL, N'11-Jul-18', NULL)
+GO
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (20, N'7775001', N'primary', N'100', NULL, N'100.00', NULL, N'85.00', NULL, CAST(N'2018-12-01T00:00:00.000' AS DateTime), NULL, N'', N'500', NULL, N'11-Jul-18', NULL)
+GO
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (21, N'7772012', N'primary', N'86000', NULL, N'0.00', NULL, N'0.00', NULL, NULL, NULL, N'', N'500', NULL, N'11-Jul-18', NULL)
+GO
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (22, N'7772014', N'primary', N'75000', NULL, N'80000.00', NULL, N'68000.00', NULL, CAST(N'2018-12-01T00:00:00.000' AS DateTime), NULL, N'', N'500', NULL, N'11-Jul-18', NULL)
+GO
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (23, N'7774002', N'primary', N'200', NULL, N'0.00', NULL, N'0.00', NULL, NULL, NULL, N'', N'500', NULL, N'11-Jul-18', NULL)
+GO
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (24, N'7775002', N'primary', N'80000', NULL, N'0.00', NULL, N'0.00', NULL, NULL, NULL, N'', N'500', NULL, N'11-Jul-18', NULL)
+GO
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (25, N'7772015', N'primary', N'9700', NULL, N'11000.00', NULL, N'9350.00', NULL, CAST(N'2018-12-01T00:00:00.000' AS DateTime), NULL, N'', N'500', NULL, N'11-Jul-18', NULL)
+GO
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (26, N'7776001', N'primary', N'1776', NULL, N'2000.00', NULL, N'1700.00', NULL, CAST(N'2018-12-01T00:00:00.000' AS DateTime), NULL, N'', N'500', NULL, N'11-Jul-18', NULL)
+GO
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (27, N'7772016', N'primary', N'4099', NULL, N'5000.00', NULL, N'4250.00', NULL, CAST(N'2018-12-01T00:00:00.000' AS DateTime), NULL, N'', N'500', NULL, N'11-Jul-18', NULL)
+GO
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (28, N'7772017', N'primary', N'5598', NULL, N'6250.00', NULL, N'5312.50', NULL, CAST(N'2018-12-01T00:00:00.000' AS DateTime), NULL, N'Walchandnagar', N'500', NULL, N'11-Jul-18', NULL)
+GO
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (29, N'7771003', N'primary', N'2007', NULL, N'2200.00', NULL, N'1870.00', NULL, CAST(N'2018-12-01T00:00:00.000' AS DateTime), NULL, N'Walchandnagar', N'500', NULL, N'11-Jul-18', NULL)
+GO
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (30, N'7776002', N'primary', N'2008', NULL, N'2500.00', NULL, N'0.00', NULL, NULL, NULL, N'Walchandnagar', N'500', NULL, N'11-Jul-18', NULL)
 GO
 SET IDENTITY_INSERT [dbo].[Security] OFF
 GO
@@ -13457,9 +13553,9 @@ INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via],
 GO
 INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate]) VALUES (3, N'HCC', N'soourcesystem2', CAST(N'2018-01-10T00:00:00.000' AS DateTime), N'via1', N'appprovalfor2', N'yes', CAST(N'2018-01-11T00:00:00.000' AS DateTime), CAST(N'2017-01-12T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate]) VALUES (4, N'maruti', N'soourcesystem', CAST(N'2018-01-10T00:00:00.000' AS DateTime), N'via', N'appprovalfor', N'no', CAST(N'2018-01-11T00:00:00.000' AS DateTime), CAST(N'2017-12-01T00:00:00.000' AS DateTime))
+INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate]) VALUES (4, N'maruti', N'soourcesystem', CAST(N'2018-01-10T00:00:00.000' AS DateTime), N'via', N'appprovalfor', N'', NULL, NULL)
 GO
-INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate]) VALUES (5, N'maruti', N'soourcesystem1', CAST(N'2018-10-01T00:00:00.000' AS DateTime), N'via1', N'appprovalfor1', N'no', CAST(N'2018-11-01T00:00:00.000' AS DateTime), CAST(N'2017-01-12T00:00:00.000' AS DateTime))
+INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate]) VALUES (5, N'maruti', N'soourcesystem1', CAST(N'2018-10-01T00:00:00.000' AS DateTime), N'via1', N'appprovalfor1', N'no', NULL, CAST(N'2017-01-12T00:00:00.000' AS DateTime))
 GO
 INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate]) VALUES (6, N'maruti', N'soourcesystem2', CAST(N'2018-10-01T00:00:00.000' AS DateTime), N'via1', N'appprovalfor2', N'yes', CAST(N'2018-11-01T00:00:00.000' AS DateTime), CAST(N'2017-01-12T00:00:00.000' AS DateTime))
 GO
