@@ -25,7 +25,7 @@ namespace Gamut.WebAPI.Controllers
         {
 
             List<string> relatedTo = db.ActivityLogs.Select(m => m.activityType).Distinct().ToList();// .Distinct .Where(i => i.LookUp_Table == "Report" && i.LookUp_Name == "RelatedTo").ToList();
-            List<LookUp> status = db.LookUps.Where(i => i.LookUp_Table == "Report" && i.LookUp_Name == "Status").ToList();
+            List<LookUp> status = db.LookUps.Where(i => i.LookUp_Table == "Reports" && i.LookUp_Name == "Status").ToList();
             Customer customer = db.Customers.Find(id);
             if (customer == null) customer = new Customer();
 

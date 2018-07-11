@@ -180,6 +180,7 @@
     <Compile Include="Controllers\RatingAPIController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\RestucturingController.cs" />
+    <Compile Include="Controllers\ScoreController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\SMACompilationController.cs" />
     <Compile Include="Controllers\SnapshotController.cs" />
@@ -258,6 +259,9 @@
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RestucturingHeader.cs">
+      <DependentUpon>GamutEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Score.cs">
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Security.cs">

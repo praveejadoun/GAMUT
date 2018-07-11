@@ -315,6 +315,18 @@
           <Property Name="ExtendedDate" Type="datetime" />
           <Property Name="actualDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="Score">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cust_Id" Type="varchar" MaxLength="50" />
+          <Property Name="ScoreParameter" Type="varchar" MaxLength="250" />
+          <Property Name="ScoreMaxValue" Type="int" />
+          <Property Name="ScoreObtainedValue" Type="int" />
+          <Property Name="LastUpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastUpdatedOn" Type="datetime" />
+        </EntityType>
         <EntityType Name="Security">
           <Key>
             <PropertyRef Name="Id" />
@@ -329,6 +341,7 @@
           <Property Name="correctFlag" Type="varchar" MaxLength="50" />
           <Property Name="insuranceValue" Type="float" />
           <Property Name="ìnsuranceExpiryDate" Type="datetime" />
+          <Property Name="valuationDate" Type="datetime" />
           <Property Name="followUpDate" Type="datetime" />
           <Property Name="coverage" Type="varchar" MaxLength="50" />
           <Property Name="guarantorId" Type="varchar" MaxLength="50" />
@@ -493,6 +506,7 @@
           <EntitySet Name="Rating" EntityType="Self.Rating" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RestucturingDetail" EntityType="Self.RestucturingDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RestucturingHeader" EntityType="Self.RestucturingHeader" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Score" EntityType="Self.Score" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Security" EntityType="Self.Security" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SMABucket" EntityType="Self.SMABucket" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SMACompilation" EntityType="Self.SMACompilation" Schema="dbo" store:Type="Tables" />
@@ -562,6 +576,7 @@
           <EntitySet Name="Snapshots" EntityType="gamutdatabaseModel.Snapshot" />
           <EntitySet Name="FileUploads" EntityType="gamutdatabaseModel.FileUpload" />
           <EntitySet Name="Securities" EntityType="gamutdatabaseModel.Security" />
+          <EntitySet Name="Scores" EntityType="gamutdatabaseModel.Score" />
         </EntityContainer>
         <EntityType Name="Customer">
           <Key>
@@ -1022,6 +1037,19 @@
           <Property Name="guarantorNetWorth" Type="Double" />
           <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="LastUpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="valuationDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Score">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ScoreParameter" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ScoreMaxValue" Type="Int32" />
+          <Property Name="ScoreObtainedValue" Type="Int32" />
+          <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="Cust_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1481,6 +1509,7 @@
           <EntitySetMapping Name="Securities">
             <EntityTypeMapping TypeName="gamutdatabaseModel.Security">
               <MappingFragment StoreEntitySet="Security">
+                <ScalarProperty Name="valuationDate" ColumnName="valuationDate" />
                 <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
                 <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
                 <ScalarProperty Name="guarantorNetWorth" ColumnName="guarantorNetWorth" />
@@ -1496,6 +1525,19 @@
                 <ScalarProperty Name="securityType" ColumnName="securityType" />
                 <ScalarProperty Name="accountNo" ColumnName="accountNo" />
                 <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Scores">
+            <EntityTypeMapping TypeName="gamutdatabaseModel.Score">
+              <MappingFragment StoreEntitySet="Score">
+                <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
+                <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="ScoreObtainedValue" ColumnName="ScoreObtainedValue" />
+                <ScalarProperty Name="ScoreMaxValue" ColumnName="ScoreMaxValue" />
+                <ScalarProperty Name="ScoreParameter" ColumnName="ScoreParameter" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

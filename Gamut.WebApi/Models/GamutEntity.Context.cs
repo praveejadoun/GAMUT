@@ -52,5 +52,6 @@ namespace Gamut.WebAPI.Models
         public virtual DbSet<Snapshot> Snapshots { get; set; }
         public virtual DbSet<FileUpload> FileUploads { get; set; }
         public virtual DbSet<Security> Securities { get; set; }
+        public virtual DbSet<Score> Scores { get; set; }
     }
 }

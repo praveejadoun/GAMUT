@@ -34,6 +34,7 @@
         <EntityTypeShape EntityType="gamutdatabaseModel.Snapshot" Width="1.5" PointX="15.75" PointY="8.75" />
         <EntityTypeShape EntityType="gamutdatabaseModel.FileUpload" Width="1.5" PointX="16.375" PointY="14.75" />
         <EntityTypeShape EntityType="gamutdatabaseModel.Security" Width="1.5" PointX="12.375" PointY="17.75" />
+        <EntityTypeShape EntityType="gamutdatabaseModel.Score" Width="1.5" PointX="7.375" PointY="11.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
