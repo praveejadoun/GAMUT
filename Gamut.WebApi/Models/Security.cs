@@ -27,7 +27,6 @@ namespace Gamut.WebAPI.Models
         public Nullable<System.DateTime> followUpDate { get; set; }
         public string coverage { get; set; }
         public string guarantorId { get; set; }
-        public Nullable<double> guarantorNetWorth { get; set; }
         public string LastUpdatedBy { get; set; }
         public Nullable<System.DateTime> LastUpdatedOn { get; set; }
         public Nullable<System.DateTime> valuationDate { get; set; }

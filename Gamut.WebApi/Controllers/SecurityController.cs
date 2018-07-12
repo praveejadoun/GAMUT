@@ -41,12 +41,29 @@ namespace Gamut.WebAPI.Controllers
         {
 
             List<Security> securities = db.Securities.Where(i => i.Cust_Id == id).ToList();
+            List<Customer> guranters = new List<Customer>();
             if (securities == null || securities.Count <= 0)
             {
                 return NotFound();
             }
+            else
+            {
+                foreach (Security sec in securities)
+                {
+                    if (sec.Cust_Id != null && sec.Cust_Id != string.Empty)
+                    {
+                        Customer cust = db.Customers.Where(i => i.Cust_id == sec.guarantorId).FirstOrDefault();
+                        if (!guranters.Exists(c=>c.Cust_id == cust.Cust_id))
+                        {
+                            guranters.Add(cust);
+                        }
+                    }
+                    
+                }
+            }
+
             Customer customer = db.Customers.Find(id);
-            SecurityDecorator interestDecorator = new SecurityDecorator(securities, customer);
+            SecurityDecorator interestDecorator = new SecurityDecorator(securities, customer,guranters);
             return Ok(interestDecorator);
         }
 
@@ -133,12 +150,14 @@ namespace Gamut.WebAPI.Controllers
 
     public class SecurityDecorator
     {
-        public SecurityDecorator(List<Security> _data, Customer _customer)
+        public SecurityDecorator(List<Security> _data, Customer _customer,List<Customer> _guranters)
         {
             entData = _data;
             customer = _customer;
+            gurantors = _guranters;
         }
         public List<Security> entData { get; set; }
+        public List<Customer> gurantors { get; set; }
         public Customer customer { get; set; }
     }
 }

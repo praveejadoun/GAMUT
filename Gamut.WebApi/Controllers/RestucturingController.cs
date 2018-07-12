@@ -26,7 +26,7 @@ namespace Gamut.WebAPI.Controllers
         [ResponseType(typeof(RestucturingDecorator))]
         public IHttpActionResult GetRestucturingHeader(string id)
         {
-            RestucturingHeader restucturingHeader = db.RestucturingHeaders.Where(i=>i.Cust_Id==id).SingleOrDefault();
+            RestucturingHeader restucturingHeader = db.RestucturingHeaders.Where(i=>i.Cust_Id==id).FirstOrDefault();
             if (restucturingHeader == null)
             {
                 return NotFound();

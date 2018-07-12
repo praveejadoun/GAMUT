@@ -26,5 +26,6 @@ namespace Gamut.WebAPI.Models
         public string Branch { get; set; }
         public string FinDataMappingId { get; set; }
         public string NewsDataMappingId { get; set; }
+        public Nullable<double> netWorth { get; set; }
     }
 }

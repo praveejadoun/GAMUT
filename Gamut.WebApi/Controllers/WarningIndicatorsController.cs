@@ -33,7 +33,7 @@ namespace Gamut.WebAPI.Controllers
                 return NotFound();
             }
 
-            Customer customer = db.Customers.Where(i => i.Cust_id == id).SingleOrDefault();
+            Customer customer = db.Customers.Where(i => i.Cust_id == id).FirstOrDefault();
             WarningIndicatorDecorator warningIndicatorDecorator = new WarningIndicatorDecorator(warningIndicator, customer);
 
             return Ok(warningIndicatorDecorator);
@@ -55,7 +55,7 @@ namespace Gamut.WebAPI.Controllers
                 return NotFound();
             }
 
-            Customer customer = db.Customers.Where(i => i.Cust_id == id).SingleOrDefault();
+            Customer customer = db.Customers.Where(i => i.Cust_id == id).FirstOrDefault();
             WarningIndicatorDecorator warningIndicatorDecorator = new WarningIndicatorDecorator(warningIndicator, customer);
 
             return Ok(warningIndicatorDecorator);

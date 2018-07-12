@@ -33,7 +33,7 @@ namespace Gamut.WebAPI.Controllers
                 return NotFound();
             }
 
-            Customer customer = db.Customers.Where(i => i.Cust_id == id).SingleOrDefault();
+            Customer customer = db.Customers.Where(i => i.Cust_id == id).FirstOrDefault();
             AccountDetailDecorator accountDetailDecorator = new AccountDetailDecorator(accountDetail, customer);
             return Ok(accountDetailDecorator);
         }

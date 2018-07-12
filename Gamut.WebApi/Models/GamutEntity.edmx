@@ -76,6 +76,7 @@
           <Property Name="Pan_No" Type="varchar" MaxLength="50" />
           <Property Name="Exposure" Type="float" />
           <Property Name="Exposure_AsOn" Type="date" />
+          <Property Name="netWorth" Type="float" />
           <Property Name="Constitution" Type="varchar" MaxLength="250" />
           <Property Name="Industry" Type="varchar" MaxLength="50" />
           <Property Name="Sector" Type="varchar" MaxLength="50" />
@@ -345,7 +346,6 @@
           <Property Name="followUpDate" Type="datetime" />
           <Property Name="coverage" Type="varchar" MaxLength="50" />
           <Property Name="guarantorId" Type="varchar" MaxLength="50" />
-          <Property Name="guarantorNetWorth" Type="float" />
           <Property Name="LastUpdatedBy" Type="varchar" MaxLength="50" />
           <Property Name="LastUpdatedOn" Type="datetime" />
         </EntityType>
@@ -594,6 +594,7 @@
           <Property Name="Branch" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="FinDataMappingId" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Name="NewsDataMappingId" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="netWorth" Type="Double" />
         </EntityType>
         <EntityType Name="General">
           <Key>
@@ -1034,7 +1035,6 @@
           <Property Name="followUpDate" Type="DateTime" Precision="3" />
           <Property Name="coverage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="guarantorId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="guarantorNetWorth" Type="Double" />
           <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="LastUpdatedOn" Type="DateTime" Precision="3" />
           <Property Name="valuationDate" Type="DateTime" Precision="3" />
@@ -1073,6 +1073,7 @@
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="gamutdatabaseModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="netWorth" ColumnName="netWorth" />
                 <ScalarProperty Name="NewsDataMappingId" ColumnName="NewsDataMappingId" />
                 <ScalarProperty Name="FinDataMappingId" ColumnName="FinDataMappingId" />
                 <ScalarProperty Name="Branch" ColumnName="Branch" />
@@ -1512,7 +1513,6 @@
                 <ScalarProperty Name="valuationDate" ColumnName="valuationDate" />
                 <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
                 <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
-                <ScalarProperty Name="guarantorNetWorth" ColumnName="guarantorNetWorth" />
                 <ScalarProperty Name="guarantorId" ColumnName="guarantorId" />
                 <ScalarProperty Name="coverage" ColumnName="coverage" />
                 <ScalarProperty Name="followUpDate" ColumnName="followUpDate" />
