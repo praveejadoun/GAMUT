@@ -50,8 +50,9 @@ namespace Gamut.WebAPI.Controllers
             {
                 foreach (Security sec in securities)
                 {
-                    if (sec.Cust_Id != null && sec.Cust_Id != string.Empty)
+                    if (sec.guarantorId != null && sec.guarantorId != string.Empty)
                     {
+                        
                         Customer cust = db.Customers.Where(i => i.Cust_id == sec.guarantorId).FirstOrDefault();
                         if (!guranters.Exists(c=>c.Cust_id == cust.Cust_id))
                         {
