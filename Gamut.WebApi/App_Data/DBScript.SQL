@@ -1,6 +1,6 @@
 ﻿USE [gamutdatabase]
 GO
-/****** Object:  Table [dbo].[AccountDetails]    Script Date: 11-07-2018 23:26:46 ******/
+/****** Object:  Table [dbo].[AccountDetails]    Script Date: 13-07-2018 22:43:33 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -35,7 +35,7 @@ CREATE TABLE [dbo].[AccountDetails](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ActivityLog]    Script Date: 11-07-2018 23:26:49 ******/
+/****** Object:  Table [dbo].[ActivityLog]    Script Date: 13-07-2018 22:43:36 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -59,7 +59,7 @@ CREATE TABLE [dbo].[ActivityLog](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CustDocument]    Script Date: 11-07-2018 23:26:50 ******/
+/****** Object:  Table [dbo].[CustDocument]    Script Date: 13-07-2018 22:43:36 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -83,7 +83,7 @@ CREATE TABLE [dbo].[CustDocument](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Customer]    Script Date: 11-07-2018 23:26:50 ******/
+/****** Object:  Table [dbo].[Customer]    Script Date: 13-07-2018 22:43:37 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -94,6 +94,7 @@ CREATE TABLE [dbo].[Customer](
 	[Pan_No] [varchar](50) NULL,
 	[Exposure] [float] NULL,
 	[Exposure_AsOn] [date] NULL,
+	[netWorth] [float] NULL,
 	[Constitution] [varchar](250) NULL,
 	[Industry] [varchar](50) NULL,
 	[Sector] [varchar](50) NULL,
@@ -107,7 +108,7 @@ CREATE TABLE [dbo].[Customer](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CustomerDataMapping]    Script Date: 11-07-2018 23:26:52 ******/
+/****** Object:  Table [dbo].[CustomerDataMapping]    Script Date: 13-07-2018 22:43:37 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -123,7 +124,7 @@ CREATE TABLE [dbo].[CustomerDataMapping](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[FileUpload]    Script Date: 11-07-2018 23:26:53 ******/
+/****** Object:  Table [dbo].[FileUpload]    Script Date: 13-07-2018 22:43:38 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -143,7 +144,7 @@ CREATE TABLE [dbo].[FileUpload](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[FinancialResultDetails]    Script Date: 11-07-2018 23:26:53 ******/
+/****** Object:  Table [dbo].[FinancialResultDetails]    Script Date: 13-07-2018 22:43:38 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -163,7 +164,7 @@ CREATE TABLE [dbo].[FinancialResultDetails](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[FinancialResultHeader]    Script Date: 11-07-2018 23:26:54 ******/
+/****** Object:  Table [dbo].[FinancialResultHeader]    Script Date: 13-07-2018 22:43:39 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -181,7 +182,7 @@ CREATE TABLE [dbo].[FinancialResultHeader](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[FinancialResultType]    Script Date: 11-07-2018 23:26:55 ******/
+/****** Object:  Table [dbo].[FinancialResultType]    Script Date: 13-07-2018 22:43:39 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -197,7 +198,7 @@ CREATE TABLE [dbo].[FinancialResultType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[General]    Script Date: 11-07-2018 23:26:56 ******/
+/****** Object:  Table [dbo].[General]    Script Date: 13-07-2018 22:43:40 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -257,7 +258,7 @@ CREATE TABLE [dbo].[General](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[GeneralExposure]    Script Date: 11-07-2018 23:26:57 ******/
+/****** Object:  Table [dbo].[GeneralExposure]    Script Date: 13-07-2018 22:43:40 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -275,7 +276,7 @@ CREATE TABLE [dbo].[GeneralExposure](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[GeneralGurantor]    Script Date: 11-07-2018 23:26:58 ******/
+/****** Object:  Table [dbo].[GeneralGurantor]    Script Date: 13-07-2018 22:43:41 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -293,7 +294,7 @@ CREATE TABLE [dbo].[GeneralGurantor](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Inspection]    Script Date: 11-07-2018 23:26:58 ******/
+/****** Object:  Table [dbo].[Inspection]    Script Date: 13-07-2018 22:43:42 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -315,7 +316,7 @@ CREATE TABLE [dbo].[Inspection](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Interest]    Script Date: 11-07-2018 23:26:59 ******/
+/****** Object:  Table [dbo].[Interest]    Script Date: 13-07-2018 22:43:42 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -338,7 +339,7 @@ CREATE TABLE [dbo].[Interest](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[LookUp]    Script Date: 11-07-2018 23:27:00 ******/
+/****** Object:  Table [dbo].[LookUp]    Script Date: 13-07-2018 22:43:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -354,7 +355,7 @@ CREATE TABLE [dbo].[LookUp](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[News]    Script Date: 11-07-2018 23:27:01 ******/
+/****** Object:  Table [dbo].[News]    Script Date: 13-07-2018 22:43:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -374,7 +375,7 @@ CREATE TABLE [dbo].[News](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Rating]    Script Date: 11-07-2018 23:27:02 ******/
+/****** Object:  Table [dbo].[Rating]    Script Date: 13-07-2018 22:43:44 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -396,7 +397,7 @@ CREATE TABLE [dbo].[Rating](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[RestucturingDetail]    Script Date: 11-07-2018 23:27:02 ******/
+/****** Object:  Table [dbo].[RestucturingDetail]    Script Date: 13-07-2018 22:43:44 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -417,7 +418,7 @@ CREATE TABLE [dbo].[RestucturingDetail](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[RestucturingHeader]    Script Date: 11-07-2018 23:27:04 ******/
+/****** Object:  Table [dbo].[RestucturingHeader]    Script Date: 13-07-2018 22:43:45 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -443,7 +444,7 @@ CREATE TABLE [dbo].[RestucturingHeader](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Score]    Script Date: 11-07-2018 23:27:04 ******/
+/****** Object:  Table [dbo].[Score]    Script Date: 13-07-2018 22:43:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -462,7 +463,7 @@ CREATE TABLE [dbo].[Score](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Security]    Script Date: 11-07-2018 23:27:05 ******/
+/****** Object:  Table [dbo].[Security]    Script Date: 13-07-2018 22:43:47 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -482,7 +483,6 @@ CREATE TABLE [dbo].[Security](
 	[followUpDate] [datetime] NULL,
 	[coverage] [varchar](50) NULL,
 	[guarantorId] [varchar](50) NULL,
-	[guarantorNetWorth] [float] NULL,
 	[LastUpdatedBy] [varchar](50) NULL,
 	[LastUpdatedOn] [datetime] NULL,
  CONSTRAINT [PK_SecurityDetail] PRIMARY KEY CLUSTERED 
@@ -491,7 +491,7 @@ CREATE TABLE [dbo].[Security](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SMABucket]    Script Date: 11-07-2018 23:27:06 ******/
+/****** Object:  Table [dbo].[SMABucket]    Script Date: 13-07-2018 22:43:48 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -514,7 +514,7 @@ CREATE TABLE [dbo].[SMABucket](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SMACompilation]    Script Date: 11-07-2018 23:27:07 ******/
+/****** Object:  Table [dbo].[SMACompilation]    Script Date: 13-07-2018 22:43:48 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -536,7 +536,7 @@ CREATE TABLE [dbo].[SMACompilation](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SMAHistory]    Script Date: 11-07-2018 23:27:08 ******/
+/****** Object:  Table [dbo].[SMAHistory]    Script Date: 13-07-2018 22:43:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -559,7 +559,7 @@ CREATE TABLE [dbo].[SMAHistory](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Snapshot]    Script Date: 11-07-2018 23:27:09 ******/
+/****** Object:  Table [dbo].[Snapshot]    Script Date: 13-07-2018 22:43:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -589,7 +589,7 @@ CREATE TABLE [dbo].[Snapshot](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SOC124]    Script Date: 11-07-2018 23:27:10 ******/
+/****** Object:  Table [dbo].[SOC124]    Script Date: 13-07-2018 22:43:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -610,7 +610,7 @@ CREATE TABLE [dbo].[SOC124](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Student]    Script Date: 11-07-2018 23:27:11 ******/
+/****** Object:  Table [dbo].[Student]    Script Date: 13-07-2018 22:43:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -629,7 +629,7 @@ CREATE TABLE [dbo].[Student](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[WarningIndicator]    Script Date: 11-07-2018 23:27:12 ******/
+/****** Object:  Table [dbo].[WarningIndicator]    Script Date: 13-07-2018 22:43:51 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -877,30 +877,30 @@ INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Su
 GO
 SET IDENTITY_INSERT [dbo].[CustDocument] OFF
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'10000000', N'Tata & Sons', N'ZBDDDDD', 434, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [netWorth], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'10000000', N'Tata & Sons', N'ZBDDDDD', 434, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'10000001', N'Walchandnagar
-', N'SXFPDSDD', 434, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [netWorth], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'10000001', N'Walchandnagar
+', N'SXFPDSDD', 434, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'123456780', N'HCC', N'JKLMN9012J', 13712, CAST(N'2018-06-23' AS Date), N'Public', N'Infrastructure', N'Infra', N'Construction/Maintenance of Roads', N'Hyerabad Lakdi Ka Pul', N'', N'')
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [netWorth], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'123456780', N'HCC', N'JKLMN9012J', 13712, CAST(N'2018-06-23' AS Date), NULL, N'Public', N'Infrastructure', N'Infra', N'Construction/Maintenance of Roads', N'Hyerabad Lakdi Ka Pul', N'', N'')
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'123456789', N'Tata Power', N'ABCDE1234A', 6400, CAST(N'2018-06-23' AS Date), N'Public', N'Power', N'Energy', N'Collection and Distn of Electricity', N'Mumbai Fort', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=531795&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/auto-2-3-wheelers/atulauto/AA08')
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [netWorth], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'123456789', N'Tata Power', N'ABCDE1234A', 6400, CAST(N'2018-06-23' AS Date), NULL, N'Public', N'Power', N'Energy', N'Collection and Distn of Electricity', N'Mumbai Fort', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=531795&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/auto-2-3-wheelers/atulauto/AA08')
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'234567891', N'Reliance Industries Limited', N'BCDEF0123B', 17513, CAST(N'2018-06-23' AS Date), N'Public', N'Oil', N'Energy', N'Manufacture of refined petroleum products', N'Chennai Mount Road', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=500185&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/construction-contracting-civil/hindustanconstructioncompany/HCC')
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [netWorth], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'234567891', N'Reliance Industries Limited', N'BCDEF0123B', 17513, CAST(N'2018-06-23' AS Date), NULL, N'Public', N'Oil', N'Energy', N'Manufacture of refined petroleum products', N'Chennai Mount Road', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=500185&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/construction-contracting-civil/hindustanconstructioncompany/HCC')
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'345678912', N'ICICI HFC', N'CDEFG2345C', 9150, CAST(N'2018-06-23' AS Date), N'Public', N'FI', N'NBFC-HFC', N'NBFCs- in the housing sector', N'Bangalore Indira Nagar', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=500696&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/personal-care/hindustanunilever/HU')
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [netWorth], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'345678912', N'ICICI HFC', N'CDEFG2345C', 9150, CAST(N'2018-06-23' AS Date), NULL, N'Public', N'FI', N'NBFC-HFC', N'NBFCs- in the housing sector', N'Bangalore Indira Nagar', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=500696&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/personal-care/hindustanunilever/HU')
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'456789123', N'LIC Housing Finance', N'DEFGH3456D', 18100, CAST(N'2018-06-23' AS Date), N'Public', N'FI', N'NBFC-HFC', N'NBFCs- in the housing sector', N'Delhi Karol Baug', N'', N'')
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [netWorth], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'456789123', N'LIC Housing Finance', N'DEFGH3456D', 18100, CAST(N'2018-06-23' AS Date), NULL, N'Public', N'FI', N'NBFC-HFC', N'NBFCs- in the housing sector', N'Delhi Karol Baug', N'', N'')
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'567891234', N'Atul Auto', N'EFGHI4567E', 90000, CAST(N'2018-06-23' AS Date), N'Public', N'Auto', N'Auto', N'Mfg of Motor Vehicles', N'Hyerabad Lakdi Ka Pul', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=533207&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/infrastructure-general/jaypeeinfratech/JI09')
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [netWorth], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'567891234', N'Atul Auto', N'EFGHI4567E', 90000, CAST(N'2018-06-23' AS Date), NULL, N'Public', N'Auto', N'Auto', N'Mfg of Motor Vehicles', N'Hyerabad Lakdi Ka Pul', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=533207&expandable=0', N'https://www.moneycontrol.com/india/stockpricequote/infrastructure-general/jaypeeinfratech/JI09')
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'678912345', N'Maruti Suzuki', N'FGHIJ5678F', 90000, CAST(N'2018-06-23' AS Date), N'Public', N'Auto', N'Auto', N'Mfg of Motor Vehicles', N'Mumbai Fort', N'', N'')
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [netWorth], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'678912345', N'Maruti Suzuki', N'FGHIJ5678F', 90000, CAST(N'2018-06-23' AS Date), NULL, N'Public', N'Auto', N'Auto', N'Mfg of Motor Vehicles', N'Mumbai Fort', N'', N'')
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'789123456', N'Patanjali Agro India P Ltd', N'GHIJK6789G', 75000, CAST(N'2018-06-23' AS Date), N'Private', N'Consumables', N'FMCG', N'SOAPS,COSMETICS, TOILETRIES, ETC.', N'Chennai Mount Road', N'', N'')
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [netWorth], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'789123456', N'Patanjali Agro India P Ltd', N'GHIJK6789G', 75000, CAST(N'2018-06-23' AS Date), NULL, N'Private', N'Consumables', N'FMCG', N'SOAPS,COSMETICS, TOILETRIES, ETC.', N'Chennai Mount Road', N'', N'')
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'891234567', N'HUL', N'HIJKL7890H', 120000, CAST(N'2018-06-23' AS Date), N'Public', N'Consumables', N'FMCG', N'SOAPS,COSMETICS, TOILETRIES, ETC.', N'Bangalore Indira Nagar', N'', N'')
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [netWorth], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'891234567', N'HUL', N'HIJKL7890H', 120000, CAST(N'2018-06-23' AS Date), NULL, N'Public', N'Consumables', N'FMCG', N'SOAPS,COSMETICS, TOILETRIES, ETC.', N'Bangalore Indira Nagar', N'', N'')
 GO
-INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'912345678', N'Jaypee Infratech Limited', N'IJKLM8901I', 11476, CAST(N'2018-06-23' AS Date), N'Public', N'Infrastructure', N'Infra', N'Construction/Maintenance of Roads', N'Delhi Karol Baug', N'', N'')
+INSERT [dbo].[Customer] ([Cust_id], [Cust_Name], [Pan_No], [Exposure], [Exposure_AsOn], [netWorth], [Constitution], [Industry], [Sector], [Activity], [Branch], [FinDataMappingId], [NewsDataMappingId]) VALUES (N'912345678', N'Jaypee Infratech Limited', N'IJKLM8901I', 11476, CAST(N'2018-06-23' AS Date), NULL, N'Public', N'Infrastructure', N'Infra', N'Construction/Maintenance of Roads', N'Delhi Karol Baug', N'', N'')
 GO
 SET IDENTITY_INSERT [dbo].[CustomerDataMapping] ON 
 GO
@@ -13438,13 +13438,17 @@ SET IDENTITY_INSERT [dbo].[Rating] OFF
 GO
 SET IDENTITY_INSERT [dbo].[RestucturingDetail] ON 
 GO
-INSERT [dbo].[RestucturingDetail] ([Id], [Cust_id], [accountNo], [type], [accountDate], [cutofDate], [sacrifice], [repaymentStartDate], [frequency]) VALUES (1, N'7772015', N'Real Estate', N'01-Jan-15', CAST(N'2014-06-30T00:00:00.000' AS DateTime), NULL, NULL, NULL, NULL)
+INSERT [dbo].[RestucturingDetail] ([Id], [Cust_id], [accountNo], [type], [accountDate], [cutofDate], [sacrifice], [repaymentStartDate], [frequency]) VALUES (1, N'912345678', N'7772015
+', N'01-Jan-15', CAST(N'2014-06-30T00:00:00.000' AS DateTime), CAST(N'2015-01-01T00:00:00.000' AS DateTime), 265, CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'M')
 GO
-INSERT [dbo].[RestucturingDetail] ([Id], [Cust_id], [accountNo], [type], [accountDate], [cutofDate], [sacrifice], [repaymentStartDate], [frequency]) VALUES (2, N'7772016', N'Infrastructure', N'01-Jan-15', CAST(N'2014-06-30T00:00:00.000' AS DateTime), NULL, NULL, NULL, NULL)
+INSERT [dbo].[RestucturingDetail] ([Id], [Cust_id], [accountNo], [type], [accountDate], [cutofDate], [sacrifice], [repaymentStartDate], [frequency]) VALUES (2, N'912345678', N'7776001
+', N'01-Jan-15', CAST(N'2014-06-30T00:00:00.000' AS DateTime), NULL, NULL, NULL, N'M')
 GO
-INSERT [dbo].[RestucturingDetail] ([Id], [Cust_id], [accountNo], [type], [accountDate], [cutofDate], [sacrifice], [repaymentStartDate], [frequency]) VALUES (3, N'7772017', N'Infrastructure', N'01-Jan-15', CAST(N'2014-06-30T00:00:00.000' AS DateTime), NULL, NULL, NULL, NULL)
+INSERT [dbo].[RestucturingDetail] ([Id], [Cust_id], [accountNo], [type], [accountDate], [cutofDate], [sacrifice], [repaymentStartDate], [frequency]) VALUES (3, N'123456780', N'7772016
+', N'01-Jan-15', CAST(N'2014-06-30T00:00:00.000' AS DateTime), CAST(N'2015-01-01T00:00:00.000' AS DateTime), 105, CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'Q')
 GO
-INSERT [dbo].[RestucturingDetail] ([Id], [Cust_id], [accountNo], [type], [accountDate], [cutofDate], [sacrifice], [repaymentStartDate], [frequency]) VALUES (4, N'7771003', N'Infrastructure', N'01-Jan-15', CAST(N'2014-06-30T00:00:00.000' AS DateTime), NULL, NULL, NULL, NULL)
+INSERT [dbo].[RestucturingDetail] ([Id], [Cust_id], [accountNo], [type], [accountDate], [cutofDate], [sacrifice], [repaymentStartDate], [frequency]) VALUES (4, N'123456780', N'7772017
+', N'01-Jan-15', CAST(N'2014-06-30T00:00:00.000' AS DateTime), CAST(N'2015-01-01T00:00:00.000' AS DateTime), 158, CAST(N'2019-01-01T00:00:00.000' AS DateTime), N'Q')
 GO
 SET IDENTITY_INSERT [dbo].[RestucturingDetail] OFF
 GO
@@ -13488,65 +13492,65 @@ SET IDENTITY_INSERT [dbo].[Score] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Security] ON 
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (1, N'123456789', N'7771001', N'Receivables and Inventory', 750, N'860', NULL, N'Y', 473, CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2018-07-01T00:00:00.000' AS DateTime), CAST(N'2018-12-01T00:00:00.000' AS DateTime), N'', N'10000000', 23432, N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (1, N'123456789', N'7771001', N'Receivables and Inventory', 750, N'860', NULL, N'Y', 473, CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2018-07-01T00:00:00.000' AS DateTime), CAST(N'2018-12-01T00:00:00.000' AS DateTime), N'', N'10000000', N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (2, N'123456789', N'7772001', N'Land and Building', 4850, N'6000', NULL, N'Y', 5100, CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-22T00:00:00.000' AS DateTime), CAST(N'2018-12-01T00:00:00.000' AS DateTime), N'', N'10000000', 23432, N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (2, N'123456789', N'7772001', N'Land and Building', 4850, N'6000', NULL, N'Y', 5100, CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-22T00:00:00.000' AS DateTime), CAST(N'2018-12-01T00:00:00.000' AS DateTime), N'', N'10000000', N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (3, N'123456789', N'BG123', N'Receivables and Inventory', 400, N'450', NULL, N'Y', 247.5, CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2018-07-01T00:00:00.000' AS DateTime), CAST(N'2018-12-01T00:00:00.000' AS DateTime), N'', N'10000000', 23432, N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (3, N'123456789', N'BG123', N'Receivables and Inventory', 400, N'450', NULL, N'Y', 247.5, CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2018-07-01T00:00:00.000' AS DateTime), CAST(N'2018-12-01T00:00:00.000' AS DateTime), N'', N'10000000', N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (4, N'234567891', N'7773001', N'Unsecured', 10010, N'0', NULL, N'Y', 0, NULL, NULL, NULL, N'', N'', 23432, N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (4, N'234567891', N'7773001', N'Unsecured', 10010, N'0', NULL, N'Y', 0, NULL, NULL, NULL, N'', N'', N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (5, N'234567891', N'7773002', N'Receivables and Inventory', 2500, N'8200', NULL, N'Y', 4510, CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-25T00:00:00.000' AS DateTime), CAST(N'2018-12-01T00:00:00.000' AS DateTime), N'', N'', 23432, N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (5, N'234567891', N'7773002', N'Receivables and Inventory', 2500, N'8200', NULL, N'Y', 4510, CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-25T00:00:00.000' AS DateTime), CAST(N'2018-12-01T00:00:00.000' AS DateTime), N'', N'', N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (6, N'234567891', N'7773003', N'Receivables and Inventory', 3003, N'3300', NULL, N'Y', 1815, CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-25T00:00:00.000' AS DateTime), CAST(N'2018-12-01T00:00:00.000' AS DateTime), N'', N'', 23432, N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (6, N'234567891', N'7773003', N'Receivables and Inventory', 3003, N'3300', NULL, N'Y', 1815, CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-25T00:00:00.000' AS DateTime), CAST(N'2018-12-01T00:00:00.000' AS DateTime), N'', N'', N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (7, N'234567891', N'7773004', N'Receivables and Inventory', 2000, N'2750', NULL, N'Y', 1512.5, CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-25T00:00:00.000' AS DateTime), CAST(N'2018-12-01T00:00:00.000' AS DateTime), N'', N'', 23432, N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (7, N'234567891', N'7773004', N'Receivables and Inventory', 2000, N'2750', NULL, N'Y', 1512.5, CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2018-06-25T00:00:00.000' AS DateTime), CAST(N'2018-12-01T00:00:00.000' AS DateTime), N'', N'', N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (8, N'345678912', N'7772002', N'Receivables', 2250, N'2300', NULL, N'Y', 0, NULL, CAST(N'2018-06-25T00:00:00.000' AS DateTime), NULL, N'', N'', 23432, N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (8, N'345678912', N'7772002', N'Receivables', 2250, N'2300', NULL, N'Y', 0, NULL, CAST(N'2018-06-25T00:00:00.000' AS DateTime), NULL, N'', N'', N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (9, N'345678912', N'7772003', N'Receivables', 1000, N'1100', NULL, N'Y', 0, NULL, CAST(N'2018-06-25T00:00:00.000' AS DateTime), NULL, N'', N'', 23432, N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (9, N'345678912', N'7772003', N'Receivables', 1000, N'1100', NULL, N'Y', 0, NULL, CAST(N'2018-06-25T00:00:00.000' AS DateTime), NULL, N'', N'', N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (10, N'345678912', N'7772004', N'Receivables', 4500, N'4950', NULL, N'Y', 0, NULL, CAST(N'2018-06-25T00:00:00.000' AS DateTime), NULL, N'', N'', 23432, N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (10, N'345678912', N'7772004', N'Receivables', 4500, N'4950', NULL, N'Y', 0, NULL, CAST(N'2018-06-25T00:00:00.000' AS DateTime), NULL, N'', N'', N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (11, N'345678912', N'7772005', N'Receivables', 1400, N'1450', NULL, N'Y', 0, NULL, CAST(N'2018-06-25T00:00:00.000' AS DateTime), NULL, N'', N'', 23432, N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (11, N'345678912', N'7772005', N'Receivables', 1400, N'1450', NULL, N'Y', 0, NULL, CAST(N'2018-06-25T00:00:00.000' AS DateTime), NULL, N'', N'', N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (12, N'456789123', N'7772006', N'Receivables', 3000, N'3000', NULL, N'Y', 0, NULL, CAST(N'2018-06-25T00:00:00.000' AS DateTime), NULL, N'', N'', 23432, N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (12, N'456789123', N'7772006', N'Receivables', 3000, N'3000', NULL, N'Y', 0, NULL, CAST(N'2018-06-25T00:00:00.000' AS DateTime), NULL, N'', N'', N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (13, N'456789123', N'7772007', N'Receivables', 5000, N'5000', NULL, N'Y', 0, NULL, CAST(N'2018-06-25T00:00:00.000' AS DateTime), NULL, N'', N'', 23432, N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (13, N'456789123', N'7772007', N'Receivables', 5000, N'5000', NULL, N'Y', 0, NULL, CAST(N'2018-06-25T00:00:00.000' AS DateTime), NULL, N'', N'', N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (14, N'456789123', N'7772008', N'Receivables', 7500, N'7500', NULL, N'Y', 0, NULL, CAST(N'2018-06-25T00:00:00.000' AS DateTime), NULL, N'', N'', 23432, N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (14, N'456789123', N'7772008', N'Receivables', 7500, N'7500', NULL, N'Y', 0, NULL, CAST(N'2018-06-25T00:00:00.000' AS DateTime), NULL, N'', N'', N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (15, N'456789123', N'7772009', N'Receivables', 2000, N'2000', NULL, N'Y', 0, NULL, CAST(N'2018-06-25T00:00:00.000' AS DateTime), NULL, N'', N'', 23432, N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (15, N'456789123', N'7772009', N'Receivables', 2000, N'2000', NULL, N'Y', 0, NULL, CAST(N'2018-06-25T00:00:00.000' AS DateTime), NULL, N'', N'', N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (16, N'456789123', N'7772010', N'Unsecured', 600, N'0', NULL, N'Y', 0, NULL, NULL, NULL, N'', N'', 23432, N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (16, N'456789123', N'7772010', N'Unsecured', 600, N'0', NULL, N'Y', 0, NULL, NULL, NULL, N'', N'', N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (17, N'567891234', N'7772011', N'Machinery', 500, N'1100', NULL, N'Y', 935, CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-22T00:00:00.000' AS DateTime), CAST(N'2018-12-01T00:00:00.000' AS DateTime), N'', N'', 23432, N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (17, N'567891234', N'7772011', N'Machinery', 500, N'1100', NULL, N'Y', 935, CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-22T00:00:00.000' AS DateTime), CAST(N'2018-12-01T00:00:00.000' AS DateTime), N'', N'', N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (18, N'567891234', N'7771002', N'Inventory', 4395, N'5000', NULL, N'Y', 4250, CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2018-07-01T00:00:00.000' AS DateTime), CAST(N'2018-12-01T00:00:00.000' AS DateTime), N'', N'', 23432, N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (18, N'567891234', N'7771002', N'Inventory', 4395, N'5000', NULL, N'Y', 4250, CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2018-07-01T00:00:00.000' AS DateTime), CAST(N'2018-12-01T00:00:00.000' AS DateTime), N'', N'', N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (19, N'567891234', N'7774001', N'Inventory', 2500, N'2500', NULL, N'Y', 2125, CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2018-07-01T00:00:00.000' AS DateTime), CAST(N'2018-12-01T00:00:00.000' AS DateTime), N'', N'567891234', 23432, N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (19, N'567891234', N'7774001', N'Inventory', 2500, N'2500', NULL, N'Y', 2125, CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2018-07-01T00:00:00.000' AS DateTime), CAST(N'2018-12-01T00:00:00.000' AS DateTime), N'', N'567891234', N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (20, N'567891234', N'7775001', N'Inventory', 100, N'100', NULL, N'Y', 85, CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2018-07-01T00:00:00.000' AS DateTime), CAST(N'2018-12-01T00:00:00.000' AS DateTime), N'', N'', 23432, N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (20, N'567891234', N'7775001', N'Inventory', 100, N'100', NULL, N'Y', 85, CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2018-07-01T00:00:00.000' AS DateTime), CAST(N'2018-12-01T00:00:00.000' AS DateTime), N'', N'', N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (21, N'678912345', N'7772012', N'Unsecured', 86000, N'0', NULL, N'Y', 0, NULL, NULL, NULL, N'', N'', 23432, N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (21, N'678912345', N'7772012', N'Unsecured', 86000, N'0', NULL, N'Y', 0, NULL, NULL, NULL, N'', N'', N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (22, N'789123456', N'7772014', N'Inventory', 75000, N'80000', NULL, N'Y', 68000, CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2018-07-01T00:00:00.000' AS DateTime), CAST(N'2018-12-01T00:00:00.000' AS DateTime), N'', N'', 23432, N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (22, N'789123456', N'7772014', N'Inventory', 75000, N'80000', NULL, N'Y', 68000, CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2018-07-01T00:00:00.000' AS DateTime), CAST(N'2018-12-01T00:00:00.000' AS DateTime), N'', N'', N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (23, N'891234567', N'7774002', N'Unsecured', 200, N'0', NULL, N'Y', 0, NULL, NULL, NULL, N'', N'', 23432, N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (23, N'891234567', N'7774002', N'Unsecured', 200, N'0', NULL, N'Y', 0, NULL, NULL, NULL, N'', N'', N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (24, N'891234567', N'7775002', N'Unsecured', 80000, N'0', NULL, N'Y', 0, NULL, NULL, NULL, N'', N'', 23432, N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (24, N'891234567', N'7775002', N'Unsecured', 80000, N'0', NULL, N'Y', 0, NULL, NULL, NULL, N'', N'', N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (25, N'912345678', N'7772015', N'Entire Asset', 9700, N'11000', NULL, N'Y', 9350, CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-22T00:00:00.000' AS DateTime), CAST(N'2018-12-01T00:00:00.000' AS DateTime), N'', N'', 23432, N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (25, N'912345678', N'7772015', N'Entire Asset', 9700, N'11000', NULL, N'Y', 9350, CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-22T00:00:00.000' AS DateTime), CAST(N'2018-12-01T00:00:00.000' AS DateTime), N'', N'', N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (26, N'912345678', N'7776001', N'Entire Asset', 1776, N'2000', NULL, N'Y', 1700, CAST(N'2019-01-01T00:00:00.000' AS DateTime), NULL, CAST(N'2018-12-01T00:00:00.000' AS DateTime), N'', N'', 23432, N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (26, N'912345678', N'7776001', N'Entire Asset', 1776, N'2000', NULL, N'Y', 1700, CAST(N'2019-01-01T00:00:00.000' AS DateTime), NULL, CAST(N'2018-12-01T00:00:00.000' AS DateTime), N'', N'', N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (27, N'123456780', N'7772016', N'Entire Asset', 4099, N'5000', NULL, N'Y', 4250, CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-22T00:00:00.000' AS DateTime), CAST(N'2018-12-01T00:00:00.000' AS DateTime), N'', N'', 23432, N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (27, N'123456780', N'7772016', N'Entire Asset', 4099, N'5000', NULL, N'Y', 4250, CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-22T00:00:00.000' AS DateTime), CAST(N'2018-12-01T00:00:00.000' AS DateTime), N'', N'', N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (28, N'123456780', N'7772017', N'Entire Asset', 5598, N'6250', NULL, N'Y', 5312.5, CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-22T00:00:00.000' AS DateTime), CAST(N'2018-12-01T00:00:00.000' AS DateTime), N'', N'10000000', 23432, N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (28, N'123456780', N'7772017', N'Entire Asset', 5598, N'6250', NULL, N'Y', 5312.5, CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-22T00:00:00.000' AS DateTime), CAST(N'2018-12-01T00:00:00.000' AS DateTime), N'', N'10000000', N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (29, N'123456780', N'7771003', N'Entire Asset', 2007, N'2200', NULL, N'Y', 1870, CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-22T00:00:00.000' AS DateTime), CAST(N'2018-12-01T00:00:00.000' AS DateTime), N'', N'10000000', 23432, N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (29, N'123456780', N'7771003', N'Entire Asset', 2007, N'2200', NULL, N'Y', 1870, CAST(N'2019-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-22T00:00:00.000' AS DateTime), CAST(N'2018-12-01T00:00:00.000' AS DateTime), N'', N'10000000', N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [guarantorNetWorth], [LastUpdatedBy], [LastUpdatedOn]) VALUES (30, N'123456780', N'7776002', N'Entire Asset', 2008, N'2500', NULL, N'Y', 0, NULL, NULL, NULL, N'', N'10000000', 23432, N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
+INSERT [dbo].[Security] ([Id], [Cust_Id], [accountNo], [securityType], [balanceAsOn], [securityDetails], [apportionValue], [correctFlag], [insuranceValue], [ìnsuranceExpiryDate], [valuationDate], [followUpDate], [coverage], [guarantorId], [LastUpdatedBy], [LastUpdatedOn]) VALUES (30, N'123456780', N'7776002', N'Entire Asset', 2008, N'2500', NULL, N'Y', 0, NULL, NULL, NULL, N'', N'10000000', N'praveen', CAST(N'2018-07-11T00:00:00.000' AS DateTime))
 GO
 SET IDENTITY_INSERT [dbo].[Security] OFF
 GO
@@ -13564,17 +13568,125 @@ SET IDENTITY_INSERT [dbo].[SMABucket] OFF
 GO
 SET IDENTITY_INSERT [dbo].[SMACompilation] ON 
 GO
-INSERT [dbo].[SMACompilation] ([Id], [Cust_id], [JLF], [smaDate], [calledBy], [meeetingSummary], [branchReply], [nextFollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (1, N'678912345', N'Y', CAST(N'2017-05-05T00:00:00.000' AS DateTime), N'HDFC      ', N'Meeeting Summary', N'branch response', CAST(N'2019-05-01T00:00:00.000' AS DateTime), N'praveen', CAST(N'2019-02-05T00:00:00.000' AS DateTime))
+INSERT [dbo].[SMACompilation] ([Id], [Cust_id], [JLF], [smaDate], [calledBy], [meeetingSummary], [branchReply], [nextFollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (1, N'123456789', N'NA', NULL, N'SBI       ', N'', N'branch response', NULL, N'praveen', NULL)
+GO
+INSERT [dbo].[SMACompilation] ([Id], [Cust_id], [JLF], [smaDate], [calledBy], [meeetingSummary], [branchReply], [nextFollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (2, N'123456789', N'SMA1', NULL, N'NA        ', N'', N'branch response', NULL, N'praveen', NULL)
+GO
+INSERT [dbo].[SMACompilation] ([Id], [Cust_id], [JLF], [smaDate], [calledBy], [meeetingSummary], [branchReply], [nextFollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (3, N'123456789', N'NA', NULL, N'SBI       ', N'', N'branch response', NULL, N'praveen', NULL)
+GO
+INSERT [dbo].[SMACompilation] ([Id], [Cust_id], [JLF], [smaDate], [calledBy], [meeetingSummary], [branchReply], [nextFollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (4, N'234567891', N'NA', NULL, N'NA        ', N'', N'branch response', NULL, N'praveen', NULL)
+GO
+INSERT [dbo].[SMACompilation] ([Id], [Cust_id], [JLF], [smaDate], [calledBy], [meeetingSummary], [branchReply], [nextFollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (5, N'234567891', N'NA', NULL, N'NA        ', N'', N'branch response', NULL, N'praveen', NULL)
+GO
+INSERT [dbo].[SMACompilation] ([Id], [Cust_id], [JLF], [smaDate], [calledBy], [meeetingSummary], [branchReply], [nextFollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (6, N'234567891', N'NA', NULL, N'NA        ', N'', N'branch response', NULL, N'praveen', NULL)
+GO
+INSERT [dbo].[SMACompilation] ([Id], [Cust_id], [JLF], [smaDate], [calledBy], [meeetingSummary], [branchReply], [nextFollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (7, N'234567891', N'NA', NULL, N'NA        ', N'', N'branch response', NULL, N'praveen', NULL)
+GO
+INSERT [dbo].[SMACompilation] ([Id], [Cust_id], [JLF], [smaDate], [calledBy], [meeetingSummary], [branchReply], [nextFollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (8, N'345678912', N'NA', NULL, N'ICICI Bank', N'', N'branch response', NULL, N'praveen', NULL)
+GO
+INSERT [dbo].[SMACompilation] ([Id], [Cust_id], [JLF], [smaDate], [calledBy], [meeetingSummary], [branchReply], [nextFollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (9, N'345678912', N'NA', NULL, N'ICICI Bank', N'', N'branch response', NULL, N'praveen', NULL)
+GO
+INSERT [dbo].[SMACompilation] ([Id], [Cust_id], [JLF], [smaDate], [calledBy], [meeetingSummary], [branchReply], [nextFollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (10, N'345678912', N'NA', NULL, N'ICICI Bank', N'', N'branch response', NULL, N'praveen', NULL)
+GO
+INSERT [dbo].[SMACompilation] ([Id], [Cust_id], [JLF], [smaDate], [calledBy], [meeetingSummary], [branchReply], [nextFollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (11, N'345678912', N'NA', NULL, N'ICICI Bank', N'', N'branch response', NULL, N'praveen', NULL)
+GO
+INSERT [dbo].[SMACompilation] ([Id], [Cust_id], [JLF], [smaDate], [calledBy], [meeetingSummary], [branchReply], [nextFollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (12, N'456789123', N'NA', NULL, N'NA        ', N'', N'branch response', NULL, N'praveen', NULL)
+GO
+INSERT [dbo].[SMACompilation] ([Id], [Cust_id], [JLF], [smaDate], [calledBy], [meeetingSummary], [branchReply], [nextFollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (13, N'456789123', N'NA', NULL, N'NA        ', N'', N'branch response', NULL, N'praveen', NULL)
+GO
+INSERT [dbo].[SMACompilation] ([Id], [Cust_id], [JLF], [smaDate], [calledBy], [meeetingSummary], [branchReply], [nextFollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (14, N'456789123', N'NA', NULL, N'NA        ', N'', N'branch response', NULL, N'praveen', NULL)
+GO
+INSERT [dbo].[SMACompilation] ([Id], [Cust_id], [JLF], [smaDate], [calledBy], [meeetingSummary], [branchReply], [nextFollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (15, N'456789123', N'NA', NULL, N'NA        ', N'', N'branch response', NULL, N'praveen', NULL)
+GO
+INSERT [dbo].[SMACompilation] ([Id], [Cust_id], [JLF], [smaDate], [calledBy], [meeetingSummary], [branchReply], [nextFollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (16, N'456789123', N'NA', NULL, N'NA        ', N'', N'branch response', NULL, N'praveen', NULL)
+GO
+INSERT [dbo].[SMACompilation] ([Id], [Cust_id], [JLF], [smaDate], [calledBy], [meeetingSummary], [branchReply], [nextFollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (17, N'567891234', N'NA', NULL, N'NA        ', N'', N'branch response', NULL, N'praveen', NULL)
+GO
+INSERT [dbo].[SMACompilation] ([Id], [Cust_id], [JLF], [smaDate], [calledBy], [meeetingSummary], [branchReply], [nextFollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (18, N'567891234', N'NA', NULL, N'NA        ', N'', N'branch response', NULL, N'praveen', NULL)
+GO
+INSERT [dbo].[SMACompilation] ([Id], [Cust_id], [JLF], [smaDate], [calledBy], [meeetingSummary], [branchReply], [nextFollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (19, N'678912345', N'NA', NULL, N'HDFC Bank ', N'', N'branch response', NULL, N'praveen', NULL)
+GO
+INSERT [dbo].[SMACompilation] ([Id], [Cust_id], [JLF], [smaDate], [calledBy], [meeetingSummary], [branchReply], [nextFollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (20, N'789123456', N'NA', NULL, N'NA        ', N'', N'branch response', NULL, N'praveen', NULL)
+GO
+INSERT [dbo].[SMACompilation] ([Id], [Cust_id], [JLF], [smaDate], [calledBy], [meeetingSummary], [branchReply], [nextFollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (21, N'891234567', N'NA', NULL, N'ICICI Bank', N'', N'branch response', NULL, N'praveen', NULL)
+GO
+INSERT [dbo].[SMACompilation] ([Id], [Cust_id], [JLF], [smaDate], [calledBy], [meeetingSummary], [branchReply], [nextFollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (22, N'891234567', N'NA', NULL, N'ICICI Bank', N'', N'branch response', NULL, N'praveen', NULL)
+GO
+INSERT [dbo].[SMACompilation] ([Id], [Cust_id], [JLF], [smaDate], [calledBy], [meeetingSummary], [branchReply], [nextFollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (23, N'912345678', N'SMA2', NULL, N'NA        ', N'Already Restructured', N'branch response', CAST(N'2018-09-01T00:00:00.000' AS DateTime), N'praveen', NULL)
+GO
+INSERT [dbo].[SMACompilation] ([Id], [Cust_id], [JLF], [smaDate], [calledBy], [meeetingSummary], [branchReply], [nextFollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (24, N'912345678', N'SMA1', NULL, N'NA        ', N'Already Restructured', N'branch response', CAST(N'2018-09-01T00:00:00.000' AS DateTime), N'praveen', NULL)
+GO
+INSERT [dbo].[SMACompilation] ([Id], [Cust_id], [JLF], [smaDate], [calledBy], [meeetingSummary], [branchReply], [nextFollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (25, N'123456780', N'SMA2', NULL, N'NA        ', N'Already Restructured', N'branch response', CAST(N'2018-09-01T00:00:00.000' AS DateTime), N'praveen', NULL)
+GO
+INSERT [dbo].[SMACompilation] ([Id], [Cust_id], [JLF], [smaDate], [calledBy], [meeetingSummary], [branchReply], [nextFollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (26, N'123456780', N'SMA2', NULL, N'SBI       ', N'Already Restructured', N'branch response', CAST(N'2018-09-01T00:00:00.000' AS DateTime), N'praveen', NULL)
+GO
+INSERT [dbo].[SMACompilation] ([Id], [Cust_id], [JLF], [smaDate], [calledBy], [meeetingSummary], [branchReply], [nextFollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (27, N'123456780', N'SMA2', NULL, N'SBI       ', N'Already Restructured', N'branch response', CAST(N'2018-09-01T00:00:00.000' AS DateTime), N'praveen', NULL)
+GO
+INSERT [dbo].[SMACompilation] ([Id], [Cust_id], [JLF], [smaDate], [calledBy], [meeetingSummary], [branchReply], [nextFollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (28, N'123456780', N'SMA1', NULL, N'SBI       ', N'Already Restructured', N'branch response', CAST(N'2018-09-01T00:00:00.000' AS DateTime), N'praveen', NULL)
 GO
 SET IDENTITY_INSERT [dbo].[SMACompilation] OFF
 GO
 SET IDENTITY_INSERT [dbo].[SMAHistory] ON 
 GO
-INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (1, N'678912345', N'SMA1', N'123456711', N'reason', 12, N'Upgrade', CAST(N'2015-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'Praveen')
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (1, N'123456789', N'NA', N'7771001', N'', NULL, N'Upgrade', NULL, CAST(N'2017-01-01T00:00:00.000' AS DateTime), NULL, N'Praveen')
 GO
-INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (2, N'678912345', N'SMA2', N'123456711', N'reason', 12, N'DownGrade', CAST(N'2015-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'Praveen')
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (2, N'123456789', N'SMA1', N'7772001', N'Arrears for 39 days', 8, N'DownGrade', NULL, CAST(N'2017-01-01T00:00:00.000' AS DateTime), NULL, N'Praveen')
 GO
-INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (3, N'678912345', N'SMA3', N'123456711', N'reason', 15, N'Regularised', CAST(N'2015-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), CAST(N'2018-01-01T00:00:00.000' AS DateTime), N'Praveen')
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (3, N'123456789', N'NA', N'BG123', N'', NULL, N'Regularised', NULL, CAST(N'2017-01-01T00:00:00.000' AS DateTime), NULL, N'Praveen')
+GO
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (4, N'234567891', N'NA', N'7773001', N'', NULL, N'Regularised', NULL, CAST(N'2017-01-01T00:00:00.000' AS DateTime), NULL, N'Praveen')
+GO
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (5, N'234567891', N'NA', N'7773002', N'', NULL, N'Regularised', NULL, CAST(N'2017-01-01T00:00:00.000' AS DateTime), NULL, N'Praveen')
+GO
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (6, N'234567891', N'NA', N'7773003', N'', NULL, N'Regularised', NULL, CAST(N'2017-01-01T00:00:00.000' AS DateTime), NULL, N'Praveen')
+GO
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (7, N'234567891', N'NA', N'7773004', N'', NULL, N'Regularised', NULL, CAST(N'2017-01-01T00:00:00.000' AS DateTime), NULL, N'Praveen')
+GO
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (8, N'345678912', N'NA', N'7772002', N'', NULL, N'Regularised', NULL, CAST(N'2017-01-01T00:00:00.000' AS DateTime), NULL, N'Praveen')
+GO
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (9, N'345678912', N'NA', N'7772003', N'', NULL, N'Regularised', NULL, CAST(N'2017-01-01T00:00:00.000' AS DateTime), NULL, N'Praveen')
+GO
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (10, N'345678912', N'NA', N'7772004', N'', NULL, N'Regularised', NULL, CAST(N'2017-01-01T00:00:00.000' AS DateTime), NULL, N'Praveen')
+GO
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (11, N'345678912', N'NA', N'7772005', N'', NULL, N'Regularised', NULL, CAST(N'2017-01-01T00:00:00.000' AS DateTime), NULL, N'Praveen')
+GO
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (12, N'456789123', N'NA', N'7772006', N'', NULL, N'Regularised', NULL, CAST(N'2017-01-01T00:00:00.000' AS DateTime), NULL, N'Praveen')
+GO
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (13, N'456789123', N'NA', N'7772007', N'', NULL, N'Regularised', NULL, CAST(N'2017-01-01T00:00:00.000' AS DateTime), NULL, N'Praveen')
+GO
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (14, N'456789123', N'NA', N'7772008', N'', NULL, N'Regularised', NULL, CAST(N'2017-01-01T00:00:00.000' AS DateTime), NULL, N'Praveen')
+GO
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (15, N'456789123', N'NA', N'7772009', N'', NULL, N'Regularised', NULL, CAST(N'2017-01-01T00:00:00.000' AS DateTime), NULL, N'Praveen')
+GO
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (16, N'456789123', N'NA', N'7772010', N'', NULL, N'Regularised', NULL, CAST(N'2017-01-01T00:00:00.000' AS DateTime), NULL, N'Praveen')
+GO
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (17, N'567891234', N'NA', N'7772011', N'', NULL, N'Regularised', NULL, CAST(N'2017-01-01T00:00:00.000' AS DateTime), NULL, N'Praveen')
+GO
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (18, N'567891234', N'NA', N'7771002', N'', NULL, N'Regularised', NULL, CAST(N'2017-01-01T00:00:00.000' AS DateTime), NULL, N'Praveen')
+GO
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (19, N'567891234', N'NA', N'7774001', N'', NULL, N'Regularised', NULL, CAST(N'2017-01-01T00:00:00.000' AS DateTime), NULL, N'Praveen')
+GO
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (20, N'567891234', N'NA', N'7775001', N'', NULL, N'Regularised', NULL, CAST(N'2017-01-01T00:00:00.000' AS DateTime), NULL, N'Praveen')
+GO
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (21, N'678912345', N'NA', N'7772012', N'', NULL, N'Regularised', NULL, CAST(N'2017-01-01T00:00:00.000' AS DateTime), NULL, N'Praveen')
+GO
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (22, N'789123456', N'NA', N'7772014', N'', NULL, N'Regularised', NULL, CAST(N'2017-01-01T00:00:00.000' AS DateTime), NULL, N'Praveen')
+GO
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (23, N'891234567', N'NA', N'7774002', N'', NULL, N'Regularised', NULL, CAST(N'2017-01-01T00:00:00.000' AS DateTime), NULL, N'Praveen')
+GO
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (24, N'891234567', N'NA', N'7775002', N'', NULL, N'Regularised', NULL, CAST(N'2017-01-01T00:00:00.000' AS DateTime), NULL, N'Praveen')
+GO
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (25, N'912345678', N'SMA2', N'7772015', N'Arrears for 82 Days', 20, N'DownGrade', NULL, CAST(N'2017-01-01T00:00:00.000' AS DateTime), NULL, N'Praveen')
+GO
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (26, N'912345678', N'SMA1', N'7776001', N'Arrears for 39 days', 8, N'DownGrade', NULL, CAST(N'2017-01-01T00:00:00.000' AS DateTime), NULL, N'Praveen')
+GO
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (27, N'123456780', N'SMA2', N'7772016', N'Arrears for 82 Days', 20, N'DownGrade', NULL, CAST(N'2017-01-01T00:00:00.000' AS DateTime), NULL, N'Praveen')
+GO
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (28, N'123456780', N'SMA2', N'7772017', N'Arrears for 82 Days', 20, N'DownGrade', NULL, CAST(N'2017-01-01T00:00:00.000' AS DateTime), NULL, N'Praveen')
+GO
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (29, N'123456780', N'SMA2', N'7771003', N'Interest not serviced for 82 days', 20, N'DownGrade', NULL, CAST(N'2017-01-01T00:00:00.000' AS DateTime), NULL, N'Praveen')
+GO
+INSERT [dbo].[SMAHistory] ([Id], [Cust_Id], [smaClass], [accountNumber], [reason], [noOfDays], [nextStatus], [smaDate], [CompiledDate], [LastUpdatedOn], [LastUpdateBy]) VALUES (30, N'123456780', N'SMA1', N'7776002', N'Arrears for 39 days', 8, N'DownGrade', NULL, CAST(N'2017-01-01T00:00:00.000' AS DateTime), NULL, N'Praveen')
 GO
 SET IDENTITY_INSERT [dbo].[SMAHistory] OFF
 GO
@@ -13620,7 +13732,7 @@ INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via],
 GO
 INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate]) VALUES (4, N'678912345', N'soourcesystem', CAST(N'2018-01-10T00:00:00.000' AS DateTime), N'via', N'appprovalfor', N'', NULL, NULL)
 GO
-INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate]) VALUES (5, N'678912345', N'soourcesystem1', CAST(N'2018-10-01T00:00:00.000' AS DateTime), N'via1', N'appprovalfor1', N'no', NULL, CAST(N'2017-01-12T00:00:00.000' AS DateTime))
+INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate]) VALUES (5, N'678912345', N'soourcesystem1', CAST(N'2018-10-01T00:00:00.000' AS DateTime), N'via1', N'appprovalfor1', N'no', CAST(N'2018-07-02T00:00:00.000' AS DateTime), CAST(N'2017-01-12T00:00:00.000' AS DateTime))
 GO
 INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate]) VALUES (6, N'678912345', N'soourcesystem2', CAST(N'2018-10-01T00:00:00.000' AS DateTime), N'via1', N'appprovalfor2', N'yes', CAST(N'2018-11-01T00:00:00.000' AS DateTime), CAST(N'2017-01-12T00:00:00.000' AS DateTime))
 GO
