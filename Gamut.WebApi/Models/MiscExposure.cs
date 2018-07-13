@@ -12,12 +12,17 @@ namespace Gamut.WebAPI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class LookUp
+    public partial class MiscExposure
     {
         public int Id { get; set; }
-        public string LookUp_Table { get; set; }
-        public string LookUp_Name { get; set; }
-        public string LookUp_Value { get; set; }
-        public string LookUp_Key { get; set; }
+        public string Cust_Id { get; set; }
+        public string FacilityType { get; set; }
+        public string Facility { get; set; }
+        public Nullable<double> SanctionLimit { get; set; }
+        public Nullable<double> Balance { get; set; }
+        public Nullable<double> Exposure { get; set; }
+        public string Comments { get; set; }
+        public string LastUpdatedBy { get; set; }
+        public Nullable<System.DateTime> LastUpdatedOn { get; set; }
     }
 }

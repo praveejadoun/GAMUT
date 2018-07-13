@@ -47,13 +47,6 @@ namespace Gamut.WebAPI.Controllers
             ScoreDecorator scoreDecorator = new ScoreDecorator(scores,  lstRefrence,  lstCommunication, lstReminders, lstMyrepository, customer);
             return Ok(scoreDecorator);
 
-            Score score = db.Scores.Find(id);
-            if (score == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(score);
         }
 
         // PUT: api/Score/5

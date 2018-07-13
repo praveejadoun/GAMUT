@@ -12,12 +12,16 @@ namespace Gamut.WebAPI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class LookUp
+    public partial class ModuleNote
     {
         public int Id { get; set; }
-        public string LookUp_Table { get; set; }
-        public string LookUp_Name { get; set; }
-        public string LookUp_Value { get; set; }
-        public string LookUp_Key { get; set; }
+        public string Cust_Id { get; set; }
+        public string ModuleName { get; set; }
+        public string ObservationNotes { get; set; }
+        public string CommunicatedTo { get; set; }
+        public string responceReceived { get; set; }
+        public Nullable<System.DateTime> FollowupDate { get; set; }
+        public string LastUpdateBy { get; set; }
+        public Nullable<System.DateTime> LastUpdatedOn { get; set; }
     }
 }

@@ -12,12 +12,14 @@ namespace Gamut.WebAPI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class LookUp
+    public partial class MiscAttachment
     {
         public int Id { get; set; }
-        public string LookUp_Table { get; set; }
-        public string LookUp_Name { get; set; }
-        public string LookUp_Value { get; set; }
-        public string LookUp_Key { get; set; }
+        public Nullable<System.DateTime> AttachmentDate { get; set; }
+        public string Cust_Id { get; set; }
+        public string AttachmentURL { get; set; }
+        public string Comments { get; set; }
+        public string LastUpdatedBy { get; set; }
+        public Nullable<System.DateTime> LastUpdatedOn { get; set; }
     }
 }

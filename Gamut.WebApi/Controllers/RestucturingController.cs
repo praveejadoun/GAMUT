@@ -75,35 +75,35 @@ namespace Gamut.WebAPI.Controllers
         }
 
         // POST: api/Restucturing
-        [ResponseType(typeof(RestucturingHeader))]
-        public IHttpActionResult PostRestucturingHeader(RestucturingHeader restucturingHeader)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[ResponseType(typeof(RestucturingHeader))]
+        //public IHttpActionResult PostRestucturingHeader(RestucturingHeader restucturingHeader)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            db.RestucturingHeaders.Add(restucturingHeader);
-            db.SaveChanges();
+        //    db.RestucturingHeaders.Add(restucturingHeader);
+        //    db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = restucturingHeader.Id }, restucturingHeader);
-        }
+        //    return CreatedAtRoute("DefaultApi", new { id = restucturingHeader.Id }, restucturingHeader);
+        //}
 
-        // DELETE: api/Restucturing/5
-        [ResponseType(typeof(RestucturingHeader))]
-        public IHttpActionResult DeleteRestucturingHeader(int id)
-        {
-            RestucturingHeader restucturingHeader = db.RestucturingHeaders.Find(id);
-            if (restucturingHeader == null)
-            {
-                return NotFound();
-            }
+        //// DELETE: api/Restucturing/5
+        //[ResponseType(typeof(RestucturingHeader))]
+        //public IHttpActionResult DeleteRestucturingHeader(int id)
+        //{
+        //    RestucturingHeader restucturingHeader = db.RestucturingHeaders.Find(id);
+        //    if (restucturingHeader == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            db.RestucturingHeaders.Remove(restucturingHeader);
-            db.SaveChanges();
+        //    db.RestucturingHeaders.Remove(restucturingHeader);
+        //    db.SaveChanges();
 
-            return Ok(restucturingHeader);
-        }
+        //    return Ok(restucturingHeader);
+        //}
 
         protected override void Dispose(bool disposing)
         {

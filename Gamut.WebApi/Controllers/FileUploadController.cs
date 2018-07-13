@@ -49,7 +49,7 @@ namespace Gamut.WebAPI.Controllers
                 // Check if the request contains multipart/form-data
                 if (!Request.Content.IsMimeMultipartContent())
                 {
-                    throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
+                  throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
                 }
                 //Get the path of folder where we want to upload all files.
                 string rootPath = HttpContext.Current.Server.MapPath("~/UploadFiles");

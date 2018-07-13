@@ -115,35 +115,35 @@ namespace Gamut.WebAPI.Controllers
         }
 
         // POST: api/Soc124API
-        [ResponseType(typeof(SOC124))]
-        public IHttpActionResult PostSOC124(SOC124 sOC124)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[ResponseType(typeof(SOC124))]
+        //public IHttpActionResult PostSOC124(SOC124 sOC124)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            db.SOC124.Add(sOC124);
-            db.SaveChanges();
+        //    db.SOC124.Add(sOC124);
+        //    db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = sOC124.Id }, sOC124);
-        }
+        //    return CreatedAtRoute("DefaultApi", new { id = sOC124.Id }, sOC124);
+        //}
 
-        // DELETE: api/Soc124API/5
-        [ResponseType(typeof(SOC124))]
-        public IHttpActionResult DeleteSOC124(int id)
-        {
-            SOC124 sOC124 = db.SOC124.Find(id);
-            if (sOC124 == null)
-            {
-                return NotFound();
-            }
+        //// DELETE: api/Soc124API/5
+        //[ResponseType(typeof(SOC124))]
+        //public IHttpActionResult DeleteSOC124(int id)
+        //{
+        //    SOC124 sOC124 = db.SOC124.Find(id);
+        //    if (sOC124 == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            db.SOC124.Remove(sOC124);
-            db.SaveChanges();
+        //    db.SOC124.Remove(sOC124);
+        //    db.SaveChanges();
 
-            return Ok(sOC124);
-        }
+        //    return Ok(sOC124);
+        //}
 
         protected override void Dispose(bool disposing)
         {

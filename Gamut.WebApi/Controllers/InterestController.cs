@@ -87,35 +87,35 @@ namespace Gamut.WebAPI.Controllers
         }
 
         // POST: api/Interest
-        [ResponseType(typeof(Interest))]
-        public IHttpActionResult PostInterest(Interest interest)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[ResponseType(typeof(Interest))]
+        //public IHttpActionResult PostInterest(Interest interest)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            db.Interests.Add(interest);
-            db.SaveChanges();
+        //    db.Interests.Add(interest);
+        //    db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = interest.Id }, interest);
-        }
+        //    return CreatedAtRoute("DefaultApi", new { id = interest.Id }, interest);
+        //}
 
-        // DELETE: api/Interest/5
-        [ResponseType(typeof(Interest))]
-        public IHttpActionResult DeleteInterest(int id)
-        {
-            Interest interest = db.Interests.Find(id);
-            if (interest == null)
-            {
-                return NotFound();
-            }
+        //// DELETE: api/Interest/5
+        //[ResponseType(typeof(Interest))]
+        //public IHttpActionResult DeleteInterest(int id)
+        //{
+        //    Interest interest = db.Interests.Find(id);
+        //    if (interest == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            db.Interests.Remove(interest);
-            db.SaveChanges();
+        //    db.Interests.Remove(interest);
+        //    db.SaveChanges();
 
-            return Ok(interest);
-        }
+        //    return Ok(interest);
+        //}
 
         protected override void Dispose(bool disposing)
         {

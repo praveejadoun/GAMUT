@@ -71,50 +71,50 @@ namespace Gamut.WebAPI.Controllers
         }
 
         // POST: api/Customer
-        [ResponseType(typeof(Customer))]
-        public IHttpActionResult PostCustomer(Customer customer)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[ResponseType(typeof(Customer))]
+        //public IHttpActionResult PostCustomer(Customer customer)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            db.Customers.Add(customer);
+        //    db.Customers.Add(customer);
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateException)
-            {
-                if (CustomerExists(customer.Cust_id))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        db.SaveChanges();
+        //    }
+        //    catch (DbUpdateException)
+        //    {
+        //        if (CustomerExists(customer.Cust_id))
+        //        {
+        //            return Conflict();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return CreatedAtRoute("DefaultApi", new { id = customer.Cust_id }, customer);
-        }
+        //    return CreatedAtRoute("DefaultApi", new { id = customer.Cust_id }, customer);
+        //}
 
-        // DELETE: api/Customer/5
-        [ResponseType(typeof(Customer))]
-        public IHttpActionResult DeleteCustomer(string id)
-        {
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
-            {
-                return NotFound();
-            }
+        //// DELETE: api/Customer/5
+        //[ResponseType(typeof(Customer))]
+        //public IHttpActionResult DeleteCustomer(string id)
+        //{
+        //    Customer customer = db.Customers.Find(id);
+        //    if (customer == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            db.Customers.Remove(customer);
-            db.SaveChanges();
+        //    db.Customers.Remove(customer);
+        //    db.SaveChanges();
 
-            return Ok(customer);
-        }
+        //    return Ok(customer);
+        //}
 
         protected override void Dispose(bool disposing)
         {

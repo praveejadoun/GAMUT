@@ -98,35 +98,35 @@ namespace Gamut.WebAPI.Controllers
         }
 
         // POST: api/WarningIndicators
-        [ResponseType(typeof(WarningIndicator))]
-        public IHttpActionResult PostWarningIndicator(WarningIndicator warningIndicator)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[ResponseType(typeof(WarningIndicator))]
+        //public IHttpActionResult PostWarningIndicator(WarningIndicator warningIndicator)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            db.WarningIndicators.Add(warningIndicator);
-            db.SaveChanges();
+        //    db.WarningIndicators.Add(warningIndicator);
+        //    db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = warningIndicator.Id }, warningIndicator);
-        }
+        //    return CreatedAtRoute("DefaultApi", new { id = warningIndicator.Id }, warningIndicator);
+        //}
 
-        // DELETE: api/WarningIndicators/5
-        [ResponseType(typeof(WarningIndicator))]
-        public IHttpActionResult DeleteWarningIndicator(int id)
-        {
-            WarningIndicator warningIndicator = db.WarningIndicators.Find(id);
-            if (warningIndicator == null)
-            {
-                return NotFound();
-            }
+        //// DELETE: api/WarningIndicators/5
+        //[ResponseType(typeof(WarningIndicator))]
+        //public IHttpActionResult DeleteWarningIndicator(int id)
+        //{
+        //    WarningIndicator warningIndicator = db.WarningIndicators.Find(id);
+        //    if (warningIndicator == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            db.WarningIndicators.Remove(warningIndicator);
-            db.SaveChanges();
+        //    db.WarningIndicators.Remove(warningIndicator);
+        //    db.SaveChanges();
 
-            return Ok(warningIndicator);
-        }
+        //    return Ok(warningIndicator);
+        //}
 
         protected override void Dispose(bool disposing)
         {

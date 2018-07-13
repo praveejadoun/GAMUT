@@ -78,36 +78,36 @@ namespace Gamut.WebAPI.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/CustDocument
-        [ResponseType(typeof(CustDocument))]
-        public IHttpActionResult PostCustDocument(CustDocument custDocument)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //// POST: api/CustDocument
+        //[ResponseType(typeof(CustDocument))]
+        //public IHttpActionResult PostCustDocument(CustDocument custDocument)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            db.CustDocuments.Add(custDocument);
-            db.SaveChanges();
+        //    db.CustDocuments.Add(custDocument);
+        //    db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = custDocument.Id }, custDocument);
-        }
+        //    return CreatedAtRoute("DefaultApi", new { id = custDocument.Id }, custDocument);
+        //}
 
-        // DELETE: api/CustDocument/5
-        [ResponseType(typeof(CustDocument))]
-        public IHttpActionResult DeleteCustDocument(int id)
-        {
-            CustDocument custDocument = db.CustDocuments.Find(id);
-            if (custDocument == null)
-            {
-                return NotFound();
-            }
+        //// DELETE: api/CustDocument/5
+        //[ResponseType(typeof(CustDocument))]
+        //public IHttpActionResult DeleteCustDocument(int id)
+        //{
+        //    CustDocument custDocument = db.CustDocuments.Find(id);
+        //    if (custDocument == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            db.CustDocuments.Remove(custDocument);
-            db.SaveChanges();
+        //    db.CustDocuments.Remove(custDocument);
+        //    db.SaveChanges();
 
-            return Ok(custDocument);
-        }
+        //    return Ok(custDocument);
+        //}
 
         protected override void Dispose(bool disposing)
         {

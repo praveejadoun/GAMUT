@@ -12,7 +12,7 @@ using Gamut.WebAPI.Models;
 
 namespace Gamut.WebAPI.Controllers
 {
-    public class GeneralGurantorsAPIController : ApiController
+    public class GeneralGurantorsAPIController: ApiController
     {
         private gamutdatabaseEntities db = new gamutdatabaseEntities();
 

@@ -98,35 +98,35 @@ namespace Gamut.WebAPI.Controllers
         }
 
         // POST: api/RatingAPI
-        [ResponseType(typeof(Rating))]
-        public IHttpActionResult PostRating(Rating rating)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[ResponseType(typeof(Rating))]
+        //public IHttpActionResult PostRating(Rating rating)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            db.Ratings.Add(rating);
-            db.SaveChanges();
+        //    db.Ratings.Add(rating);
+        //    db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = rating.Id }, rating);
-        }
+        //    return CreatedAtRoute("DefaultApi", new { id = rating.Id }, rating);
+        //}
 
-        // DELETE: api/RatingAPI/5
-        [ResponseType(typeof(Rating))]
-        public IHttpActionResult DeleteRating(int id)
-        {
-            Rating rating = db.Ratings.Find(id);
-            if (rating == null)
-            {
-                return NotFound();
-            }
+        //// DELETE: api/RatingAPI/5
+        //[ResponseType(typeof(Rating))]
+        //public IHttpActionResult DeleteRating(int id)
+        //{
+        //    Rating rating = db.Ratings.Find(id);
+        //    if (rating == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            db.Ratings.Remove(rating);
-            db.SaveChanges();
+        //    db.Ratings.Remove(rating);
+        //    db.SaveChanges();
 
-            return Ok(rating);
-        }
+        //    return Ok(rating);
+        //}
 
         protected override void Dispose(bool disposing)
         {

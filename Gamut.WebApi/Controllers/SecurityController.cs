@@ -104,35 +104,35 @@ namespace Gamut.WebAPI.Controllers
         }
 
         // POST: api/Security
-        [ResponseType(typeof(Security))]
-        public IHttpActionResult PostSecurity(Security security)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[ResponseType(typeof(Security))]
+        //public IHttpActionResult PostSecurity(Security security)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            db.Securities.Add(security);
-            db.SaveChanges();
+        //    db.Securities.Add(security);
+        //    db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = security.Id }, security);
-        }
+        //    return CreatedAtRoute("DefaultApi", new { id = security.Id }, security);
+        //}
 
-        // DELETE: api/Security/5
-        [ResponseType(typeof(Security))]
-        public IHttpActionResult DeleteSecurity(int id)
-        {
-            Security security = db.Securities.Find(id);
-            if (security == null)
-            {
-                return NotFound();
-            }
+        //// DELETE: api/Security/5
+        //[ResponseType(typeof(Security))]
+        //public IHttpActionResult DeleteSecurity(int id)
+        //{
+        //    Security security = db.Securities.Find(id);
+        //    if (security == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            db.Securities.Remove(security);
-            db.SaveChanges();
+        //    db.Securities.Remove(security);
+        //    db.SaveChanges();
 
-            return Ok(security);
-        }
+        //    return Ok(security);
+        //}
 
         protected override void Dispose(bool disposing)
         {

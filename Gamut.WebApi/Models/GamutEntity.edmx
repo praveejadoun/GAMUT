@@ -253,7 +253,49 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LookUp_Table" Type="varchar" MaxLength="150" />
           <Property Name="LookUp_Name" Type="varchar" MaxLength="150" />
-          <Property Name="LookUp_Value" Type="varchar" MaxLength="250" />
+          <Property Name="LookUp_Value" Type="varchar" MaxLength="500" />
+          <Property Name="LookUp_Key" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="MiscAttachment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AttachmentDate" Type="datetime" />
+          <Property Name="Cust_Id" Type="varchar" MaxLength="50" />
+          <Property Name="AttachmentURL" Type="varchar" MaxLength="500" />
+          <Property Name="Comments" Type="varchar" MaxLength="500" />
+          <Property Name="LastUpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastUpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MiscExposure">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cust_Id" Type="varchar" MaxLength="50" />
+          <Property Name="FacilityType" Type="varchar" MaxLength="50" />
+          <Property Name="Facility" Type="varchar" MaxLength="50" />
+          <Property Name="SanctionLimit" Type="float" />
+          <Property Name="Balance" Type="float" />
+          <Property Name="Exposure" Type="float" />
+          <Property Name="Comments" Type="varchar" MaxLength="500" />
+          <Property Name="LastUpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastUpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ModuleNotes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cust_Id" Type="varchar" MaxLength="50" />
+          <Property Name="ModuleName" Type="varchar" MaxLength="200" />
+          <Property Name="ObservationNotes" Type="varchar" MaxLength="500" />
+          <Property Name="CommunicatedTo" Type="varchar" MaxLength="500" />
+          <Property Name="responceReceived" Type="varchar" MaxLength="50" />
+          <Property Name="FollowupDate" Type="datetime" />
+          <Property Name="LastUpdateBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastUpdatedOn" Type="datetime" />
         </EntityType>
         <EntityType Name="News">
           <Key>
@@ -502,6 +544,9 @@
           <EntitySet Name="Inspection" EntityType="Self.Inspection" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Interest" EntityType="Self.Interest" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LookUp" EntityType="Self.LookUp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MiscAttachment" EntityType="Self.MiscAttachment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MiscExposure" EntityType="Self.MiscExposure" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ModuleNotes" EntityType="Self.ModuleNotes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rating" EntityType="Self.Rating" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RestucturingDetail" EntityType="Self.RestucturingDetail" Schema="dbo" store:Type="Tables" />
@@ -577,6 +622,9 @@
           <EntitySet Name="FileUploads" EntityType="gamutdatabaseModel.FileUpload" />
           <EntitySet Name="Securities" EntityType="gamutdatabaseModel.Security" />
           <EntitySet Name="Scores" EntityType="gamutdatabaseModel.Score" />
+          <EntitySet Name="MiscAttachments" EntityType="gamutdatabaseModel.MiscAttachment" />
+          <EntitySet Name="MiscExposures" EntityType="gamutdatabaseModel.MiscExposure" />
+          <EntitySet Name="ModuleNotes" EntityType="gamutdatabaseModel.ModuleNote" />
         </EntityContainer>
         <EntityType Name="Customer">
           <Key>
@@ -656,7 +704,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="LookUp_Table" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="LookUp_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="LookUp_Value" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="LookUp_Value" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LookUp_Key" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="SOC124">
           <Key>
@@ -1051,6 +1100,47 @@
           <Property Name="LastUpdatedOn" Type="DateTime" Precision="3" />
           <Property Name="Cust_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="MiscAttachment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="AttachmentDate" Type="DateTime" Precision="3" />
+          <Property Name="Cust_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AttachmentURL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="MiscExposure">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Cust_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FacilityType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Facility" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SanctionLimit" Type="Double" />
+          <Property Name="Balance" Type="Double" />
+          <Property Name="Exposure" Type="Double" />
+          <Property Name="Comments" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ModuleNote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cust_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModuleName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ObservationNotes" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CommunicatedTo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="responceReceived" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FollowupDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1146,6 +1236,7 @@
           <EntitySetMapping Name="LookUps">
             <EntityTypeMapping TypeName="gamutdatabaseModel.LookUp">
               <MappingFragment StoreEntitySet="LookUp">
+                <ScalarProperty Name="LookUp_Key" ColumnName="LookUp_Key" />
                 <ScalarProperty Name="LookUp_Value" ColumnName="LookUp_Value" />
                 <ScalarProperty Name="LookUp_Name" ColumnName="LookUp_Name" />
                 <ScalarProperty Name="LookUp_Table" ColumnName="LookUp_Table" />
@@ -1538,6 +1629,50 @@
                 <ScalarProperty Name="ScoreObtainedValue" ColumnName="ScoreObtainedValue" />
                 <ScalarProperty Name="ScoreMaxValue" ColumnName="ScoreMaxValue" />
                 <ScalarProperty Name="ScoreParameter" ColumnName="ScoreParameter" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MiscAttachments">
+            <EntityTypeMapping TypeName="gamutdatabaseModel.MiscAttachment">
+              <MappingFragment StoreEntitySet="MiscAttachment">
+                <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="AttachmentURL" ColumnName="AttachmentURL" />
+                <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
+                <ScalarProperty Name="AttachmentDate" ColumnName="AttachmentDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MiscExposures">
+            <EntityTypeMapping TypeName="gamutdatabaseModel.MiscExposure">
+              <MappingFragment StoreEntitySet="MiscExposure">
+                <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Exposure" ColumnName="Exposure" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="SanctionLimit" ColumnName="SanctionLimit" />
+                <ScalarProperty Name="Facility" ColumnName="Facility" />
+                <ScalarProperty Name="FacilityType" ColumnName="FacilityType" />
+                <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ModuleNotes">
+            <EntityTypeMapping TypeName="gamutdatabaseModel.ModuleNote">
+              <MappingFragment StoreEntitySet="ModuleNotes">
+                <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+                <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
+                <ScalarProperty Name="FollowupDate" ColumnName="FollowupDate" />
+                <ScalarProperty Name="responceReceived" ColumnName="responceReceived" />
+                <ScalarProperty Name="CommunicatedTo" ColumnName="CommunicatedTo" />
+                <ScalarProperty Name="ObservationNotes" ColumnName="ObservationNotes" />
+                <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+                <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

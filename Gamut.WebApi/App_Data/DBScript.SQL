@@ -1,6 +1,6 @@
 ﻿USE [gamutdatabase]
 GO
-/****** Object:  Table [dbo].[AccountDetails]    Script Date: 13-07-2018 22:43:33 ******/
+/****** Object:  Table [dbo].[AccountDetails]    Script Date: 14-07-2018 02:14:36 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -35,7 +35,7 @@ CREATE TABLE [dbo].[AccountDetails](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ActivityLog]    Script Date: 13-07-2018 22:43:36 ******/
+/****** Object:  Table [dbo].[ActivityLog]    Script Date: 14-07-2018 02:14:37 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -59,7 +59,7 @@ CREATE TABLE [dbo].[ActivityLog](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CustDocument]    Script Date: 13-07-2018 22:43:36 ******/
+/****** Object:  Table [dbo].[CustDocument]    Script Date: 14-07-2018 02:14:38 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -83,7 +83,7 @@ CREATE TABLE [dbo].[CustDocument](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Customer]    Script Date: 13-07-2018 22:43:37 ******/
+/****** Object:  Table [dbo].[Customer]    Script Date: 14-07-2018 02:14:38 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -108,7 +108,7 @@ CREATE TABLE [dbo].[Customer](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CustomerDataMapping]    Script Date: 13-07-2018 22:43:37 ******/
+/****** Object:  Table [dbo].[CustomerDataMapping]    Script Date: 14-07-2018 02:14:39 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -124,7 +124,7 @@ CREATE TABLE [dbo].[CustomerDataMapping](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[FileUpload]    Script Date: 13-07-2018 22:43:38 ******/
+/****** Object:  Table [dbo].[FileUpload]    Script Date: 14-07-2018 02:14:39 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -144,7 +144,7 @@ CREATE TABLE [dbo].[FileUpload](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[FinancialResultDetails]    Script Date: 13-07-2018 22:43:38 ******/
+/****** Object:  Table [dbo].[FinancialResultDetails]    Script Date: 14-07-2018 02:14:40 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -164,7 +164,7 @@ CREATE TABLE [dbo].[FinancialResultDetails](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[FinancialResultHeader]    Script Date: 13-07-2018 22:43:39 ******/
+/****** Object:  Table [dbo].[FinancialResultHeader]    Script Date: 14-07-2018 02:14:40 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -182,7 +182,7 @@ CREATE TABLE [dbo].[FinancialResultHeader](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[FinancialResultType]    Script Date: 13-07-2018 22:43:39 ******/
+/****** Object:  Table [dbo].[FinancialResultType]    Script Date: 14-07-2018 02:14:41 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -198,7 +198,7 @@ CREATE TABLE [dbo].[FinancialResultType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[General]    Script Date: 13-07-2018 22:43:40 ******/
+/****** Object:  Table [dbo].[General]    Script Date: 14-07-2018 02:14:41 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -258,7 +258,7 @@ CREATE TABLE [dbo].[General](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[GeneralExposure]    Script Date: 13-07-2018 22:43:40 ******/
+/****** Object:  Table [dbo].[GeneralExposure]    Script Date: 14-07-2018 02:14:42 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -276,7 +276,7 @@ CREATE TABLE [dbo].[GeneralExposure](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[GeneralGurantor]    Script Date: 13-07-2018 22:43:41 ******/
+/****** Object:  Table [dbo].[GeneralGurantor]    Script Date: 14-07-2018 02:14:42 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -294,7 +294,7 @@ CREATE TABLE [dbo].[GeneralGurantor](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Inspection]    Script Date: 13-07-2018 22:43:42 ******/
+/****** Object:  Table [dbo].[Inspection]    Script Date: 14-07-2018 02:14:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -316,7 +316,7 @@ CREATE TABLE [dbo].[Inspection](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Interest]    Script Date: 13-07-2018 22:43:42 ******/
+/****** Object:  Table [dbo].[Interest]    Script Date: 14-07-2018 02:14:44 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -339,7 +339,7 @@ CREATE TABLE [dbo].[Interest](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[LookUp]    Script Date: 13-07-2018 22:43:43 ******/
+/****** Object:  Table [dbo].[LookUp]    Script Date: 14-07-2018 02:14:44 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -348,14 +348,77 @@ CREATE TABLE [dbo].[LookUp](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[LookUp_Table] [varchar](150) NULL,
 	[LookUp_Name] [varchar](150) NULL,
-	[LookUp_Value] [varchar](250) NULL,
+	[LookUp_Value] [varchar](500) NULL,
+	[LookUp_Key] [varchar](250) NULL,
  CONSTRAINT [PK_LookUp] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[News]    Script Date: 13-07-2018 22:43:43 ******/
+/****** Object:  Table [dbo].[MiscAttachment]    Script Date: 14-07-2018 02:14:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[MiscAttachment](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[AttachmentDate] [datetime] NULL,
+	[Cust_Id] [varchar](50) NULL,
+	[AttachmentURL] [varchar](500) NULL,
+	[Comments] [varchar](500) NULL,
+	[LastUpdatedBy] [varchar](50) NULL,
+	[LastUpdatedOn] [datetime] NULL,
+ CONSTRAINT [PK_MiscAttachment] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[MiscExposure]    Script Date: 14-07-2018 02:14:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[MiscExposure](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Cust_Id] [varchar](50) NULL,
+	[FacilityType] [varchar](50) NULL,
+	[Facility] [varchar](50) NULL,
+	[SanctionLimit] [float] NULL,
+	[Balance] [float] NULL,
+	[Exposure] [float] NULL,
+	[Comments] [varchar](500) NULL,
+	[LastUpdatedBy] [varchar](50) NULL,
+	[LastUpdatedOn] [datetime] NULL,
+ CONSTRAINT [PK_MiscExposure] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[ModuleNotes]    Script Date: 14-07-2018 02:14:46 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ModuleNotes](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Cust_Id] [varchar](50) NULL,
+	[ModuleName] [varchar](200) NULL,
+	[ObservationNotes] [varchar](500) NULL,
+	[CommunicatedTo] [varchar](500) NULL,
+	[responceReceived] [varchar](50) NULL,
+	[FollowupDate] [datetime] NULL,
+	[LastUpdateBy] [varchar](50) NULL,
+	[LastUpdatedOn] [datetime] NULL,
+ CONSTRAINT [PK_ModuleNotes] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[News]    Script Date: 14-07-2018 02:14:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -375,7 +438,7 @@ CREATE TABLE [dbo].[News](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Rating]    Script Date: 13-07-2018 22:43:44 ******/
+/****** Object:  Table [dbo].[Rating]    Script Date: 14-07-2018 02:14:47 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -397,7 +460,7 @@ CREATE TABLE [dbo].[Rating](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[RestucturingDetail]    Script Date: 13-07-2018 22:43:44 ******/
+/****** Object:  Table [dbo].[RestucturingDetail]    Script Date: 14-07-2018 02:14:47 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -418,7 +481,7 @@ CREATE TABLE [dbo].[RestucturingDetail](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[RestucturingHeader]    Script Date: 13-07-2018 22:43:45 ******/
+/****** Object:  Table [dbo].[RestucturingHeader]    Script Date: 14-07-2018 02:14:48 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -444,7 +507,7 @@ CREATE TABLE [dbo].[RestucturingHeader](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Score]    Script Date: 13-07-2018 22:43:46 ******/
+/****** Object:  Table [dbo].[Score]    Script Date: 14-07-2018 02:14:48 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -463,7 +526,7 @@ CREATE TABLE [dbo].[Score](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Security]    Script Date: 13-07-2018 22:43:47 ******/
+/****** Object:  Table [dbo].[Security]    Script Date: 14-07-2018 02:14:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -491,7 +554,7 @@ CREATE TABLE [dbo].[Security](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SMABucket]    Script Date: 13-07-2018 22:43:48 ******/
+/****** Object:  Table [dbo].[SMABucket]    Script Date: 14-07-2018 02:14:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -514,7 +577,7 @@ CREATE TABLE [dbo].[SMABucket](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SMACompilation]    Script Date: 13-07-2018 22:43:48 ******/
+/****** Object:  Table [dbo].[SMACompilation]    Script Date: 14-07-2018 02:14:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -536,7 +599,7 @@ CREATE TABLE [dbo].[SMACompilation](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SMAHistory]    Script Date: 13-07-2018 22:43:49 ******/
+/****** Object:  Table [dbo].[SMAHistory]    Script Date: 14-07-2018 02:14:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -559,7 +622,7 @@ CREATE TABLE [dbo].[SMAHistory](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Snapshot]    Script Date: 13-07-2018 22:43:49 ******/
+/****** Object:  Table [dbo].[Snapshot]    Script Date: 14-07-2018 02:14:51 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -589,7 +652,7 @@ CREATE TABLE [dbo].[Snapshot](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SOC124]    Script Date: 13-07-2018 22:43:50 ******/
+/****** Object:  Table [dbo].[SOC124]    Script Date: 14-07-2018 02:14:51 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -610,7 +673,7 @@ CREATE TABLE [dbo].[SOC124](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Student]    Script Date: 13-07-2018 22:43:50 ******/
+/****** Object:  Table [dbo].[Student]    Script Date: 14-07-2018 02:14:52 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -629,7 +692,7 @@ CREATE TABLE [dbo].[Student](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[WarningIndicator]    Script Date: 13-07-2018 22:43:51 ******/
+/****** Object:  Table [dbo].[WarningIndicator]    Script Date: 14-07-2018 02:14:52 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -12950,121 +13013,679 @@ SET IDENTITY_INSERT [dbo].[Interest] OFF
 GO
 SET IDENTITY_INSERT [dbo].[LookUp] ON 
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (1, N'General', N'Govt_sponsored', N'Yes')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (1, N'General', N'Govt_sponsored', N'Yes', N'Yes')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (2, N'General', N'Govt_sponsored', N'No')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (2, N'General', N'Govt_sponsored', N'No', N'No')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (3, N'General', N'Govt_sponsored', N'Refer Notes')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (3, N'General', N'Govt_sponsored', N'Refer Notes', N'Refer Notes')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (4, N'General', N'DCCO', N'Yes')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (4, N'General', N'DCCO', N'Yes', N'Yes')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (5, N'General', N'DCCO', N'No')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (5, N'General', N'DCCO', N'No', N'No')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (6, N'General', N'DCCO', N'N/A')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (6, N'General', N'DCCO', N'N/A', N'N/A')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (7, N'General', N'Banking_Argmt', N'Sole')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (7, N'General', N'Banking_Argmt', N'Sole', N'Sole')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (8, N'General', N'Banking_Argmt', N'Multiple')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (8, N'General', N'Banking_Argmt', N'Multiple', N'Multiple')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (9, N'General', N'Banking_Argmt', N'Consortium')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (9, N'General', N'Banking_Argmt', N'Consortium', N'Consortium')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (10, N'General', N'Banking_Argmt', N'Others')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (10, N'General', N'Banking_Argmt', N'Others', N'Others')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (11, N'General', N'Takeover', N'Yes')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (11, N'General', N'Takeover', N'Yes', N'Yes')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (12, N'General', N'Takeover', N'No')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (12, N'General', N'Takeover', N'No', N'No')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (13, N'SOC124', N'Via', N'Loan Sanc App')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (13, N'SOC124', N'Via', N'Loan Sanc App', N'Loan Sanc App')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (14, N'SOC124', N'Via', N'Loans Concession')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (14, N'SOC124', N'Via', N'Loans Concession', N'Loans Concession')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (15, N'SOC124', N'Via', N'Mails')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (15, N'SOC124', N'Via', N'Mails', N'Mails')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (16, N'INSPECTION', N'INSPECTIONSTATUS', N'Rectified')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (16, N'INSPECTION', N'INSPECTIONSTATUS', N'Rectified', N'Rectified')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (17, N'INSPECTION', N'INSPECTIONSTATUS', N'UnRectified')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (17, N'INSPECTION', N'INSPECTIONSTATUS', N'UnRectified', N'UnRectified')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (18, N'INSPECTION', N'INSPECTIONSTATUS', N'Isolated')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (18, N'INSPECTION', N'INSPECTIONSTATUS', N'Isolated', N'Isolated')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (19, N'INSPECTION', N'INSPECTIONSTATUS', N'Deleted')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (19, N'INSPECTION', N'INSPECTIONSTATUS', N'Deleted', N'Deleted')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (20, N'ActivityLog', N'LogTypes', N'Communication')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (20, N'ActivityLog', N'LogTypes', N'Communication', N'Communication')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (21, N'ActivityLog', N'LogTypes', N'Ist Reminder')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (21, N'ActivityLog', N'LogTypes', N'Ist Reminder', N'Ist Reminder')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (22, N'ActivityLog', N'LogTypes', N'IInd Reminder')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (22, N'ActivityLog', N'LogTypes', N'IInd Reminder', N'IInd Reminder')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (23, N'ActivityLog', N'LogTypes', N'Further Followup')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (23, N'ActivityLog', N'LogTypes', N'Further Followup', N'Further Followup')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (24, N'ActivityLog', N'LogTypes', N'Rectified')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (24, N'ActivityLog', N'LogTypes', N'Rectified', N'Rectified')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (26, N'Score', N'References', N'Internal Circular')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (26, N'Score', N'References', N'Internal Circular', N'Internal Circular')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (27, N'Score', N'References', N'RBI curcular')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (27, N'Score', N'References', N'RBI curcular', N'RBI curcular')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (28, N'Score', N'References', N'Loan Policy')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (28, N'Score', N'References', N'Loan Policy', N'Loan Policy')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (29, N'Score', N'References', N'Deligation Chart')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (29, N'Score', N'References', N'Deligation Chart', N'Deligation Chart')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (30, N'Score', N'References', N'Interest reference')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (30, N'Score', N'References', N'Interest reference', N'Interest reference')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (31, N'Score', N'communication', N'Recent Order')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (31, N'Score', N'communication', N'Recent Order', N'Recent Order')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (32, N'Score', N'communication', N'Internal chatting')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (32, N'Score', N'communication', N'Internal chatting', N'Internal chatting')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (33, N'Score', N'communication', N'Employee Search')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (33, N'Score', N'communication', N'Employee Search', N'Employee Search')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (34, N'Score', N'Peer Comparison', N'Peer Comparison')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (34, N'Score', N'Peer Comparison', N'Peer Comparison', N'Peer Comparison')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (35, N'Score', N'Reminders', N'For month')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (35, N'Score', N'Reminders', N'For month', N'For month')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (36, N'Score', N'Reminders', N'For week')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (36, N'Score', N'Reminders', N'For week', N'For week')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (37, N'Score', N'My repository', N'Attachments')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (37, N'Score', N'My repository', N'Attachments', N'Attachments')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (74, N'Reports', N'RelatedTo', N'SO/C124')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (74, N'Reports', N'RelatedTo', N'SO/C124', N'SO/C124')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (75, N'Reports', N'RelatedTo', N'Irregularities')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (75, N'Reports', N'RelatedTo', N'Irregularities', N'Irregularities')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (76, N'Reports', N'RelatedTo', N'Communication')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (76, N'Reports', N'RelatedTo', N'Communication', N'Communication')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (77, N'Reports', N'RelatedTo', N'Inspection')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (77, N'Reports', N'RelatedTo', N'Inspection', N'Inspection')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (78, N'Reports', N'RelatedTo', N'Renewal')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (78, N'Reports', N'RelatedTo', N'Renewal', N'Renewal')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (79, N'Reports', N'RelatedTo', N'Review')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (79, N'Reports', N'RelatedTo', N'Review', N'Review')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (80, N'Reports', N'RelatedTo', N'Restuctured')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (80, N'Reports', N'RelatedTo', N'Restuctured', N'Restuctured')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (81, N'Reports', N'RelatedTo', N'Margin')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (81, N'Reports', N'RelatedTo', N'Margin', N'Margin')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (82, N'Reports', N'RelatedTo', N'Security')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (82, N'Reports', N'RelatedTo', N'Security', N'Security')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (83, N'Reports', N'RelatedTo', N'SMA')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (83, N'Reports', N'RelatedTo', N'SMA', N'SMA')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (84, N'Reports', N'RelatedTo', N'Ratings')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (84, N'Reports', N'RelatedTo', N'Ratings', N'Ratings')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (85, N'Reports', N'RelatedTo', N'Documents')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (85, N'Reports', N'RelatedTo', N'Documents', N'Documents')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (86, N'Reports', N'RelatedTo', N'Exposure')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (86, N'Reports', N'RelatedTo', N'Exposure', N'Exposure')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (87, N'Reports', N'RelatedTo', N'Interest')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (87, N'Reports', N'RelatedTo', N'Interest', N'Interest')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (88, N'Reports', N'RelatedTo', N'All Parmeters')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (88, N'Reports', N'RelatedTo', N'All Parmeters', N'All Parmeters')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (89, N'Reports', N'Status', N'Rectified')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (89, N'Reports', N'Status', N'Rectified', N'Rectified')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (90, N'Reports', N'Status', N'UnRectified')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (90, N'Reports', N'Status', N'UnRectified', N'UnRectified')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (91, N'Reports', N'Status', N'NA')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (91, N'Reports', N'Status', N'NA', N'NA')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (92, N'Reports', N'Status', N'SMA Report')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (92, N'Reports', N'Status', N'SMA Report', N'SMA Report')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (93, N'Reports', N'Status', N'Due for Renewal')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (93, N'Reports', N'Status', N'Due for Renewal', N'Due for Renewal')
 GO
-INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value]) VALUES (94, N'Reports', N'Status', N'Interest/Penal')
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (94, N'Reports', N'Status', N'Interest/Penal', N'Interest/Penal')
+GO
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (107, N'MISC', N'FacilityType', N'Funded', N'Funded')
+GO
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (108, N'MISC', N'FacilityType', N'Non-Funded', N'Non-Funded')
+GO
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (109, N'MISC', N'FacilityType', N'Interest', N'Interest')
+GO
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (110, N'MISC', N'Facility', N'TL', N'TL')
+GO
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (111, N'MISC', N'Facility', N'OD/CC', N'OD/CC')
+GO
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (112, N'MISC', N'Facility', N'Export Finance', N'Export Finance')
+GO
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (113, N'MISC', N'Facility', N'Others', N'Others')
+GO
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (114, N'MISC', N'Facility', N'LC', N'LC')
+GO
+INSERT [dbo].[LookUp] ([Id], [LookUp_Table], [LookUp_Name], [LookUp_Value], [LookUp_Key]) VALUES (115, N'MISC', N'Facility', N'BG', N'BG')
 GO
 SET IDENTITY_INSERT [dbo].[LookUp] OFF
+GO
+SET IDENTITY_INSERT [dbo].[MiscAttachment] ON 
+GO
+INSERT [dbo].[MiscAttachment] ([Id], [AttachmentDate], [Cust_Id], [AttachmentURL], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (1, CAST(N'2018-07-15T00:00:00.000' AS DateTime), N'123456789', N'', N'', N'admin', CAST(N'2018-07-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscAttachment] ([Id], [AttachmentDate], [Cust_Id], [AttachmentURL], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (2, CAST(N'2018-07-15T00:00:00.000' AS DateTime), N'234567891', N'', N'', N'admin', CAST(N'2018-07-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscAttachment] ([Id], [AttachmentDate], [Cust_Id], [AttachmentURL], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (3, CAST(N'2018-07-15T00:00:00.000' AS DateTime), N'345678912', N'', N'', N'admin', CAST(N'2018-07-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscAttachment] ([Id], [AttachmentDate], [Cust_Id], [AttachmentURL], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (4, CAST(N'2018-07-15T00:00:00.000' AS DateTime), N'456789123', N'', N'', N'admin', CAST(N'2018-07-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscAttachment] ([Id], [AttachmentDate], [Cust_Id], [AttachmentURL], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (5, CAST(N'2018-07-15T00:00:00.000' AS DateTime), N'567891234', N'', N'', N'admin', CAST(N'2018-07-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscAttachment] ([Id], [AttachmentDate], [Cust_Id], [AttachmentURL], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (6, CAST(N'2018-07-15T00:00:00.000' AS DateTime), N'678912345', N'', N'', N'admin', CAST(N'2018-07-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscAttachment] ([Id], [AttachmentDate], [Cust_Id], [AttachmentURL], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (7, CAST(N'2018-07-15T00:00:00.000' AS DateTime), N'789123456', N'', N'', N'admin', CAST(N'2018-07-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscAttachment] ([Id], [AttachmentDate], [Cust_Id], [AttachmentURL], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (8, CAST(N'2018-07-15T00:00:00.000' AS DateTime), N'891234567', N'', N'', N'admin', CAST(N'2018-07-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscAttachment] ([Id], [AttachmentDate], [Cust_Id], [AttachmentURL], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (9, CAST(N'2018-07-15T00:00:00.000' AS DateTime), N'912345678', N'', N'', N'admin', CAST(N'2018-07-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscAttachment] ([Id], [AttachmentDate], [Cust_Id], [AttachmentURL], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (10, CAST(N'2018-07-15T00:00:00.000' AS DateTime), N'123456780', N'', N'', N'admin', CAST(N'2018-07-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscAttachment] ([Id], [AttachmentDate], [Cust_Id], [AttachmentURL], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (11, CAST(N'2018-07-15T00:00:00.000' AS DateTime), N'123456789', N'', N'', N'admin', CAST(N'2018-07-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscAttachment] ([Id], [AttachmentDate], [Cust_Id], [AttachmentURL], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (12, CAST(N'2018-07-15T00:00:00.000' AS DateTime), N'234567891', N'', N'', N'admin', CAST(N'2018-07-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscAttachment] ([Id], [AttachmentDate], [Cust_Id], [AttachmentURL], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (13, CAST(N'2018-07-15T00:00:00.000' AS DateTime), N'345678912', N'', N'', N'admin', CAST(N'2018-07-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscAttachment] ([Id], [AttachmentDate], [Cust_Id], [AttachmentURL], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (14, CAST(N'2018-07-15T00:00:00.000' AS DateTime), N'456789123', N'', N'', N'admin', CAST(N'2018-07-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscAttachment] ([Id], [AttachmentDate], [Cust_Id], [AttachmentURL], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (15, CAST(N'2018-07-15T00:00:00.000' AS DateTime), N'567891234', N'', N'', N'admin', CAST(N'2018-07-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscAttachment] ([Id], [AttachmentDate], [Cust_Id], [AttachmentURL], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (16, CAST(N'2018-07-15T00:00:00.000' AS DateTime), N'678912345', N'', N'', N'admin', CAST(N'2018-07-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscAttachment] ([Id], [AttachmentDate], [Cust_Id], [AttachmentURL], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (17, CAST(N'2018-07-15T00:00:00.000' AS DateTime), N'789123456', N'', N'', N'admin', CAST(N'2018-07-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscAttachment] ([Id], [AttachmentDate], [Cust_Id], [AttachmentURL], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (18, CAST(N'2018-07-15T00:00:00.000' AS DateTime), N'891234567', N'', N'', N'admin', CAST(N'2018-07-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscAttachment] ([Id], [AttachmentDate], [Cust_Id], [AttachmentURL], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (19, CAST(N'2018-07-15T00:00:00.000' AS DateTime), N'912345678', N'', N'', N'admin', CAST(N'2018-07-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscAttachment] ([Id], [AttachmentDate], [Cust_Id], [AttachmentURL], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (20, CAST(N'2018-07-15T00:00:00.000' AS DateTime), N'123456780', N'', N'', N'admin', CAST(N'2018-07-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscAttachment] ([Id], [AttachmentDate], [Cust_Id], [AttachmentURL], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (21, CAST(N'2018-07-15T00:00:00.000' AS DateTime), N'123456789', N'', N'', N'admin', CAST(N'2018-07-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscAttachment] ([Id], [AttachmentDate], [Cust_Id], [AttachmentURL], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (22, CAST(N'2018-07-15T00:00:00.000' AS DateTime), N'234567891', N'', N'', N'admin', CAST(N'2018-07-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscAttachment] ([Id], [AttachmentDate], [Cust_Id], [AttachmentURL], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (23, CAST(N'2018-07-15T00:00:00.000' AS DateTime), N'345678912', N'', N'', N'admin', CAST(N'2018-07-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscAttachment] ([Id], [AttachmentDate], [Cust_Id], [AttachmentURL], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (24, CAST(N'2018-07-15T00:00:00.000' AS DateTime), N'456789123', N'', N'', N'admin', CAST(N'2018-07-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscAttachment] ([Id], [AttachmentDate], [Cust_Id], [AttachmentURL], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (25, CAST(N'2018-07-15T00:00:00.000' AS DateTime), N'567891234', N'', N'', N'admin', CAST(N'2018-07-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscAttachment] ([Id], [AttachmentDate], [Cust_Id], [AttachmentURL], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (26, CAST(N'2018-07-15T00:00:00.000' AS DateTime), N'678912345', N'', N'', N'admin', CAST(N'2018-07-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscAttachment] ([Id], [AttachmentDate], [Cust_Id], [AttachmentURL], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (27, CAST(N'2018-07-15T00:00:00.000' AS DateTime), N'789123456', N'', N'', N'admin', CAST(N'2018-07-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscAttachment] ([Id], [AttachmentDate], [Cust_Id], [AttachmentURL], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (28, CAST(N'2018-07-15T00:00:00.000' AS DateTime), N'891234567', N'', N'', N'admin', CAST(N'2018-07-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscAttachment] ([Id], [AttachmentDate], [Cust_Id], [AttachmentURL], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (29, CAST(N'2018-07-15T00:00:00.000' AS DateTime), N'912345678', N'', N'', N'admin', CAST(N'2018-07-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscAttachment] ([Id], [AttachmentDate], [Cust_Id], [AttachmentURL], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (30, CAST(N'2018-07-15T00:00:00.000' AS DateTime), N'123456780', N'', N'', N'admin', CAST(N'2018-07-20T00:00:00.000' AS DateTime))
+GO
+SET IDENTITY_INSERT [dbo].[MiscAttachment] OFF
+GO
+SET IDENTITY_INSERT [dbo].[MiscExposure] ON 
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (1, N'123456789', N'Funded', N'TL', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (2, N'234567891', N'Funded', N'TL', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (3, N'345678912', N'Funded', N'TL', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (4, N'456789123', N'Funded', N'TL', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (5, N'567891234', N'Funded', N'TL', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (6, N'678912345', N'Funded', N'TL', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (7, N'789123456', N'Funded', N'TL', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (8, N'891234567', N'Funded', N'TL', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (9, N'912345678', N'Funded', N'TL', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (10, N'123456780', N'Funded', N'TL', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (11, N'123456789', N'Funded', N'TL', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (12, N'234567891', N'Funded', N'OD/CC', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (13, N'345678912', N'Funded', N'OD/CC', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (14, N'456789123', N'Funded', N'OD/CC', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (15, N'567891234', N'Funded', N'OD/CC', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (16, N'678912345', N'Funded', N'OD/CC', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (17, N'789123456', N'Funded', N'OD/CC', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (18, N'891234567', N'Funded', N'OD/CC', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (19, N'912345678', N'Funded', N'OD/CC', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (20, N'123456780', N'Funded', N'OD/CC', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (21, N'234567891', N'Funded', N'Export Finance', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (22, N'345678912', N'Funded', N'Export Finance', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (23, N'456789123', N'Funded', N'Export Finance', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (24, N'567891234', N'Funded', N'Export Finance', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (25, N'678912345', N'Funded', N'Export Finance', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (26, N'789123456', N'Funded', N'Export Finance', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (27, N'891234567', N'Funded', N'Export Finance', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (28, N'912345678', N'Funded', N'Export Finance', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (29, N'123456780', N'Funded', N'Export Finance', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (30, N'123456789', N'Non-Funded', N'Others', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (31, N'234567891', N'Non-Funded', N'Others', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (32, N'345678912', N'Non-Funded', N'Others', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (33, N'456789123', N'Non-Funded', N'Others', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (34, N'567891234', N'Non-Funded', N'Others', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (35, N'678912345', N'Non-Funded', N'Others', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (36, N'789123456', N'Non-Funded', N'Others', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (37, N'891234567', N'Non-Funded', N'Others', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (38, N'912345678', N'Non-Funded', N'Others', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (39, N'123456780', N'Non-Funded', N'Others', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (40, N'123456789', N'Non-Funded', N'Others', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (41, N'234567891', N'Non-Funded', N'LC', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (42, N'345678912', N'Non-Funded', N'LC', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (43, N'456789123', N'Non-Funded', N'LC', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (44, N'567891234', N'Non-Funded', N'LC', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (45, N'678912345', N'Non-Funded', N'LC', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (46, N'789123456', N'Non-Funded', N'LC', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (47, N'891234567', N'Non-Funded', N'LC', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (48, N'912345678', N'Non-Funded', N'LC', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (49, N'123456780', N'Non-Funded', N'LC', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (50, N'234567891', N'Non-Funded', N'BG', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (51, N'345678912', N'Non-Funded', N'BG', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (52, N'456789123', N'Non-Funded', N'BG', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (53, N'567891234', N'Non-Funded', N'BG', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (54, N'678912345', N'Non-Funded', N'BG', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (55, N'789123456', N'Non-Funded', N'BG', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (56, N'891234567', N'Non-Funded', N'BG', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (57, N'912345678', N'Non-Funded', N'BG', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[MiscExposure] ([Id], [Cust_Id], [FacilityType], [Facility], [SanctionLimit], [Balance], [Exposure], [Comments], [LastUpdatedBy], [LastUpdatedOn]) VALUES (58, N'123456780', N'Non-Funded', N'BG', NULL, NULL, NULL, N'', N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+SET IDENTITY_INSERT [dbo].[MiscExposure] OFF
+GO
+SET IDENTITY_INSERT [dbo].[ModuleNotes] ON 
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (1, N'123456789', N'General', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (2, N'123456789', N'Home', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (3, N'123456789', N'SOC124', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (4, N'123456789', N'Interest', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (5, N'123456789', N'Financial', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (6, N'123456789', N'Security', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (7, N'123456789', N'Documents', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (8, N'123456789', N'Inspection', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (9, N'123456789', N'Rating', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (10, N'123456789', N'Restucturing', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (11, N'123456789', N'SMA', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (12, N'123456789', N'Snapshot', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (13, N'123456789', N'News', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (14, N'123456789', N'Warning', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (15, N'123456789', N'Misc', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (16, N'123456789', N'AccountDetails', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (17, N'234567891', N'General', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (18, N'234567891', N'Home', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (19, N'234567891', N'SOC124', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (20, N'234567891', N'Interest', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (21, N'234567891', N'Financial', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (22, N'234567891', N'Security', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (23, N'234567891', N'Documents', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (24, N'234567891', N'Inspection', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (25, N'234567891', N'Rating', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (26, N'234567891', N'Restucturing', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (27, N'234567891', N'SMA', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (28, N'234567891', N'Snapshot', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (29, N'234567891', N'News', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (30, N'234567891', N'Warning', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (31, N'234567891', N'Misc', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (32, N'234567891', N'AccountDetails', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (33, N'345678912', N'General', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (34, N'345678912', N'Home', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (35, N'345678912', N'SOC124', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (36, N'345678912', N'Interest', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (37, N'345678912', N'Financial', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (38, N'345678912', N'Security', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (39, N'345678912', N'Documents', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (40, N'345678912', N'Inspection', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (41, N'345678912', N'Rating', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (42, N'345678912', N'Restucturing', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (43, N'345678912', N'SMA', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (44, N'345678912', N'Snapshot', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (45, N'345678912', N'News', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (46, N'345678912', N'Warning', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (47, N'345678912', N'Misc', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (48, N'345678912', N'AccountDetails', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (49, N'456789123', N'General', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (50, N'456789123', N'Home', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (51, N'456789123', N'SOC124', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (52, N'456789123', N'Interest', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (53, N'456789123', N'Financial', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (54, N'456789123', N'Security', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (55, N'456789123', N'Documents', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (56, N'456789123', N'Inspection', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (57, N'456789123', N'Rating', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (58, N'456789123', N'Restucturing', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (59, N'456789123', N'SMA', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (60, N'456789123', N'Snapshot', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (61, N'456789123', N'News', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (62, N'456789123', N'Warning', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (63, N'456789123', N'Misc', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (64, N'456789123', N'AccountDetails', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (65, N'567891234', N'General', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (66, N'567891234', N'Home', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (67, N'567891234', N'SOC124', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (68, N'567891234', N'Interest', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (69, N'567891234', N'Financial', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (70, N'567891234', N'Security', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (71, N'567891234', N'Documents', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (72, N'567891234', N'Inspection', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (73, N'567891234', N'Rating', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (74, N'567891234', N'Restucturing', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (75, N'567891234', N'SMA', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (76, N'567891234', N'Snapshot', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (77, N'567891234', N'News', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (78, N'567891234', N'Warning', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (79, N'567891234', N'Misc', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (80, N'567891234', N'AccountDetails', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (81, N'678912345', N'General', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (82, N'678912345', N'Home', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (83, N'678912345', N'SOC124', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (84, N'678912345', N'Interest', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (85, N'678912345', N'Financial', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (86, N'678912345', N'Security', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (87, N'678912345', N'Documents', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (88, N'678912345', N'Inspection', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (89, N'678912345', N'Rating', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (90, N'678912345', N'Restucturing', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (91, N'678912345', N'SMA', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (92, N'678912345', N'Snapshot', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (93, N'678912345', N'News', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (94, N'678912345', N'Warning', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (95, N'678912345', N'Misc', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (96, N'678912345', N'AccountDetails', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (97, N'789123456', N'General', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (98, N'789123456', N'Home', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (99, N'789123456', N'SOC124', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (100, N'789123456', N'Interest', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (101, N'789123456', N'Financial', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (102, N'789123456', N'Security', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (103, N'789123456', N'Documents', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (104, N'789123456', N'Inspection', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (105, N'789123456', N'Rating', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (106, N'789123456', N'Restucturing', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (107, N'789123456', N'SMA', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (108, N'789123456', N'Snapshot', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (109, N'789123456', N'News', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (110, N'789123456', N'Warning', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (111, N'789123456', N'Misc', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (112, N'789123456', N'AccountDetails', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (113, N'891234567', N'General', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (114, N'891234567', N'Home', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (115, N'891234567', N'SOC124', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (116, N'891234567', N'Interest', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (117, N'891234567', N'Financial', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (118, N'891234567', N'Security', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (119, N'891234567', N'Documents', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (120, N'891234567', N'Inspection', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (121, N'891234567', N'Rating', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (122, N'891234567', N'Restucturing', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (123, N'891234567', N'SMA', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (124, N'891234567', N'Snapshot', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (125, N'891234567', N'News', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (126, N'891234567', N'Warning', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (127, N'891234567', N'Misc', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (128, N'891234567', N'AccountDetails', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (129, N'912345678', N'General', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (130, N'912345678', N'Home', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (131, N'912345678', N'SOC124', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (132, N'912345678', N'Interest', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (133, N'912345678', N'Financial', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (134, N'912345678', N'Security', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (135, N'912345678', N'Documents', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (136, N'912345678', N'Inspection', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (137, N'912345678', N'Rating', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (138, N'912345678', N'Restucturing', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (139, N'912345678', N'SMA', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (140, N'912345678', N'Snapshot', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (141, N'912345678', N'News', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (142, N'912345678', N'Warning', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (143, N'912345678', N'Misc', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (144, N'912345678', N'AccountDetails', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (145, N'123456780', N'General', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (146, N'123456780', N'Home', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (147, N'123456780', N'SOC124', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (148, N'123456780', N'Interest', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (149, N'123456780', N'Financial', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (150, N'123456780', N'Security', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (151, N'123456780', N'Documents', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (152, N'123456780', N'Inspection', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (153, N'123456780', N'Rating', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (154, N'123456780', N'Restucturing', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (155, N'123456780', N'SMA', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (156, N'123456780', N'Snapshot', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (157, N'123456780', N'News', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (158, N'123456780', N'Warning', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (159, N'123456780', N'Misc', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (160, N'123456780', N'AccountDetails', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (161, N'123456789', N'General', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (162, N'123456789', N'Home', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (163, N'123456789', N'SOC124', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (164, N'123456789', N'Interest', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (165, N'123456789', N'Financial', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (166, N'123456789', N'Security', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (167, N'123456789', N'Documents', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (168, N'123456789', N'Inspection', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (169, N'123456789', N'Rating', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (170, N'123456789', N'Restucturing', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (171, N'123456789', N'SMA', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (172, N'123456789', N'Snapshot', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (173, N'123456789', N'News', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (174, N'123456789', N'Warning', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (175, N'123456789', N'Misc', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[ModuleNotes] ([Id], [Cust_Id], [ModuleName], [ObservationNotes], [CommunicatedTo], [responceReceived], [FollowupDate], [LastUpdateBy], [LastUpdatedOn]) VALUES (176, N'123456789', N'AccountDetails', N'', N'', N'', CAST(N'2018-12-12T00:00:00.000' AS DateTime), N'admin', CAST(N'2018-07-12T00:00:00.000' AS DateTime))
+GO
+SET IDENTITY_INSERT [dbo].[ModuleNotes] OFF
 GO
 SET IDENTITY_INSERT [dbo].[News] ON 
 GO

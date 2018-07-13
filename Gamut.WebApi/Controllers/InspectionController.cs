@@ -88,35 +88,35 @@ namespace Gamut.WebAPI.Controllers
         }
 
         // POST: api/Inspection
-        [ResponseType(typeof(Inspection))]
-        public IHttpActionResult PostInspection(Inspection inspection)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[ResponseType(typeof(Inspection))]
+        //public IHttpActionResult PostInspection(Inspection inspection)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            db.Inspections.Add(inspection);
-            db.SaveChanges();
+        //    db.Inspections.Add(inspection);
+        //    db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = inspection.Id }, inspection);
-        }
+        //    return CreatedAtRoute("DefaultApi", new { id = inspection.Id }, inspection);
+        //}
 
-        // DELETE: api/Inspection/5
-        [ResponseType(typeof(Inspection))]
-        public IHttpActionResult DeleteInspection(int id)
-        {
-            Inspection inspection = db.Inspections.Find(id);
-            if (inspection == null)
-            {
-                return NotFound();
-            }
+        //// DELETE: api/Inspection/5
+        //[ResponseType(typeof(Inspection))]
+        //public IHttpActionResult DeleteInspection(int id)
+        //{
+        //    Inspection inspection = db.Inspections.Find(id);
+        //    if (inspection == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            db.Inspections.Remove(inspection);
-            db.SaveChanges();
+        //    db.Inspections.Remove(inspection);
+        //    db.SaveChanges();
 
-            return Ok(inspection);
-        }
+        //    return Ok(inspection);
+        //}
 
         protected override void Dispose(bool disposing)
         {

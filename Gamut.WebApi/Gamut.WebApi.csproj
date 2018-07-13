@@ -176,6 +176,8 @@
     <Compile Include="Controllers\InspectionController.cs" />
     <Compile Include="Controllers\InterestController.cs" />
     <Compile Include="Controllers\LookUpAPIController.cs" />
+    <Compile Include="Controllers\MiscController.cs" />
+    <Compile Include="Controllers\ModuleNoteController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\RatingAPIController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
@@ -247,6 +249,15 @@
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LookUp.cs">
+      <DependentUpon>GamutEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MiscAttachment.cs">
+      <DependentUpon>GamutEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MiscExposure.cs">
+      <DependentUpon>GamutEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModuleNote.cs">
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\News.cs">
