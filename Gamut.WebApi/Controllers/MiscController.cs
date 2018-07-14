@@ -118,37 +118,66 @@ namespace Gamut.WebAPI.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
-        
+
         //// POST: api/Misc
-        //[ResponseType(typeof(MiscExposure))]
-        //public IHttpActionResult PostMiscExposure(MiscExposure miscExposure)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+        [ResponseType(typeof(MiscExposure))]
+        [Route("api/CreateMiscExposure")]
+        public IHttpActionResult PostMiscExposure(MiscExposure miscExposure)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-        //    db.MiscExposures.Add(miscExposure);
+            db.MiscExposures.Add(miscExposure);
 
-        //    try
-        //    {
-        //        db.SaveChanges();
-        //    }
-        //    catch (DbUpdateException)
-        //    {
-        //        if (MiscExposureExists(miscExposure.Id))
-        //        {
-        //            return Conflict();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateException)
+            {
+                if (MiscExposureExists(miscExposure.Id))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
-        //    return CreatedAtRoute("DefaultApi", new { id = miscExposure.Id }, miscExposure);
-        //}
+            return CreatedAtRoute("DefaultApi", new { id = miscExposure.Id }, miscExposure);
+        }
 
+        [Route("api/CreateMiscAttachment")]
+        public IHttpActionResult PostMiscAttachment(MiscAttachment miscAttachment)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.MiscAttachments.Add(miscAttachment);
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateException)
+            {
+                if (MiscAttachmentExists(miscAttachment.Id))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return CreatedAtRoute("DefaultApi", new { id = miscAttachment.Id }, miscAttachment);
+        }
         //// DELETE: api/Misc/5
         //[ResponseType(typeof(MiscExposure))]
         //public IHttpActionResult DeleteMiscExposure(int id)
@@ -177,6 +206,11 @@ namespace Gamut.WebAPI.Controllers
         private bool MiscExposureExists(int id)
         {
             return db.MiscExposures.Count(e => e.Id == id) > 0;
+        }
+
+        private bool MiscAttachmentExists(int id)
+        {
+            return db.MiscAttachments.Count(e => e.Id == id) > 0;
         }
     }
 

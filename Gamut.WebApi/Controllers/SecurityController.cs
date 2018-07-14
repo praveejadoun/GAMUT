@@ -17,10 +17,10 @@ namespace Gamut.WebAPI.Controllers
         private gamutdatabaseEntities db = new gamutdatabaseEntities();
 
         // GET: api/Security
-        public IQueryable<Security> GetSecurities()
-        {
-            return db.Securities;
-        }
+        //public IQueryable<Security> GetSecurities()
+        //{
+          //  return db.Securities;
+        //}
 
         // GET: api/Security/5
         //[ResponseType(typeof(Security))]
@@ -36,7 +36,7 @@ namespace Gamut.WebAPI.Controllers
         //}
 
         [ResponseType(typeof(Security))]
-        [Route("api/SecurityCust/{id}")]
+       // [Route("api/SecurityCust/{id}")]
         public IHttpActionResult GetInterestBy(string id)
         {
 
