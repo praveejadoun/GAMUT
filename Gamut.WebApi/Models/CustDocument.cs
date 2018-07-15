@@ -26,5 +26,6 @@ namespace Gamut.WebAPI.Models
         public string MonitorId { get; set; }
         public string LastUpdatedBy { get; set; }
         public string LastUpdatedOn { get; set; }
+        public Nullable<int> SortOn { get; set; }
     }
 }

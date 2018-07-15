@@ -64,6 +64,7 @@
           <Property Name="CompiledDate" Type="datetime" />
           <Property Name="IsChecked" Type="int" />
           <Property Name="MonitorId" Type="varchar" MaxLength="100" />
+          <Property Name="SortOn" Type="int" />
           <Property Name="LastUpdatedBy" Type="varchar" MaxLength="50" />
           <Property Name="LastUpdatedOn" Type="varchar" MaxLength="50" />
         </EntityType>
@@ -968,6 +969,7 @@
           <Property Name="MonitorId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="LastUpdatedOn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SortOn" Type="Int32" />
         </EntityType>
         <EntityType Name="Inspection">
           <Key>
@@ -1479,6 +1481,7 @@
           <EntitySetMapping Name="CustDocuments">
             <EntityTypeMapping TypeName="gamutdatabaseModel.CustDocument">
               <MappingFragment StoreEntitySet="CustDocument">
+                <ScalarProperty Name="SortOn" ColumnName="SortOn" />
                 <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
                 <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
                 <ScalarProperty Name="MonitorId" ColumnName="MonitorId" />
