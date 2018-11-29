@@ -206,6 +206,9 @@
     <Compile Include="Models\CustomerDataMapping.cs">
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DocumentType.cs">
+      <DependentUpon>GamutEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\FileUpload.cs">
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
@@ -261,6 +264,9 @@
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\News.cs">
+      <DependentUpon>GamutEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Periodicity.cs">
       <DependentUpon>GamutEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Rating.cs">

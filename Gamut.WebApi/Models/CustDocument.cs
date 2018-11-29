@@ -16,8 +16,8 @@ namespace Gamut.WebAPI.Models
     {
         public int Id { get; set; }
         public string Cust_id { get; set; }
-        public string Periodicity { get; set; }
-        public string DocumentType { get; set; }
+        public Nullable<int> Periodicity { get; set; }
+        public Nullable<int> DocumentType { get; set; }
         public string Submitted { get; set; }
         public Nullable<System.DateTime> SubmittedDate { get; set; }
         public string DeviationNoted { get; set; }
@@ -27,5 +27,6 @@ namespace Gamut.WebAPI.Models
         public string LastUpdatedBy { get; set; }
         public string LastUpdatedOn { get; set; }
         public Nullable<int> SortOn { get; set; }
+        public string DocumentURL { get; set; }
     }
 }

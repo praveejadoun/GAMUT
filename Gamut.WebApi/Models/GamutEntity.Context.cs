@@ -56,5 +56,7 @@ namespace Gamut.WebAPI.Models
         public virtual DbSet<MiscAttachment> MiscAttachments { get; set; }
         public virtual DbSet<MiscExposure> MiscExposures { get; set; }
         public virtual DbSet<ModuleNote> ModuleNotes { get; set; }
+        public virtual DbSet<DocumentType> DocumentTypes { get; set; }
+        public virtual DbSet<Periodicity> Periodicities { get; set; }
     }
 }

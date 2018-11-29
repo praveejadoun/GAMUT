@@ -56,8 +56,8 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Cust_id" Type="varchar" MaxLength="50" />
-          <Property Name="Periodicity" Type="varchar" MaxLength="50" />
-          <Property Name="DocumentType" Type="varchar" MaxLength="50" />
+          <Property Name="Periodicity" Type="int" />
+          <Property Name="DocumentType" Type="int" />
           <Property Name="Submitted" Type="varchar" MaxLength="50" />
           <Property Name="SubmittedDate" Type="datetime" />
           <Property Name="DeviationNoted" Type="varchar" MaxLength="250" />
@@ -67,6 +67,7 @@
           <Property Name="SortOn" Type="int" />
           <Property Name="LastUpdatedBy" Type="varchar" MaxLength="50" />
           <Property Name="LastUpdatedOn" Type="varchar" MaxLength="50" />
+          <Property Name="DocumentURL" Type="varchar" MaxLength="1000" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -94,6 +95,15 @@
           <Property Name="CustID" Type="varchar" MaxLength="50" />
           <Property Name="MAppingURl" Type="varchar" MaxLength="500" />
           <Property Name="TypeId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'gamuttest.dbo.DocumentType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DocumentType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DocumentType" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="FileUpload">
           <Key>
@@ -311,6 +321,15 @@
           <Property Name="Comments" Type="varchar" MaxLength="5000" />
           <Property Name="InformedTo" Type="varchar" MaxLength="500" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'gamuttest.dbo.Periodicity' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Periodicity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PeriodicityType" Type="varchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="Rating">
           <Key>
             <PropertyRef Name="Id" />
@@ -325,6 +344,7 @@
           <Property Name="ratingValue" Type="varchar" MaxLength="50" />
           <Property Name="byId" Type="varchar" MaxLength="50" />
           <Property Name="source" Type="varchar" MaxLength="50" />
+          <Property Name="DocumnetURL" Type="varchar" MaxLength="1000" />
         </EntityType>
         <EntityType Name="RestucturingDetail">
           <Key>
@@ -475,6 +495,7 @@
           <Property Name="isCompiled" Type="varchar" MaxLength="50" />
           <Property Name="followUpDate" Type="datetime" />
           <Property Name="compiledDate" Type="datetime" />
+          <Property Name="DocumnetURL" Type="varchar" MaxLength="1000" />
         </EntityType>
         <EntityType Name="Student">
           <Key>
@@ -561,6 +582,18 @@
           <EntitySet Name="SOC124" EntityType="Self.SOC124" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WarningIndicator" EntityType="Self.WarningIndicator" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DocumentType" EntityType="Self.DocumentType" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DocumentType].[Id] AS [Id], 
+    [DocumentType].[DocumentType] AS [DocumentType]
+    FROM [dbo].[DocumentType] AS [DocumentType]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Periodicity" EntityType="Self.Periodicity" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Periodicity].[Id] AS [Id], 
+    [Periodicity].[PeriodicityType] AS [PeriodicityType]
+    FROM [dbo].[Periodicity] AS [Periodicity]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_FinancialResultDetails_FinancialResultHeader" Association="Self.FK_FinancialResultDetails_FinancialResultHeader">
             <End Role="FinancialResultHeader" EntitySet="FinancialResultHeader" />
             <End Role="FinancialResultDetails" EntitySet="FinancialResultDetails" />
@@ -626,6 +659,8 @@
           <EntitySet Name="MiscAttachments" EntityType="gamutdatabaseModel.MiscAttachment" />
           <EntitySet Name="MiscExposures" EntityType="gamutdatabaseModel.MiscExposure" />
           <EntitySet Name="ModuleNotes" EntityType="gamutdatabaseModel.ModuleNote" />
+          <EntitySet Name="DocumentTypes" EntityType="gamutdatabaseModel.DocumentType" />
+          <EntitySet Name="Periodicities" EntityType="gamutdatabaseModel.Periodicity" />
         </EntityContainer>
         <EntityType Name="Customer">
           <Key>
@@ -721,6 +756,7 @@
           <Property Name="isCompiled" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="followUpDate" Type="DateTime" Precision="3" />
           <Property Name="compiledDate" Type="DateTime" Precision="3" />
+          <Property Name="DocumnetURL" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="GeneralExposure">
           <Key>
@@ -758,6 +794,7 @@
           <Property Name="source" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ratingYear" Type="Int32" />
           <Property Name="ratingType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DocumnetURL" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Interest">
           <Key>
@@ -959,8 +996,8 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Cust_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Periodicity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DocumentType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Periodicity" Type="Int32" />
+          <Property Name="DocumentType" Type="Int32" />
           <Property Name="Submitted" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="SubmittedDate" Type="DateTime" Precision="3" />
           <Property Name="DeviationNoted" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
@@ -970,6 +1007,7 @@
           <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="LastUpdatedOn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="SortOn" Type="Int32" />
+          <Property Name="DocumentURL" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Inspection">
           <Key>
@@ -1143,6 +1181,20 @@
           <Property Name="LastUpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="LastUpdatedOn" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="DocumentType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DocumentType1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Periodicity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PeriodicityType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1249,6 +1301,7 @@
           <EntitySetMapping Name="SOC124">
             <EntityTypeMapping TypeName="gamutdatabaseModel.SOC124">
               <MappingFragment StoreEntitySet="SOC124">
+                <ScalarProperty Name="DocumnetURL" ColumnName="DocumnetURL" />
                 <ScalarProperty Name="compiledDate" ColumnName="compiledDate" />
                 <ScalarProperty Name="followUpDate" ColumnName="followUpDate" />
                 <ScalarProperty Name="isCompiled" ColumnName="isCompiled" />
@@ -1288,6 +1341,7 @@
           <EntitySetMapping Name="Ratings">
             <EntityTypeMapping TypeName="gamutdatabaseModel.Rating">
               <MappingFragment StoreEntitySet="Rating">
+                <ScalarProperty Name="DocumnetURL" ColumnName="DocumnetURL" />
                 <ScalarProperty Name="ratingType" ColumnName="ratingType" />
                 <ScalarProperty Name="ratingYear" ColumnName="ratingYear" />
                 <ScalarProperty Name="source" ColumnName="source" />
@@ -1481,6 +1535,7 @@
           <EntitySetMapping Name="CustDocuments">
             <EntityTypeMapping TypeName="gamutdatabaseModel.CustDocument">
               <MappingFragment StoreEntitySet="CustDocument">
+                <ScalarProperty Name="DocumentURL" ColumnName="DocumentURL" />
                 <ScalarProperty Name="SortOn" ColumnName="SortOn" />
                 <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
                 <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
@@ -1676,6 +1731,22 @@
                 <ScalarProperty Name="ObservationNotes" ColumnName="ObservationNotes" />
                 <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
                 <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocumentTypes">
+            <EntityTypeMapping TypeName="gamutdatabaseModel.DocumentType">
+              <MappingFragment StoreEntitySet="DocumentType">
+                <ScalarProperty Name="DocumentType1" ColumnName="DocumentType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Periodicities">
+            <EntityTypeMapping TypeName="gamutdatabaseModel.Periodicity">
+              <MappingFragment StoreEntitySet="Periodicity">
+                <ScalarProperty Name="PeriodicityType" ColumnName="PeriodicityType" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

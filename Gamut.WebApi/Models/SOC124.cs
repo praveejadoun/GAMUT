@@ -23,5 +23,6 @@ namespace Gamut.WebAPI.Models
         public string isCompiled { get; set; }
         public Nullable<System.DateTime> followUpDate { get; set; }
         public Nullable<System.DateTime> compiledDate { get; set; }
+        public string DocumnetURL { get; set; }
     }
 }

@@ -38,7 +38,9 @@ namespace Gamut.WebAPI.Controllers
             finYears.Add(new FinYear(DateTime.Now.AddYears(-1)));
             finYears.Add(new FinYear(DateTime.Now.AddYears(-2)));
             finYears.Add(new FinYear(DateTime.Now.AddYears(-3)));
-            CustDocumentDecorator custDocumentDecorator = new CustDocumentDecorator(documents, customer,finYears);
+            List<Periodicity> periodictyType = db.Periodicities.ToList();
+            List<DocumentType> documentType = db.DocumentTypes.ToList();
+            CustDocumentDecorator custDocumentDecorator = new CustDocumentDecorator(documents, customer,finYears,periodictyType,documentType);
 
             return Ok(custDocumentDecorator);
       }
@@ -125,15 +127,21 @@ namespace Gamut.WebAPI.Controllers
     }
     public class CustDocumentDecorator
     {
-        public CustDocumentDecorator(List<CustDocument> _data, Customer _customer,List<FinYear> _finYears)
+        public CustDocumentDecorator(List<CustDocument> _data, Customer _customer, List<FinYear> _finYears, List<Periodicity> _periodicity,List<DocumentType> _documentType)
         {
             entData = _data;
             customer = _customer;
             finYears = _finYears;
+            periodictyType = _periodicity;
+            documentType = _documentType;
+
         }
         public List<CustDocument> entData { get; set; }
         public List<FinYear> finYears { get; set; }
         public Customer customer { get; set; }
+        public IList<Periodicity> periodictyType {get;set;}
+        public IList<DocumentType> documentType { get; set; }
+
     }
        
 

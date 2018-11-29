@@ -12,18 +12,9 @@ namespace Gamut.WebAPI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Rating
+    public partial class DocumentType
     {
         public int Id { get; set; }
-        public string Cust_Id { get; set; }
-        public string particular { get; set; }
-        public Nullable<System.DateTime> dateFrom { get; set; }
-        public Nullable<System.DateTime> dateTo { get; set; }
-        public string ratingValue { get; set; }
-        public string byId { get; set; }
-        public string source { get; set; }
-        public Nullable<int> ratingYear { get; set; }
-        public string ratingType { get; set; }
-        public string DocumnetURL { get; set; }
+        public string DocumentType1 { get; set; }
     }
 }
