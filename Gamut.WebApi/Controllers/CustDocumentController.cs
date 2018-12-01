@@ -30,7 +30,7 @@ namespace Gamut.WebAPI.Controllers
                             join p in db.Periodicities on i.Periodicity equals p.Id
                                             join d in db.DocumentTypes on  i.DocumentType equals d.Id
                              where i.Cust_id == id && (i.CompiledDate >= dtFrom && i.CompiledDate <= dtTo)  
-                                            select new { Id = i.Id, Cust_id = i.Cust_id, Periodicity = i.Periodicity, PeriodicityType = p.PeriodicityType, DocumentTypeName = d.DocumentType1, DocumentType = i.DocumentType, Submitted = i.Submitted, SubmittedDate = i.SubmittedDate, DeviationNoted = i.DeviationNoted, CompiledDate = i.CompiledDate,IsChecked=i.IsChecked,MonitorId=i.MonitorId,SortOn=i.SortOn,LastUpdatedBy=i.LastUpdatedBy,LastUpdatedOn=i.LastUpdatedOn,DocumentURL=i.DocumentURL }).OrderBy(c => c.SortOn).ToList();
+                                            select new { Id = i.Id, Cust_id = i.Cust_id, Periodicity = p.PeriodicityType, PeriodicityTypeId = p.Id, DocumentType = d.DocumentType1, DocumentTypeId = d.Id, Submitted = i.Submitted, SubmittedDate = i.SubmittedDate, DeviationNoted = i.DeviationNoted, CompiledDate = i.CompiledDate,IsChecked=i.IsChecked,MonitorId=i.MonitorId,SortOn=i.SortOn,LastUpdatedBy=i.LastUpdatedBy,LastUpdatedOn=i.LastUpdatedOn,DocumentURL=i.DocumentURL }).OrderBy(c => c.SortOn).ToList();
             //  db.CustDocuments.Where(i => i.Cust_id == id && (i.CompiledDate >= dtFrom && i.CompiledDate <= dtTo)).OrderBy(c=>c.SortOn).ToList();
             if (documents == null || documents.Count() <=0)
             {
