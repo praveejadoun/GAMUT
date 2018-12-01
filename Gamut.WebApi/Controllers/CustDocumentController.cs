@@ -26,7 +26,12 @@ namespace Gamut.WebAPI.Controllers
             DateTime dtFrom = Convert.ToDateTime(DateTime.ParseExact(fromDate, "dd-MM-yyyy", CultureInfo.InvariantCulture));
             DateTime dtTo = Convert.ToDateTime(DateTime.ParseExact(toDate, "dd-MM-yyyy", CultureInfo.InvariantCulture));
 
-            List<CustDocument> documents = db.CustDocuments.Where(i => i.Cust_id == id && (i.CompiledDate >= dtFrom && i.CompiledDate <= dtTo)).OrderBy(c=>c.SortOn).ToList();
+            var documents = (from i in db.CustDocuments
+                            join p in db.Periodicities on i.Periodicity equals p.Id
+                                            join d in db.DocumentTypes on  i.DocumentType equals d.Id
+                             where i.Cust_id == id && (i.CompiledDate >= dtFrom && i.CompiledDate <= dtTo)  
+                                            select new { Id = i.Id, Cust_id = i.Cust_id, Periodicity = i.Periodicity, PeriodicityType = p.PeriodicityType, DocumentTypeName = d.DocumentType1, DocumentType = i.DocumentType, Submitted = i.Submitted, SubmittedDate = i.SubmittedDate, DeviationNoted = i.DeviationNoted, CompiledDate = i.CompiledDate,IsChecked=i.IsChecked,MonitorId=i.MonitorId,SortOn=i.SortOn,LastUpdatedBy=i.LastUpdatedBy,LastUpdatedOn=i.LastUpdatedOn,DocumentURL=i.DocumentURL }).OrderBy(c => c.SortOn).ToList();
+            //  db.CustDocuments.Where(i => i.Cust_id == id && (i.CompiledDate >= dtFrom && i.CompiledDate <= dtTo)).OrderBy(c=>c.SortOn).ToList();
             if (documents == null || documents.Count() <=0)
             {
                 return NotFound();
@@ -127,7 +132,7 @@ namespace Gamut.WebAPI.Controllers
     }
     public class CustDocumentDecorator
     {
-        public CustDocumentDecorator(List<CustDocument> _data, Customer _customer, List<FinYear> _finYears, List<Periodicity> _periodicity,List<DocumentType> _documentType)
+        public CustDocumentDecorator(dynamic _data, Customer _customer, List<FinYear> _finYears, List<Periodicity> _periodicity,List<DocumentType> _documentType)
         {
             entData = _data;
             customer = _customer;
@@ -136,7 +141,7 @@ namespace Gamut.WebAPI.Controllers
             documentType = _documentType;
 
         }
-        public List<CustDocument> entData { get; set; }
+        public dynamic entData { get; set; }
         public List<FinYear> finYears { get; set; }
         public Customer customer { get; set; }
         public IList<Periodicity> periodictyType {get;set;}
