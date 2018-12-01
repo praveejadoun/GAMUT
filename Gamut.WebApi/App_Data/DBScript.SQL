@@ -1,6 +1,6 @@
-﻿USE [gamutdatabase]
+﻿USE [gamuttest]
 GO
-/****** Object:  Table [dbo].[AccountDetails]    Script Date: 15-07-2018 12:53:55 ******/
+/****** Object:  Table [dbo].[AccountDetails]    Script Date: 01-12-2018 23:17:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -35,7 +35,7 @@ CREATE TABLE [dbo].[AccountDetails](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ActivityLog]    Script Date: 15-07-2018 12:53:56 ******/
+/****** Object:  Table [dbo].[ActivityLog]    Script Date: 01-12-2018 23:17:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -59,7 +59,7 @@ CREATE TABLE [dbo].[ActivityLog](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CustDocument]    Script Date: 15-07-2018 12:53:57 ******/
+/****** Object:  Table [dbo].[CustDocument]    Script Date: 01-12-2018 23:17:28 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -67,8 +67,8 @@ GO
 CREATE TABLE [dbo].[CustDocument](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Cust_id] [varchar](50) NULL,
-	[Periodicity] [varchar](50) NULL,
-	[DocumentType] [varchar](50) NULL,
+	[Periodicity] [int] NULL,
+	[DocumentType] [int] NULL,
 	[Submitted] [varchar](50) NULL,
 	[SubmittedDate] [datetime] NULL,
 	[DeviationNoted] [varchar](250) NULL,
@@ -78,13 +78,14 @@ CREATE TABLE [dbo].[CustDocument](
 	[SortOn] [int] NULL,
 	[LastUpdatedBy] [varchar](50) NULL,
 	[LastUpdatedOn] [varchar](50) NULL,
+	[DocumentURL] [varchar](1000) NULL,
  CONSTRAINT [PK_Document] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Customer]    Script Date: 15-07-2018 12:53:57 ******/
+/****** Object:  Table [dbo].[Customer]    Script Date: 01-12-2018 23:17:29 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -109,7 +110,7 @@ CREATE TABLE [dbo].[Customer](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CustomerDataMapping]    Script Date: 15-07-2018 12:53:58 ******/
+/****** Object:  Table [dbo].[CustomerDataMapping]    Script Date: 01-12-2018 23:17:30 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -125,7 +126,17 @@ CREATE TABLE [dbo].[CustomerDataMapping](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[FileUpload]    Script Date: 15-07-2018 12:53:58 ******/
+/****** Object:  Table [dbo].[DocumentType]    Script Date: 01-12-2018 23:17:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DocumentType](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[DocumentType] [varchar](100) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[FileUpload]    Script Date: 01-12-2018 23:17:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -145,7 +156,7 @@ CREATE TABLE [dbo].[FileUpload](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[FinancialResultDetails]    Script Date: 15-07-2018 12:53:59 ******/
+/****** Object:  Table [dbo].[FinancialResultDetails]    Script Date: 01-12-2018 23:17:33 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -165,7 +176,7 @@ CREATE TABLE [dbo].[FinancialResultDetails](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[FinancialResultHeader]    Script Date: 15-07-2018 12:54:00 ******/
+/****** Object:  Table [dbo].[FinancialResultHeader]    Script Date: 01-12-2018 23:17:34 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -183,7 +194,7 @@ CREATE TABLE [dbo].[FinancialResultHeader](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[FinancialResultType]    Script Date: 15-07-2018 12:54:00 ******/
+/****** Object:  Table [dbo].[FinancialResultType]    Script Date: 01-12-2018 23:17:35 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -199,7 +210,7 @@ CREATE TABLE [dbo].[FinancialResultType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[General]    Script Date: 15-07-2018 12:54:01 ******/
+/****** Object:  Table [dbo].[General]    Script Date: 01-12-2018 23:17:36 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -259,7 +270,7 @@ CREATE TABLE [dbo].[General](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[GeneralExposure]    Script Date: 15-07-2018 12:54:01 ******/
+/****** Object:  Table [dbo].[GeneralExposure]    Script Date: 01-12-2018 23:17:37 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -277,7 +288,7 @@ CREATE TABLE [dbo].[GeneralExposure](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[GeneralGurantor]    Script Date: 15-07-2018 12:54:02 ******/
+/****** Object:  Table [dbo].[GeneralGurantor]    Script Date: 01-12-2018 23:17:38 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -295,7 +306,7 @@ CREATE TABLE [dbo].[GeneralGurantor](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Inspection]    Script Date: 15-07-2018 12:54:02 ******/
+/****** Object:  Table [dbo].[Inspection]    Script Date: 01-12-2018 23:17:39 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -317,7 +328,7 @@ CREATE TABLE [dbo].[Inspection](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Interest]    Script Date: 15-07-2018 12:54:03 ******/
+/****** Object:  Table [dbo].[Interest]    Script Date: 01-12-2018 23:17:40 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -340,7 +351,7 @@ CREATE TABLE [dbo].[Interest](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[LookUp]    Script Date: 15-07-2018 12:54:03 ******/
+/****** Object:  Table [dbo].[LookUp]    Script Date: 01-12-2018 23:17:40 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -357,7 +368,7 @@ CREATE TABLE [dbo].[LookUp](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[MiscAttachment]    Script Date: 15-07-2018 12:54:04 ******/
+/****** Object:  Table [dbo].[MiscAttachment]    Script Date: 01-12-2018 23:17:42 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -376,7 +387,7 @@ CREATE TABLE [dbo].[MiscAttachment](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[MiscExposure]    Script Date: 15-07-2018 12:54:04 ******/
+/****** Object:  Table [dbo].[MiscExposure]    Script Date: 01-12-2018 23:17:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -398,7 +409,7 @@ CREATE TABLE [dbo].[MiscExposure](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ModuleNotes]    Script Date: 15-07-2018 12:54:05 ******/
+/****** Object:  Table [dbo].[ModuleNotes]    Script Date: 01-12-2018 23:17:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -419,7 +430,7 @@ CREATE TABLE [dbo].[ModuleNotes](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[News]    Script Date: 15-07-2018 12:54:05 ******/
+/****** Object:  Table [dbo].[News]    Script Date: 01-12-2018 23:17:44 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -439,7 +450,17 @@ CREATE TABLE [dbo].[News](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Rating]    Script Date: 15-07-2018 12:54:06 ******/
+/****** Object:  Table [dbo].[Periodicity]    Script Date: 01-12-2018 23:17:46 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Periodicity](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[PeriodicityType] [varchar](100) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Rating]    Script Date: 01-12-2018 23:17:47 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -455,13 +476,14 @@ CREATE TABLE [dbo].[Rating](
 	[ratingValue] [varchar](50) NULL,
 	[byId] [varchar](50) NULL,
 	[source] [varchar](50) NULL,
+	[DocumnetURL] [varchar](1000) NULL,
  CONSTRAINT [PK_Rating] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[RestucturingDetail]    Script Date: 15-07-2018 12:54:06 ******/
+/****** Object:  Table [dbo].[RestucturingDetail]    Script Date: 01-12-2018 23:17:48 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -482,7 +504,7 @@ CREATE TABLE [dbo].[RestucturingDetail](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[RestucturingHeader]    Script Date: 15-07-2018 12:54:07 ******/
+/****** Object:  Table [dbo].[RestucturingHeader]    Script Date: 01-12-2018 23:17:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -508,7 +530,7 @@ CREATE TABLE [dbo].[RestucturingHeader](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Score]    Script Date: 15-07-2018 12:54:07 ******/
+/****** Object:  Table [dbo].[Score]    Script Date: 01-12-2018 23:17:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -527,7 +549,7 @@ CREATE TABLE [dbo].[Score](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Security]    Script Date: 15-07-2018 12:54:08 ******/
+/****** Object:  Table [dbo].[Security]    Script Date: 01-12-2018 23:17:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -555,7 +577,7 @@ CREATE TABLE [dbo].[Security](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SMABucket]    Script Date: 15-07-2018 12:54:08 ******/
+/****** Object:  Table [dbo].[SMABucket]    Script Date: 01-12-2018 23:17:51 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -578,7 +600,7 @@ CREATE TABLE [dbo].[SMABucket](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SMACompilation]    Script Date: 15-07-2018 12:54:09 ******/
+/****** Object:  Table [dbo].[SMACompilation]    Script Date: 01-12-2018 23:17:53 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -600,7 +622,7 @@ CREATE TABLE [dbo].[SMACompilation](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SMAHistory]    Script Date: 15-07-2018 12:54:09 ******/
+/****** Object:  Table [dbo].[SMAHistory]    Script Date: 01-12-2018 23:17:53 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -623,7 +645,7 @@ CREATE TABLE [dbo].[SMAHistory](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Snapshot]    Script Date: 15-07-2018 12:54:10 ******/
+/****** Object:  Table [dbo].[Snapshot]    Script Date: 01-12-2018 23:17:55 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -653,7 +675,7 @@ CREATE TABLE [dbo].[Snapshot](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SOC124]    Script Date: 15-07-2018 12:54:10 ******/
+/****** Object:  Table [dbo].[SOC124]    Script Date: 01-12-2018 23:17:56 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -668,13 +690,14 @@ CREATE TABLE [dbo].[SOC124](
 	[isCompiled] [varchar](50) NULL,
 	[followUpDate] [datetime] NULL,
 	[compiledDate] [datetime] NULL,
+	[DocumnetURL] [varchar](1000) NULL,
  CONSTRAINT [PK_SOC124] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Student]    Script Date: 15-07-2018 12:54:11 ******/
+/****** Object:  Table [dbo].[Student]    Script Date: 01-12-2018 23:17:56 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -693,7 +716,7 @@ CREATE TABLE [dbo].[Student](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[WarningIndicator]    Script Date: 15-07-2018 12:54:12 ******/
+/****** Object:  Table [dbo].[WarningIndicator]    Script Date: 01-12-2018 23:17:57 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -799,145 +822,145 @@ SET IDENTITY_INSERT [dbo].[ActivityLog] OFF
 GO
 SET IDENTITY_INSERT [dbo].[CustDocument] ON 
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (2, N'678912345', N'Annual', N'Audited FS', N'Yes', CAST(N'2018-01-04T00:00:00.000' AS DateTime), N'dsff', CAST(N'2018-01-04T00:00:00.000' AS DateTime), 0, N'', 10, N'Praveen', N'07-07-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (2, N'678912345', 1, 1, N'Yes', CAST(N'2018-01-04T00:00:00.000' AS DateTime), N'dsff', CAST(N'2018-01-04T00:00:00.000' AS DateTime), 0, N'', 10, N'Praveen', N'27-11-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (3, N'678912345', N'Annual', N'Stock Audit', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 0, N'', 10, N'Praveen', N'07-07-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (3, N'678912345', 1, 9, N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 0, N'', 10, N'Praveen', N'07-07-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (4, N'678912345', N'Annual', N'ECGC/CGTMS', N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (4, N'678912345', 1, 3, N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (5, N'678912345', N'Annual', N'Insurance', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (5, N'678912345', 1, 7, N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (6, N'678912345', N'Quarterly', N'FFR / QIS', N'Yes', CAST(N'2018-01-04T00:00:00.000' AS DateTime), N'pravee tests', CAST(N'2018-01-04T00:00:00.000' AS DateTime), 0, N'', 20, N'Praveen', N'06-07-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (6, N'678912345', 3, 6, N'Yes', CAST(N'2018-01-04T00:00:00.000' AS DateTime), N'pravee tests', CAST(N'2018-01-04T00:00:00.000' AS DateTime), 0, N'', 20, N'Praveen', N'06-07-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (7, N'678912345', N'Quarterly', N'Exgn. Of Info', N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 20, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (7, N'678912345', 3, 5, N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 20, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (8, N'678912345', N'Quarterly', N'UHFCE', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 20, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (8, N'678912345', 3, 10, N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 20, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (9, N'678912345', N'General', N'Cersai Charge', N'1', CAST(N'2018-01-04T00:00:00.000' AS DateTime), N'', CAST(N'2018-01-04T00:00:00.000' AS DateTime), 1, N'praveen test', 30, N'Praveen', N'08-07-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (9, N'678912345', 2, 2, N'1', CAST(N'2018-01-04T00:00:00.000' AS DateTime), N'', CAST(N'2018-01-04T00:00:00.000' AS DateTime), 1, N'praveen test', 30, N'Praveen', N'08-07-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (10, N'678912345', N'General', N'EM Creation', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (10, N'678912345', 2, 4, N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (11, N'678912345', N'General', N'ROC Charge', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (11, N'678912345', 2, 8, N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (12, N'891234567', N'Annual', N'Audited FS', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (12, N'891234567', 1, 1, N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (13, N'891234567', N'Annual', N'Stock Audit', N'YEs', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (13, N'891234567', 1, 9, N'YEs', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (14, N'891234567', N'Annual', N'ECGC/CGTMS', N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (14, N'891234567', 1, 3, N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (15, N'891234567', N'Annual', N'Insurance', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (15, N'891234567', 1, 7, N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (16, N'891234567', N'Quarterly', N'FFR / QIS', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 20, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (16, N'891234567', 3, 6, N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 20, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (17, N'891234567', N'Quarterly', N'Exgn. Of Info', N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 20, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (17, N'891234567', 3, 5, N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 20, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (18, N'891234567', N'Quarterly', N'UHFCE', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 20, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (18, N'891234567', 3, 10, N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 20, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (19, N'891234567', N'General', N'Cersai Charge', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (19, N'891234567', 2, 2, N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (20, N'891234567', N'General', N'EM Creation', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (20, N'891234567', 2, 4, N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (21, N'891234567', N'General', N'ROC Charge', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (21, N'891234567', 2, 8, N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (22, N'123456780', N'Annual', N'Audited FS', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (22, N'123456780', 1, 1, N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (23, N'123456780', N'Annual', N'Stock Audit', N'YEs', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (23, N'123456780', 1, 9, N'YEs', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (24, N'123456780', N'Annual', N'ECGC/CGTMS', N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (24, N'123456780', 1, 3, N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (25, N'123456780', N'Annual', N'Insurance', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (25, N'123456780', 1, 7, N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (26, N'123456780', N'Quarterly', N'FFR / QIS', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 20, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (26, N'123456780', 3, 6, N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 20, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (27, N'123456780', N'Quarterly', N'Exgn. Of Info', N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 20, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (27, N'123456780', 3, 5, N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 20, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (28, N'123456780', N'Quarterly', N'UHFCE', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 20, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (28, N'123456780', 3, 10, N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 20, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (29, N'123456780', N'General', N'Cersai Charge', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (29, N'123456780', 2, 2, N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (30, N'123456780', N'General', N'EM Creation', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (30, N'123456780', 2, 4, N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (31, N'123456780', N'General', N'ROC Charge', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (31, N'123456780', 2, 8, N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (32, N'123456789', N'Annual', N'Audited FS', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (32, N'123456789', 1, 1, N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (33, N'123456789', N'Annual', N'Stock Audit', N'YEs', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (33, N'123456789', 1, 9, N'YEs', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (34, N'123456789', N'Annual', N'ECGC/CGTMS', N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (34, N'123456789', 1, 3, N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (35, N'123456789', N'Annual', N'Insurance', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (35, N'123456789', 1, 7, N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (36, N'123456789', N'Quarterly', N'FFR / QIS', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 20, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (36, N'123456789', 3, 6, N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 20, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (37, N'123456789', N'Quarterly', N'Exgn. Of Info', N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 20, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (37, N'123456789', 3, 5, N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 20, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (38, N'123456789', N'Quarterly', N'UHFCE', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 20, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (38, N'123456789', 3, 10, N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 20, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (39, N'123456789', N'General', N'Cersai Charge', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (39, N'123456789', 2, 2, N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (40, N'123456789', N'General', N'EM Creation', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (40, N'123456789', 2, 4, N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (41, N'123456789', N'General', N'ROC Charge', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (41, N'123456789', 2, 8, N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (42, N'891234567', N'Annual', N'Audited FS', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (42, N'891234567', 1, 1, N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (43, N'891234567', N'Annual', N'Stock Audit', N'YEs', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (43, N'891234567', 1, 9, N'YEs', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (44, N'891234567', N'Annual', N'ECGC/CGTMS', N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (44, N'891234567', 1, 3, N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (45, N'891234567', N'Annual', N'Insurance', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (45, N'891234567', 1, 7, N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (46, N'891234567', N'Quarterly', N'FFR / QIS', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 20, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (46, N'891234567', 3, 6, N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 20, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (47, N'891234567', N'Quarterly', N'Exgn. Of Info', N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 20, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (47, N'891234567', 3, 5, N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 20, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (48, N'891234567', N'Quarterly', N'UHFCE', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 20, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (48, N'891234567', 3, 10, N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 20, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (49, N'891234567', N'General', N'Cersai Charge', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (49, N'891234567', 2, 2, N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (50, N'891234567', N'General', N'EM Creation', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (50, N'891234567', 2, 4, N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (51, N'891234567', N'General', N'ROC Charge', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (51, N'891234567', 2, 8, N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (52, N'234567891', N'Annual', N'Audited FS', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (52, N'234567891', 1, 1, N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'test', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 0, N'', 10, N'Praveen', N'28-11-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (53, N'234567891', N'Annual', N'Stock Audit', N'YEs', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (53, N'234567891', 1, 9, N'YEs', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (54, N'234567891', N'Annual', N'ECGC/CGTMS', N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (54, N'234567891', 1, 3, N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (55, N'234567891', N'Annual', N'Insurance', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (55, N'234567891', 1, 7, N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (56, N'234567891', N'Quarterly', N'FFR / QIS', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 20, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (56, N'234567891', 3, 6, N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 20, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (57, N'234567891', N'Quarterly', N'Exgn. Of Info', N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 20, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (57, N'234567891', 3, 5, N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 20, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (58, N'234567891', N'Quarterly', N'UHFCE', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 20, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (58, N'234567891', 3, 10, N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 20, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (59, N'234567891', N'General', N'Cersai Charge', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (59, N'234567891', 2, 2, N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (60, N'234567891', N'General', N'EM Creation', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (60, N'234567891', 2, 4, N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (61, N'234567891', N'General', N'ROC Charge', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (61, N'234567891', 2, 8, N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (62, N'345678912', N'Annual', N'Audited FS', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (62, N'345678912', 1, 1, N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (63, N'345678912', N'Annual', N'Stock Audit', N'YEs', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (63, N'345678912', 1, 9, N'YEs', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (64, N'345678912', N'Annual', N'ECGC/CGTMS', N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (64, N'345678912', 1, 3, N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (65, N'345678912', N'Annual', N'Insurance', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (65, N'345678912', 1, 7, N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 10, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (66, N'345678912', N'Quarterly', N'FFR / QIS', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 20, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (66, N'345678912', 3, 6, N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 20, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (67, N'345678912', N'Quarterly', N'Exgn. Of Info', N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 20, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (67, N'345678912', 3, 5, N'No', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), NULL, N'', 20, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (68, N'345678912', N'Quarterly', N'UHFCE', N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 20, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (68, N'345678912', 3, 10, N'Yes', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 20, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (69, N'345678912', N'General', N'Cersai Charge', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (69, N'345678912', 2, 2, N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (70, N'345678912', N'General', N'EM Creation', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (70, N'345678912', 2, 4, N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018', NULL)
 GO
-INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn]) VALUES (71, N'345678912', N'General', N'ROC Charge', N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018')
+INSERT [dbo].[CustDocument] ([Id], [Cust_id], [Periodicity], [DocumentType], [Submitted], [SubmittedDate], [DeviationNoted], [CompiledDate], [IsChecked], [MonitorId], [SortOn], [LastUpdatedBy], [LastUpdatedOn], [DocumentURL]) VALUES (71, N'345678912', 2, 8, N'1', CAST(N'2018-04-01T00:00:00.000' AS DateTime), N'', CAST(N'2018-04-01T00:00:00.000' AS DateTime), 1, N'Praveen', 30, N'Praveen', N'29-06-2018', NULL)
 GO
 SET IDENTITY_INSERT [dbo].[CustDocument] OFF
 GO
@@ -1095,6 +1118,30 @@ GO
 INSERT [dbo].[CustomerDataMapping] ([ID], [CustID], [MAppingURl], [TypeId]) VALUES (63, N'123456789', N'https://www.bseindia.com/stock-share-price/stockreach_financials.aspx?scripcode=500400&expandable=0', 6)
 GO
 SET IDENTITY_INSERT [dbo].[CustomerDataMapping] OFF
+GO
+SET IDENTITY_INSERT [dbo].[DocumentType] ON 
+GO
+INSERT [dbo].[DocumentType] ([Id], [DocumentType]) VALUES (1, N'Audited FS')
+GO
+INSERT [dbo].[DocumentType] ([Id], [DocumentType]) VALUES (2, N'Cersai Charge')
+GO
+INSERT [dbo].[DocumentType] ([Id], [DocumentType]) VALUES (3, N'ECGC/CGTMS')
+GO
+INSERT [dbo].[DocumentType] ([Id], [DocumentType]) VALUES (4, N'EM Creation')
+GO
+INSERT [dbo].[DocumentType] ([Id], [DocumentType]) VALUES (5, N'Exgn. Of Info')
+GO
+INSERT [dbo].[DocumentType] ([Id], [DocumentType]) VALUES (6, N'FFR / QIS')
+GO
+INSERT [dbo].[DocumentType] ([Id], [DocumentType]) VALUES (7, N'Insurance')
+GO
+INSERT [dbo].[DocumentType] ([Id], [DocumentType]) VALUES (8, N'ROC Charge')
+GO
+INSERT [dbo].[DocumentType] ([Id], [DocumentType]) VALUES (9, N'Stock Audit')
+GO
+INSERT [dbo].[DocumentType] ([Id], [DocumentType]) VALUES (10, N'UHFCE')
+GO
+SET IDENTITY_INSERT [dbo].[DocumentType] OFF
 GO
 SET IDENTITY_INSERT [dbo].[FinancialResultDetails] ON 
 GO
@@ -12834,7 +12881,7 @@ INSERT [dbo].[General] ([Cust_id], [Activity], [Sector_SubSector], [Priority_Non
 GO
 INSERT [dbo].[General] ([Cust_id], [Activity], [Sector_SubSector], [Priority_Non_Priority], [Govt_sponsored], [Industry], [Incorporation], [Connection_Since], [Internal_Rating], [Internal_Rating_AsOn], [External_Rating], [External_Rating_AsOn], [Inspection_Comments], [Banking_Argmt], [If_Consortium], [Lead_Bank], [SMA], [DCCO], [DCCO_AsOn], [Takeover], [Takeover_AsOn], [Takeover_From], [Reason_for_Takeover], [Working_capital_L], [Term_Load_L], [Bank_Gurantee_L], [Letter_of_credit_L], [PCL_L], [Bill_Purchase_L], [Working_capital_B], [Term_Load_B], [Bank_Gurantee_B], [Letter_of_credit_B], [PCL_B], [Bill_Purchase_B], [Working_capital_E], [Term_Load_E], [Bank_Gurantee_E], [Letter_of_credit_E], [PCL_E], [Bill_Purchase_E], [Defaults], [Defaults_As_On], [Gurantor_1], [Gurantor_2], [Promoter_1], [Promoter_2], [Promoter_3]) VALUES (N'567891234', N'Mfg of Motor Vehicles', N'Auto', N'No', N'N', N'Auto', N'18-Jun-86', N'02-Feb-10', NULL, NULL, NULL, NULL, NULL, N'Sole', NULL, N'NA', N'NA', N'NA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[General] ([Cust_id], [Activity], [Sector_SubSector], [Priority_Non_Priority], [Govt_sponsored], [Industry], [Incorporation], [Connection_Since], [Internal_Rating], [Internal_Rating_AsOn], [External_Rating], [External_Rating_AsOn], [Inspection_Comments], [Banking_Argmt], [If_Consortium], [Lead_Bank], [SMA], [DCCO], [DCCO_AsOn], [Takeover], [Takeover_AsOn], [Takeover_From], [Reason_for_Takeover], [Working_capital_L], [Term_Load_L], [Bank_Gurantee_L], [Letter_of_credit_L], [PCL_L], [Bill_Purchase_L], [Working_capital_B], [Term_Load_B], [Bank_Gurantee_B], [Letter_of_credit_B], [PCL_B], [Bill_Purchase_B], [Working_capital_E], [Term_Load_E], [Bank_Gurantee_E], [Letter_of_credit_E], [PCL_E], [Bill_Purchase_E], [Defaults], [Defaults_As_On], [Gurantor_1], [Gurantor_2], [Promoter_1], [Promoter_2], [Promoter_3]) VALUES (N'678912345', N'Mfg of Motor Vehicles', N'Auto', N'No', N'No', N'Auto', N'24-Feb-81', N'12-Oct-98', NULL, NULL, NULL, NULL, NULL, N'Consortium', NULL, N'HDFC Bank', N'NA', N'Yes', NULL, N'No', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[General] ([Cust_id], [Activity], [Sector_SubSector], [Priority_Non_Priority], [Govt_sponsored], [Industry], [Incorporation], [Connection_Since], [Internal_Rating], [Internal_Rating_AsOn], [External_Rating], [External_Rating_AsOn], [Inspection_Comments], [Banking_Argmt], [If_Consortium], [Lead_Bank], [SMA], [DCCO], [DCCO_AsOn], [Takeover], [Takeover_AsOn], [Takeover_From], [Reason_for_Takeover], [Working_capital_L], [Term_Load_L], [Bank_Gurantee_L], [Letter_of_credit_L], [PCL_L], [Bill_Purchase_L], [Working_capital_B], [Term_Load_B], [Bank_Gurantee_B], [Letter_of_credit_B], [PCL_B], [Bill_Purchase_B], [Working_capital_E], [Term_Load_E], [Bank_Gurantee_E], [Letter_of_credit_E], [PCL_E], [Bill_Purchase_E], [Defaults], [Defaults_As_On], [Gurantor_1], [Gurantor_2], [Promoter_1], [Promoter_2], [Promoter_3]) VALUES (N'678912345', N'Mfg of Motor Vehicles', N'Auto', N'No', N'No', N'Auto', N'24-Feb-81', N'12-Oct-98', N'CBR3', CAST(N'2018-04-30' AS Date), N'AAA', CAST(N'2018-04-30' AS Date), NULL, N'Consortium', NULL, N'HDFC Bank', N'NA', N'Yes', NULL, N'No', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
 INSERT [dbo].[General] ([Cust_id], [Activity], [Sector_SubSector], [Priority_Non_Priority], [Govt_sponsored], [Industry], [Incorporation], [Connection_Since], [Internal_Rating], [Internal_Rating_AsOn], [External_Rating], [External_Rating_AsOn], [Inspection_Comments], [Banking_Argmt], [If_Consortium], [Lead_Bank], [SMA], [DCCO], [DCCO_AsOn], [Takeover], [Takeover_AsOn], [Takeover_From], [Reason_for_Takeover], [Working_capital_L], [Term_Load_L], [Bank_Gurantee_L], [Letter_of_credit_L], [PCL_L], [Bill_Purchase_L], [Working_capital_B], [Term_Load_B], [Bank_Gurantee_B], [Letter_of_credit_B], [PCL_B], [Bill_Purchase_B], [Working_capital_E], [Term_Load_E], [Bank_Gurantee_E], [Letter_of_credit_E], [PCL_E], [Bill_Purchase_E], [Defaults], [Defaults_As_On], [Gurantor_1], [Gurantor_2], [Promoter_1], [Promoter_2], [Promoter_3]) VALUES (N'789123456', N'SOAPS,COSMETICS, TOILETRIES, ETC.', N'FMCG', N'No', N'N', N'Consumables', N'19-Aug-09', N'04-Aug-10', NULL, NULL, NULL, NULL, NULL, N'Sole', NULL, N'NA', N'NA', N'NA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
@@ -13858,205 +13905,217 @@ INSERT [dbo].[News] ([NewsID], [UpdateDate], [Source], [Heading], [Url], [Cust_i
 GO
 SET IDENTITY_INSERT [dbo].[News] OFF
 GO
+SET IDENTITY_INSERT [dbo].[Periodicity] ON 
+GO
+INSERT [dbo].[Periodicity] ([Id], [PeriodicityType]) VALUES (1, N'Annual')
+GO
+INSERT [dbo].[Periodicity] ([Id], [PeriodicityType]) VALUES (2, N'General')
+GO
+INSERT [dbo].[Periodicity] ([Id], [PeriodicityType]) VALUES (3, N'Quarterly')
+GO
+INSERT [dbo].[Periodicity] ([Id], [PeriodicityType]) VALUES (4, N'Monthly')
+GO
+SET IDENTITY_INSERT [dbo].[Periodicity] OFF
+GO
 SET IDENTITY_INSERT [dbo].[Rating] ON 
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (2, N'123456789', N'internal', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2018, N'CBR4', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (2, N'123456789', N'internal', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2018, N'CBR4', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (3, N'123456789', N'internal', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2017, N'CBR3', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (3, N'123456789', N'internal', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2017, N'CBR3', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (4, N'123456789', N'internal', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2016, N'CBR3', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (4, N'123456789', N'internal', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2016, N'CBR3', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (5, N'123456789', N'internal', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2015, N'CBR4', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (5, N'123456789', N'internal', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2015, N'CBR4', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (6, N'123456789', N'internal', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2014, N'CBR3', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (6, N'123456789', N'internal', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2014, N'CBR3', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (7, N'123456789', N'external', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2018, N'AA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (7, N'123456789', N'external', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2018, N'AA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (8, N'123456789', N'external', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2017, N'A', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (8, N'123456789', N'external', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2017, N'A', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (9, N'123456789', N'external', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2016, N'A', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (9, N'123456789', N'external', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2016, N'A', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (10, N'123456789', N'external', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2015, N'A', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (10, N'123456789', N'external', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2015, N'A', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (11, N'123456789', N'external', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2014, N'A', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (11, N'123456789', N'external', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2014, N'A', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (12, N'234567891', N'internal', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2018, N'CBR2', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (12, N'234567891', N'internal', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2018, N'CBR2', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (13, N'234567891', N'internal', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2017, N'CBR1', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (13, N'234567891', N'internal', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2017, N'CBR1', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (14, N'234567891', N'internal', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2016, N'NA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (14, N'234567891', N'internal', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2016, N'NA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (15, N'234567891', N'internal', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2015, N'NA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (15, N'234567891', N'internal', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2015, N'NA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (16, N'234567891', N'internal', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2014, N'NA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (16, N'234567891', N'internal', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2014, N'NA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (17, N'234567891', N'external', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2018, N'AAA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (17, N'234567891', N'external', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2018, N'AAA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (18, N'234567891', N'external', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2017, N'AAA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (18, N'234567891', N'external', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2017, N'AAA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (19, N'234567891', N'external', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2016, N'AAA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (19, N'234567891', N'external', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2016, N'AAA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (20, N'234567891', N'external', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2015, N'AAA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (20, N'234567891', N'external', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2015, N'AAA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (21, N'234567891', N'external', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2014, N'AAA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (21, N'234567891', N'external', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2014, N'AAA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (22, N'345678912', N'internal', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2018, N'CBR3', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (22, N'345678912', N'internal', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2018, N'CBR3', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (23, N'345678912', N'internal', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2017, N'CBR2', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (23, N'345678912', N'internal', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2017, N'CBR2', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (24, N'345678912', N'internal', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2016, N'CBR3', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (24, N'345678912', N'internal', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2016, N'CBR3', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (25, N'345678912', N'internal', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2015, N'CBR2', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (25, N'345678912', N'internal', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2015, N'CBR2', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (26, N'345678912', N'internal', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2014, N'CBR3', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (26, N'345678912', N'internal', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2014, N'CBR3', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (27, N'345678912', N'external', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2018, N'AA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (27, N'345678912', N'external', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2018, N'AA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (28, N'345678912', N'external', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2017, N'AA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (28, N'345678912', N'external', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2017, N'AA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (29, N'345678912', N'external', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2016, N'AAA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (29, N'345678912', N'external', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2016, N'AAA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (30, N'345678912', N'external', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2015, N'AA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (30, N'345678912', N'external', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2015, N'AA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (31, N'345678912', N'external', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2014, N'AAA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (31, N'345678912', N'external', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2014, N'AAA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (32, N'456789123', N'internal', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2018, N'CBR3', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (32, N'456789123', N'internal', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2018, N'CBR3', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (33, N'456789123', N'internal', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2017, N'CBR3', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (33, N'456789123', N'internal', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2017, N'CBR3', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (34, N'456789123', N'internal', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2016, N'NA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (34, N'456789123', N'internal', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2016, N'NA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (35, N'456789123', N'internal', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2015, N'NA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (35, N'456789123', N'internal', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2015, N'NA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (36, N'456789123', N'internal', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2014, N'NA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (36, N'456789123', N'internal', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2014, N'NA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (37, N'456789123', N'external', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2018, N'AA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (37, N'456789123', N'external', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2018, N'AA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (38, N'456789123', N'external', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2017, N'AA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (38, N'456789123', N'external', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2017, N'AA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (39, N'456789123', N'external', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2016, N'AAA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (39, N'456789123', N'external', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2016, N'AAA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (40, N'456789123', N'external', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2015, N'AA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (40, N'456789123', N'external', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2015, N'AA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (41, N'456789123', N'external', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2014, N'AAA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (41, N'456789123', N'external', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2014, N'AAA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (42, N'567891234', N'internal', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2018, N'CBR5', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (42, N'567891234', N'internal', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2018, N'CBR5', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (43, N'567891234', N'internal', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2017, N'CBR7', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (43, N'567891234', N'internal', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2017, N'CBR7', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (44, N'567891234', N'internal', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2016, N'CBR7', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (44, N'567891234', N'internal', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2016, N'CBR7', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (45, N'567891234', N'internal', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2015, N'CBR6', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (45, N'567891234', N'internal', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2015, N'CBR6', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (46, N'567891234', N'internal', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2014, N'CBR7', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (46, N'567891234', N'internal', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2014, N'CBR7', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (47, N'567891234', N'external', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2018, N'A', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (47, N'567891234', N'external', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2018, N'A', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (48, N'567891234', N'external', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2017, N'A2', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (48, N'567891234', N'external', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2017, N'A2', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (49, N'567891234', N'external', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2016, N'A3', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (49, N'567891234', N'external', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2016, N'A3', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (50, N'567891234', N'external', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2015, N'A2', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (50, N'567891234', N'external', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2015, N'A2', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (51, N'567891234', N'external', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2014, N'A3', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (51, N'567891234', N'external', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2014, N'A3', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (52, N'678912345', N'internal', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2018, N'CBR3', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (52, N'678912345', N'internal', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2018, N'CBR3', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (53, N'678912345', N'internal', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2017, N'CBR4', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (53, N'678912345', N'internal', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2017, N'CBR4', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (54, N'678912345', N'internal', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2016, N'CBR4', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (54, N'678912345', N'internal', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2016, N'CBR4', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (55, N'678912345', N'internal', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2015, N'CBR3', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (55, N'678912345', N'internal', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2015, N'CBR3', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (56, N'678912345', N'internal', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2014, N'CBR4', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (56, N'678912345', N'internal', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2014, N'CBR4', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (57, N'678912345', N'external', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2018, N'AAA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (57, N'678912345', N'external', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2018, N'AAA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (58, N'678912345', N'external', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2017, N'AAA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (58, N'678912345', N'external', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2017, N'AAA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (59, N'678912345', N'external', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2016, N'AA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (59, N'678912345', N'external', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2016, N'AA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (60, N'678912345', N'external', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2015, N'AAA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (60, N'678912345', N'external', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2015, N'AAA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (61, N'678912345', N'external', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2014, N'AA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (61, N'678912345', N'external', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2014, N'AA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (62, N'789123456', N'internal', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2018, N'CBR2', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (62, N'789123456', N'internal', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2018, N'CBR2', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (63, N'789123456', N'internal', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2017, N'CBR3', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (63, N'789123456', N'internal', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2017, N'CBR3', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (64, N'789123456', N'internal', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2016, N'CBR3', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (64, N'789123456', N'internal', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2016, N'CBR3', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (65, N'789123456', N'internal', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2015, N'CBR4', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (65, N'789123456', N'internal', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2015, N'CBR4', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (66, N'789123456', N'internal', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2014, N'CBR3', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (66, N'789123456', N'internal', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2014, N'CBR3', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (67, N'789123456', N'external', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2018, N'AA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (67, N'789123456', N'external', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2018, N'AA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (68, N'789123456', N'external', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2017, N'A2', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (68, N'789123456', N'external', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2017, N'A2', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (69, N'789123456', N'external', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2016, N'A2', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (69, N'789123456', N'external', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2016, N'A2', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (70, N'789123456', N'external', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2015, N'A3', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (70, N'789123456', N'external', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2015, N'A3', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (71, N'789123456', N'external', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2014, N'A4', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (71, N'789123456', N'external', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2014, N'A4', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (72, N'891234567', N'internal', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2018, N'CBR1', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (72, N'891234567', N'internal', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2018, N'CBR1', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (73, N'891234567', N'internal', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2017, N'CBR2', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (73, N'891234567', N'internal', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2017, N'CBR2', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (74, N'891234567', N'internal', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2016, N'CBR2', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (74, N'891234567', N'internal', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2016, N'CBR2', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (75, N'891234567', N'internal', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2015, N'CBR2', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (75, N'891234567', N'internal', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2015, N'CBR2', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (76, N'891234567', N'internal', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2014, N'CBR2', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (76, N'891234567', N'internal', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2014, N'CBR2', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (77, N'891234567', N'external', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2018, N'AAA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (77, N'891234567', N'external', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2018, N'AAA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (78, N'891234567', N'external', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2017, N'AAA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (78, N'891234567', N'external', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2017, N'AAA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (79, N'891234567', N'external', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2016, N'AA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (79, N'891234567', N'external', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2016, N'AA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (80, N'891234567', N'external', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2015, N'AAA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (80, N'891234567', N'external', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2015, N'AAA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (81, N'891234567', N'external', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2014, N'AA', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (81, N'891234567', N'external', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2014, N'AA', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (82, N'912345678', N'internal', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2018, N'CBR8', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (82, N'912345678', N'internal', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2018, N'CBR8', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (83, N'912345678', N'internal', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2017, N'CBR6', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (83, N'912345678', N'internal', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2017, N'CBR6', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (84, N'912345678', N'internal', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2016, N'CBR5', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (84, N'912345678', N'internal', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2016, N'CBR5', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (85, N'912345678', N'internal', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2015, N'CBR4', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (85, N'912345678', N'internal', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2015, N'CBR4', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (86, N'912345678', N'internal', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2014, N'CBR5', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (86, N'912345678', N'internal', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2014, N'CBR5', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (87, N'912345678', N'external', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2018, N'D', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (87, N'912345678', N'external', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2018, N'D', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (88, N'912345678', N'external', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2017, N'D', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (88, N'912345678', N'external', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2017, N'D', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (89, N'912345678', N'external', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2016, N'C', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (89, N'912345678', N'external', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2016, N'C', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (90, N'912345678', N'external', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2015, N'D', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (90, N'912345678', N'external', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2015, N'D', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (91, N'912345678', N'external', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2014, N'C', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (91, N'912345678', N'external', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2014, N'C', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (92, N'123456780', N'internal', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2018, N'CBR7', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (92, N'123456780', N'internal', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2018, N'CBR7', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (93, N'123456780', N'internal', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2017, N'CBR5', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (93, N'123456780', N'internal', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2017, N'CBR5', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (94, N'123456780', N'internal', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2015, N'CBR4', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (94, N'123456780', N'internal', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2015, N'CBR4', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (95, N'123456780', N'internal', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2014, N'CBR5', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (95, N'123456780', N'internal', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'INTERNAL', 2014, N'CBR5', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (96, N'123456780', N'external', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2018, N'BB', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (96, N'123456780', N'external', CAST(N'2017-03-01T00:00:00.000' AS DateTime), CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2018, N'BB', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (97, N'123456780', N'external', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2017, N'BB', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (97, N'123456780', N'external', CAST(N'2016-03-01T00:00:00.000' AS DateTime), CAST(N'2017-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2017, N'BB', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (98, N'123456780', N'external', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2016, N'BBB', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (98, N'123456780', N'external', CAST(N'2015-03-01T00:00:00.000' AS DateTime), CAST(N'2016-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2016, N'BBB', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (99, N'123456780', N'external', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2015, N'D', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (99, N'123456780', N'external', CAST(N'2014-03-01T00:00:00.000' AS DateTime), CAST(N'2015-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2015, N'D', N'Praveen', N'CRISIL', NULL)
 GO
-INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source]) VALUES (100, N'123456780', N'external', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2014, N'BBB', N'Praveen', N'CRISIL')
+INSERT [dbo].[Rating] ([Id], [Cust_Id], [particular], [dateFrom], [dateTo], [ratingType], [ratingYear], [ratingValue], [byId], [source], [DocumnetURL]) VALUES (100, N'123456780', N'external', CAST(N'2013-03-01T00:00:00.000' AS DateTime), CAST(N'2014-04-30T00:00:00.000' AS DateTime), N'EXTERNAL', 2014, N'BBB', N'Praveen', N'CRISIL', NULL)
 GO
 SET IDENTITY_INSERT [dbo].[Rating] OFF
 GO
@@ -14348,17 +14407,17 @@ SET IDENTITY_INSERT [dbo].[Snapshot] OFF
 GO
 SET IDENTITY_INSERT [dbo].[SOC124] ON 
 GO
-INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate]) VALUES (1, N'123456780', N'soourcesystem', CAST(N'2018-01-10T00:00:00.000' AS DateTime), N'via', N'appprovalfor', N'yes', CAST(N'2018-01-11T00:00:00.000' AS DateTime), CAST(N'2017-01-12T00:00:00.000' AS DateTime))
+INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate], [DocumnetURL]) VALUES (1, N'123456780', N'soourcesystem', CAST(N'2018-01-10T00:00:00.000' AS DateTime), N'via', N'appprovalfor', N'yes', CAST(N'2018-01-11T00:00:00.000' AS DateTime), CAST(N'2017-01-12T00:00:00.000' AS DateTime), NULL)
 GO
-INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate]) VALUES (2, N'123456780', N'soourcesystem1', CAST(N'2018-01-10T00:00:00.000' AS DateTime), N'via1', N'appprovalfor1', N'no', CAST(N'2018-01-11T00:00:00.000' AS DateTime), CAST(N'2017-01-12T00:00:00.000' AS DateTime))
+INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate], [DocumnetURL]) VALUES (2, N'123456780', N'soourcesystem1', CAST(N'2018-01-10T00:00:00.000' AS DateTime), N'via1', N'appprovalfor1', N'no', CAST(N'2018-01-11T00:00:00.000' AS DateTime), CAST(N'2017-01-12T00:00:00.000' AS DateTime), NULL)
 GO
-INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate]) VALUES (3, N'123456780', N'soourcesystem2', CAST(N'2018-01-10T00:00:00.000' AS DateTime), N'via1', N'appprovalfor2', N'yes', CAST(N'2018-01-11T00:00:00.000' AS DateTime), CAST(N'2017-01-12T00:00:00.000' AS DateTime))
+INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate], [DocumnetURL]) VALUES (3, N'123456780', N'soourcesystem2', CAST(N'2018-01-10T00:00:00.000' AS DateTime), N'via1', N'appprovalfor2', N'yes', CAST(N'2018-01-11T00:00:00.000' AS DateTime), CAST(N'2017-01-12T00:00:00.000' AS DateTime), NULL)
 GO
-INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate]) VALUES (4, N'678912345', N'soourcesystem', CAST(N'2018-01-10T00:00:00.000' AS DateTime), N'via', N'appprovalfor', N'', NULL, NULL)
+INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate], [DocumnetURL]) VALUES (4, N'678912345', N'soourcesystem', CAST(N'2018-01-10T00:00:00.000' AS DateTime), N'via', N'appprovalfor', N'', NULL, NULL, NULL)
 GO
-INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate]) VALUES (5, N'678912345', N'soourcesystem1', CAST(N'2018-10-01T00:00:00.000' AS DateTime), N'via1', N'appprovalfor1', N'no', CAST(N'2018-07-02T00:00:00.000' AS DateTime), CAST(N'2017-01-12T00:00:00.000' AS DateTime))
+INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate], [DocumnetURL]) VALUES (5, N'678912345', N'soourcesystem1', CAST(N'2018-10-01T00:00:00.000' AS DateTime), N'via1', N'ashoke garai', N'no', CAST(N'2018-07-02T00:00:00.000' AS DateTime), CAST(N'2017-01-12T00:00:00.000' AS DateTime), NULL)
 GO
-INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate]) VALUES (6, N'678912345', N'soourcesystem2', CAST(N'2018-10-01T00:00:00.000' AS DateTime), N'via1', N'appprovalfor2', N'yes', CAST(N'2018-11-01T00:00:00.000' AS DateTime), CAST(N'2017-01-12T00:00:00.000' AS DateTime))
+INSERT [dbo].[SOC124] ([Id], [Cust_id], [sourceSystemId], [approvalDate], [via], [approvalFor], [isCompiled], [followUpDate], [compiledDate], [DocumnetURL]) VALUES (6, N'678912345', N'soourcesystem2', CAST(N'2018-10-01T00:00:00.000' AS DateTime), N'via1', N'appprovalfor2', N'yes', CAST(N'2018-11-01T00:00:00.000' AS DateTime), CAST(N'2017-01-12T00:00:00.000' AS DateTime), NULL)
 GO
 SET IDENTITY_INSERT [dbo].[SOC124] OFF
 GO
